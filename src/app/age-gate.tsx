@@ -1,15 +1,6 @@
-import { PlaceholderScreen } from '@/components/ui/placeholder-screen';
-import { useDeviceState } from '@/features/device/device-state-provider';
+import { AgeGateScreen } from '@/features/age-gate/age-gate-screen';
 
-/** Placeholder until HU-01. Confirming unlocks the protected routes and leaves this screen. */
-export default function AgeGateScreen() {
-  const { confirmAge } = useDeviceState();
-  return (
-    <PlaceholderScreen
-      title="Confirmación 18+"
-      story="HU-01"
-      nextLabel="Soy mayor de 18"
-      onNext={confirmAge}
-    />
-  );
+/** 18+ gate (HU-01). The only route reachable until the age is confirmed. */
+export default function AgeGateRoute() {
+  return <AgeGateScreen />;
 }
