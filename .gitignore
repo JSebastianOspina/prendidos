@@ -49,3 +49,6 @@ example
 
 # Harness evals virtualenv / coverage
 coverage/
+
+# Python bytecode (vendored ui-ux-pro-max skill scripts)
+__pycache__/
