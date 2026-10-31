@@ -7,8 +7,7 @@ import { repeatedPressWindowMs } from '@/components/ui/button';
 import type { Card } from '@/features/content/card-types';
 import type { Catalog } from '@/features/content/catalog';
 import { DeviceStateProvider } from '@/features/device/device-state-provider';
-import { GameProvider, useGame, type GameSettings } from '@/features/game';
-import type { GameEnvironment } from '@/features/game/game-types';
+import { GameProvider, useGame, type GameEnvironment, type GameSettings } from '@/features/game';
 import {
   ana,
   beto,
