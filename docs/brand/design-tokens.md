@@ -186,6 +186,6 @@ Non-text elements need 3:1. The `ink` outline passes on every head color; the tw
 | `ink` outline on `background`     | 16.3:1 | Pass   |
 | `ink` outline on `surface` (frame) | 17.3:1 | Pass  |
 
-### Pending dependency
+### Storage
 
-Storing the avatar on the `Player` entity (and in the saved last players) is pending a decision. `docs/prd.md` and `docs/data-model.md` do not include it yet.
+The avatar is stored on `Player.avatarId` and remembered with the last players (`docs/data-model.md` § Player). A new player gets the first free avatar in brand order; changing it in setup moves to the next free one.

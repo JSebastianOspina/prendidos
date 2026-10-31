@@ -45,7 +45,8 @@ describe('shipped catalog', () => {
     const { cards } = loadCatalog();
     for (const difficulty of ['easy', 'medium', 'hard'] as const) {
       const count = cards.filter(
-        (card) => card.categoryId === categoryId && card.heat === heat && card.difficulty === difficulty,
+        (card) =>
+          card.categoryId === categoryId && card.heat === heat && card.difficulty === difficulty,
       ).length;
       expect({ difficulty, count: Math.min(count, 30) }).toEqual({ difficulty, count: 30 });
     }

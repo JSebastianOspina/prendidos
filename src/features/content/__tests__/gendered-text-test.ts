@@ -1,8 +1,4 @@
-import {
-  longestRenderedLength,
-  parseGenderedText,
-  renderGenderedText,
-} from '../gendered-text';
+import { longestRenderedLength, parseGenderedText, renderGenderedText } from '../gendered-text';
 
 describe('parseGenderedText', () => {
   it('returns plain text as a single text segment with no issues', () => {

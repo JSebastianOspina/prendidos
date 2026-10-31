@@ -11,9 +11,27 @@ import {
   trimPlayerNames,
 } from '../setup-rules';
 
-const ana: Player = { id: 'p1', name: 'Ana', gender: 'female', drinks: true };
-const beto: Player = { id: 'p2', name: 'Beto', gender: 'male', drinks: true };
-const cami: Player = { id: 'p3', name: 'Cami', gender: 'undisclosed', drinks: false };
+const ana: Player = {
+  id: 'p1',
+  name: 'Ana',
+  gender: 'female',
+  drinks: true,
+  avatarId: 'avatar-01',
+};
+const beto: Player = {
+  id: 'p2',
+  name: 'Beto',
+  gender: 'male',
+  drinks: true,
+  avatarId: 'avatar-02',
+};
+const cami: Player = {
+  id: 'p3',
+  name: 'Cami',
+  gender: 'undisclosed',
+  drinks: false,
+  avatarId: 'avatar-03',
+};
 
 function sequentialIds(): () => string {
   let next = 0;
@@ -27,7 +45,12 @@ describe('createEmptyPlayer', () => {
       name: '',
       gender: 'undisclosed',
       drinks: true,
+      avatarId: 'avatar-01',
     });
+  });
+
+  it('gives the new row the first avatar nobody has', () => {
+    expect(createEmptyPlayer(() => 'x', [ana, beto]).avatarId).toBe('avatar-03');
   });
 });
 
@@ -36,11 +59,13 @@ describe('preparePlayersForMode', () => {
     const players = preparePlayersForMode([], 'friends', sequentialIds());
     expect(players.map((player) => player.id)).toEqual(['new-1', 'new-2']);
     expect(players.every((player) => player.name === '')).toBe(true);
+    expect(players.map((player) => player.avatarId)).toEqual(['avatar-01', 'avatar-02']);
   });
 
   it('pads a single remembered player up to two', () => {
     const players = preparePlayersForMode([ana], 'friends', sequentialIds());
     expect(players.map((player) => player.id)).toEqual(['p1', 'new-1']);
+    expect(players[1].avatarId).toBe('avatar-02');
   });
 
   it('keeps the same list when nothing changes', () => {
@@ -131,9 +156,9 @@ describe('end conditions', () => {
     expect(isSameEndCondition({ type: 'rounds', rounds: 10 }, { type: 'rounds', rounds: 5 })).toBe(
       false,
     );
-    expect(isSameEndCondition({ type: 'points', target: 100 }, { type: 'points', target: 100 })).toBe(
-      true,
-    );
+    expect(
+      isSameEndCondition({ type: 'points', target: 100 }, { type: 'points', target: 100 }),
+    ).toBe(true);
     expect(isSameEndCondition({ type: 'open' }, { type: 'open' })).toBe(true);
     expect(isSameEndCondition({ type: 'open' }, { type: 'rounds', rounds: 10 })).toBe(false);
   });

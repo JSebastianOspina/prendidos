@@ -123,7 +123,7 @@ export function SetupScreen({ random = Math.random }: SetupScreenProps) {
           <Button
             variant="secondary"
             label={setupCopy.addPlayer}
-            onPress={() => setPlayers([...players, createEmptyPlayer(createLocalId)])}
+            onPress={() => setPlayers([...players, createEmptyPlayer(createLocalId, players)])}
           />
         ) : null}
 

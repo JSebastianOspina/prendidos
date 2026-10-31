@@ -206,9 +206,7 @@ describe('validateCards', () => {
 
   describe('target gender', () => {
     it('flags undisclosed as a target gender', () => {
-      expect(rulesOf({ ...validChallenge, targetGender: 'undisclosed' })).toEqual([
-        'targetGender',
-      ]);
+      expect(rulesOf({ ...validChallenge, targetGender: 'undisclosed' })).toEqual(['targetGender']);
     });
   });
 
@@ -284,9 +282,9 @@ describe('validateCards', () => {
     });
 
     it('flags a category ID that is not text by position', () => {
-      expect(
-        validateCards({ categories: [{ ...validCategories[0], id: 7 }], cards: [] }),
-      ).toEqual([expect.objectContaining({ subjectId: 'categories[0]', rule: 'invalidField' })]);
+      expect(validateCards({ categories: [{ ...validCategories[0], id: 7 }], cards: [] })).toEqual([
+        expect.objectContaining({ subjectId: 'categories[0]', rule: 'invalidField' }),
+      ]);
     });
 
     it('flags a category without a usable ID by position', () => {
@@ -348,9 +346,9 @@ describe('validateCards', () => {
     });
 
     it('flags a quip longer than 30 characters', () => {
-      expect(
-        rulesOf({ ...validChallenge, penalty: { drinks: 2, quip: 'x'.repeat(31) } }),
-      ).toEqual(['copyLength']);
+      expect(rulesOf({ ...validChallenge, penalty: { drinks: 2, quip: 'x'.repeat(31) } })).toEqual([
+        'copyLength',
+      ]);
     });
   });
 
@@ -363,15 +361,15 @@ describe('validateCards', () => {
     );
 
     it('flags an amount to drink in the quip', () => {
-      expect(rulesOf({ ...validChallenge, penalty: { drinks: 1, quip: 'y 2 tragos más' } })).toEqual(
-        ['drinksInCopy'],
-      );
+      expect(
+        rulesOf({ ...validChallenge, penalty: { drinks: 1, quip: 'y 2 tragos más' } }),
+      ).toEqual(['drinksInCopy']);
     });
 
     it('allows mentioning drinks without an amount', () => {
-      expect(rulesOf({ ...validChallenge, body: 'Algo de comer con cuchara (nada de trago).' })).toEqual(
-        [],
-      );
+      expect(
+        rulesOf({ ...validChallenge, body: 'Algo de comer con cuchara (nada de trago).' }),
+      ).toEqual([]);
     });
   });
 

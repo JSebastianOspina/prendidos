@@ -19,7 +19,13 @@ import { HomeScreen } from '../home-screen';
 
 jest.mock('expo-router', () => ({ router: { push: jest.fn() } }));
 
-const rememberedPlayer: Player = { id: 'p1', name: 'Ana', gender: 'female', drinks: true };
+const rememberedPlayer: Player = {
+  id: 'p1',
+  name: 'Ana',
+  gender: 'female',
+  drinks: true,
+  avatarId: 'avatar-01',
+};
 
 let latestDraft: NewGameDraftValue | undefined;
 

@@ -9,12 +9,16 @@ import type {
   PlayerGender,
 } from '@/features/content/card-types';
 
+import type { AvatarId } from './avatars';
+
 export type Player = {
   id: string;
   name: string;
   gender: PlayerGender;
   /** `false` = gets alternative penalties instead of drinks (HU-11). */
   drinks: boolean;
+  /** The player's cat; kept for the whole game and remembered with the last players. */
+  avatarId: AvatarId;
 };
 
 export type RoundCount = 5 | 10 | 15 | 20;
