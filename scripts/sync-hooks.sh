@@ -67,7 +67,7 @@ sync_cursor_config() {
   if [[ -L "$CURSOR_CONFIG" ]]; then
   local current
   current="$(readlink "$CURSOR_CONFIG")"
-  if [[ "$current" == "../../ai-specs/hooks/cursor.hooks.json" ]]; then
+  if [[ "$current" == "../ai-specs/hooks/cursor.hooks.json" ]]; then
     echo "    unchanged (symlink)"
     return
   fi
@@ -78,7 +78,7 @@ sync_cursor_config() {
     return
   fi
 
-  ln -sf "../../ai-specs/hooks/cursor.hooks.json" "$CURSOR_CONFIG"
+  ln -sf "../ai-specs/hooks/cursor.hooks.json" "$CURSOR_CONFIG"
   echo "    + cursor.hooks.json → .cursor/hooks.json"
 }
 

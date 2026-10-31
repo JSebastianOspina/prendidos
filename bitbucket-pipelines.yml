@@ -20,6 +20,8 @@ definitions:
         script:
           - npm ci
           - npm run lint
+          # Generates the git-ignored expo-env.d.ts and typed-routes declarations
+          - npx expo customize tsconfig.json
           - npm run typecheck
 
     - step: &unit-tests

@@ -24,6 +24,8 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run lint
+      # Generates the git-ignored expo-env.d.ts and typed-routes declarations
+      - run: npx expo customize tsconfig.json
       - run: npm run typecheck
 
   unit-tests:
