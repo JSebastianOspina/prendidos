@@ -127,9 +127,10 @@ Not applicable today: Prendidos has no backend, and challenge content is bundled
 
 ## Testing
 
-- Unit and component tests: **Jest** with the `jest-expo` preset + **React Native Testing Library** (`@testing-library/react-native`). Not installed yet — add with `npx expo install jest-expo jest @types/jest @testing-library/react-native -- --save-dev` and follow https://docs.expo.dev/develop/unit-testing/.
-  - Test files: `*.test.ts(x)` next to the code under test.
+- Unit and component tests: **Jest 30** with the `jest-expo` preset (installed; run `npm test`, see `docs/development_guide.md` § Running Tests). Add **React Native Testing Library** with the first component test: `npx expo install @testing-library/react-native --dev`.
+  - Test files: `__tests__/<module>-test.ts(x)` in a `__tests__` folder next to the code under test (Expo's convention). Shared test data goes in `__tests__/fixtures/`, which Jest does not run as tests.
   - Game logic modules: 100% branch coverage target; overall target ≥ 90% line coverage.
+  - Coverage scope: measured on `src/features/**` (threshold enforced in `package.json`). Template code outside `src/features/` is deliberately excluded until it is replaced by real screens.
   - Query by role / label / text (user-facing), not by test IDs, unless there is no accessible alternative.
 - E2E: **Maestro** flows in `.maestro/` run against the iOS Simulator or Android emulator (`maestro test .maestro/`). Cover the critical path: age gate → choose mode and category → play challenges → score summary → purchase flow (store sandbox).
 - Visual regression: none.
@@ -158,7 +159,7 @@ See `docs/base-standards.md` §2.2 for the full table.
 | Hooks           | `use-*.ts`, `useCamelCase` export               | `use-game-session.ts` → `useGameSession`       |
 | Utilities       | kebab-case `.ts`, camelCase exports             | `pick-next-challenge.ts` → `pickNextChallenge` |
 | Styling files   | colocated `StyleSheet.create`; CSS only for web | `animated-icon.module.css` (web only)          |
-| Tests           | `<file>.test.ts(x)` next to the source          | `pick-next-challenge.test.ts`                  |
+| Tests           | `__tests__/<file>-test.ts(x)` next to the source | `__tests__/pick-next-challenge-test.ts`       |
 
 ---
 

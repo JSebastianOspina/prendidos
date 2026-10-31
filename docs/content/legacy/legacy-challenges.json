@@ -1,0 +1,1650 @@
+{
+  "source": "Lista de retos sin URL.xlsx — sheet 'Retos normales puntaje' (Flutter app, 2023)",
+  "status": "reference-only",
+  "legacyScale": {
+    "score": "1-100 (1-40 suave, 41-75 medio, 76-100 hardcore)",
+    "drinks": "1-3"
+  },
+  "slangGlossary": [
+    "Chimba",
+    "Piscinero",
+    "KYC",
+    "Chisme",
+    "mka",
+    "pana",
+    "Cultura chopistica",
+    "loca",
+    "socio",
+    "demalas",
+    "Cucho",
+    "Mi perro",
+    "Perro",
+    "Bandida",
+    "Amix",
+    "caga",
+    "Puerco",
+    "Polvo",
+    "Calento",
+    "Esta vuelta",
+    "Crush",
+    "Como a rata",
+    "Morrongo"
+  ],
+  "cards": [
+    {
+      "legacyId": "start",
+      "text": "Pa empezar bien chimba todos se toman uno piscinero",
+      "legacyScore": 1,
+      "drinks": 1,
+      "legacyLevel": "Suave",
+      "difficulty": "easy",
+      "legacyColor": "#34BAED",
+      "slangTerms": [
+        "Chimba",
+        "piscinero"
+      ],
+      "face": {
+        "image": "cards/start.png",
+        "headline": "Para empezar bien chimba",
+        "body": "Todos se toman uno piscinero",
+        "illustration": "shot-glass-on-fire",
+        "speechBubbles": []
+      },
+      "dataIssues": []
+    },
+    {
+      "legacyId": "150F2E47",
+      "text": "Abra la jeta! recibiras un trago directamente de la boca de alguien",
+      "legacyScore": 85,
+      "drinks": 3,
+      "legacyLevel": "Hardcore",
+      "difficulty": "hard",
+      "legacyColor": "#F8A923",
+      "slangTerms": [
+        "Jeta"
+      ],
+      "face": {
+        "image": "cards/150F2E47.png",
+        "headline": "¡Abra la jeta!",
+        "body": "Recibirás un trago directamente de la boca de alguien",
+        "illustration": "mascot-full-body-wink-holding-drink",
+        "speechBubbles": []
+      },
+      "dataIssues": []
+    },
+    {
+      "legacyId": "27FBE2FA",
+      "text": "Cucho cuentese un chisme, si no se sabe ninguno KYC y tomese 1",
+      "legacyScore": 1,
+      "drinks": 1,
+      "legacyLevel": "Suave",
+      "difficulty": "easy",
+      "legacyColor": "#34BAED",
+      "slangTerms": [
+        "cucho",
+        "chisme",
+        "KYC"
+      ],
+      "face": {
+        "image": "cards/27FBE2FA.png",
+        "headline": "Cucho, cuéntese un chisme",
+        "body": "Si no se sabe ninguno, KYC y tómese uno",
+        "illustration": "mascot-face-surprised",
+        "speechBubbles": []
+      },
+      "dataIssues": []
+    },
+    {
+      "legacyId": "3333651F",
+      "text": "Cantese esa que se sabe a todo pulmon, si el de la derecha no sigue o se equivoca se toma 2 por puss*",
+      "legacyScore": 10,
+      "drinks": 2,
+      "legacyLevel": "Suave",
+      "difficulty": "easy",
+      "legacyColor": "#34BAED",
+      "slangTerms": [],
+      "face": {
+        "image": "cards/3333651F.png",
+        "headline": "Cántese esa que se sabe a todo pulmón",
+        "body": "Si el de la derecha no la sigue o se equivoca se toma 2 por puss*",
+        "illustration": null,
+        "speechBubbles": []
+      },
+      "dataIssues": []
+    },
+    {
+      "legacyId": "79AD8D79",
+      "text": "Cuentese un chiste, si nadie se rie aparte de quedar en ridiculo se toma 2 todo bien",
+      "legacyScore": 3,
+      "drinks": 2,
+      "legacyLevel": "Suave",
+      "difficulty": "easy",
+      "legacyColor": "#34BAED",
+      "slangTerms": [],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "AB0271E1",
+      "text": "Momento sad de la noche, el mka que menos haya viajado se toma 1 y si aparte no ha salido del paìs se toma 2 por puss*",
+      "legacyScore": 1,
+      "drinks": 2,
+      "legacyLevel": "Suave",
+      "difficulty": "easy",
+      "legacyColor": "#34BAED",
+      "slangTerms": [
+        "mka"
+      ],
+      "face": {
+        "image": "cards/AB0271E1.png",
+        "headline": "Momento sad de la noche",
+        "body": "El mka que menos haya viajado se toma 1 y si aparte no ha salido del país se toma 2 por puss*",
+        "illustration": "mascot-face-sad-with-map-pin-and-plane",
+        "speechBubbles": []
+      },
+      "dataIssues": []
+    },
+    {
+      "legacyId": "07E1B1B1",
+      "text": "Llego el enamorado, el grupo decide a quien deberas darle 5 me gustas, si no lo haces tomas 2 por puss*",
+      "legacyScore": 20,
+      "drinks": 2,
+      "legacyLevel": "Suave",
+      "difficulty": "easy",
+      "legacyColor": "#34BAED",
+      "slangTerms": [],
+      "face": {
+        "image": "cards/07E1B1B1.png",
+        "headline": "Llegó el enamorado",
+        "body": "El grupo decide a quién deberás darle 5 me gustas, si no lo haces tomas 2 por puss*",
+        "illustration": "mascot-face-blowing-kiss",
+        "speechBubbles": []
+      },
+      "dataIssues": []
+    },
+    {
+      "legacyId": "081517D5",
+      "text": "Los hombres bailense uno de tik tok, si al menos uno no quiere todos se toman 2 bien piscineros esto no es para puss*s",
+      "legacyScore": 40,
+      "drinks": 2,
+      "legacyLevel": "Suave",
+      "difficulty": "easy",
+      "legacyColor": "#34BAED",
+      "slangTerms": [
+        "piscineros"
+      ],
+      "face": {
+        "image": "cards/081517D5.png",
+        "headline": "Los hombres báilense uno de TikTok",
+        "body": "Si al menos uno no quiere todos se toman 2 bien piscineros, esto no es para puss*",
+        "illustration": null,
+        "speechBubbles": []
+      },
+      "dataIssues": []
+    },
+    {
+      "legacyId": "FED27DA1",
+      "text": "Rapido pues socios tomense una selfie para el recuerdo !  Me chimba una selfie!!!!",
+      "legacyScore": 10,
+      "drinks": 0,
+      "legacyLevel": "Suave",
+      "difficulty": "easy",
+      "legacyColor": "#34BAED",
+      "slangTerms": [
+        "Socios",
+        "chimba"
+      ],
+      "face": {
+        "image": "cards/FED27DA1.png",
+        "headline": "Rápido pues socios",
+        "body": "Tómense una selfie para el recuerdo. ¡Me chimba una selfie!",
+        "illustration": "mascot-face-money-eyes-taking-selfie",
+        "speechBubbles": []
+      },
+      "dataIssues": []
+    },
+    {
+      "legacyId": "0E00B38B",
+      "text": "Se puso chimba esto pues panas, Reciba 1 trago de la boca del que quiera socio aproveche pues, el que se niegue toma 2",
+      "legacyScore": 55,
+      "drinks": 2,
+      "legacyLevel": "Medio",
+      "difficulty": "medium",
+      "legacyColor": "#F9B13C",
+      "slangTerms": [
+        "Chimba",
+        "panas",
+        "socio"
+      ],
+      "face": {
+        "image": "cards/0E00B38B.png",
+        "headline": "Se puso chimba esto pues panas",
+        "body": "Reciba 1 trago de la boca del que quiera socio, aproveche pues. El que se niegue toma 2",
+        "illustration": "mascot-face-sunglasses",
+        "speechBubbles": []
+      },
+      "dataIssues": []
+    },
+    {
+      "legacyId": "D43DF334",
+      "text": "Uy pana re pailas , le toco enviar una nota de voz al que el grupo escoja y con las reglas que el hpt* grupo quiera, si se caga por puss* se toma 2",
+      "legacyScore": 50,
+      "drinks": 2,
+      "legacyLevel": "Medio",
+      "difficulty": "medium",
+      "legacyColor": "#F9B13C",
+      "slangTerms": [
+        "pailas",
+        "caga"
+      ],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "C97749F8",
+      "text": "Al mka que toco esperar y llego de ultimo se toma 2",
+      "legacyScore": 12,
+      "drinks": 2,
+      "legacyLevel": "Suave",
+      "difficulty": "easy",
+      "legacyColor": "#34BAED",
+      "slangTerms": [
+        "mka"
+      ],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "87AFEB01",
+      "text": "Cultura time! cultura  chopistica de marcas de autos. El que repita o se equivoque se toma 1 por mk!",
+      "legacyScore": 15,
+      "drinks": 1,
+      "legacyLevel": "Suave",
+      "difficulty": "easy",
+      "legacyColor": "#34BAED",
+      "slangTerms": [
+        "cultura chopistica"
+      ],
+      "face": {
+        "image": "cards/87AFEB01.png",
+        "headline": "Cultura time",
+        "body": "Cultura chopística de marcas de autos. ¡El que repita o se equivoque se toma 1 por mk!",
+        "illustration": "mascot-face-monocle",
+        "speechBubbles": []
+      },
+      "dataIssues": []
+    },
+    {
+      "legacyId": "D62E0E5C",
+      "text": "Le toco bailar mi socio, bailese la cancion que este sonando si se niega toma 2",
+      "legacyScore": 41,
+      "drinks": 2,
+      "legacyLevel": "Medio",
+      "difficulty": "medium",
+      "legacyColor": "#F9B13C",
+      "slangTerms": [
+        "Socio"
+      ],
+      "face": {
+        "image": "cards/D62E0E5C.png",
+        "headline": "Le tocó bailar mi socio",
+        "body": "Báilese la canción que esté sonando, si se niega toma 2",
+        "illustration": "mascot-face-star-glasses-dancing",
+        "speechBubbles": []
+      },
+      "dataIssues": []
+    },
+    {
+      "legacyId": "BECE749C",
+      "text": "Pasense esa carta boca a boca sin usar las manos, si se cae la carta se besan o se toman 3 cada uno",
+      "legacyScore": 60,
+      "drinks": 3,
+      "legacyLevel": "Medio",
+      "difficulty": "medium",
+      "legacyColor": "#F9B13C",
+      "slangTerms": [],
+      "face": {
+        "image": "cards/BECE749C.png",
+        "headline": "Pásense esa carta boca a boca sin usar las manos",
+        "body": "Si se cae la carta se besan o se toman 3 cada uno",
+        "illustration": null,
+        "speechBubbles": []
+      },
+      "dataIssues": []
+    },
+    {
+      "legacyId": "B1757B35",
+      "text": "Hablen ladrando como perros, si no toman todos 1 piscinero",
+      "legacyScore": 8,
+      "drinks": 1,
+      "legacyLevel": "Suave",
+      "difficulty": "easy",
+      "legacyColor": "#34BAED",
+      "slangTerms": [
+        "piscinero"
+      ],
+      "face": {
+        "image": "cards/B1757B35.png",
+        "headline": "Hablen ladrando como perros",
+        "body": "Si no, toman todos un piscinero",
+        "illustration": "two-dogs",
+        "speechBubbles": []
+      },
+      "dataIssues": []
+    },
+    {
+      "legacyId": "7E274954",
+      "text": "Durante una ronda todos se hablan como ñeros mi socio en la buena perrito ! si alguien decide no hablar como ñero se toma 2 por loca!",
+      "legacyScore": 9,
+      "drinks": 2,
+      "legacyLevel": "Suave",
+      "difficulty": "easy",
+      "legacyColor": "#34BAED",
+      "slangTerms": [
+        "Ñeros",
+        "socios",
+        "la buena",
+        "perrito",
+        "loca"
+      ],
+      "face": {
+        "image": "cards/7E274954.png",
+        "headline": "Mi socio en la buena perrito",
+        "body": "Durante una ronda todos se hablan como ñeros, si alguien decide no hablar como ñero se toma 2 por loca",
+        "illustration": "mascot-face-police-cap",
+        "speechBubbles": [
+          "En la juega con el tombo",
+          "Déjeme sano socio"
+        ]
+      },
+      "dataIssues": []
+    },
+    {
+      "legacyId": "8082CD1F",
+      "text": "El nombre mas pailas se toma 2 por demalas!",
+      "legacyScore": 11,
+      "drinks": 2,
+      "legacyLevel": "Suave",
+      "difficulty": "easy",
+      "legacyColor": "#34BAED",
+      "slangTerms": [
+        "pailas",
+        "demalas"
+      ],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "3BB448AB",
+      "text": "Hazte pasar por otra persona durante las siguientes 2 rondas del juego. Si te niegas o lo haces muy mal tomas 2",
+      "legacyScore": 25,
+      "drinks": 2,
+      "legacyLevel": "Suave",
+      "difficulty": "easy",
+      "legacyColor": "#34BAED",
+      "slangTerms": [],
+      "face": {
+        "image": "cards/3BB448AB.png",
+        "headline": "Hazte pasar por otra persona",
+        "body": "Lo tienes que hacer durante las siguientes 2 rondas del juego. Si te niegas o lo haces muy mal tomas 2",
+        "illustration": null,
+        "speechBubbles": []
+      },
+      "dataIssues": []
+    },
+    {
+      "legacyId": "8113FB2A",
+      "text": "Cantarle a alguien una canción romántica a capela. Si te niegas tomas 2",
+      "legacyScore": 26,
+      "drinks": 2,
+      "legacyLevel": "Suave",
+      "difficulty": "easy",
+      "legacyColor": "#34BAED",
+      "slangTerms": [],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "D1382C79",
+      "text": "Cucho beso doble ! Dos del grupo se lo besan donde ellos quieran y con los ojos cerrados debera adivinar quienes fueron, si adivina toman ellos si no toma ud por loca! 2 tragos",
+      "legacyScore": 30,
+      "drinks": 2,
+      "legacyLevel": "Suave",
+      "difficulty": "easy",
+      "legacyColor": "#34BAED",
+      "slangTerms": [
+        "Cucho",
+        "loca"
+      ],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "F4147816",
+      "text": "Uy mi perro si es demalas, haga el reto que el grupo quiera, si no se toma 2 piscineros por loca!",
+      "legacyScore": 27,
+      "drinks": 2,
+      "legacyLevel": "Suave",
+      "difficulty": "easy",
+      "legacyColor": "#34BAED",
+      "slangTerms": [
+        "Perro",
+        "demalas",
+        "piscinero",
+        "loca"
+      ],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "78F3F0D7",
+      "text": "Reto grupal mis perros, Todos hablan con acento español el peor toma 2 por gilipollas tio!",
+      "legacyScore": 7,
+      "drinks": 2,
+      "legacyLevel": "Suave",
+      "difficulty": "easy",
+      "legacyColor": "#34BAED",
+      "slangTerms": [
+        "Perro"
+      ],
+      "face": {
+        "image": "cards/78F3F0D7.png",
+        "headline": "Reto grupal mis perros",
+        "body": "Todos hablan con acento español, el peor toma 2 por gilipollas tío",
+        "illustration": "spain-map-pin",
+        "speechBubbles": [
+          "Me he flipado tío",
+          "Que te folle un pez"
+        ]
+      },
+      "dataIssues": []
+    },
+    {
+      "legacyId": "757A589A",
+      "text": "Sapo hpt* todos se tratan mal durante una ronda se vale todo mi perro!",
+      "legacyScore": 16,
+      "drinks": 0,
+      "legacyLevel": "Suave",
+      "difficulty": "easy",
+      "legacyColor": "#34BAED",
+      "slangTerms": [
+        "Sapo hpt*",
+        "perro"
+      ],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "42489AAB",
+      "text": "El mas perro y la mas bandadida se toman 2 por puss*s",
+      "legacyScore": 24,
+      "drinks": 2,
+      "legacyLevel": "Suave",
+      "difficulty": "easy",
+      "legacyColor": "#34BAED",
+      "slangTerms": [
+        "perro",
+        "bandida"
+      ],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "F7F8ABA8",
+      "text": "Ya esta borracho el socio... Echese unas palabras con mucho amor para tus amix!",
+      "legacyScore": 26,
+      "drinks": 0,
+      "legacyLevel": "Suave",
+      "difficulty": "easy",
+      "legacyColor": "#34BAED",
+      "slangTerms": [
+        "socio"
+      ],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "04E05904",
+      "text": "Cucho escoja a su pana mas chimba y se toman 1 por la amistad !",
+      "legacyScore": 2,
+      "drinks": 1,
+      "legacyLevel": "Suave",
+      "difficulty": "easy",
+      "legacyColor": "#5063AC",
+      "slangTerms": [
+        "Cucho",
+        "chimba"
+      ],
+      "face": {
+        "image": "cards/04E05904.png",
+        "headline": "Cucho, escoja a su pana más chimba",
+        "body": "Se toman uno por la amistad",
+        "illustration": "two-glasses-toasting",
+        "speechBubbles": []
+      },
+      "dataIssues": []
+    },
+    {
+      "legacyId": "A79D1EE1",
+      "text": "Uy pana muestrese una foto porn* que tenga en ese celular si no tiene o se caga se toma 2 !",
+      "legacyScore": 46,
+      "drinks": 2,
+      "legacyLevel": "Medio",
+      "difficulty": "medium",
+      "legacyColor": "#F9B13C",
+      "slangTerms": [
+        "Pana",
+        "caga"
+      ],
+      "face": {
+        "image": "cards/A79D1EE1.png",
+        "headline": "Uy pana muéstrese una foto porn*",
+        "body": "Si no tiene o se caga se toma 2",
+        "illustration": "phone-with-xxx-screen",
+        "speechBubbles": []
+      },
+      "dataIssues": []
+    },
+    {
+      "legacyId": "B3352FE5",
+      "text": "Llego la mas perra ! JA JA JA De ahora y por toda una ronda le dice que si a todo lo que le digan si no toma 3 piscineros por puss*",
+      "legacyScore": 41,
+      "drinks": 3,
+      "legacyLevel": "Medio",
+      "difficulty": "medium",
+      "legacyColor": "#F9B13C",
+      "slangTerms": [
+        "Perra",
+        "piscinero"
+      ],
+      "face": {
+        "image": "cards/B3352FE5.png",
+        "headline": "Llegó la más perra",
+        "body": "Ja ja ja. De ahora y por toda una ronda le dice que sí a todo lo que le digan, si no toma 3 piscineros por puss*",
+        "illustration": "mascot-face-diva-lips",
+        "speechBubbles": []
+      },
+      "dataIssues": []
+    },
+    {
+      "legacyId": "C93C3E36",
+      "text": "Se puso una chimba esto ! Quitele con una mano el brasier a una mujer y pongaselo usted donde quiera 2 rondas ! Si se niega o la mujer que escoja se toman 2 por locas!",
+      "legacyScore": 76,
+      "drinks": 2,
+      "legacyLevel": "Hardcore",
+      "difficulty": "hard",
+      "legacyColor": "#E94B54",
+      "slangTerms": [
+        "Chimba",
+        "locas"
+      ],
+      "face": {
+        "image": "cards/C93C3E36.png",
+        "headline": "Se puso chimba esto",
+        "body": "Quítele con una mano el brasier a una mujer y póngaselo usted donde quiera 2 rondas. Si se niega la mujer que escoja se toman 2 por locas",
+        "illustration": null,
+        "speechBubbles": []
+      },
+      "dataIssues": []
+    },
+    {
+      "legacyId": "67FAA195",
+      "text": "Que chimba! Debuenas mi perro tiene via libre para darle un beso a esa que le encanta , llego tu momento mi perro ! si te cagas o ella no quiere se toman 2 :(",
+      "legacyScore": 77,
+      "drinks": 2,
+      "legacyLevel": "Hardcore",
+      "difficulty": "hard",
+      "legacyColor": "#E94B54",
+      "slangTerms": [
+        "Chimba",
+        "perro",
+        "cagas"
+      ],
+      "face": {
+        "image": "cards/67FAA195.png",
+        "headline": "Qué chimbaaa",
+        "body": "De buenas mi perro, tiene vía libre para darle un beso a esa que le encanta, ¡llegó tu momento mi perro! Si te cagas o ella no quiere se toman 2 :(",
+        "illustration": "mascot-face-blowing-kiss",
+        "speechBubbles": []
+      },
+      "dataIssues": []
+    },
+    {
+      "legacyId": "D6F0E557",
+      "text": "Muestre una parte del cuerpo que generalmente no se vea si esta muy pailas se toma 1 por puerco !",
+      "legacyScore": 42,
+      "drinks": 1,
+      "legacyLevel": "Medio",
+      "difficulty": "medium",
+      "legacyColor": "#F9B13C",
+      "slangTerms": [
+        "pailas",
+        "puerco"
+      ],
+      "face": {
+        "image": "cards/D6F0E557.png",
+        "headline": "Muestre eso",
+        "body": "Muestre una parte del cuerpo que generalmente no se vea, si está muy pailas se toma 1 por puerco",
+        "illustration": "mascot-face-tongue-out",
+        "speechBubbles": []
+      },
+      "dataIssues": []
+    },
+    {
+      "legacyId": "B8530F01",
+      "text": "Uy re pailas ! Llame al que el grupo le diga si te niegas tomate 1 por puss*",
+      "legacyScore": 37,
+      "drinks": 1,
+      "legacyLevel": "Suave",
+      "difficulty": "easy",
+      "legacyColor": "#5063AC",
+      "slangTerms": [
+        "pailas"
+      ],
+      "face": {
+        "image": "cards/B8530F01.png",
+        "headline": "Uy re pailas",
+        "body": "Llame al que el grupo le diga, si te niegas tómate 1 por puss*",
+        "illustration": "mascot-face-annoyed",
+        "speechBubbles": []
+      },
+      "dataIssues": []
+    },
+    {
+      "legacyId": "0128B710",
+      "text": "It`s time to cry :( cuenta tu peor polvo y obvio el santo ! Si te niegas tomas 2",
+      "legacyScore": 43,
+      "drinks": 2,
+      "legacyLevel": "Medio",
+      "difficulty": "medium",
+      "legacyColor": "#F9B13C",
+      "slangTerms": [
+        "polvo",
+        "santo"
+      ],
+      "face": {
+        "image": "cards/0128B710.png",
+        "headline": "It's time to cry :(",
+        "body": "Cuenta tu peor polvo y obvio el santo. Si te niegas tomas 2",
+        "illustration": "mascot-face-crying",
+        "speechBubbles": []
+      },
+      "dataIssues": []
+    },
+    {
+      "legacyId": "BE10B9F4",
+      "text": "It`s time to history! Cucho usted ha culiado en el trabajo ? Cuentese ese chisme si no tomese 1 por puss*",
+      "legacyScore": 41,
+      "drinks": 1,
+      "legacyLevel": "Medio",
+      "difficulty": "medium",
+      "legacyColor": "#F9B13C",
+      "slangTerms": [
+        "cucho",
+        "culiadado",
+        "chisme"
+      ],
+      "face": {
+        "image": "cards/BE10B9F4.png",
+        "headline": "¡Historytime!",
+        "body": "¿Cucho usted ha culiado en el trabajo? Cuéntese ese chisme, si no tómese 1 por puss*",
+        "illustration": "mascot-face-glasses-reading-book",
+        "speechBubbles": []
+      },
+      "dataIssues": []
+    },
+    {
+      "legacyId": "5900AD23",
+      "text": "Todos escojan un animal y hagan sonidos del animal el peor se toma 2 !",
+      "legacyScore": 12,
+      "drinks": 2,
+      "legacyLevel": "Suave",
+      "difficulty": "easy",
+      "legacyColor": "#5063AC",
+      "slangTerms": [],
+      "face": {
+        "image": "cards/5900AD23.png",
+        "headline": "Todos escojan un animal",
+        "body": "Hagan sonidos del animal y el peor se toma 2",
+        "illustration": "animal-wheel",
+        "speechBubbles": []
+      },
+      "dataIssues": []
+    },
+    {
+      "legacyId": "2CCDA666",
+      "text": "Se calento esta vuelta ! Fingue que estas culiando con el crush de tu vida dale como a rata o que te den como a rata ! Si no tomas 3 por puss*",
+      "legacyScore": 43,
+      "drinks": 3,
+      "legacyLevel": "Medio",
+      "difficulty": "medium",
+      "legacyColor": "#F9B13C",
+      "slangTerms": [
+        "crush",
+        "como a rata"
+      ],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "0952151E",
+      "text": "Cultura time! Cultura chopistica de posiciones sexuales tales como... El que pierda se toma 2 por puss*",
+      "legacyScore": 13,
+      "drinks": 2,
+      "legacyLevel": "Suave",
+      "difficulty": "easy",
+      "legacyColor": "#5063AC",
+      "slangTerms": [
+        "Cultura chopistica"
+      ],
+      "face": {
+        "image": "cards/0952151E.png",
+        "headline": "Cultura time",
+        "body": "Cultura chopística de posiciones sexuales tales como... El que pierda se toma 2 por puss*",
+        "illustration": "mascot-face-monocle",
+        "speechBubbles": []
+      },
+      "dataIssues": []
+    },
+    {
+      "legacyId": "49A4CA08",
+      "text": "Se brinda por la loca esa que las volvio mierda chicas! Obvio dicen el nombre en voz alta y se toman uno. La que no lo diga se toma 2 por puss*",
+      "legacyScore": 14,
+      "drinks": 2,
+      "legacyLevel": "Suave",
+      "difficulty": "easy",
+      "legacyColor": "#5063AC",
+      "slangTerms": [
+        "loca"
+      ],
+      "face": {
+        "image": "cards/49A4CA08.png",
+        "headline": "Brindar por la loca esa que las volvió mierda chicas",
+        "body": "Obvio dicen el nombre en voz alta y se toman uno. La que no lo diga se toma 2 por puss*",
+        "illustration": null,
+        "speechBubbles": []
+      },
+      "dataIssues": []
+    },
+    {
+      "legacyId": "89018FB6",
+      "text": "It`s time to break! Si o que ? El que dijo si se toma 1 por puss*! Obvio se sigue",
+      "legacyScore": 15,
+      "drinks": 1,
+      "legacyLevel": "Suave",
+      "difficulty": "easy",
+      "legacyColor": "#5063AC",
+      "slangTerms": [],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "2B0A3F96",
+      "text": "La gallina loca ! dese una vuelta cacareando como gallina y picoteando! Si te niegas tomas 3 por puss*",
+      "legacyScore": 16,
+      "drinks": 3,
+      "legacyLevel": "Suave",
+      "difficulty": "easy",
+      "legacyColor": "#5063AC",
+      "slangTerms": [],
+      "face": {
+        "image": "cards/2B0A3F96.png",
+        "headline": "La gallina loca",
+        "body": "Dese una vuelta cacareando como gallina y picoteando. Si te niegas tomas 3 por puss*",
+        "illustration": "rooster",
+        "speechBubbles": []
+      },
+      "dataIssues": []
+    },
+    {
+      "legacyId": "D026E46A",
+      "text": "It`s time to talk! mis perros, Todos hablan con acento Argentino el peor toma 1 por pelotudo!",
+      "legacyScore": 6,
+      "drinks": 1,
+      "legacyLevel": "Suave",
+      "difficulty": "easy",
+      "legacyColor": "#5063AC",
+      "slangTerms": [
+        "Mis perros"
+      ],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "93E76F0C",
+      "text": "Llego la mas perra ! Diganme que hacer tendre que cumplir sin llorar ! Si no tomas 2 por puss*",
+      "legacyScore": 44,
+      "drinks": 2,
+      "legacyLevel": "Medio",
+      "difficulty": "medium",
+      "legacyColor": "#F9B13C",
+      "slangTerms": [
+        "Perra"
+      ],
+      "face": {
+        "image": "cards/93E76F0C.png",
+        "headline": "Llegó la más perra",
+        "body": "Díganme qué hacer, tendré que cumplir sin llorar. Si no tomas 2 por puss*",
+        "illustration": "mascot-face-diva-lips",
+        "speechBubbles": []
+      },
+      "dataIssues": []
+    },
+    {
+      "legacyId": "9BBDBE12",
+      "text": "Cuentanos 5 posiciones sexuales si no sabes las 5 te tomas 2 por morrongo! y obvio por puss*",
+      "legacyScore": 45,
+      "drinks": 2,
+      "legacyLevel": "Medio",
+      "difficulty": "medium",
+      "legacyColor": "#F9B13C",
+      "slangTerms": [
+        "morrongo"
+      ],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "95FB64BE",
+      "text": "Cumpleaños feliz ?  Si estan en un cumpleaños el cumpliañero se toma 2 piscineros en honor a ustedes ! Si no toman todos 1 <3",
+      "legacyScore": 17,
+      "drinks": null,
+      "legacyLevel": "Suave",
+      "difficulty": "easy",
+      "legacyColor": "#5063AC",
+      "slangTerms": [
+        "Piscinero"
+      ],
+      "face": null,
+      "dataIssues": [
+        "invalidDrinks"
+      ]
+    },
+    {
+      "legacyId": "4DFCA632",
+      "text": "Time to make up!  Maquillen un hombre que escoja el que saco la carta si no se deja se toma 2 por masculidad fragil y puss* si no tienen maquillaje toman 1 las mujeres  por aburridas !",
+      "legacyScore": 46,
+      "drinks": null,
+      "legacyLevel": "Medio",
+      "difficulty": "medium",
+      "legacyColor": "#F9B13C",
+      "slangTerms": [],
+      "face": {
+        "image": "cards/4DFCA632.png",
+        "headline": "Time to make up",
+        "body": "Maquillen a un hombre que escoja el que sacó la carta, si no se deja se toma 2 por masculinidad frágil y puss*. Si no tienen maquillaje toman 1 las mujeres por aburridas",
+        "illustration": null,
+        "speechBubbles": []
+      },
+      "dataIssues": [
+        "invalidDrinks"
+      ]
+    },
+    {
+      "legacyId": "EACEC3D5",
+      "text": "Uy pana publica lo que el grupo te diga no lo puedes borrar en 10 minutos o tomas 2 por puss*",
+      "legacyScore": 41,
+      "drinks": 2,
+      "legacyLevel": "Medio",
+      "difficulty": "medium",
+      "legacyColor": "#F9B13C",
+      "slangTerms": [
+        "Pana"
+      ],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "2D70CEF2",
+      "text": "Se calento esta vuelta! Beso triple mis perros  bien chimba ! Si los que fueron escogidos se cagan pues se toman 3 por puss*s",
+      "legacyScore": 90,
+      "drinks": 3,
+      "legacyLevel": "Hardcore",
+      "difficulty": "hard",
+      "legacyColor": "#E94B54",
+      "slangTerms": [
+        "Perros",
+        "chimba",
+        "se cagan"
+      ],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "538E1098",
+      "text": "It`s time to talk! Mis  carnales todos hablan como Mexicanos el peor toma 1 por puto!",
+      "legacyScore": 5,
+      "drinks": 1,
+      "legacyLevel": "Suave",
+      "difficulty": "easy",
+      "legacyColor": "#5063AC",
+      "slangTerms": [],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "AFD285C0",
+      "text": "It`s time to pico botella!",
+      "legacyScore": 51,
+      "drinks": 0,
+      "legacyLevel": "Medio",
+      "difficulty": "medium",
+      "legacyColor": "#F9B13C",
+      "slangTerms": [
+        "pico botella"
+      ],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "F6143C8B",
+      "text": "Se brinda por la bandida esa que los volvio mierda mis perros! Obvio dicen el nombre en voz alta y se toman 1. El que no lo diga se toma 2 por puss*",
+      "legacyScore": 13,
+      "drinks": null,
+      "legacyLevel": "Suave",
+      "difficulty": "easy",
+      "legacyColor": "#5063AC",
+      "slangTerms": [
+        "bandida",
+        "mis perros"
+      ],
+      "face": null,
+      "dataIssues": [
+        "invalidDrinks"
+      ]
+    },
+    {
+      "legacyId": "386F5CBA",
+      "text": "Uy se puso rara esta vuelta! Escoja a un participante mas y recreen una escena sexual pero... Entre ANIMALES! JAJAJA Si no se toman 2 por puss*s",
+      "legacyScore": 63,
+      "drinks": 2,
+      "legacyLevel": "Medio",
+      "difficulty": "medium",
+      "legacyColor": "#F9B13C",
+      "slangTerms": [
+        "Esta vuelta"
+      ],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "5FCBFCDF",
+      "text": "Uy panita le toco decirle en voz alta la parte del cuerpo que mas le guste de la parcera o parcero de enfrente suyo. Si no lo haces te tomas 2 por puss*",
+      "legacyScore": 47,
+      "drinks": 2,
+      "legacyLevel": "Medio",
+      "difficulty": "medium",
+      "legacyColor": "#F8A921",
+      "slangTerms": [],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "879D5279",
+      "text": "Uyy Mi pana le toco masajear al de su derecha durante 2 minutos. Si se niega se toma 3 por lok",
+      "legacyScore": 44,
+      "drinks": 3,
+      "legacyLevel": "Medio",
+      "difficulty": "medium",
+      "legacyColor": "#F8A921",
+      "slangTerms": [],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "E662B726",
+      "text": "Mi perro le toco darle un beso en el cuello a la de su izquierda. Si se niega se toma 2.",
+      "legacyScore": 47,
+      "drinks": 2,
+      "legacyLevel": "Medio",
+      "difficulty": "medium",
+      "legacyColor": "#F8A921",
+      "slangTerms": [],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "DA5D7170",
+      "text": "",
+      "legacyScore": 78,
+      "drinks": 3,
+      "legacyLevel": "Hardcore",
+      "difficulty": "hard",
+      "legacyColor": "#E94B54",
+      "slangTerms": [],
+      "face": null,
+      "dataIssues": [
+        "missingText"
+      ]
+    },
+    {
+      "legacyId": "46D23048",
+      "text": "Mi sog cuentese un chisme al de su derecha. Si no tiene o se niega tomese 1.",
+      "legacyScore": 22,
+      "drinks": 1,
+      "legacyLevel": "Suave",
+      "difficulty": "easy",
+      "legacyColor": "#5063AC",
+      "slangTerms": [],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "C829DFC4",
+      "text": "Mi perro le toco sentarse en las piernas del mka de enfrente por una ronda. Nieguese  y se toma 2",
+      "legacyScore": 43,
+      "drinks": 2,
+      "legacyLevel": "Medio",
+      "difficulty": "medium",
+      "legacyColor": "#F8A921",
+      "slangTerms": [],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "8E58998D",
+      "text": "Mi sog le toco darle un beso al de su derecha. Si se niega tomese 3 por lok",
+      "legacyScore": 80,
+      "drinks": 3,
+      "legacyLevel": "Hardcore",
+      "difficulty": "hard",
+      "legacyColor": "#E94B54",
+      "slangTerms": [],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "C6D3E31A",
+      "text": "JAJAJA mi perro le toco bailar lo mas sexy posible por 30 segundos nieguese  y se toma 2",
+      "legacyScore": 70,
+      "drinks": 2,
+      "legacyLevel": "Medio",
+      "difficulty": "medium",
+      "legacyColor": "#F8A921",
+      "slangTerms": [],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "3399A293",
+      "text": "Besese al que su mejor amigo le diga. Si se niega toma 2",
+      "legacyScore": 88,
+      "drinks": 2,
+      "legacyLevel": "Hardcore",
+      "difficulty": "hard",
+      "legacyColor": "#E94B54",
+      "slangTerms": [],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "15EBFFFE",
+      "text": "Mi perro le toco bajarse de 4 prendas durante todo el juego. Si no se toma 3",
+      "legacyScore": 78,
+      "drinks": 3,
+      "legacyLevel": "Hardcore",
+      "difficulty": "hard",
+      "legacyColor": "#E84243",
+      "slangTerms": [],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "A7AF269A",
+      "text": "Mi sog deje que los demas lo peinen si se niega tomese 1",
+      "legacyScore": 19,
+      "drinks": 1,
+      "legacyLevel": "Suave",
+      "difficulty": "easy",
+      "legacyColor": "#5063AC",
+      "slangTerms": [],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "B782F0EF",
+      "text": "Cambiese de camisa con la persona de en frente si se niega toma 2",
+      "legacyScore": 43,
+      "drinks": 2,
+      "legacyLevel": "Medio",
+      "difficulty": "medium",
+      "legacyColor": "#F8A921",
+      "slangTerms": [],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "293EDF64",
+      "text": "Uyyy mi sog haga el gemido mas chimba que le salga. SI se niega o esta muy malo se toma 2",
+      "legacyScore": 76,
+      "drinks": 2,
+      "legacyLevel": "Hardcore",
+      "difficulty": "hard",
+      "legacyColor": "#E84243",
+      "slangTerms": [],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "DF49B762",
+      "text": "Muestre el color de su ropa interior o la tanga si no se toma 2",
+      "legacyScore": 69,
+      "drinks": 2,
+      "legacyLevel": "Medio",
+      "difficulty": "medium",
+      "legacyColor": "#F8A921",
+      "slangTerms": [],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "0EC504D5",
+      "text": "Mi perro le toco puntuar a todos los del grupo. Si se niega se toma 2",
+      "legacyScore": 47,
+      "drinks": 2,
+      "legacyLevel": "Medio",
+      "difficulty": "medium",
+      "legacyColor": "#F8A921",
+      "slangTerms": [],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "86F7CE33",
+      "text": "Mi perro beso con la persona del otro sexo que tenga enfrente. Si se niega tomese 3",
+      "legacyScore": 81,
+      "drinks": 3,
+      "legacyLevel": "Hardcore",
+      "difficulty": "hard",
+      "legacyColor": "#E84243",
+      "slangTerms": [],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "EFF97B86",
+      "text": "Mi pana dele un beso al de su izquierda si se niega tomese 3",
+      "legacyScore": 80,
+      "drinks": 3,
+      "legacyLevel": "Hardcore",
+      "difficulty": "hard",
+      "legacyColor": "#E84243",
+      "slangTerms": [],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "260F615B",
+      "text": "Cambiese de prenda superior con el de su izquierda si se niega se toma 2",
+      "legacyScore": 43,
+      "drinks": 2,
+      "legacyLevel": "Medio",
+      "difficulty": "medium",
+      "legacyColor": "#F8A921",
+      "slangTerms": [],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "550411AF",
+      "text": "Cuentenos a todos una anecdota que ud diga ush que oso, si se niega tomese 1",
+      "legacyScore": 20,
+      "drinks": 1,
+      "legacyLevel": "Suave",
+      "difficulty": "easy",
+      "legacyColor": "#5063AC",
+      "slangTerms": [],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "7A31B316",
+      "text": "Mi perro mojese cuello con alguna bebida y la persona de la derecha tiene que pasarte la lengua. Te negas tomate 2",
+      "legacyScore": 82,
+      "drinks": 2,
+      "legacyLevel": "Hardcore",
+      "difficulty": "hard",
+      "legacyColor": "#E84243",
+      "slangTerms": [],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "AA789059",
+      "text": "Tomese de las manos con el mka que esta a tu izquierda por una ronda. si se niega tomese 1",
+      "legacyScore": 23,
+      "drinks": 1,
+      "legacyLevel": "Suave",
+      "difficulty": "easy",
+      "legacyColor": "#5063AC",
+      "slangTerms": [],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "EBB40BE4",
+      "text": "Digale un secreto al de tu izquierda. Si se niega se toma 1",
+      "legacyScore": 22,
+      "drinks": 1,
+      "legacyLevel": "Suave",
+      "difficulty": "easy",
+      "legacyColor": "#5063AC",
+      "slangTerms": [],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "295BA6B0",
+      "text": "Mi perro quitese una prenda. Si se niega se toma 1",
+      "legacyScore": 21,
+      "drinks": 1,
+      "legacyLevel": "Suave",
+      "difficulty": "easy",
+      "legacyColor": "#5063AC",
+      "slangTerms": [],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "7A47DE3F",
+      "text": "Mi perro suba una foto a mejores amigos con tu ex. Si se niega tomese 2",
+      "legacyScore": 70,
+      "drinks": 2,
+      "legacyLevel": "Medio",
+      "difficulty": "medium",
+      "legacyColor": "#F8A921",
+      "slangTerms": [],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "26FDEEEB",
+      "text": "Posaa durante 2 minutos como un fisicoculturista. Si se niega o no puede tomese 1",
+      "legacyScore": 28,
+      "drinks": 1,
+      "legacyLevel": "Suave",
+      "difficulty": "easy",
+      "legacyColor": "#5063AC",
+      "slangTerms": [],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "358F013F",
+      "text": "Mi perro muestre ese fundillo ( culo) a alguien y que te nalguee. Si te negas tomese 3",
+      "legacyScore": 87,
+      "drinks": 3,
+      "legacyLevel": "Hardcore",
+      "difficulty": "hard",
+      "legacyColor": "#E84243",
+      "slangTerms": [],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "598A95A1",
+      "text": "Mandale un mensaje a tu ex. Te negas tomate 2",
+      "legacyScore": 43,
+      "drinks": 2,
+      "legacyLevel": "Medio",
+      "difficulty": "medium",
+      "legacyColor": "#F8A921",
+      "slangTerms": [],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "2F9F2389",
+      "text": "Ronda entera del juego de la botella",
+      "legacyScore": null,
+      "drinks": null,
+      "legacyLevel": "Suave",
+      "difficulty": "easy",
+      "legacyColor": "#5063AC",
+      "slangTerms": [],
+      "face": null,
+      "dataIssues": [
+        "missingScore",
+        "missingDrinks"
+      ]
+    },
+    {
+      "legacyId": "4FFB6511",
+      "text": "Gira la botella y dale un beso a la persona con quien te toque. te negas tomate 2",
+      "legacyScore": 76,
+      "drinks": 2,
+      "legacyLevel": "Hardcore",
+      "difficulty": "hard",
+      "legacyColor": "#D72828",
+      "slangTerms": [],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "1205DF7B",
+      "text": "Sientese en las piernas del mka de tu izquierda por una ronda.Si te negas tomese2",
+      "legacyScore": 43,
+      "drinks": 2,
+      "legacyLevel": "Medio",
+      "difficulty": "medium",
+      "legacyColor": "#F8A921",
+      "slangTerms": [],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "EEFC366D",
+      "text": "Tu mejor amigo/a elige con quien te das un beso.  Si tu o el que eliges se niega tomese 3",
+      "legacyScore": 83,
+      "drinks": 3,
+      "legacyLevel": "Hardcore",
+      "difficulty": "hard",
+      "legacyColor": "#D72828",
+      "slangTerms": [],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "EF3542A8",
+      "text": "Cambia por una hora tu foto de whatsapp por una con la persona que tenes a la izquierda. Si te negas tomese 3",
+      "legacyScore": 45,
+      "drinks": 3,
+      "legacyLevel": "Medio",
+      "difficulty": "medium",
+      "legacyColor": "#F8A921",
+      "slangTerms": [],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "808A80C0",
+      "text": "Intenta seducir a la persona que esta a tu izquierda. Si te negas tomese 1",
+      "legacyScore": 25,
+      "drinks": 1,
+      "legacyLevel": "Suave",
+      "difficulty": "easy",
+      "legacyColor": "#5063AC",
+      "slangTerms": [],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "B3A68FF5",
+      "text": "Desabrochele  algo a alguien. te negas tomese 1",
+      "legacyScore": 22,
+      "drinks": 1,
+      "legacyLevel": "Suave",
+      "difficulty": "easy",
+      "legacyColor": "#5063AC",
+      "slangTerms": [],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "B423CBC6",
+      "text": "Pasale tu celular desbloqueado al mka de su derecha por 30 segundos. Te negas tomese 2",
+      "legacyScore": 21,
+      "drinks": 2,
+      "legacyLevel": "Suave",
+      "difficulty": "easy",
+      "legacyColor": "#345DA8",
+      "slangTerms": [],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "EAB73BF5",
+      "text": "Mkaaa que suerte, Besese a la persona que quiera . Si se niega tomese 2 si la otra persona se niega se toma 2",
+      "legacyScore": 89,
+      "drinks": 2,
+      "legacyLevel": "Hardcore",
+      "difficulty": "hard",
+      "legacyColor": "#D72828",
+      "slangTerms": [],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "796E9080",
+      "text": "Digale en el oido al mka de tu izquierda con quien de los presentes te gustaria tener sexo. Si te negas tomate 2",
+      "legacyScore": 52,
+      "drinks": 2,
+      "legacyLevel": "Medio",
+      "difficulty": "medium",
+      "legacyColor": "#F8A921",
+      "slangTerms": [],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "D160D811",
+      "text": "Agarrele el culo a la persona que tengas enfrente. Si se niega tomese 3",
+      "legacyScore": 86,
+      "drinks": 3,
+      "legacyLevel": "Hardcore",
+      "difficulty": "hard",
+      "legacyColor": "#D72828",
+      "slangTerms": [],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "802E38BB",
+      "text": "Mi perro elija a alguien y encierrese en el baño durante 5 minutos. Si se niega tomese 2",
+      "legacyScore": 72,
+      "drinks": 2,
+      "legacyLevel": "Medio",
+      "difficulty": "medium",
+      "legacyColor": "#F8A921",
+      "slangTerms": [],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "2B063876",
+      "text": "Cierre los ojos y reconoce a un jugador aleatorio por su olor. Si no lo conseguis tomese 2",
+      "legacyScore": 21,
+      "drinks": 2,
+      "legacyLevel": "Suave",
+      "difficulty": "easy",
+      "legacyColor": "#345DA8",
+      "slangTerms": [],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "0BDA0EEF",
+      "text": "Consiente a alguien pero sin las manos. Si se niega tomese 2",
+      "legacyScore": 29,
+      "drinks": 2,
+      "legacyLevel": "Suave",
+      "difficulty": "easy",
+      "legacyColor": "#345DA8",
+      "slangTerms": [],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "5CB2FE6F",
+      "text": "Mi perro elija a 3  mas y tomense  1 trago cada uno.",
+      "legacyScore": 27,
+      "drinks": 1,
+      "legacyLevel": "Suave",
+      "difficulty": "easy",
+      "legacyColor": "#345DA8",
+      "slangTerms": [],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "6CA29F6B",
+      "text": "Muestele una foto picante suya a la persona de tu derecha. Si se niega tomese 3",
+      "legacyScore": 76,
+      "drinks": 3,
+      "legacyLevel": "Hardcore",
+      "difficulty": "hard",
+      "legacyColor": "#D72828",
+      "slangTerms": [],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "83D95B16",
+      "text": "Bese al de su derecha en el cuello. Si se niega  tomese 2",
+      "legacyScore": 77,
+      "drinks": 2,
+      "legacyLevel": "Hardcore",
+      "difficulty": "hard",
+      "legacyColor": "#D72828",
+      "slangTerms": [],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "5673382A",
+      "text": "mi pana subase  una foto a mejores amigos simulando ser novio de la persona de tu izquierda. Si se niega tómese 2 por puss*",
+      "legacyScore": 60,
+      "drinks": null,
+      "legacyLevel": "Medio",
+      "difficulty": "medium",
+      "legacyColor": "#345DA8",
+      "slangTerms": [],
+      "face": null,
+      "dataIssues": [
+        "missingDrinks"
+      ]
+    },
+    {
+      "legacyId": "B0B4D1D5",
+      "text": "Mi socio hágale una propuesta de matrimonio con todas las de la ley a la persona que quiera. Si se niega tómese 2.",
+      "legacyScore": 65,
+      "drinks": 2,
+      "legacyLevel": "Medio",
+      "difficulty": "medium",
+      "legacyColor": "#345DA8",
+      "slangTerms": [],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "74594B53",
+      "text": "mi pana cuéntenos  con quien fue tu mejor experiencia sexual. Si te niegas o no has tenido por triste se toma 2",
+      "legacyScore": 65,
+      "drinks": 2,
+      "legacyLevel": "Medio",
+      "difficulty": "medium",
+      "legacyColor": "#345DA8",
+      "slangTerms": [],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "C7005EC9",
+      "text": "ay mka !! hágase un desfile para deleitarnos  a todos los presentes.Si está muy malo o se niega se toma 2",
+      "legacyScore": 64,
+      "drinks": 2,
+      "legacyLevel": "Medio",
+      "difficulty": "medium",
+      "legacyColor": "#345DA8",
+      "slangTerms": [],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "AE41E514",
+      "text": "uy no QUE OSO!! Le tocó actuar como mujer de la calle al de su derecha si no lo compran o se niega se toma 2.",
+      "legacyScore": 77,
+      "drinks": 2,
+      "legacyLevel": "Hardcore",
+      "difficulty": "hard",
+      "legacyColor": "#345DA8",
+      "slangTerms": [],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "645A40E7",
+      "text": "uff que chimba !  quítale una prenda a la persona de tu izquierda sin usar las manos. si se niegan cualquiera de los dos se toma 3.",
+      "legacyScore": 86,
+      "drinks": 3,
+      "legacyLevel": "Hardcore",
+      "difficulty": "hard",
+      "legacyColor": "#345DA8",
+      "slangTerms": [],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "86ECADCC",
+      "text": "Pasen un hielo de boca en un reto para verdaderos prendidos!!! Pasen un hielo de boca en boca por toda la ronda hasta que se caiga. Si alguien del grupo se niega se toman todos 2 para que la próxima no traigan tantas puss*spor toda la ronda hasta que se caiga",
+      "legacyScore": 99,
+      "drinks": 2,
+      "legacyLevel": "Hardcore",
+      "difficulty": "hard",
+      "legacyColor": "#345DA8",
+      "slangTerms": [],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "FC42FF65",
+      "text": "time to focus. jueguen teléfono roto el que más la cagué se toma 2 .",
+      "legacyScore": 23,
+      "drinks": 2,
+      "legacyLevel": "Suave",
+      "difficulty": "easy",
+      "legacyColor": "#345DA8",
+      "slangTerms": [],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "F3605803",
+      "text": "uy mi perro! Confiesa con quien fue tu peor experiencia sexual. si te niegas tomese 2 por puss*",
+      "legacyScore": 46,
+      "drinks": 2,
+      "legacyLevel": "Medio",
+      "difficulty": "medium",
+      "legacyColor": "#345DA8",
+      "slangTerms": [],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "276E0152",
+      "text": "mi perro hágale  creer a alguien por videollamada que estas en una relación  con alguno de los presentes. si te niegas o no te creen se toma 1.",
+      "legacyScore": 25,
+      "drinks": 1,
+      "legacyLevel": "Suave",
+      "difficulty": "easy",
+      "legacyColor": "#345DA8",
+      "slangTerms": [],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "4A546080",
+      "text": "si es demalas mi perro suba un screen de este reto a su historia y por cada respuesta o reacción tomas un trago durante todo el resto de juego .Entre más fara más toma !",
+      "legacyScore": 47,
+      "drinks": 1,
+      "legacyLevel": "Medio",
+      "difficulty": "medium",
+      "legacyColor": "#345DA8",
+      "slangTerms": [],
+      "face": null,
+      "dataIssues": []
+    },
+    {
+      "legacyId": "1D0F5200",
+      "text": "mi socio le tocó Imitar a alguien del grupo y el resto adivina tienes 1 minuto  si adivinan tomas 2 si no adivinan el resto del grupo toma 2 cada uno .",
+      "legacyScore": 32,
+      "drinks": 1,
+      "legacyLevel": "Suave",
+      "difficulty": "easy",
+      "legacyColor": "#345DA8",
+      "slangTerms": [],
+      "face": null,
+      "dataIssues": []
+    }
+  ]
+}
