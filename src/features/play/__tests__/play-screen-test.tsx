@@ -3,6 +3,7 @@ import Storage from 'expo-sqlite/kv-store';
 import { router } from 'expo-router';
 import { useEffect, type ReactNode } from 'react';
 
+import { repeatedPressWindowMs } from '@/components/ui/button';
 import type { Card } from '@/features/content/card-types';
 import type { Catalog } from '@/features/content/catalog';
 import { DeviceStateProvider } from '@/features/device/device-state-provider';
@@ -79,13 +80,23 @@ async function renderPlay({
   );
 }
 
+/** Fake clock so consecutive presses are never dropped as repeated presses by `Button`. */
+let clockMs = 0;
+
 async function press(label: string) {
+  clockMs += repeatedPressWindowMs;
   await fireEvent.press(screen.getByRole('button', { name: label }));
 }
 
 beforeEach(() => {
   Storage.clearSync();
   replace.mockClear();
+  clockMs = 0;
+  jest.spyOn(Date, 'now').mockImplementation(() => clockMs);
+});
+
+afterEach(() => {
+  jest.restoreAllMocks();
 });
 
 describe('PlayScreen', () => {
