@@ -55,7 +55,8 @@
     "preset": "jest-expo",
     "testPathIgnorePatterns": [
       "/node_modules/",
-      "/__tests__/fixtures/"
+      "/__tests__/fixtures/",
+      "/.claude/worktrees/"
     ],
     "collectCoverageFrom": [
       "src/features/**/*.{ts,tsx}",

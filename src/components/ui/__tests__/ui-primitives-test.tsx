@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/react-native';
 
-import { Button } from '../button';
+import { Button, repeatedPressWindowMs } from '../button';
 import { CardFrame } from '../card-frame';
 import { LevelBadge } from '../level-badge';
 import { PlaceholderScreen } from '../placeholder-screen';
@@ -12,6 +12,21 @@ describe('UI primitives', () => {
     await render(<Button label="¡Cumplió!" onPress={onPress} />);
     await fireEvent.press(screen.getByRole('button', { name: '¡Cumplió!' }));
     expect(onPress).toHaveBeenCalledTimes(1);
+  });
+
+  it('ignores a repeated press while the first one is still being handled', async () => {
+    const onPress = jest.fn();
+    const clock = jest.spyOn(Date, 'now').mockReturnValue(1_000);
+    await render(<Button label="Nueva partida" onPress={onPress} />);
+    const button = screen.getByRole('button', { name: 'Nueva partida' });
+    await fireEvent.press(button);
+    await fireEvent.press(button);
+    expect(onPress).toHaveBeenCalledTimes(1);
+
+    clock.mockReturnValue(1_000 + repeatedPressWindowMs);
+    await fireEvent.press(button);
+    expect(onPress).toHaveBeenCalledTimes(2);
+    clock.mockRestore();
   });
 
   it('shows a placeholder with its name and a next button', async () => {
