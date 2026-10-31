@@ -1,33 +1,23 @@
-/** Every user-facing string of the mode and category screens (Colombian Spanish, usted). */
+/** Every user-facing string of the category screen (Colombian Spanish, usted). */
 import type { GameMode } from '@/features/content/card-types';
-import { playerLimitsByMode } from '@/features/game';
-
-/** "Solo 2 jugadores" when the mode has a fixed count, else "De 2 a 12 jugadores". */
-export function playerRangeLabel(mode: GameMode): string {
-  const { min, max } = playerLimitsByMode[mode];
-  return min === max ? `Solo ${max} jugadores` : `De ${min} a ${max} jugadores`;
-}
 
 export const categoryPickerCopy = {
   back: 'Volver',
   backSymbol: '‹',
-  mode: {
-    title: '¿Con quién va a jugar?',
-    subtitle: 'Elija el modo y le mostramos las categorías que le van.',
-  },
   modes: {
     friends: {
       name: 'Amigos',
-      tone: 'Retos, verdades y cartas para todo el parche.',
+      subtitle: 'Elija una categoría. La partida arranca suave y se va calentando sola.',
     },
     couple: {
       name: 'Pareja',
-      tone: 'Coqueto y picante, sin pasarse de la raya.',
+      subtitle: 'Un plan coqueto para dos. Picante, sí; explícito, no.',
     },
-  } satisfies Record<GameMode, { name: string; tone: string }>,
-  category: {
-    title: 'Elija la categoría',
-    subtitleForMode: (mode: GameMode): string => `Modo ${categoryPickerCopy.modes[mode].name}`,
-    empty: 'Todavía no hay categorías para este modo. Vuelva y elija otro.',
-  },
+  } satisfies Record<GameMode, { name: string; subtitle: string }>,
+  /** Header chip for a mode with a fixed number of players. */
+  playersChip: (players: number): string => `${players} jugadores`,
+  cardCount: (cards: number): string => (cards === 1 ? '1 carta' : `${cards} cartas`),
+  free: 'Gratis',
+  playCategory: (categoryName: string): string => `Jugar ${categoryName}`,
+  empty: 'Todavía no hay categorías para este modo. Vuelva y elija otro.',
 } as const;
