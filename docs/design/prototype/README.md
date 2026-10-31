@@ -27,7 +27,7 @@ Backup copy of the Prendidos visual proposal: the design system board, the masco
 
 - Each board loads `./support.js`, which the Claude Design canvas provides. It is not in this folder.
 - Images point to `/_blob/<id>` URLs that only resolve inside the artifact. The table below maps each id to its local copy in `assets/`.
-- All images are **AI placeholders** and must never ship in the app.
+- All images are low-resolution AI crops for the canvas only. The app ships its own crops from the 2000 px drafts (`assets/images/brand/`, see `docs/brand/README.md`).
 
 | Blob id                            | Local file                    | Use                                  |
 | ---------------------------------- | ----------------------------- | ------------------------------------ |

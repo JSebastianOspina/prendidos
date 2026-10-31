@@ -5,7 +5,9 @@ alwaysApply: false
 
 # Brand References
 
-Reference material for the Prendidos visual identity. These files are **AI-generated drafts** used to lock the mascot's look; they are not production assets and must not be bundled in the app. Production assets (vector icon, splash, illustrations) go in `assets/` once finalized.
+Reference material for the Prendidos visual identity. These files are **AI-generated drafts** used to lock the mascot's look.
+
+**Interim app art (decision of 2026-10-31):** at the product owner's request, the app ships crops of these drafts until the vector redraw exists. `scripts/crop-brand-art.py` cuts them from the 2000 px sheets into transparent PNGs in `assets/images/brand/` (mascot faces, the pointing pose, the icon cat, and the 12 avatars) and writes the app icon, Android adaptive layers, splash, and favicon to `assets/images/`. Screens show them only through `Mascot` and `PlayerAvatar` (`src/components/ui/`). Re-run the script after revising a draft, and replace the art with vectors before launch marketing (see Known Issues).
 
 Visual direction comes from `docs/prd.md` §9: colorful and cartoonish, light background, large readable cards. UI tokens and the rules for using the mascot in screens live in [`design-tokens.md`](./design-tokens.md).
 
@@ -66,9 +68,9 @@ Avatars have their own palette, separate from the UI tokens, in grid order (left
 
 - **Flame**: every draft renders an emoji-like gradient flame. Replace it with one flat, outlined flame during vectorization and reuse it everywhere.
 - **Color**: resolved. The official brand red is `#C01E1B` (the icon background), replacing the legacy `#D62528`. See `design-tokens.md`.
-- **Android adaptive icon**: the icon artwork fills ~80 % of the canvas; Android needs a foreground layer with the cat inside the central ~61 % safe zone.
+- **Android adaptive icon**: resolved for the interim art. The foreground layer is the cat at ~59 % of the canvas, inside the safe zone, on a `brandRed` background color.
 - **Turnaround**: in the back view the tail starts near the neck instead of the lower back; the three-quarter view is nearly frontal.
 - **Expressions**: two portraits are labeled `7`; the embarrassed face (`5`) fills the whole head with coral instead of two flat blush ovals.
 - **Avatars**: the bandana paisley and the sombrero weave are too detailed for 48 px; simplify them when vectorizing. The source has a white background that must become transparent.
-- **Format**: all files are raster. The final logo and mascot must be redrawn or traced as SVG.
+- **Format**: all files are raster, and the interim app art inherits the drafts' emoji-like flame and a faint white edge on `brandRed`. The final logo and mascot must be redrawn or traced as SVG.
 - **Ownership**: purely AI-generated images may have weak copyright protection; human redrawing of the final assets strengthens it.
