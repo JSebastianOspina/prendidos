@@ -1,0 +1,16 @@
+# HU-01 — first launch shows the 18+ gate; declining keeps the user there; confirming opens Inicio
+# and the gate is not shown again after a relaunch.
+# app.json has no bundle identifier yet: run with `maestro test -e APP_ID=<bundle id> .maestro/age-gate.yaml`.
+appId: ${APP_ID}
+---
+- launchApp:
+    clearState: true
+- assertVisible: '¿Es mayor de 18 años?'
+- tapOn: 'Soy menor de 18'
+- assertVisible: 'Prendidos es solo para mayores de edad.*'
+- assertVisible: '¿Es mayor de 18 años?'
+- tapOn: 'Soy mayor de 18 años'
+- assertNotVisible: '¿Es mayor de 18 años?'
+- stopApp
+- launchApp
+- assertNotVisible: '¿Es mayor de 18 años?'
