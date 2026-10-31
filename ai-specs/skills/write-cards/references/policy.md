@@ -2,7 +2,19 @@
 
 Sources: `docs/prd.md` §5.8, §6.3, §8; App Store Review Guidelines 1.1.4 (no overtly sexual material), 1.4.3 (no encouraging excessive alcohol), 2.5.19 (no hidden features); Google Play sexual-content and alcohol policies. When this file and the PRD disagree, the PRD wins.
 
-**Mechanical rules are enforced in code.** `validateCards` (`src/features/content/validate-cards.ts`) checks IDs, points ranges, 1–3 drinks, required fields per card type, copy length (headline ≤ 45, body ≤ 240 characters in the longest variant), `spicy` only in `friends` categories, banned phrases, and placeholder / variant syntax. This file covers the judgment calls the validator can't make.
+**Mechanical rules are enforced in code.** `validateCards` (`src/features/content/validate-cards.ts`, spec `card-content`) reports **errors**, which must be fixed:
+
+- IDs (unique slugs), known fields only (authoring notes `rationale`, `selfCheck`, `illustrationIdea` are allowed), `null` treated as unset
+- Required fields per card type, non-blank text, points within the level range, `penalty.drinks` 1–3 with only `drinks` and a non-blank `quip`, no points or penalty on group cards
+- Copy length in the longest variant: headline ≤ 45, body ≤ 240, quip ≤ 30 characters
+- `spicy` only in `friends` categories; placeholder and `{m|f|n}` variant syntax; no placeholders in group cards (their variants render neutral); `targetGender` male or female
+
+…and **warnings**, which a human reviews (text heuristics with known false positives):
+
+- An amount to drink in `body` or the quip ("5 tragos", "se toma 2", "tres guaros")
+- Banned phrases in any gender rendering, including disguised and feminine forms ("fondo-blanco", "putos", "hpta", "pelotuda")
+
+Everything else in this file is a judgment call the validator can't make: fun, kernel, consent wording, nudity, people outside the room.
 
 ## Never, in Any Tier
 

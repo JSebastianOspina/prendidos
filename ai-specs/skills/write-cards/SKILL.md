@@ -48,6 +48,7 @@ Return a JSON array. One object per card:
 
 ```json
 {
+  "id": "draft-la-previa-001",
   "sourceLegacyId": "B3352FE5",
   "categoryId": "la-previa",
   "type": "challenge",
@@ -66,7 +67,9 @@ Return a JSON array. One object per card:
 }
 ```
 
-New cards use `"sourceLegacyId": null`. Emoji are fine in `body` only when they are part of the dare ("mándele solo 🔥").
+Give each card a draft ID, `draft-<categoryId>-<nnn>` numbered within the batch; the final ID is assigned when a human approves the card. New cards use `"sourceLegacyId": null`. Emoji are fine in `body` only when they are part of the dare ("mándele solo 🔥").
+
+Before returning, validate the batch with `validateCards` (`src/features/content/validate-cards.ts`, wrapped as `{ categories, cards }`; until a CLI runner exists, through a temporary Jest test). Fix every `error`. A `warning` (banned phrase, amount to drink in copy) means reword unless the match is a false positive, which you explain in `rationale` for the human reviewer. The rules are listed at the top of `references/policy.md`.
 
 `points` must fall in the level range: `easy` 1–10, `medium` 11–20, `hard` 21–30. `fun` is 1–5: would the group react out loud? Below 4, rewrite before returning.
 

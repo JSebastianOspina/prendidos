@@ -84,6 +84,7 @@ export const pointsRangeByDifficulty: Record<Difficulty, PointsRange> = {
 export const copyLengthLimits = {
   headline: 45,
   body: 240,
+  quip: 30,
 } as const;
 
 /** Assumed rendered length of a placeholder, since real names are unknown when validating. */

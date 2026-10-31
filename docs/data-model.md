@@ -91,9 +91,17 @@ Sin Filtro is not a category: it is the `spicy` heat layer inside `friends` cate
 | `targetGender`    | `male` \| `female` | No                 | When set, the card targets (or mentions) a player of that gender; skipped if none is eligible |
 | `sourceLegacyId`  | string           | No                   | Legacy card this one rewrites (`docs/content/legacy/legacy-challenges.json`)                 |
 
-**`GenderedText`:** a plain string. `{player}` (and `{partner}` in `couple` categories) are placeholders; `{masculine|feminine|neutral}` is a gender variant with exactly three non-empty options, e.g. `{el divo|la diva|la estrella}`. Variants resolve from the target player's `gender`; `undisclosed` gets the neutral option.
+**`GenderedText`:** a plain string. `{player}` (and `{partner}` in `couple` categories) are placeholders; `{masculine|feminine|neutral}` is a gender variant with exactly three non-blank options, e.g. `{el divo|la diva|la estrella}`.
 
-**Validation rules:** enforced by `validateCards` in `src/features/content/validate-cards.ts` and specified in the `card-content` OpenSpec capability: unique IDs, existing category, points range per difficulty (`easy` 1–10, `medium` 11–20, `hard` 21–30), 1–3 drinks (App Store guideline 1.4.3), no points or penalty on group cards, headline ≤ 45 and body ≤ 240 characters in the longest variant, `spicy` only in `friends`, no banned phrases ("fondo blanco", legacy slurs), well-formed placeholders and variants, and `targetGender` never `undisclosed`.
+- The copy speaks to the **current player** (usted); gender variants agree with the current player's `gender`, and `undisclosed` gets the neutral option.
+- `{player}` is **another** player the app picks for the card (PRD §5.6 `{jugador}`); `{partner}` is the other player in couple mode.
+- Copy never needs agreement with `{player}`'s gender: write that part neutrally ("la persona de su derecha", "{player}").
+- Group cards (`everyoneWho`, `neverHaveIEver`) speak to the whole group: their variants always render the neutral option, and they cannot use placeholders.
+
+**Validation rules:** enforced by `validateCards` in `src/features/content/validate-cards.ts` and specified in the `card-content` OpenSpec capability. A catalog can ship when it has no **errors** (`hasErrors`) and a human has reviewed every **warning**.
+
+- Errors: well-formed categories (unique slug-like ID, `mode` `friends` | `couple`, valid `freeDifficulties`); unique card IDs that are slugs; existing category; only known fields (skill authoring notes allowed, `null` = unset); required fields per type and non-blank text; points range per difficulty (`easy` 1–10, `medium` 11–20, `hard` 21–30); `penalty.drinks` 1–3 (App Store guideline 1.4.3) with only `drinks` and a non-blank `quip`; no points or penalty on group cards; headline ≤ 45, body ≤ 240, quip ≤ 30 characters in the longest variant; `spicy` only in `friends`; well-formed placeholders and variants, with no placeholders in group cards; `targetGender` never `undisclosed`.
+- Warnings (text heuristics for human review): banned phrases ("fondo blanco", legacy slurs in masculine and feminine forms), and amounts to drink in the body or quip ("se toma 2", "tres guaros").
 
 - IDs are never reused once shipped (seen-card history depends on them).
 - Launch target: 90 cards per block of 30 per difficulty (La Previa standard, La Previa spicy, Entre Dos), mixed ~60 % `challenge`, ~20 % `truth`, ~20 % group cards.

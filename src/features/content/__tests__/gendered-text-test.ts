@@ -50,6 +50,15 @@ describe('parseGenderedText', () => {
     ]);
   });
 
+  it('flags a variant whose option is only spaces or invisible characters', () => {
+    expect(parseGenderedText('Muy {tímido| |tímide}').issues).toEqual([
+      { kind: 'malformedVariant', token: '{tímido| |tímide}' },
+    ]);
+    expect(parseGenderedText('Muy {​|tímida|tímide}').issues).toEqual([
+      { kind: 'malformedVariant', token: '{​|tímida|tímide}' },
+    ]);
+  });
+
   it('flags tokens that are neither placeholders nor variants', () => {
     expect(parseGenderedText('Hola {} y {dos palabras}').issues).toEqual([
       { kind: 'unknownToken', token: '{}' },
@@ -88,6 +97,12 @@ describe('renderGenderedText', () => {
   it('leaves a placeholder token in place when no value is given', () => {
     expect(renderGenderedText('Hola {player}', 'male', {})).toBe('Hola {player}');
   });
+
+  it('never resolves placeholders from inherited object properties', () => {
+    expect(renderGenderedText('Hola {constructor} y {toString}', 'male', {})).toBe(
+      'Hola {constructor} y {toString}',
+    );
+  });
 });
 
 describe('longestRenderedLength', () => {
@@ -95,6 +110,14 @@ describe('longestRenderedLength', () => {
     expect(longestRenderedLength('Llegó {el divo|la diva|la estrella}')).toBe(
       'Llegó la estrella'.length,
     );
+  });
+
+  it('counts a decomposed accent as one character', () => {
+    expect(longestRenderedLength('ó'.repeat(5))).toBe(5);
+  });
+
+  it('counts an emoji as one character', () => {
+    expect(longestRenderedLength('🔥🔥🔥')).toBe(3);
   });
 
   it('counts each placeholder as 12 characters', () => {

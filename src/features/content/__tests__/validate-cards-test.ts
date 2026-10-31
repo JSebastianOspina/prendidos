@@ -1,4 +1,6 @@
-import { validateCards, type CardInput } from '../validate-cards';
+import legacyCorpus from '../../../../docs/content/legacy/legacy-challenges.json';
+import { copyLengthLimits } from '../card-types';
+import { hasErrors, validateCards, type CardInput } from '../validate-cards';
 import {
   validCards,
   validCategories,
@@ -7,11 +9,11 @@ import {
   validTruth,
 } from './fixtures/valid-catalog';
 
-function validateOne(card: CardInput) {
+function validateOne(card: unknown) {
   return validateCards({ categories: validCategories, cards: [card] });
 }
 
-function rulesOf(card: CardInput) {
+function rulesOf(card: unknown) {
   return validateOne(card).map((violation) => violation.rule);
 }
 
@@ -224,12 +226,264 @@ describe('validateCards', () => {
       } as unknown as CardInput;
       expect(() => validateOne(malformed)).not.toThrow();
       expect(rulesOf(malformed)).toEqual(
-        expect.arrayContaining(['pointsRange', 'drinksLimit', 'invalidField', 'missingField']),
+        expect.arrayContaining(['drinksLimit', 'invalidField', 'missingField']),
       );
     });
 
     it('reports a card that is not an object', () => {
       expect(rulesOf('not a card' as unknown as CardInput)).toEqual(['invalidField']);
+    });
+
+    it.each([null, 'catalog', 42, {}, { categories: {}, cards: {} }])(
+      'reports a malformed catalog (%p) instead of throwing',
+      (catalog) => {
+        const violations = validateCards(catalog);
+        expect(violations.length).toBeGreaterThan(0);
+        violations.forEach((violation) =>
+          expect(violation).toMatchObject({ subjectId: 'catalog', rule: 'invalidField' }),
+        );
+      },
+    );
+
+    it('reports categories and cards that are not objects by position', () => {
+      expect(
+        validateCards({ categories: [null, ...validCategories], cards: ['not a card'] }),
+      ).toEqual([
+        expect.objectContaining({ subjectId: 'categories[0]', rule: 'invalidField' }),
+        expect.objectContaining({ subjectId: 'cards[0]', rule: 'invalidField' }),
+      ]);
+    });
+  });
+
+  describe('categories', () => {
+    const coupleCategory = validCategories[1];
+
+    it('flags a mode with the wrong case and skips mode rules for its cards', () => {
+      const violations = validateCards({
+        categories: [validCategories[0], { ...coupleCategory, mode: 'Couple' }],
+        cards: [{ ...validTruth, heat: 'spicy' }],
+      });
+      expect(violations).toEqual([
+        expect.objectContaining({ subjectId: 'entre-dos', rule: 'invalidField' }),
+      ]);
+    });
+
+    it('flags a duplicate category ID', () => {
+      expect(
+        validateCards({ categories: [...validCategories, validCategories[0]], cards: [] }),
+      ).toEqual([expect.objectContaining({ subjectId: 'la-previa', rule: 'duplicateId' })]);
+    });
+
+    it('flags free difficulties outside the difficulty list', () => {
+      expect(
+        validateCards({
+          categories: [{ ...validCategories[0], freeDifficulties: ['prendido'] }],
+          cards: [],
+        }),
+      ).toEqual([expect.objectContaining({ subjectId: 'la-previa', rule: 'invalidField' })]);
+    });
+
+    it('flags a category ID that is not text by position', () => {
+      expect(
+        validateCards({ categories: [{ ...validCategories[0], id: 7 }], cards: [] }),
+      ).toEqual([expect.objectContaining({ subjectId: 'categories[0]', rule: 'invalidField' })]);
+    });
+
+    it('flags a category without a usable ID by position', () => {
+      expect(
+        validateCards({ categories: [{ ...validCategories[0], id: '  ' }], cards: [] }),
+      ).toEqual([expect.objectContaining({ subjectId: 'categories[0]', rule: 'missingField' })]);
+    });
+  });
+
+  describe('card IDs and fields', () => {
+    it('flags an ID that is not a slug', () => {
+      expect(rulesOf({ ...validChallenge, id: 'Prev 001' })).toEqual(['invalidField']);
+    });
+
+    it('flags a blank ID by position', () => {
+      expect(validateOne({ ...validChallenge, id: '   ' })).toEqual([
+        expect.objectContaining({ subjectId: 'cards[0]', rule: 'missingField' }),
+      ]);
+    });
+
+    it('flags an unknown field, naming it', () => {
+      const violations = validateOne({ ...validChallenge, targetGendre: 'female' });
+      expect(violations).toEqual([expect.objectContaining({ rule: 'unknownField' })]);
+      expect(violations[0].message).toContain('targetGendre');
+    });
+
+    it('accepts the skill authoring notes and null optional fields', () => {
+      expect(
+        rulesOf({
+          ...validChallenge,
+          rationale: 'Kernel: total surrender to the group.',
+          selfCheck: { policy: 'pass', fun: 4 },
+          illustrationIdea: 'mascot with diva lips',
+          targetGender: null,
+          sourceLegacyId: null,
+          illustration: null,
+        }),
+      ).toEqual([]);
+    });
+
+    it('flags a card ID that is not text by position', () => {
+      expect(validateOne({ ...validChallenge, id: 42 })).toEqual([
+        expect.objectContaining({ subjectId: 'cards[0]', rule: 'invalidField' }),
+      ]);
+    });
+
+    it('flags points that are not a number as an invalid field', () => {
+      expect(rulesOf({ ...validChallenge, points: '10' })).toEqual(['invalidField']);
+    });
+  });
+
+  describe('blank and long copy', () => {
+    it('flags a whitespace-only body', () => {
+      expect(rulesOf({ ...validChallenge, body: ' \n\t ' })).toEqual(['missingField']);
+    });
+
+    it('flags a headline made only of invisible characters', () => {
+      expect(rulesOf({ ...validChallenge, headline: '​​' })).toEqual(['missingField']);
+    });
+
+    it('flags a quip longer than 30 characters', () => {
+      expect(
+        rulesOf({ ...validChallenge, penalty: { drinks: 2, quip: 'x'.repeat(31) } }),
+      ).toEqual(['copyLength']);
+    });
+  });
+
+  describe('drinks in copy', () => {
+    it.each(['Tómese 5 tragos de aguardiente', 'Si no, dos shots', 'Brinde con una copa de vino'])(
+      'flags an amount to drink in the body: "%s"',
+      (body) => {
+        expect(rulesOf({ ...validChallenge, body })).toEqual(['drinksInCopy']);
+      },
+    );
+
+    it('flags an amount to drink in the quip', () => {
+      expect(rulesOf({ ...validChallenge, penalty: { drinks: 1, quip: 'y 2 tragos más' } })).toEqual(
+        ['drinksInCopy'],
+      );
+    });
+
+    it('allows mentioning drinks without an amount', () => {
+      expect(rulesOf({ ...validChallenge, body: 'Algo de comer con cuchara (nada de trago).' })).toEqual(
+        [],
+      );
+    });
+  });
+
+  describe('severity', () => {
+    it('marks banned phrases and drinks in copy as warnings', () => {
+      const violations = validateOne({
+        ...validChallenge,
+        body: 'Cuente un chisme o se toma 2 en fondo blanco',
+      });
+      expect(violations.map(({ rule, severity }) => ({ rule, severity }))).toEqual([
+        { rule: 'bannedPhrase', severity: 'warning' },
+        { rule: 'drinksInCopy', severity: 'warning' },
+      ]);
+      expect(hasErrors(violations)).toBe(false);
+    });
+
+    it('marks structural problems as errors', () => {
+      const violations = validateOne({ ...validChallenge, penalty: { drinks: 4 } });
+      expect(violations).toEqual([
+        expect.objectContaining({ rule: 'drinksLimit', severity: 'error' }),
+      ]);
+      expect(hasErrors(violations)).toBe(true);
+    });
+
+    it('reports no errors for an empty list', () => {
+      expect(hasErrors([])).toBe(false);
+    });
+  });
+
+  describe('group cards', () => {
+    it('rejects placeholders in a group card', () => {
+      expect(rulesOf({ ...validGroupCard, body: '…he imitado a {player}' })).toEqual([
+        'unknownPlaceholder',
+      ]);
+    });
+
+    it('allows gender variants in a group card, which render neutral', () => {
+      expect(
+        rulesOf({ ...validGroupCard, body: '…he llegado {solo|sola|sin compañía} a una fiesta' }),
+      ).toEqual([]);
+    });
+  });
+
+  describe('penalty fields', () => {
+    it('flags an unknown field inside the penalty', () => {
+      const violations = validateOne({
+        ...validChallenge,
+        penalty: { drinks: 2, qiup: 'por gallina' },
+      });
+      expect(violations).toEqual([expect.objectContaining({ rule: 'unknownField' })]);
+      expect(violations[0].message).toContain('qiup');
+    });
+
+    it('flags a blank quip', () => {
+      expect(rulesOf({ ...validChallenge, penalty: { drinks: 2, quip: '   ' } })).toEqual([
+        'missingField',
+      ]);
+    });
+
+    it('reads the quip limit from copyLengthLimits', () => {
+      const quip = 'x'.repeat(copyLengthLimits.quip + 1);
+      expect(rulesOf({ ...validChallenge, penalty: { drinks: 2, quip } })).toEqual(['copyLength']);
+    });
+  });
+
+  describe('wider drinks-in-copy heuristic', () => {
+    it.each([
+      'Si no, se toma 2',
+      'Tómese tres guaros',
+      'Repartan cinco cervezas',
+      'Dos chupitos para el grupo',
+      'Media botella para usted',
+      'O 5tragos',
+      'O 5 tra​gos',
+      'Si no, se toman uno por la amistad',
+    ])('warns about "%s"', (body) => {
+      expect(rulesOf({ ...validChallenge, body })).toEqual(['drinksInCopy']);
+    });
+
+    it('does not flag a photo dare that uses a drinking verb', () => {
+      expect(rulesOf({ ...validChallenge, body: 'Tómense una selfie para el recuerdo' })).toEqual(
+        [],
+      );
+    });
+
+    it.each(['27FBE2FA', '3333651F', 'C97749F8', 'B3352FE5', '2B0A3F96'])(
+      'flags the penalty phrasing of legacy card %s',
+      (legacyId) => {
+        const legacyCard = legacyCorpus.cards.find((card) => card.legacyId === legacyId);
+        expect(legacyCard).toBeDefined();
+        expect(rulesOf({ ...validChallenge, body: legacyCard?.text })).toContain('drinksInCopy');
+      },
+    );
+  });
+
+  describe('rendered copy', () => {
+    it('flags a banned phrase split across a gender variant', () => {
+      expect(rulesOf({ ...validChallenge, body: 'O un fondo {blanco|blanco|blanco}' })).toEqual([
+        'bannedPhrase',
+      ]);
+    });
+
+    it('flags a placeholder unknown in every mode even when the category is unknown', () => {
+      expect(
+        rulesOf({ ...validChallenge, categoryId: 'sin-filtro', body: 'Llame a {jugador}' }),
+      ).toEqual(['unknownCategory', 'unknownPlaceholder']);
+    });
+
+    it('does not guess the mode for {partner} when the category is unknown', () => {
+      expect(
+        rulesOf({ ...validChallenge, categoryId: 'sin-filtro', body: 'Mire a {partner}' }),
+      ).toEqual(['unknownCategory']);
     });
   });
 });

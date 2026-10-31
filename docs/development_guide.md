@@ -101,7 +101,7 @@ Not applicable — Prendidos has no backend today.
 Jest is installed and configured following https://docs.expo.dev/develop/unit-testing/ (SDK 58 requires Jest 30). Tests live in `__tests__/` folders next to the code, named `<module>-test.ts`. To reinstall:
 
 ```bash
-npx expo install jest-expo jest @types/jest --dev
+npx expo install jest-expo jest @types/jest @types/node --dev
 ```
 
 React Native Testing Library is added with the first component test: `npx expo install @testing-library/react-native --dev` (v14 or later for Expo Router).

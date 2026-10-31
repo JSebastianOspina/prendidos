@@ -18,6 +18,7 @@ export type ParsedText = {
 };
 
 const tokenPattern = /\{([^{}]*)\}/g;
+const blankCharactersPattern = /[\s\p{Cf}]/gu;
 const placeholderNamePattern = /^[A-Za-z]+$/;
 const strayBracePattern = /[{}]/g;
 const variantSeparator = '|';
@@ -29,6 +30,16 @@ const variantIndexByGender: Record<PlayerGender, number> = {
 };
 
 const allGenders = Object.keys(variantIndexByGender) as PlayerGender[];
+
+/** True when the text has nothing but whitespace and invisible format characters. */
+export function isBlank(text: string): boolean {
+  return text.replace(blankCharactersPattern, '') === '';
+}
+
+/** Length in Unicode characters (code points after NFC), not UTF-16 units. */
+export function characterLength(text: string): number {
+  return [...text.normalize('NFC')].length;
+}
 
 export function parseGenderedText(text: GenderedText): ParsedText {
   const segments: TextSegment[] = [];
@@ -50,7 +61,7 @@ export function parseGenderedText(text: GenderedText): ParsedText {
 
     if (inner.includes(variantSeparator)) {
       const options = inner.split(variantSeparator).map((option) => option.trim());
-      if (options.length === 3 && options.every((option) => option !== '')) {
+      if (options.length === 3 && options.every((option) => !isBlank(option))) {
         segments.push({ kind: 'variant', options: options as GenderVariantOptions });
       } else {
         issues.push({ kind: 'malformedVariant', token });
@@ -94,16 +105,21 @@ export function renderGenderedText(
   placeholderValues: Record<string, string>,
 ): string {
   const { segments } = parseGenderedText(text);
-  return renderSegments(segments, gender, (name) => placeholderValues[name] ?? `{${name}}`);
+  return renderSegments(segments, gender, (name) =>
+    Object.prototype.hasOwnProperty.call(placeholderValues, name)
+      ? placeholderValues[name]
+      : `{${name}}`,
+  );
 }
 
-/** Longest rendering across genders, with each placeholder at its assumed length. */
-export function longestRenderedLength(text: GenderedText): number {
+/** One rendering per gender, with each placeholder replaced by a stand-in of its assumed length. */
+export function renderAllGenders(text: GenderedText): string[] {
   const { segments } = parseGenderedText(text);
   const placeholderStandIn = 'x'.repeat(placeholderRenderLength);
-  return Math.max(
-    ...allGenders.map(
-      (gender) => renderSegments(segments, gender, () => placeholderStandIn).length,
-    ),
-  );
+  return allGenders.map((gender) => renderSegments(segments, gender, () => placeholderStandIn));
+}
+
+/** Longest rendering across genders, in Unicode characters. */
+export function longestRenderedLength(text: GenderedText): number {
+  return Math.max(...renderAllGenders(text).map(characterLength));
 }

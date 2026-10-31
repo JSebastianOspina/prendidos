@@ -29,6 +29,7 @@
   },
   "devDependencies": {
     "@types/jest": "30.0.0",
+    "@types/node": "^26.6.6",
     "@types/react": "~19.3.0",
     "eslint": "^9.0.0",
     "eslint-config-expo": "~58.0.4",
@@ -53,7 +54,7 @@
       "/__tests__/fixtures/"
     ],
     "collectCoverageFrom": [
-      "src/features/**/*.ts",
+      "src/features/**/*.{ts,tsx}",
       "!src/features/**/__tests__/**"
     ],
     "coverageThreshold": {

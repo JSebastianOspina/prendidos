@@ -26,7 +26,7 @@ None — `openspec/specs/` is empty.
 ## Impact
 
 - **Code:** new `src/features/content/` (types, `validate-cards.ts`, tests). No existing code changes.
-- **Dependencies:** dev-only `jest-expo`, `jest` (30, required by `jest-expo` on SDK 58), `@types/jest`, installed with `npx expo install`. No native modules, so no new development build is needed.
+- **Dependencies:** dev-only `jest-expo`, `jest` (30, required by `jest-expo` on SDK 58), `@types/jest`, and `@types/node` (for the test that reads the skill file; its types reach the whole type-check, see design §8), installed with `npx expo install`. No native modules, so no new development build is needed.
 - **Config:** `package.json` (`test` script, `jest` preset, coverage threshold), `tsconfig.json` (`types: ["jest"]`). `coverage/` is already git-ignored.
 - **Docs:** `docs/data-model.md` (Card, Category catalog, Product, GameSettings, DeviceState, validation rules), `docs/content/card-templates.md` (proposal → adopted), `docs/development_guide.md` (corrected Jest install command).
 - **Platforms:** iOS and Android unaffected at runtime (no screen uses the module yet); web out of scope.

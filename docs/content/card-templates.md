@@ -53,7 +53,7 @@ The legacy square becomes the middle of the existing turn screen (prototype `tur
 
 ## Data Model Change (Adopted)
 
-Changes to `Card` in `data-model.md`:
+Changes to `Card` in `data-model.md` (simplified; the source of truth is `src/features/content/card-types.ts`, where individual and group cards are separate types):
 
 ```ts
 type Card = {
@@ -69,13 +69,13 @@ type Card = {
   heat: 'standard' | 'spicy';      // NEW — spicy cards only appear with the opt-in "Sin Filtro" toggle
   requiresConsent: boolean;        // NEW — the app shows "Solo si la otra persona acepta" on the card
   reachesOutside: boolean;         // NEW — calls, messages, or posts; the app shows the outside-contact rules
-  targetGender?: PlayerGender;
+  targetGender?: 'male' | 'female'; // never `undisclosed`
   sourceLegacyId?: string;         // NEW — traceability to legacy/legacy-challenges.json
 };
 
 type DrinkPenalty = {
   drinks: 1 | 2 | 3;               // the type enforces PRD §5.8
-  quip?: GenderedText;             // optional teasing tag: "por tibio / tibia"
+  quip?: GenderedText;             // optional teasing tag: "por aguafiestas" or "por {tibio|tibia|aguado}"
 };
 
 type IllustrationKey = 'mascot-monocle' | 'mascot-crying' | 'shot-glass-on-fire' /* … */;
