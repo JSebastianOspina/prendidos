@@ -1,16 +1,30 @@
 import type { PlayerGender } from '@/features/content/card-types';
 
+import { pickFreeAvatar, type AvatarId } from './avatars';
 import type { Player } from './game-types';
 
-export type NewPlayer = { name: string; gender: PlayerGender; drinks?: boolean };
+export type NewPlayer = {
+  name: string;
+  gender: PlayerGender;
+  drinks?: boolean;
+  avatarId?: AvatarId;
+};
 
-/** A local player with a generated id; drinks unless told otherwise. */
-export function createPlayer(newPlayer: NewPlayer, createId: () => string): Player {
+/**
+ * A local player with a generated id; drinks unless told otherwise, and gets the first avatar
+ * not in `takenAvatars` unless one is given.
+ */
+export function createPlayer(
+  newPlayer: NewPlayer,
+  createId: () => string,
+  takenAvatars: readonly AvatarId[] = [],
+): Player {
   return {
     id: createId(),
     name: newPlayer.name.trim(),
     gender: newPlayer.gender,
     drinks: newPlayer.drinks ?? true,
+    avatarId: newPlayer.avatarId ?? pickFreeAvatar(takenAvatars),
   };
 }
 

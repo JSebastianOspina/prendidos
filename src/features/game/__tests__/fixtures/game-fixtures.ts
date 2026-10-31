@@ -12,9 +12,27 @@ export const testCategories: Category[] = [
   { id: 'entre-dos', name: 'Entre Dos', mode: 'couple', freeDifficulties: ['easy'] },
 ];
 
-export const ana: Player = { id: 'p1', name: 'Ana', gender: 'female', drinks: true };
-export const beto: Player = { id: 'p2', name: 'Beto', gender: 'male', drinks: true };
-export const cami: Player = { id: 'p3', name: 'Cami', gender: 'undisclosed', drinks: false };
+export const ana: Player = {
+  id: 'p1',
+  name: 'Ana',
+  gender: 'female',
+  drinks: true,
+  avatarId: 'avatar-01',
+};
+export const beto: Player = {
+  id: 'p2',
+  name: 'Beto',
+  gender: 'male',
+  drinks: true,
+  avatarId: 'avatar-02',
+};
+export const cami: Player = {
+  id: 'p3',
+  name: 'Cami',
+  gender: 'undisclosed',
+  drinks: false,
+  avatarId: 'avatar-03',
+};
 
 type IndividualOverrides = Partial<Omit<Extract<Card, { type: 'challenge' | 'truth' }>, 'type'>> & {
   type?: 'challenge' | 'truth';
