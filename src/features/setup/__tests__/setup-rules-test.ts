@@ -1,9 +1,11 @@
 import type { Player } from '@/features/game';
 
 import {
+  changeAvatar,
   createEmptyPlayer,
   endConditionOptions,
   hasMissingName,
+  isRowExpanded,
   isSameEndCondition,
   preparePlayersForMode,
   shufflePlayers,
@@ -132,6 +134,32 @@ describe('player names', () => {
 
   it('trims every name', () => {
     expect(trimPlayerNames([{ ...ana, name: '  Ana ' }, beto])).toEqual([ana, beto]);
+  });
+});
+
+describe('isRowExpanded', () => {
+  it('always expands the first two rows', () => {
+    expect(isRowExpanded(0, 'p1', undefined)).toBe(true);
+    expect(isRowExpanded(1, 'p2', 'p3')).toBe(true);
+  });
+
+  it('expands a later row only when it is the chosen one', () => {
+    expect(isRowExpanded(2, 'p3', undefined)).toBe(false);
+    expect(isRowExpanded(2, 'p3', 'p4')).toBe(false);
+    expect(isRowExpanded(2, 'p3', 'p3')).toBe(true);
+  });
+});
+
+describe('changeAvatar', () => {
+  it('gives the player the next avatar nobody else has', () => {
+    const changed = changeAvatar([ana, beto, cami], 0);
+    expect(changed[0]).toEqual({ ...ana, avatarId: 'avatar-04' });
+    expect(changed.slice(1)).toEqual([beto, cami]);
+  });
+
+  it('wraps around the avatar list', () => {
+    const lastAvatar: Player = { ...ana, avatarId: 'avatar-12' };
+    expect(changeAvatar([lastAvatar, beto], 0)[0].avatarId).toBe('avatar-01');
   });
 });
 

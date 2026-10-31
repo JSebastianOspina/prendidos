@@ -16,7 +16,7 @@ export type OptionChipProps = {
 
 const inkSelection = { fill: Colors.ink, text: Colors.white };
 
-/** Pill toggle used for gender, "No toma", levels, and end conditions. */
+/** Pill toggle used in the level and end-condition lists. */
 export function OptionChip({
   label,
   selected,
