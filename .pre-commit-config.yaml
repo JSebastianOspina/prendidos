@@ -27,6 +27,7 @@ repos:
       - id: check-json
       - id: check-added-large-files
         args: [--maxkb=500]
+        exclude: ^ai-specs/skills/ui-ux-pro-max/data/ # vendored search catalogs (see ai-specs/skills/third-party-skills.md)
       - id: detect-private-key
       - id: check-merge-conflict
       - id: mixed-line-ending
