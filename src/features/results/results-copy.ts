@@ -1,4 +1,5 @@
 /** All user-facing copy of the final ranking (Colombian Spanish, usted). */
+import type { EndCondition } from '@/features/game';
 
 /** An /i/ sound that does not start a diphthong ("Isabel", "Hilda"; not "Hiedra" or "Iara"). */
 const startsWithIVowelSound = /^h?i(?![aeiou])/;
@@ -29,26 +30,49 @@ export function spokenPoints(score: number): string {
   return `${score < 0 ? 'menos ' : ''}${amount} ${unit}`;
 }
 
-export function rankingRowAccessibilityLabel(
+/** One podium step or row for screen readers, always with the full name. */
+export function rankingEntryAccessibilityLabel(
   position: number,
-  names: string[],
+  name: string,
   score: number,
 ): string {
-  return `Puesto ${position}: ${joinPlayerNames(names)}, ${spokenPoints(score)}`;
+  return `Puesto ${position}: ${name}, ${spokenPoints(score)}`;
 }
 
-export function winnerAccessibilityLabel(names: string[], score: number): string {
-  return names.length > 1
-    ? `Empate en el primer puesto: ${joinPlayerNames(names)} con ${spokenPoints(score)}`
-    : `Ganó ${joinPlayerNames(names)} con ${spokenPoints(score)}`;
+export type RankingEyebrowInput = {
+  /** Missing when the category is no longer in the catalog. */
+  categoryName?: string;
+  endCondition: EndCondition;
+  /** Rounds in which at least one player took a turn. */
+  roundsPlayed: number;
+};
+
+/** "La Previa · 10 rondas", "La Previa · 1 ronda", or "La Previa · Meta 100 pts". */
+export function rankingEyebrow({
+  categoryName,
+  endCondition,
+  roundsPlayed,
+}: RankingEyebrowInput): string {
+  const gameLength =
+    endCondition.type === 'points'
+      ? `Meta ${endCondition.target} pts`
+      : `${roundsPlayed} ${roundsPlayed === 1 ? 'ronda' : 'rondas'}`;
+  return categoryName ? `${categoryName} · ${gameLength}` : gameLength;
+}
+
+/** "¡Ganó Vale!", or "¡Empate arriba!" when several players share first place. */
+export function winnerTitle(winnerNames: string[]): string {
+  return winnerNames.length > 1 ? '¡Empate arriba!' : `¡Ganó ${joinPlayerNames(winnerNames)}!`;
+}
+
+/** "Vale y Juanpa comparten el primer puesto." */
+export function sharedFirstPlaceLine(winnerNames: string[]): string {
+  return `${joinPlayerNames(winnerNames)} comparten el primer puesto.`;
 }
 
 export const resultsCopy = {
-  eyebrow: 'Se acabó la partida',
-  title: 'Así quedó la noche',
-  winnerBadge: '¡Ganó la noche!',
-  tieBadge: '¡Empate en la cima!',
-  rankingHeading: 'Ranking final',
-  playAgain: 'Jugar otra vez',
-  backHome: 'Volver al inicio',
+  backHome: 'Inicio',
+  backHomeAccessibilityLabel: 'Volver al inicio',
+  playAgain: 'Otra partida',
+  playAgainAccessibilityLabel: 'Jugar otra partida',
 } as const;

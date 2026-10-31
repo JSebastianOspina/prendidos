@@ -56,10 +56,25 @@ const beto: Player = {
   avatarId: 'avatar-03',
 };
 
+const dani: Player = {
+  id: 'p4',
+  name: 'Dani',
+  gender: 'undisclosed',
+  drinks: true,
+  avatarId: 'avatar-04',
+};
+const caro: Player = {
+  id: 'p5',
+  name: 'Caro',
+  gender: 'female',
+  drinks: true,
+  avatarId: 'avatar-05',
+};
+
 const catalog: Catalog = {
   categories: [{ id: 'la-previa', name: 'La Previa', mode: 'friends', freeDifficulties: ['easy'] }],
   // Every card is worth 6: completing adds 6, refusing subtracts 3.
-  cards: ['c1', 'c2', 'c3', 'c4', 'c5', 'c6'].map((id) => individualCard(id, { points: 6 })),
+  cards: Array.from({ length: 12 }, (_, index) => individualCard(`c${index + 1}`, { points: 6 })),
 };
 
 const settings: GameSettings = {
@@ -102,10 +117,10 @@ async function renderResults() {
 
 type TurnAction = 'complete' | 'refuse';
 
-/** Plays one turn per player in order, then ends the game. */
-async function finishGame(turns: TurnAction[]) {
+/** Plays the turns in player order, then ends the game. */
+async function finishGame(turns: TurnAction[], gameSettings: GameSettings = settings) {
   await act(() => {
-    probe.game?.startGame(settings);
+    probe.game?.startGame(gameSettings);
   });
   for (const turn of turns) {
     await act(() => {
@@ -126,7 +141,7 @@ describe('ResultsScreen', () => {
   it('redirects home when there is no game', async () => {
     await renderResults();
     expect(mockRedirect).toHaveBeenCalledWith(routes.home);
-    expect(screen.queryByText('Jugar otra vez')).toBeNull();
+    expect(screen.queryByText('Otra partida')).toBeNull();
   });
 
   it('redirects home while the game is still in progress', async () => {
@@ -135,41 +150,113 @@ describe('ResultsScreen', () => {
       probe.game?.startGame(settings);
     });
     expect(mockRedirect).toHaveBeenLastCalledWith(routes.home);
-    expect(screen.queryByText('Jugar otra vez')).toBeNull();
+    expect(screen.queryByText('Otra partida')).toBeNull();
     expect(readDeviceState().activeSession?.id).toBe('game-1');
   });
 
-  it('highlights a single winner and lists the full ranking', async () => {
+  it('names a single winner in the header and centers them on the podium', async () => {
     await renderResults();
     await finishGame(['complete', 'refuse', 'refuse']);
 
-    expect(screen.getByRole('header', { name: 'Así quedó la noche' })).toBeTruthy();
-    expect(screen.getByLabelText('Ganó Ana con 6 puntos')).toBeTruthy();
-    expect(screen.getByText('¡Ganó la noche!')).toBeTruthy();
+    expect(screen.getByRole('header', { name: '¡Ganó Ana!' })).toBeTruthy();
+    expect(screen.getByText('La Previa · Meta 100 pts')).toBeTruthy();
+    expect(screen.getByLabelText('Prendido, el gato, guiñando el ojo')).toBeTruthy();
     expect(screen.getByLabelText('Puesto 1: Ana, 6 puntos')).toBeTruthy();
-    expect(screen.getByLabelText('Puesto 2: Luis y Beto, menos 3 puntos')).toBeTruthy();
-    expect(screen.getByText('2. Luis y Beto')).toBeTruthy();
+    expect(screen.getByLabelText('Puesto 2: Luis, menos 3 puntos')).toBeTruthy();
+    expect(screen.getByLabelText('Puesto 2: Beto, menos 3 puntos')).toBeTruthy();
+    expect(screen.getByTestId('winner-crown', { includeHiddenElements: true })).toBeTruthy();
+    expect(screen.queryByText(/comparten el primer puesto/)).toBeNull();
     expect(mockRedirect).not.toHaveBeenCalled();
   });
 
-  it('shows a tie for first as one shared position', async () => {
+  it('colors the podium steps by position', async () => {
+    await renderResults();
+    await finishGame(['complete', 'refuse', 'refuse']);
+
+    expect(screen.getByTestId('podium-step-p1')).toHaveStyle({ backgroundColor: Colors.primary });
+    expect(screen.getByTestId('podium-step-p2')).toHaveStyle({
+      backgroundColor: Colors.surfaceSoft,
+    });
+    // Luis and Beto tie for second, so they share the step color and number.
+    expect(screen.getByTestId('podium-step-p3')).toHaveStyle({
+      backgroundColor: Colors.surfaceSoft,
+    });
+    expect(screen.getAllByText('2')).toHaveLength(2);
+  });
+
+  it('shows a tie for first as shared steps and a shared title', async () => {
     await renderResults();
     await finishGame(['complete', 'complete', 'refuse']);
 
-    expect(screen.getByText('¡Empate en la cima!')).toBeTruthy();
-    expect(
-      screen.getByLabelText('Empate en el primer puesto: Ana y Luis con 6 puntos'),
-    ).toBeTruthy();
-    expect(screen.getByText('1. Ana y Luis')).toBeTruthy();
-    expect(screen.getByText('3. Beto')).toBeTruthy();
+    expect(screen.getByRole('header', { name: '¡Empate arriba!' })).toBeTruthy();
+    expect(screen.getByText('Ana y Luis comparten el primer puesto.')).toBeTruthy();
+    expect(screen.getByLabelText('Puesto 1: Ana, 6 puntos')).toBeTruthy();
+    expect(screen.getByLabelText('Puesto 1: Luis, 6 puntos')).toBeTruthy();
+    expect(screen.getByLabelText('Puesto 3: Beto, menos 3 puntos')).toBeTruthy();
+    expect(screen.getAllByText('1')).toHaveLength(2);
+    expect(screen.getByTestId('podium-step-p3')).toHaveStyle({ backgroundColor: Colors.surface });
+    expect(screen.queryByTestId('winner-crown', { includeHiddenElements: true })).toBeNull();
   });
 
-  it('shows negative scores in the negative color', async () => {
+  it('lists the players after the podium as rows with shared positions', async () => {
+    await renderResults();
+    await finishGame(
+      ['complete', 'complete', 'complete', 'refuse', 'refuse', 'complete', 'refuse'],
+      { ...settings, players: [ana, luis, beto, dani, caro], endCondition: { type: 'open' } },
+    );
+
+    expect(screen.getByText('La Previa · 2 rondas')).toBeTruthy();
+    expect(screen.getByLabelText('Puesto 1: Ana, 12 puntos')).toBeTruthy();
+    expect(screen.getByLabelText('Puesto 2: Beto, 6 puntos')).toBeTruthy();
+    expect(screen.getByLabelText('Puesto 3: Luis, 3 puntos')).toBeTruthy();
+    expect(screen.getByLabelText('Puesto 4: Dani, menos 3 puntos')).toBeTruthy();
+    expect(screen.getByLabelText('Puesto 4: Caro, menos 3 puntos')).toBeTruthy();
+    for (const score of screen.getAllByText('-3 pts')) {
+      expect(score).toHaveStyle({ color: Colors.negative });
+    }
+  });
+
+  it('shows two steps in a two-player game', async () => {
+    await renderResults();
+    await finishGame(['complete', 'refuse'], {
+      ...settings,
+      players: [ana, luis],
+      endCondition: { type: 'open' },
+    });
+
+    expect(screen.getByText('La Previa · 1 ronda')).toBeTruthy();
+    expect(screen.getByLabelText('Puesto 1: Ana, 6 puntos')).toBeTruthy();
+    expect(screen.getByLabelText('Puesto 2: Luis, menos 3 puntos')).toBeTruthy();
+    expect(screen.queryByLabelText(/Puesto 3/)).toBeNull();
+  });
+
+  it('shows negative scores on the podium in the negative color', async () => {
     await renderResults();
     await finishGame(['complete', 'complete', 'refuse']);
 
     expect(screen.getByText('-3 pts')).toHaveStyle({ color: Colors.negative });
     expect(screen.getAllByText('6 pts')[0]).toHaveStyle({ color: Colors.ink });
+  });
+
+  it('keeps a negative winner score readable on the orange step', async () => {
+    await renderResults();
+    await finishGame(['refuse', 'refuse', 'refuse']);
+
+    for (const score of screen.getAllByText('-3 pts')) {
+      expect(score).toHaveStyle({ color: Colors.ink });
+    }
+  });
+
+  it('keeps long names on one line and reads the full name', async () => {
+    await renderResults();
+    const maximiliano: Player = { ...ana, name: 'Maximiliano Andrés' };
+    await finishGame(['complete', 'refuse', 'refuse'], {
+      ...settings,
+      players: [maximiliano, luis, beto],
+    });
+
+    expect(screen.getByLabelText('Puesto 1: Maximiliano Andrés, 6 puntos')).toBeTruthy();
+    expect(screen.getByText('Maximiliano Andrés')).toHaveProp('numberOfLines', 1);
   });
 
   it('no longer keeps the finished game as resumable', async () => {
@@ -178,11 +265,12 @@ describe('ResultsScreen', () => {
     expect(readDeviceState().activeSession).toBeUndefined();
   });
 
-  it('"Jugar otra vez" refills the draft and opens the setup', async () => {
+  it('"Otra partida" refills the draft and opens the setup', async () => {
     await renderResults();
     await finishGame(['complete', 'refuse', 'refuse']);
 
-    await fireEvent.press(screen.getByRole('button', { name: 'Jugar otra vez' }));
+    expect(screen.getByText('Otra partida')).toBeTruthy();
+    await fireEvent.press(screen.getByRole('button', { name: 'Jugar otra partida' }));
 
     expect(probe.draft?.toSettings()).toEqual(settings);
     expect(probe.game?.session).toBeUndefined();
@@ -191,10 +279,11 @@ describe('ResultsScreen', () => {
     expect(mockRedirect).not.toHaveBeenCalled();
   });
 
-  it('"Volver al inicio" forgets the game and goes home', async () => {
+  it('"Inicio" forgets the game and goes home', async () => {
     await renderResults();
     await finishGame(['complete', 'refuse', 'refuse']);
 
+    expect(screen.getByText('Inicio')).toBeTruthy();
     await fireEvent.press(screen.getByRole('button', { name: 'Volver al inicio' }));
 
     expect(probe.game?.session).toBeUndefined();
