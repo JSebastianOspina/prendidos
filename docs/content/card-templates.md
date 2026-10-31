@@ -1,11 +1,11 @@
 ---
-description: Card face templates observed in the legacy designs and the proposed Card data model change (headline, body, structured penalty, illustration) that lets the app render them natively. Proposal — not yet in data-model.md.
+description: Card face templates observed in the legacy designs and the Card data model change (headline, body, structured penalty, illustration, heat, consent and outside-contact flags) that lets the app render them natively. Adopted in data-model.md through the card-content-model change.
 alwaysApply: false
 ---
 
 # Card Templates
 
-**Status: proposal.** Nothing here is in [`../data-model.md`](../data-model.md) yet. It goes in through `/opsx:propose` (CLAUDE.md §5) once the open decisions below are settled.
+**Status: data model adopted.** The `Card` shape below is now in [`../data-model.md`](../data-model.md) and implemented in `src/features/content/` (types and `validateCards`) through the OpenSpec change `card-content-model`. The rendering rules and open decisions about the card face are still pending its own change.
 
 ## What the Legacy Cards Show
 
@@ -51,7 +51,7 @@ The legacy square becomes the middle of the existing turn screen (prototype `tur
 └───────────────────────────────┘
 ```
 
-## Proposed Data Model Change
+## Data Model Change (Adopted)
 
 Changes to `Card` in `data-model.md`:
 

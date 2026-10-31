@@ -94,17 +94,17 @@ Not applicable — Prendidos has no backend today.
 | ---------------- | ------------------------ | ---------------------------------------------------------------------------- |
 | Lint             | `npx expo lint`          | Mandatory before any task is done                                            |
 | Typecheck        | `npx tsc --noEmit`       | Mandatory before any task is done                                            |
-| Unit / component | `npx jest`               | `jest-expo` + React Native Testing Library; ≥ 90% coverage (to be installed) |
-| Coverage         | `npx jest --coverage`    |                                                                              |
+| Unit / component | `npm test`               | Jest 30 with the `jest-expo` preset                                          |
+| Coverage         | `npm test -- --coverage` | ≥ 90% on `src/features/**` (threshold enforced in `package.json`)            |
 | E2E              | `maestro test .maestro/` | **Maestro** against a running simulator/emulator with the app installed      |
 
-Testing dependencies are not installed yet. Install them with:
+Jest is installed and configured following https://docs.expo.dev/develop/unit-testing/ (SDK 58 requires Jest 30). Tests live in `__tests__/` folders next to the code, named `<module>-test.ts`. To reinstall:
 
 ```bash
-npx expo install jest-expo jest @types/jest @testing-library/react-native -- --save-dev
+npx expo install jest-expo jest @types/jest --dev
 ```
 
-Then add `"test": "jest --watchAll=false"` to `package.json` and the `jest-expo` preset, following https://docs.expo.dev/develop/unit-testing/.
+React Native Testing Library is added with the first component test: `npx expo install @testing-library/react-native --dev` (v14 or later for Expo Router).
 
 ---
 

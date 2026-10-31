@@ -2,6 +2,8 @@
 
 Sources: `docs/prd.md` §5.8, §6.3, §8; App Store Review Guidelines 1.1.4 (no overtly sexual material), 1.4.3 (no encouraging excessive alcohol), 2.5.19 (no hidden features); Google Play sexual-content and alcohol policies. When this file and the PRD disagree, the PRD wins.
 
+**Mechanical rules are enforced in code.** `validateCards` (`src/features/content/validate-cards.ts`) checks IDs, points ranges, 1–3 drinks, required fields per card type, copy length (headline ≤ 45, body ≤ 240 characters in the longest variant), `spicy` only in `friends` categories, banned phrases, and placeholder / variant syntax. This file covers the judgment calls the validator can't make.
+
 ## Never, in Any Tier
 
 | Rule                                        | Examples that fail                                                          |
