@@ -37,6 +37,35 @@ describe('shipped catalog', () => {
     expect(untargetedIndividualAt('hard')).toBeGreaterThanOrEqual(18 + swaps);
   });
 
+  it.each([
+    ['la-previa', 'standard'],
+    ['la-previa', 'spicy'],
+    ['entre-dos', 'standard'],
+  ] as const)('ships at least 30 cards per level in %s (%s)', (categoryId, heat) => {
+    const { cards } = loadCatalog();
+    for (const difficulty of ['easy', 'medium', 'hard'] as const) {
+      const count = cards.filter(
+        (card) => card.categoryId === categoryId && card.heat === heat && card.difficulty === difficulty,
+      ).length;
+      expect({ difficulty, count: Math.min(count, 30) }).toEqual({ difficulty, count: 30 });
+    }
+  });
+
+  it('keeps gender-targeted cards to at most 10 % of each category and heat', () => {
+    const { cards } = loadCatalog();
+    const groups = new Map<string, { total: number; targeted: number }>();
+    for (const card of cards) {
+      const key = `${card.categoryId}/${card.heat}`;
+      const group = groups.get(key) ?? { total: 0, targeted: 0 };
+      group.total += 1;
+      if (card.targetGender) group.targeted += 1;
+      groups.set(key, group);
+    }
+    for (const [key, group] of groups) {
+      expect({ key, share: group.targeted / group.total <= 0.1 }).toEqual({ key, share: true });
+    }
+  });
+
   it('ships both launch categories in all three levels', () => {
     const { categories, cards } = loadCatalog();
     expect(categories.map((category) => category.id).sort()).toEqual(['entre-dos', 'la-previa']);

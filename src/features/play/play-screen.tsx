@@ -205,10 +205,13 @@ const styles = StyleSheet.create({
   },
   headerInfo: {
     flexDirection: 'row',
+    flexWrap: 'wrap',
+    flexShrink: 1,
     alignItems: 'center',
     gap: Spacing.sm,
   },
   endLink: {
+    flexShrink: 0,
     minHeight: TouchTarget.minimum,
     justifyContent: 'center',
     paddingHorizontal: Spacing.sm,

@@ -1,7 +1,7 @@
 # game-engine Specification
 
 ## Purpose
-TBD - created by archiving change hu-00-game-foundation. Update Purpose after archive.
+Rules of a game session from start to ranking: turns, scoring, card selection, escalation, end conditions, and stale actions.
 
 ## Requirements
 
