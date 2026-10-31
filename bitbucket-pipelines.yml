@@ -40,7 +40,8 @@ definitions:
         caches: [node]
         script:
           - npm ci
-          - npm audit --audit-level=high
+          # Fails on high/critical advisories not listed in .audit-allowlist.json
+          - node scripts/audit-gate.js
 
     - step: &harness-checks
         name: Harness checks (kebab-case + static evals)

@@ -60,7 +60,8 @@ alwaysApply: true
 
 ## Dependency and Supply Chain
 
-- Vulnerability scan: `npm audit --audit-level=high` in CI; HIGH/CRITICAL findings block merge.
+- Vulnerability scan: `node scripts/audit-gate.js` in CI (wraps `npm audit`); HIGH/CRITICAL advisories block merge.
+- Exceptions: only in `.audit-allowlist.json`, one entry per advisory ID with a `reason` and a `reviewBy` date (max ~2 months). Expired entries fail CI. Add an exception only when no non-breaking fix exists and the package is not shipped in the app bundle; note it in the PR.
 - Update SLA: HIGH/CRITICAL within 7 days; regular updates follow Expo SDK upgrades (`npx expo install --fix`).
 - Lockfile and approval policy: `package-lock.json` is committed; new dependencies are added only with `npx expo install`, preferring Expo modules; a new native dependency requires justification in the OpenSpec design.
 

@@ -55,7 +55,8 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
-      - run: npm audit --audit-level=high
+      # Fails on high/critical advisories not listed in .audit-allowlist.json
+      - run: node scripts/audit-gate.js
 
   harness-checks:
     name: Harness checks (kebab-case + static evals)
