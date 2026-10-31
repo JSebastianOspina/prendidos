@@ -1,5 +1,7 @@
 # HU-01 — Age confirmation (18+)
 
+> **Update (2026-10-31):** the design alignment changed this screen. The copy, layout, and mascot follow proposal board 1, and "Soy menor de edad" is a text link. The current behavior lives in `openspec/specs/age-gate/spec.md`; see `docs/design/review/README.md`. The sections below keep the original plan.
+
 | Field      | Value                                            |
 | ---------- | ------------------------------------------------ |
 | Status     | Implemented (OpenSpec `hu-01-age-gate`)          |

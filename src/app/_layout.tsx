@@ -27,7 +27,6 @@ function RootNavigator() {
       </Stack.Protected>
       <Stack.Protected guard={isAgeConfirmed}>
         <Stack.Screen name="index" />
-        <Stack.Screen name="new-game/mode" />
         <Stack.Screen name="new-game/category" />
         <Stack.Screen name="new-game/setup" />
         <Stack.Screen name="play" options={{ gestureEnabled: false }} />

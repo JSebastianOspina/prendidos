@@ -53,6 +53,9 @@
   },
   "jest": {
     "preset": "jest-expo",
+    "modulePathIgnorePatterns": [
+      "<rootDir>/.claude/worktrees/"
+    ],
     "testPathIgnorePatterns": [
       "/node_modules/",
       "/__tests__/fixtures/",
