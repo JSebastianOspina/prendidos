@@ -8,10 +8,22 @@ describe('players', () => {
       name: 'Ana',
       gender: 'female',
       drinks: true,
+      avatarId: 'avatar-01',
     });
     expect(
       createPlayer({ name: 'Cami', gender: 'undisclosed', drinks: false }, () => 'y').drinks,
     ).toBe(false);
+  });
+
+  it('gives a new player the first avatar nobody has, unless one is given', () => {
+    const taken = ['avatar-01', 'avatar-02'] as const;
+    expect(createPlayer({ name: 'Vale', gender: 'female' }, () => 'v', taken).avatarId).toBe(
+      'avatar-03',
+    );
+    expect(
+      createPlayer({ name: 'Vale', gender: 'female', avatarId: 'avatar-07' }, () => 'v', taken)
+        .avatarId,
+    ).toBe('avatar-07');
   });
 
   it('finds the partner only in a pair', () => {

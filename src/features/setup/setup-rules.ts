@@ -2,9 +2,16 @@
 import { allDifficulties, type Difficulty, type GameMode } from '@/features/content/card-types';
 import { createPlayer, playerLimitsByMode, type EndCondition, type Player } from '@/features/game';
 
-/** A new row: no name yet, gender not disclosed, drinks. */
-export function createEmptyPlayer(createId: () => string): Player {
-  return createPlayer({ name: '', gender: 'undisclosed' }, createId);
+/** A new row: no name yet, gender not disclosed, drinks, and an avatar nobody else has. */
+export function createEmptyPlayer(
+  createId: () => string,
+  currentPlayers: readonly Player[] = [],
+): Player {
+  return createPlayer(
+    { name: '', gender: 'undisclosed' },
+    createId,
+    currentPlayers.map((player) => player.avatarId),
+  );
 }
 
 /**
@@ -18,11 +25,9 @@ export function preparePlayersForMode(
 ): Player[] {
   const { min, max } = playerLimitsByMode[mode];
   if (players.length >= min && players.length <= max) return players;
-  const kept = players.slice(0, max);
-  const padding = Array.from({ length: Math.max(0, min - kept.length) }, () =>
-    createEmptyPlayer(createId),
-  );
-  return [...kept, ...padding];
+  const prepared = players.slice(0, max);
+  while (prepared.length < min) prepared.push(createEmptyPlayer(createId, prepared));
+  return prepared;
 }
 
 /** Fisher–Yates shuffle; when the order comes out unchanged it rotates by one so it is visible. */

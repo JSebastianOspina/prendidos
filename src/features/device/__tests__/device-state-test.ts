@@ -7,7 +7,13 @@ import {
   type DeviceState,
 } from '../device-state';
 
-const player: Player = { id: 'p1', name: 'Ana', gender: 'female', drinks: true };
+const player: Player = {
+  id: 'p1',
+  name: 'Ana',
+  gender: 'female',
+  drinks: true,
+  avatarId: 'avatar-01',
+};
 
 describe('parseDeviceState', () => {
   it('returns the empty state for missing or corrupt data', () => {
@@ -49,7 +55,11 @@ describe('parseDeviceState', () => {
   it('drops fields with the wrong shape and keeps the valid ones', () => {
     const raw = JSON.stringify({
       ageConfirmedAt: 5,
-      lastPlayers: [player, { id: 'p2', name: 'x', gender: 'robot', drinks: true }, 'junk'],
+      lastPlayers: [
+        player,
+        { id: 'p2', name: 'x', gender: 'robot', drinks: true, avatarId: 'avatar-02' },
+        'junk',
+      ],
       seenCardIds: ['a', 3],
       lastSpicyEnabled: 'yes',
       activeSession: { id: 's1' },
@@ -59,6 +69,43 @@ describe('parseDeviceState', () => {
       lastPlayers: [player],
       seenCardIds: ['a'],
     });
+  });
+
+  it('gives saved players from older builds a free avatar instead of dropping them', () => {
+    const { avatarId: _unused, ...withoutAvatar } = player;
+    const vale = { id: 'p2', name: 'Vale', gender: 'female', drinks: true, avatarId: 'avatar-07' };
+    const beto = { id: 'p3', name: 'Beto', gender: 'male', drinks: true, avatarId: 'avatar-99' };
+    const raw = JSON.stringify({ lastPlayers: [vale, withoutAvatar, beto] });
+    expect(parseDeviceState(raw).lastPlayers.map((saved) => saved.avatarId)).toEqual([
+      'avatar-07',
+      'avatar-01',
+      'avatar-02',
+    ]);
+  });
+
+  it('gives saved-game players a free avatar too', () => {
+    const { avatarId: _unused, ...withoutAvatar } = player;
+    const session = {
+      id: 's1',
+      settings: {
+        mode: 'friends',
+        categoryId: 'la-previa',
+        players: [withoutAvatar],
+        selectedDifficulties: ['easy'],
+        endCondition: { type: 'open' },
+        spicyEnabled: false,
+      },
+      status: 'inProgress',
+      currentRound: 1,
+      currentPlayerIndex: 0,
+      scores: { p1: 0 },
+      playedCardIds: ['prev-001'],
+      swapsUsed: {},
+      couplePaywallShown: false,
+      startedAt: '2026-10-31T20:00:00.000Z',
+    };
+    const parsed = parseDeviceState(JSON.stringify({ activeSession: session }));
+    expect(parsed.activeSession?.settings.players[0].avatarId).toBe('avatar-01');
   });
 
   it('drops a saved game that is missing fields or out of range', () => {
