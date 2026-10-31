@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Setup de partida</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&amp;family=Nunito:wght@600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; padding: 60px 20px 34px; background: #FFF7ED; color: #2A1608; font-family: 'Nunito', sans-serif; display: flex; flex-direction: column; gap: 14px">
+  <header style="display: flex; align-items: center; gap: 12px">
+    <a href="categorias.dc.html" aria-label="Volver" style="width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; background: #FFFFFF; border: 3px solid #2A1608; border-radius: 16px; box-shadow: 0 4px 0 #2A1608">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2A1608" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"></path></svg>
+    </a>
+    <div style="display: flex; flex-direction: column">
+      <span style="font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: #7C2D12">La Previa</span>
+      <h1 style="margin: 0; font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 28px; line-height: 1">¿Quiénes juegan?</h1>
+    </div>
+    <span style="margin-left: auto; padding: 3px 6px; background: #FFFFFF; border: 2px dashed #2A1608; border-radius: 8px; font-size: 9px; font-weight: 800; letter-spacing: 0.04em; line-height: 1.2; text-align: center">PLACEHOLDER IA<br>avatares</span>
+  </header>
+
+  <div style="display: flex; flex-direction: column; gap: 10px; padding: 14px; background: #FFFFFF; border: 3px solid #2A1608; border-radius: 22px; box-shadow: 0 5px 0 #2A1608">
+    <div style="display: flex; align-items: center; gap: 10px">
+      <button type="button" aria-label="Cambiar avatar de Vale" style="position: relative; width: 56px; height: 56px; flex-shrink: 0; padding: 0; background: #FFFFFF; border: 2px solid #2A1608; border-radius: 14px; box-shadow: 0 3px 0 #2A1608">
+        <img src="/_blob/046302cbc3ebdb2c4293f12b4dc10abb" alt="" style="display: block; width: 100%; height: 100%; border-radius: 12px">
+        <span aria-hidden="true" style="position: absolute; right: -8px; bottom: -8px; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; background: #F97316; border: 2px solid #2A1608; border-radius: 999px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#2A1608" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h13l-3-3M20 15H7l3 3"></path></svg></span>
+      </button>
+      <label style="flex-grow: 1; display: flex; flex-direction: column"><span style="position: absolute; width: 1px; height: 1px; overflow: hidden">Nombre del jugador 1</span><input type="text" value="Vale" style="height: 44px; box-sizing: border-box; padding: 0 12px; border: 2px solid #FED7AA; border-radius: 14px; background: #FFF7ED; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 17px; color: #2A1608"></label>
+      <button type="button" aria-pressed="false" style="height: 44px; padding: 0 10px; border: 2px solid #2A1608; border-radius: 14px; background: #FFFFFF; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 13px; color: #2A1608">No toma</button>
+    </div>
+    <div role="group" aria-label="Género de Vale" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px">
+      <button type="button" aria-pressed="false" style="height: 44px; border: 2px solid #2A1608; border-radius: 12px; background: #FFFFFF; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 13px; color: #2A1608">Hombre</button>
+      <button type="button" aria-pressed="true" style="height: 44px; border: 2px solid #2A1608; border-radius: 12px; background: #2A1608; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 13px; color: #FFFFFF">Mujer</button>
+      <button type="button" aria-pressed="false" style="height: 44px; border: 2px solid #2A1608; border-radius: 12px; background: #FFFFFF; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 12px; line-height: 1.1; color: #2A1608">Prefiero no decir</button>
+    </div>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 10px; padding: 14px; background: #FFFFFF; border: 3px solid #2A1608; border-radius: 22px; box-shadow: 0 5px 0 #2A1608">
+    <div style="display: flex; align-items: center; gap: 10px">
+      <button type="button" aria-label="Cambiar avatar de Juanpa" style="position: relative; width: 56px; height: 56px; flex-shrink: 0; padding: 0; background: #FFFFFF; border: 2px solid #2A1608; border-radius: 14px; box-shadow: 0 3px 0 #2A1608">
+        <img src="/_blob/6011adb4d176e9217db7e0094da21157" alt="" style="display: block; width: 100%; height: 100%; border-radius: 12px">
+        <span aria-hidden="true" style="position: absolute; right: -8px; bottom: -8px; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; background: #F97316; border: 2px solid #2A1608; border-radius: 999px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#2A1608" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h13l-3-3M20 15H7l3 3"></path></svg></span>
+      </button>
+      <label style="flex-grow: 1; display: flex; flex-direction: column"><span style="position: absolute; width: 1px; height: 1px; overflow: hidden">Nombre del jugador 2</span><input type="text" value="Juanpa" style="height: 44px; box-sizing: border-box; padding: 0 12px; border: 2px solid #FED7AA; border-radius: 14px; background: #FFF7ED; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 17px; color: #2A1608"></label>
+      <button type="button" aria-pressed="true" style="height: 44px; padding: 0 10px; border: 2px solid #2A1608; border-radius: 14px; background: #2A1608; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 13px; color: #FFFFFF">No toma</button>
+    </div>
+    <div role="group" aria-label="Género de Juanpa" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px">
+      <button type="button" aria-pressed="true" style="height: 44px; border: 2px solid #2A1608; border-radius: 12px; background: #2A1608; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 13px; color: #FFFFFF">Hombre</button>
+      <button type="button" aria-pressed="false" style="height: 44px; border: 2px solid #2A1608; border-radius: 12px; background: #FFFFFF; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 13px; color: #2A1608">Mujer</button>
+      <button type="button" aria-pressed="false" style="height: 44px; border: 2px solid #2A1608; border-radius: 12px; background: #FFFFFF; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 12px; line-height: 1.1; color: #2A1608">Prefiero no decir</button>
+    </div>
+  </div>
+
+  <div style="display: flex; align-items: center; gap: 10px; padding: 10px 14px; background: #FFFFFF; border: 3px solid #2A1608; border-radius: 22px">
+    <img src="/_blob/f214760bff38eb43cba42d1f7d84aea9" alt="" style="display: block; width: 36px; height: 36px; flex-shrink: 0; box-sizing: border-box; border: 2px solid #2A1608; border-radius: 10px">
+    <span style="flex-grow: 1; font-weight: 800; font-size: 16px">Caro · Mujer</span>
+    <span style="font-weight: 800; font-size: 13px; color: #475569">+ 2 más</span>
+  </div>
+
+  <button type="button" style="height: 52px; background: transparent; border: 3px dashed #2A1608; border-radius: 18px; font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 18px; color: #2A1608">+ Agregar jugador</button>
+
+  <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px">
+    <button type="button" style="height: 56px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0; background: #FFFFFF; border: 2px solid #2A1608; border-radius: 16px; font-family: 'Nunito', sans-serif; color: #2A1608"><span style="font-size: 11px; font-weight: 800; color: #475569">FIN</span><span style="font-size: 15px; font-weight: 800">10 rondas</span></button>
+    <button type="button" style="height: 56px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0; background: #FFFFFF; border: 2px solid #2A1608; border-radius: 16px; font-family: 'Nunito', sans-serif; color: #2A1608"><span style="font-size: 11px; font-weight: 800; color: #475569">NIVELES</span><span style="font-size: 15px; font-weight: 800">Los 3</span></button>
+    <button type="button" style="height: 56px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0; background: #FFFFFF; border: 2px solid #2A1608; border-radius: 16px; font-family: 'Nunito', sans-serif; color: #2A1608"><span style="font-size: 11px; font-weight: 800; color: #475569">ORDEN</span><span style="font-size: 15px; font-weight: 800">Barajar</span></button>
+  </div>
+
+  <div style="flex-grow: 1"></div>
+  <a href="turno.dc.html" style="height: 64px; display: flex; align-items: center; justify-content: center; text-decoration: none; background: #F97316; border: 3px solid #2A1608; border-radius: 20px; box-shadow: 0 5px 0 #2A1608; font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 22px; color: #2A1608">¡A jugar! · 5 jugadores</a>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

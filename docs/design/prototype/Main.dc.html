@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Sistema visual de Prendidos</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&amp;family=Nunito:wght@600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width: 1760px; height: 1180px; box-sizing: border-box; padding: 56px; background: #FFF7ED; color: #2A1608; font-family: 'Nunito', sans-serif; display: flex; flex-direction: column; gap: 36px">
+
+  <header style="display: flex; justify-content: space-between; align-items: flex-end; gap: 32px">
+    <div style="display: flex; flex-direction: column; gap: 8px">
+      <h1 style="margin: 0; font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 64px; line-height: 1">Prendidos</h1>
+      <p style="margin: 0; font-size: 20px; font-weight: 700; color: #7C2D12">Clay caricaturesco: piezas gorditas y redondas, contorno de tinta y sombra dura. Fondo claro, cartas enormes, una mano. Mascota: Prendido, el gato.</p>
+    </div>
+    <div style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end">
+      <span style="padding: 8px 14px; border: 3px solid #2A1608; border-radius: 999px; background: #FED7AA; font-weight: 800; font-size: 14px">Estilo: Claymorphism + contorno</span>
+      <span style="padding: 8px 14px; border: 3px solid #2A1608; border-radius: 999px; background: #FFFFFF; font-weight: 800; font-size: 14px">Stack: react-native</span>
+      <span style="padding: 8px 14px; border: 3px solid #2A1608; border-radius: 999px; background: #FFFFFF; font-weight: 800; font-size: 14px">Movimiento 6/10 · Densidad 3/10</span>
+    </div>
+  </header>
+
+  <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px">
+
+    <section style="background: #FFFFFF; border: 3px solid #2A1608; border-radius: 28px; box-shadow: 0 6px 0 #2A1608; padding: 28px; display: flex; flex-direction: column; gap: 18px">
+      <h2 style="margin: 0; font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 28px">Paleta</h2>
+      <p style="margin: 0; font-size: 14px; font-weight: 700; color: #475569">Sale de la llama del gato: rojo de marca, naranja, amarillo y tinta. Niveles como escala de calor.</p>
+      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px">
+        <div style="display: flex; flex-direction: column; gap: 6px"><div style="height: 64px; border: 3px solid #2A1608; border-radius: 16px; background: #F97316"></div><strong style="font-size: 14px">Primario</strong><span style="font-size: 12px; font-weight: 700; color: #475569">#F97316 · tinta 6.2:1</span></div>
+        <div style="display: flex; flex-direction: column; gap: 6px"><div style="height: 64px; border: 3px solid #2A1608; border-radius: 16px; background: #FACC15"></div><strong style="font-size: 14px">Amarillo llama</strong><span style="font-size: 12px; font-weight: 700; color: #475569">#FACC15 · tinta 11.3:1</span></div>
+        <div style="display: flex; flex-direction: column; gap: 6px"><div style="height: 64px; border: 3px solid #2A1608; border-radius: 16px; background: #FFF7ED"></div><strong style="font-size: 14px">Fondo</strong><span style="font-size: 12px; font-weight: 700; color: #475569">#FFF7ED</span></div>
+        <div style="display: flex; flex-direction: column; gap: 6px"><div style="height: 64px; border: 3px solid #2A1608; border-radius: 16px; background: #2A1608"></div><strong style="font-size: 14px">Tinta</strong><span style="font-size: 12px; font-weight: 700; color: #475569">#2A1608 · 16:1</span></div>
+        <div style="display: flex; flex-direction: column; gap: 6px"><div style="height: 64px; border: 3px solid #2A1608; border-radius: 16px; background: #C01E1B"></div><strong style="font-size: 14px">Rojo de marca</strong><span style="font-size: 12px; font-weight: 700; color: #475569">#C01E1B · blanco 6.1:1</span></div>
+        <div style="display: flex; flex-direction: column; gap: 6px"><div style="height: 64px; border: 3px solid #2A1608; border-radius: 16px; background: #F59E0B"></div><strong style="font-size: 14px">Puntos</strong><span style="font-size: 12px; font-weight: 700; color: #475569">#F59E0B · tinta 8:1</span></div>
+      </div>
+      <h3 style="margin: 6px 0 0; font-size: 15px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em">Escala de niveles</h3>
+      <div style="display: flex; gap: 0; border: 3px solid #2A1608; border-radius: 18px; overflow: hidden">
+        <div style="flex: 1; background: #6EE7B7; padding: 14px 12px; font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 20px">Suave<br><span style="font-family: 'Nunito', sans-serif; font-size: 12px; font-weight: 800">1–10 pts</span></div>
+        <div style="flex: 1; background: #F97316; padding: 14px 12px; font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 20px; border-left: 3px solid #2A1608">Picante<br><span style="font-family: 'Nunito', sans-serif; font-size: 12px; font-weight: 800">11–20 pts</span></div>
+        <div style="flex: 1; background: #C01E1B; color: #FFFFFF; padding: 14px 12px; font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 20px; border-left: 3px solid #2A1608">Prendido<br><span style="font-family: 'Nunito', sans-serif; font-size: 12px; font-weight: 800">21–30 pts</span></div>
+      </div>
+      <p style="margin: 0; font-size: 13px; font-weight: 700; color: #475569">Claro → medio → oscuro: se distinguen por luminosidad. Rojo de marca: superficies de marca, contenido pago y nivel Prendido, siempre con texto blanco (tinta da 2.8:1); nunca relleno de botón. Pareja usa rosado #EC4899; superficies suaves, #FED7AA.</p>
+    </section>
+
+    <section style="background: #FFFFFF; border: 3px solid #2A1608; border-radius: 28px; box-shadow: 0 6px 0 #2A1608; padding: 28px; display: flex; flex-direction: column; gap: 16px">
+      <h2 style="margin: 0; font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 28px">Tipografía</h2>
+      <p style="margin: 0; font-size: 14px; font-weight: 700; color: #475569">Pareja “Playful Creative” de la skill: Fredoka para títulos y cartas, Nunito para todo lo demás.</p>
+      <div style="display: flex; flex-direction: column; gap: 4px; padding: 14px 0; border-bottom: 2px dashed #FED7AA">
+        <span style="font-size: 12px; font-weight: 800; color: #475569">FREDOKA 700 · 44</span>
+        <span style="font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 44px; line-height: 1.05">¡Le toca a Vale!</span>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 4px; padding-bottom: 14px; border-bottom: 2px dashed #FED7AA">
+        <span style="font-size: 12px; font-weight: 800; color: #475569">FREDOKA 600 · 28 — texto de carta</span>
+        <span style="font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 28px; line-height: 1.2">Imita a {jugador} pidiendo un domicilio a las 3 a. m.</span>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 4px; padding-bottom: 14px; border-bottom: 2px dashed #FED7AA">
+        <span style="font-size: 12px; font-weight: 800; color: #475569">NUNITO 700 · 17 — cuerpo</span>
+        <span style="font-size: 17px; font-weight: 700; line-height: 1.45">Si no cumples, pierdes la mitad de los puntos y te toca el castigo.</span>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 4px">
+        <span style="font-size: 12px; font-weight: 800; color: #475569">NUNITO 800 · 13 — etiquetas</span>
+        <span style="font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em">Ronda 4 de 10 · Picante</span>
+      </div>
+    </section>
+
+    <section style="background: #FFFFFF; border: 3px solid #2A1608; border-radius: 28px; box-shadow: 0 6px 0 #2A1608; padding: 28px; display: flex; flex-direction: column; gap: 16px">
+      <h2 style="margin: 0; font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 28px">Componentes</h2>
+      <p style="margin: 0; font-size: 14px; font-weight: 700; color: #475569">Borde 3 px, radio 20–28 px, sombra dura 0 5 px tinta. Al presionar, la pieza “baja” 4 px. El contorno es tinta #2A1608, también en el gato: nunca negro puro.</p>
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+        <button type="button" style="height: 64px; background: #6EE7B7; border: 3px solid #2A1608; border-radius: 20px; box-shadow: 0 5px 0 #2A1608; font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 22px; color: #2A1608">Cumplió</button>
+        <button type="button" style="height: 64px; background: #FFFFFF; border: 3px solid #2A1608; border-radius: 20px; box-shadow: 0 5px 0 #2A1608; font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 22px; color: #2A1608">No cumplió</button>
+        <button type="button" style="height: 64px; background: #F97316; border: 3px solid #2A1608; border-radius: 20px; box-shadow: 0 5px 0 #2A1608; font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 22px; color: #2A1608">¡A jugar!</button>
+        <button type="button" style="height: 64px; background: #2A1608; border: 3px solid #2A1608; border-radius: 20px; box-shadow: 0 1px 0 #2A1608; transform: translateY(4px); font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 22px; color: #FFFFFF">Presionado</button>
+      </div>
+      <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center">
+        <span style="padding: 6px 12px; border: 3px solid #2A1608; border-radius: 999px; background: #6EE7B7; font-weight: 800; font-size: 13px">SUAVE</span>
+        <span style="padding: 6px 12px; border: 3px solid #2A1608; border-radius: 999px; background: #F97316; font-weight: 800; font-size: 13px">PICANTE</span>
+        <span style="padding: 6px 12px; border: 3px solid #2A1608; border-radius: 999px; background: #C01E1B; color: #FFFFFF; font-weight: 800; font-size: 13px">PRENDIDO</span>
+        <span style="padding: 6px 12px; border: 3px solid #2A1608; border-radius: 999px; background: #F59E0B; font-weight: 800; font-size: 13px">+15 PTS</span>
+      </div>
+      <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 14px; border: 3px solid #2A1608; border-radius: 18px; background: #FFF7ED">
+        <span style="font-weight: 800; font-size: 16px">No toma</span>
+        <span style="width: 56px; height: 32px; border: 3px solid #2A1608; border-radius: 999px; background: #2A1608; display: flex; align-items: center; justify-content: flex-end; padding: 2px; box-sizing: border-box"><span style="width: 22px; height: 22px; border-radius: 999px; background: #FFFFFF; border: 2px solid #2A1608"></span></span>
+      </div>
+    </section>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px">
+
+    <section style="background: #FFFFFF; border: 3px solid #2A1608; border-radius: 28px; box-shadow: 0 6px 0 #2A1608; padding: 28px; display: flex; flex-direction: column; gap: 12px">
+      <h2 style="margin: 0; font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 28px">Movimiento</h2>
+      <ul style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; font-size: 15px; font-weight: 700; line-height: 1.4">
+        <li>Carta nueva: entra con rebote (skill: back.out 1.4 → resorte de Reanimated), 300–450 ms.</li>
+        <li>Botones: bajan 4 px en 120 ms + vibración ligera.</li>
+        <li>Máximo 1–2 elementos animados por pantalla.</li>
+        <li>Con “reducir movimiento”: solo fundidos.</li>
+      </ul>
+    </section>
+
+    <section style="background: #FFFFFF; border: 3px solid #2A1608; border-radius: 28px; box-shadow: 0 6px 0 #2A1608; padding: 28px; display: flex; flex-direction: column; gap: 12px">
+      <h2 style="margin: 0; font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 28px">Reglas de interacción</h2>
+      <ul style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; font-size: 15px; font-weight: 700; line-height: 1.4">
+        <li><strong>Fitts:</strong> Cumplió / No cumplió abajo, a la altura del pulgar, 64 px de alto.</li>
+        <li><strong>Hick:</strong> 2 decisiones por turno; “Cambiar carta” va aparte y más pequeño.</li>
+        <li><strong>Peak-end:</strong> los picos son subir de nivel y el podio final.</li>
+        <li><strong>Un toque por turno:</strong> la carta trae el nombre; no hay pantalla de “pásale el cel”.</li>
+      </ul>
+    </section>
+
+    <section style="background: #FFFFFF; border: 3px solid #2A1608; border-radius: 28px; box-shadow: 0 6px 0 #2A1608; padding: 28px; display: flex; flex-direction: column; gap: 14px">
+      <h2 style="margin: 0; font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 28px">Turno: máquina de estados</h2>
+      <div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 14px; font-weight: 800">
+        <span style="padding: 6px 10px; border: 3px solid #2A1608; border-radius: 12px; background: #FED7AA">Repartir</span>
+        <span aria-hidden="true">→</span>
+        <span style="padding: 6px 10px; border: 3px solid #2A1608; border-radius: 12px; background: #FFFFFF">Carta</span>
+        <span aria-hidden="true">→</span>
+        <span style="padding: 6px 10px; border: 3px solid #2A1608; border-radius: 12px; background: #6EE7B7">Cumplió +pts</span>
+        <span style="font-weight: 700">o</span>
+        <span style="padding: 6px 10px; border: 3px solid #2A1608; border-radius: 12px; background: #FFFFFF">Castigo −½</span>
+        <span aria-hidden="true">→</span>
+        <span style="padding: 6px 10px; border: 3px solid #2A1608; border-radius: 12px; background: #FED7AA">¿Fin?</span>
+      </div>
+      <p style="margin: 0; font-size: 14px; font-weight: 700; color: #475569; line-height: 1.45">Cambiar carta vuelve a Repartir (si quedan cambios). Entre turnos pueden entrar un interludio grupal o una subida de nivel. ¿Fin? → Ranking.</p>
+    </section>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1760,"height":1180}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>
