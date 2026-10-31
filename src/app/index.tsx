@@ -1,16 +1,6 @@
-import { router } from 'expo-router';
+import { HomeScreen } from '@/features/home/home-screen';
 
-import { PlaceholderScreen } from '@/components/ui/placeholder-screen';
-import { routes } from '@/features/navigation/routes';
-
-/** Placeholder until HU-02. */
-export default function HomeScreen() {
-  return (
-    <PlaceholderScreen
-      title="Inicio"
-      story="HU-02"
-      nextLabel="Nueva partida"
-      onNext={() => router.push(routes.newGame.mode)}
-    />
-  );
+/** Inicio (HU-02): the hub every flow returns to. */
+export default function HomeRoute() {
+  return <HomeScreen />;
 }
