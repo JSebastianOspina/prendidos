@@ -1,0 +1,140 @@
+import type { Player } from '@/features/game';
+
+import {
+  createEmptyPlayer,
+  endConditionOptions,
+  hasMissingName,
+  isSameEndCondition,
+  preparePlayersForMode,
+  shufflePlayers,
+  toggleDifficulty,
+  trimPlayerNames,
+} from '../setup-rules';
+
+const ana: Player = { id: 'p1', name: 'Ana', gender: 'female', drinks: true };
+const beto: Player = { id: 'p2', name: 'Beto', gender: 'male', drinks: true };
+const cami: Player = { id: 'p3', name: 'Cami', gender: 'undisclosed', drinks: false };
+
+function sequentialIds(): () => string {
+  let next = 0;
+  return () => `new-${++next}`;
+}
+
+describe('createEmptyPlayer', () => {
+  it('creates a nameless, undisclosed player who drinks', () => {
+    expect(createEmptyPlayer(() => 'x')).toEqual({
+      id: 'x',
+      name: '',
+      gender: 'undisclosed',
+      drinks: true,
+    });
+  });
+});
+
+describe('preparePlayersForMode', () => {
+  it('pads a first use with two empty rows', () => {
+    const players = preparePlayersForMode([], 'friends', sequentialIds());
+    expect(players.map((player) => player.id)).toEqual(['new-1', 'new-2']);
+    expect(players.every((player) => player.name === '')).toBe(true);
+  });
+
+  it('pads a single remembered player up to two', () => {
+    const players = preparePlayersForMode([ana], 'friends', sequentialIds());
+    expect(players.map((player) => player.id)).toEqual(['p1', 'new-1']);
+  });
+
+  it('keeps the same list when nothing changes', () => {
+    const players = [ana, beto, cami];
+    expect(preparePlayersForMode(players, 'friends', sequentialIds())).toBe(players);
+  });
+
+  it('keeps only the first two players in couple mode', () => {
+    expect(preparePlayersForMode([ana, beto, cami], 'couple', sequentialIds())).toEqual([
+      ana,
+      beto,
+    ]);
+  });
+
+  it('keeps only the first twelve players in friends mode', () => {
+    const many = Array.from({ length: 14 }, (_, index) => ({ ...ana, id: `p${index}` }));
+    expect(preparePlayersForMode(many, 'friends', sequentialIds())).toHaveLength(12);
+  });
+});
+
+describe('shufflePlayers', () => {
+  it('reorders the players with the injected randomness', () => {
+    // random 0 always swaps with the first element: [a,b,c] -> [b,c,a]
+    expect(shufflePlayers([ana, beto, cami], () => 0)).toEqual([beto, cami, ana]);
+  });
+
+  it('always shows a different order when there are at least two players', () => {
+    // random near 1 keeps every element in place, so the result is rotated by one.
+    expect(shufflePlayers([ana, beto, cami], () => 0.999)).toEqual([beto, cami, ana]);
+    expect(shufflePlayers([ana, beto], () => 0.999)).toEqual([beto, ana]);
+  });
+
+  it('does not change the input array', () => {
+    const players = [ana, beto];
+    shufflePlayers(players, () => 0);
+    expect(players).toEqual([ana, beto]);
+  });
+
+  it('returns a single player as is', () => {
+    expect(shufflePlayers([ana], () => 0)).toEqual([ana]);
+  });
+});
+
+describe('toggleDifficulty', () => {
+  it('deselects a selected level', () => {
+    expect(toggleDifficulty(['easy', 'medium', 'hard'], 'medium')).toEqual(['easy', 'hard']);
+  });
+
+  it('selects a level and keeps the canonical order', () => {
+    expect(toggleDifficulty(['hard'], 'easy')).toEqual(['easy', 'hard']);
+  });
+
+  it('never deselects the last level', () => {
+    expect(toggleDifficulty(['hard'], 'hard')).toEqual(['hard']);
+  });
+});
+
+describe('player names', () => {
+  it('flags blank and whitespace-only names as missing', () => {
+    expect(hasMissingName({ ...ana, name: '' })).toBe(true);
+    expect(hasMissingName({ ...ana, name: '   ' })).toBe(true);
+    expect(hasMissingName(ana)).toBe(false);
+  });
+
+  it('trims every name', () => {
+    expect(trimPlayerNames([{ ...ana, name: '  Ana ' }, beto])).toEqual([ana, beto]);
+  });
+});
+
+describe('end conditions', () => {
+  it('offers rounds 5/10/15/20, points 100/200/300, and open', () => {
+    expect(endConditionOptions).toEqual([
+      { type: 'rounds', rounds: 5 },
+      { type: 'rounds', rounds: 10 },
+      { type: 'rounds', rounds: 15 },
+      { type: 'rounds', rounds: 20 },
+      { type: 'points', target: 100 },
+      { type: 'points', target: 200 },
+      { type: 'points', target: 300 },
+      { type: 'open' },
+    ]);
+  });
+
+  it('compares end conditions by value', () => {
+    expect(isSameEndCondition({ type: 'rounds', rounds: 10 }, { type: 'rounds', rounds: 10 })).toBe(
+      true,
+    );
+    expect(isSameEndCondition({ type: 'rounds', rounds: 10 }, { type: 'rounds', rounds: 5 })).toBe(
+      false,
+    );
+    expect(isSameEndCondition({ type: 'points', target: 100 }, { type: 'points', target: 100 })).toBe(
+      true,
+    );
+    expect(isSameEndCondition({ type: 'open' }, { type: 'open' })).toBe(true);
+    expect(isSameEndCondition({ type: 'open' }, { type: 'rounds', rounds: 10 })).toBe(false);
+  });
+});
