@@ -1,7 +1,7 @@
 # device-state Specification
 
 ## Purpose
-TBD - created by archiving change hu-00-game-foundation. Update Purpose after archive.
+What the phone remembers between launches, offline, and how a malformed saved game is handled.
 
 ## Requirements
 
