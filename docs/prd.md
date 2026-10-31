@@ -255,7 +255,7 @@ Todo funciona **sin conexión**, excepto comprar y restaurar compras.
 - Sin contenido que humille o discrimine por género, orientación, origen o apariencia.
 - El reto en sí se puede cumplir sin tomar: el trago solo aparece como castigo.
 - **Consentimiento:** las cartas con contacto físico muestran "Solo si la otra persona acepta". Si dice que no, el jugador escoge a otra persona y quien se negó nunca recibe castigo.
-- Solo involucra a personas presentes: nada de leer, enviar ni publicar chats o fotos de terceros.
+- **Terceros:** se vale llamar, mandar notas de voz o mensajes y publicar en redes desde la cuenta propia (al ex, al crush, a los papás, al grupo de la familia), porque el chiste es contra el jugador. No se vale exponer a terceros (leer sus chats, publicar sus fotos o secretos), mandarles contenido sexual o insultos, inventar emergencias, pedir plata, contactar a quien bloqueó al jugador ni a contactos de trabajo. Las publicaciones tienen límite de tiempo y solo incluyen a presentes que acepten.
 - Reglas detalladas y ejemplos para escribir cartas: `docs/content/README.md` y la skill `write-cards`.
 
 ### 6.4 Capa Sin Filtro

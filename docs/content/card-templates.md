@@ -68,6 +68,7 @@ type Card = {
   illustration?: IllustrationKey;  // NEW — optional key into the illustration library
   heat: 'standard' | 'spicy';      // NEW — spicy cards only appear with the opt-in "Sin Filtro" toggle
   requiresConsent: boolean;        // NEW — the app shows "Solo si la otra persona acepta" on the card
+  reachesOutside: boolean;         // NEW — calls, messages, or posts; the app shows the outside-contact rules
   targetGender?: PlayerGender;
   sourceLegacyId?: string;         // NEW — traceability to legacy/legacy-challenges.json
 };
@@ -88,6 +89,7 @@ type IllustrationKey = 'mascot-monocle' | 'mascot-crying' | 'shot-glass-on-fire'
 | `sourceLegacyId`              | Tracks which legacy card a rewrite came from                                                 |
 | `heat`                        | Gates the Sin Filtro layer: opt-in, paid, Amigos only (PRD §6.4). Replaces the `sin-filtro` category, so `Category`, `Product`, and `GameSettings` (a `spicyEnabled` flag remembered in `DeviceState`) change too |
 | `requiresConsent`             | One consistent consent rule rendered by the app, instead of a sentence repeated in every body |
+| `reachesOutside`              | Same idea for calls, messages, and posts: the app shows "never someone who blocked you; no signal, no social media, or no answer counts as done". Also lets a future setting filter these cards out |
 
 Group cards (`everyoneWho`, `neverHaveIEver`) keep a fixed headline from their type ("¡Todos!", "Yo nunca…"), so `headline` stays optional for them.
 

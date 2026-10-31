@@ -13,10 +13,13 @@ A Prendidos card is a **dare with social risk**, said by a Colombian friend, tha
 
 ## Before Writing
 
-Read both references in this folder, every time:
+Read the references in this folder, every time:
 
-- `references/policy.md` — hard rules, heat tiers (`standard` / `spicy`), consent pattern, drinking rules
+- `references/policy.md` — hard rules, heat tiers (`standard` / `spicy`), consent, drinking, people outside the room
 - `references/voice.md` — hook formulas, vocatives, slang, gender handling
+- `references/mechanics.md` — dare families (calls, social media, closeness, confessions…) and twists. Seeds are shapes to remix, never copy
+
+When writing new cards, spread a batch across families: no family gets more than a third of it, and at least one card should be a mechanic or twist combination that isn't in `mechanics.md`.
 
 Inputs you need (ask if missing): category, difficulty, card type, heat tier, count — or the `legacyId`s to rewrite from `docs/content/legacy/legacy-challenges.json`.
 
@@ -36,7 +39,7 @@ Inputs you need (ask if missing): category, difficulty, card type, heat tier, co
 | Penalty is structured: `drinks` 1–3 + optional quip | Drink count or "tómese N" written in `body` or `quip`        |
 | `requiresConsent: true` when touching someone      | Consent boilerplate in `body`; penalizing whoever says no    |
 | Gender-safe: invariable words or `{m\|f\|n}` variants | "tímido", "solito", "ella", "mi perro" aimed at the player  |
-| Only people in the room                            | Reading, sending, or posting other people's chats or photos  |
+| Calls and posts where the joke is on the player    | Exposing, scaring, or sexting the person outside; fake emergencies |
 | Concrete: time, judge, or clear fail condition     | "Haga algo chistoso"                                         |
 
 ## Output
@@ -55,12 +58,15 @@ Return a JSON array. One object per card:
   "points": 16,
   "penalty": { "drinks": 2, "quip": "por aguafiestas" },
   "requiresConsent": false,
+  "reachesOutside": false,
   "targetGender": null,
   "illustrationIdea": "mascot with diva lips and sunglasses",
   "rationale": "Kernel: total surrender to the group. Removed slur 'la más perra' and the insult quip; kept the persistent-rule mechanic.",
   "selfCheck": { "policy": "pass", "doableSober": true, "genderSafe": true, "levelHeld": true, "fun": 4 }
 }
 ```
+
+New cards use `"sourceLegacyId": null`. Emoji are fine in `body` only when they are part of the dare ("mándele solo 🔥").
 
 `points` must fall in the level range: `easy` 1–10, `medium` 11–20, `hard` 21–30. `fun` is 1–5: would the group react out loud? Below 4, rewrite before returning.
 

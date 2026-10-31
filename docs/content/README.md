@@ -67,7 +67,7 @@ The rules a rewrite must fix, in order of how often they appear:
 | Consent                         | kissing someone "if she doesn't want, you both drink", grabbing someone  | PRD §6.3; contact needs both players' yes |
 | Unbounded drinking              | "por cada reacción tomas un trago durante todo el resto del juego" (`4A546080`) | PRD §5.8 (max 3 drinks), App Store 1.4.3 |
 | Penalty mixed into the copy     | "si se niega se toma 2…" inside the text                                 | Breaks the "No toma" alternative penalty |
-| People outside the game         | texting an ex, posting for 10 minutes, calling someone, handing over an unlocked phone | Privacy and harassment risk; rewrite with care |
+| Exposing people outside the game | handing over an unlocked phone, a phone photo of someone else | Calls, messages, and posts are welcome (PRD §6.3); exposing or hurting the person outside is not |
 | Gender-targeted wording         | "los hombres…", "a una mujer…", "del otro sexo"                          | Use `targetGender` and gender variants   |
 
 ### The copy game
@@ -117,5 +117,5 @@ A card is shippable when all of these hold:
 - [ ] Any physical contact needs both players' agreement; if the other person declines, nobody is penalized
 - [ ] No insult, humiliation, or stereotype based on gender, orientation, origin, or appearance
 - [ ] Works for every gender: variants or neutral wording; `targetGender` set when the card depends on it
-- [ ] Involves only people in the room, or the player chooses what to share outside it
+- [ ] Calls, messages, and posts put the joke on the player: no exposing, scaring, or sexting the person outside, no fake emergencies, a fallback if nobody answers
 - [ ] Sounds like a Colombian friend, not a translation — and is still fun

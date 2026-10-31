@@ -12,7 +12,7 @@ Sources: `docs/prd.md` §5.8, §6.3, §8; App Store Review Guidelines 1.1.4 (no 
 | No bodily-fluid contact                     | passing a drink or ice mouth to mouth, licking someone                      |
 | No sexual images                            | showing porn, nudes, or "fotos picantes"                                    |
 | No insults or stereotypes                   | puss\*, loca, puto, marica as an insult, "masculinidad frágil", "gilipollas" / "pelotudo" as the price of a bad accent. Imitating an accent is fine; mocking the people is not |
-| No people outside the room                  | reading someone's chats aloud, posting another person's photo, sexual or insulting messages to anyone |
+| No exposing or hurting people outside the room | reading someone's chats aloud, screenshots of their messages, posting their photo, telling their secrets, sexual or insulting messages (see "Outside the Room" for what is allowed) |
 | No drinking beyond the penalty              | sips as part of the dare, tastings, "un trago por cada reacción", fondo blanco |
 | No illegal drugs, danger, or law-breaking   | driving, heights, fire, stealing                                            |
 
@@ -40,6 +40,24 @@ Any dare that involves touching or being very close to another player sets `requ
 - The person who says no is never penalized, and nothing pressures them ("si no quiere, se toman los dos" fails).
 - Fixed targets ("la persona de su derecha") fall back to anyone else who accepts. If nobody accepts, the dare counts as completed.
 - It applies both ways: when the player touches someone, and when someone touches the player.
+- Any touch counts, even a thumb war or a hand massage. Eye contact or sitting near someone without touching does not need it.
+
+## Outside the Room
+
+Calls, voice notes, messages, and social media posts are encouraged: they add embarrassment and variety without touching sexual themes. **The joke is always on the player, never on the person outside.**
+
+| Allowed                                                                                  | Never                                                                                       |
+| ---------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| Calling or messaging the ex, the crush, the *culito* / *pétalo*, parents, grandparents, friends, the family group | Contacting someone who blocked the player or asked for no contact — pick someone else     |
+| Speakerphone, so the group hears the answer                                              | Sexual content, insults, or pressure aimed at the recipient                                 |
+| Harmless lies the player reveals before hanging up ("me voy a vivir a Cartagena")         | Fake emergencies or alarming news (accidents, pregnancy, arrests, money problems), asking for money |
+| Posts from the player's own account: stories, statuses, profile photo, bio, a like, a comment | Posting someone absent, or someone present who didn't accept (`requiresConsent: true`)     |
+| A time limit before deleting ("no lo borre en 15 minutos") or a temporary change ("1 hora") | Posts that must stay up for good, or anything that can cost a job (bosses, clients, work groups) |
+| Letting the group choose the recipient or the text                                       | Minors as recipients                                                                        |
+
+- Set `reachesOutside: true` on these cards. The app then shows the shared rules on the card ("Nunca a quien te bloqueó · sin señal, sin redes o sin respuesta: cuenta como cumplido"), so **don't repeat them in `body`**. Add a specific fallback in `body` only when it is part of the joke ("si no contesta, va en nota de voz").
+- Reading aloud the reply to what the player just sent in this dare is fine. Older chats, other people's messages, and naming who reacted to a post are not (say how many reacted instead).
+- Outside-the-room dares fit any level. Who is on the other end sets the heat: parents, friends, and family are `standard`; ex, crush, and *culito* with flirting are `spicy`.
 
 ## Heat Tiers
 
@@ -47,8 +65,8 @@ Any dare that involves touching or being very close to another player sets `requ
 
 | Tier       | Allowed                                                                                          |
 | ---------- | ------------------------------------------------------------------------------------------------ |
-| `standard` | Flirting by words and looks, compliments, light contact with consent (hug, holding hands, cheek kiss), confessions about crushes and dates, embarrassing phone moments the player controls, performance and absurd comedy, putting on or swapping jackets, caps, glasses, and accessories (nothing comes off the body) |
-| `spicy`    | Everything in `standard`, plus: kisses with mutual consent, sensual dancing without touching intimate areas, sitting on a lap or massage of neck/shoulders/hands with consent, removing shoes/socks/jacket/accessories, sexual confessions without graphic detail ("¿con quién?", "¿dónde fue lo más loco?"), innuendo and double meaning |
+| `standard` | Flirting by words and looks, compliments, light contact with consent (hug, holding hands, cheek kiss), confessions about crushes and dates, embarrassing phone moments the player controls, performance and absurd comedy, putting on or swapping jackets, caps, glasses, and accessories (nothing comes off the body), sitting close, staring contests, and hugs with consent, calls and posts involving parents, friends, or family |
+| `spicy`    | Everything in `standard`, plus: kisses with mutual consent, sensual dancing without touching intimate areas, sitting on a lap or massage of neck/shoulders/hands with consent, removing shoes/socks/jacket/accessories, sexual confessions without graphic detail ("¿con quién?", "¿dónde fue lo más loco?"), innuendo and double meaning, flirty calls or messages to the ex, crush, or *culito*, posts that suggest a romance with someone present |
 
 ## Levels
 
