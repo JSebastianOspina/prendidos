@@ -36,8 +36,13 @@ function isHigherLevel(next: Difficulty, previous: Difficulty): boolean {
 function ActionLabel({ title, points }: { title: string; points: string }) {
   return (
     <>
-      <AppText variant="button">{title}</AppText>
-      <AppText style={styles.strong}>{points}</AppText>
+      {/* One line each, so the points line never overflows the 72 pt button (375 pt phones). */}
+      <AppText variant="button" numberOfLines={1} adjustsFontSizeToFit>
+        {title}
+      </AppText>
+      <AppText style={styles.strong} numberOfLines={1}>
+        {points}
+      </AppText>
     </>
   );
 }
@@ -262,11 +267,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     gap: Spacing.md,
   },
+  // Equal widths: at 2:3 "No cumplió" wrapped on 375 pt phones (web ignores adjustsFontSizeToFit).
   refuseAction: {
-    flex: 2,
+    flex: 1,
   },
   completeAction: {
-    flex: 3,
+    flex: 1,
   },
   continueFace: {
     flexDirection: 'row',

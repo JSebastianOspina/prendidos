@@ -28,6 +28,10 @@ See proposal.md (Why). The screen reads the game only through `useGame()` and ma
 - [Rotation could hurt readability] → 1.5° only, text stays horizontal enough; card scrolls when long.
 - [Long names or cards at 375 × 667] → name shrinks to fit on one line; the card area scrolls; actions stay fixed.
 
+## Follow-up (visual review, PR #24)
+
+At 375 × 667 "No cumplió" wrapped to two lines in the 2:3 action row and pushed its points line out of the 72 pt button. The two actions now share the width 1:1 and each label line is limited to one line (`numberOfLines={1}`, plus `adjustsFontSizeToFit` on native). No behavior change.
+
 ## Migration Plan
 
 UI only. Rollback is reverting the commit.

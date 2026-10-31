@@ -158,6 +158,12 @@ describe('PlayScreen', () => {
     expect(replace).not.toHaveBeenCalled();
   });
 
+  it('keeps each turn action title on one line on narrow phones', async () => {
+    await renderPlay();
+    expect(screen.getByText(playCopy.refused).props.numberOfLines).toBe(1);
+    expect(screen.getByText(playCopy.completed).props.numberOfLines).toBe(1);
+  });
+
   it('shows the level progress of the game in the top bar', async () => {
     await renderPlay();
     expect(screen.getByLabelText('Nivel actual: Suave')).toBeTruthy();
