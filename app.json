@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Prendidos",
-    "slug": "Prendidos",
+    "slug": "prendidos",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -37,6 +37,17 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
-    }
+    },
+    "extra": {
+      "router": {
+        "asyncRoutes": {
+          "web": true
+        }
+      },
+      "eas": {
+        "projectId": "4fca25a5-5298-49bf-8262-a5812706b7a3"
+      }
+    },
+    "owner": "prendidos"
   }
 }
