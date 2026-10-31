@@ -1218,6 +1218,287 @@
       "requiresConsent": false,
       "reachesOutside": false,
       "headline": "Todos los que…"
+    },
+    {
+      "id": "prev-084",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "easy",
+      "headline": "Rap de presentación",
+      "body": "Preséntese en un rap de 20 segundos: su nombre, de dónde es y una manía suya. El grupo pone el ritmo con palmas.",
+      "points": 6,
+      "penalty": {
+        "drinks": 1,
+        "quip": "por falta de flow"
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-085",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "easy",
+      "headline": "Restaurante cinco estrellas",
+      "body": "Tome el pedido de cada persona del grupo con modales de restaurante elegante y repítaselo completo al final, sin anotar. Si se equivoca en uno, no cumplió.",
+      "points": 5,
+      "penalty": {
+        "drinks": 1,
+        "quip": "por mesa equivocada"
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-086",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "easy",
+      "headline": "Estatua viviente",
+      "body": "Quédese inmóvil como una estatua hasta que le vuelva a tocar. El grupo puede hacerle caras y chistes, pero sin tocarle.",
+      "points": 6,
+      "penalty": {
+        "drinks": 1,
+        "quip": "por moverse"
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-087",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "easy",
+      "headline": "Tres emojis",
+      "body": "Cuente su semana usando solo los tres emojis que más usa en su teclado. Muéstrelos y explique cada uno.",
+      "points": 4,
+      "penalty": {
+        "drinks": 1
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-088",
+      "categoryId": "la-previa",
+      "type": "truth",
+      "difficulty": "easy",
+      "headline": "Talento inútil",
+      "body": "¿Cuál es su talento más inútil? Demuéstrelo ahora mismo si se puede.",
+      "points": 3,
+      "penalty": {
+        "drinks": 1
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-089",
+      "categoryId": "la-previa",
+      "type": "truth",
+      "difficulty": "easy",
+      "headline": "Mentirita time",
+      "body": "¿Cuál es la mentira pequeña que más repite en una semana normal? Dé un ejemplo real.",
+      "points": 4,
+      "penalty": {
+        "drinks": 1
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-090",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "medium",
+      "headline": "Reseña de una estrella",
+      "body": "Haga una reseña del lugar donde están, de pie y con tono de jurado de MasterChef: puntaje, un defecto y un elogio. Treinta segundos sin reírse.",
+      "points": 12,
+      "penalty": {
+        "drinks": 1,
+        "quip": "por reírse"
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-091",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "medium",
+      "headline": "Encuesta nocturna",
+      "body": "Llame a alguien del parche en altavoz y hágale tres preguntas absurdas con tono de encuestador serio. Antes de colgar, cuéntele que era un juego.",
+      "points": 17,
+      "penalty": {
+        "drinks": 2,
+        "quip": "por reírse primero"
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": true
+    },
+    {
+      "id": "prev-092",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "medium",
+      "headline": "Espalda con espalda",
+      "body": "Baile espalda con espalda con quien escoja durante 30 segundos, con la canción que ponga el grupo. Sin voltear a mirarse.",
+      "points": 15,
+      "penalty": {
+        "drinks": 1,
+        "quip": "por mal ritmo"
+      },
+      "heat": "standard",
+      "requiresConsent": true,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-093",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "medium",
+      "headline": "Gracias por tanto",
+      "body": "Suba un estado agradeciéndole en serio a un objeto que tenga cerca, sin más contexto. No lo borre en 15 minutos.",
+      "points": 14,
+      "penalty": {
+        "drinks": 1,
+        "quip": "por arrugarse"
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": true
+    },
+    {
+      "id": "prev-094",
+      "categoryId": "la-previa",
+      "type": "truth",
+      "difficulty": "medium",
+      "headline": "Primera impresión",
+      "body": "¿Qué pensó la primera vez que vio a cada persona de este grupo? Una frase por persona, con honestidad y sin ofender.",
+      "points": 15,
+      "penalty": {
+        "drinks": 1
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-095",
+      "categoryId": "la-previa",
+      "type": "truth",
+      "difficulty": "medium",
+      "headline": "Radio pasillo",
+      "body": "¿Cuál es el chisme sobre usted que más le sorprendió oír? Cuente de qué se trataba y si tenía algo de cierto.",
+      "points": 13,
+      "penalty": {
+        "drinks": 1
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-096",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "hard",
+      "headline": "Stand-up de la vergüenza",
+      "body": "Rutina de stand-up de 60 segundos sobre sus propios defectos, de pie. Si nadie del grupo se ríe en todo el minuto, no cumplió.",
+      "points": 26,
+      "penalty": {
+        "drinks": 3,
+        "quip": "por chiste malo"
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-097",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "hard",
+      "headline": "Anécdota familiar",
+      "body": "Llame a alguien de su familia en altavoz y pídale que cuente la anécdota más vergonzosa que tenga de usted. Escuche hasta el final sin interrumpir.",
+      "points": 25,
+      "penalty": {
+        "drinks": 3,
+        "quip": "por pena ajena"
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": true
+    },
+    {
+      "id": "prev-098",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "hard",
+      "headline": "Pasarela de la fama",
+      "body": "Desfile de 30 segundos por el centro del grupo como en la Semana de la Moda, con pose final. El grupo narra y puntúa en voz alta de 1 a 10.",
+      "points": 22,
+      "penalty": {
+        "drinks": 2,
+        "quip": "por modelo pailas"
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-099",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "hard",
+      "headline": "Discurso de boda",
+      "body": "Dé un discurso de boda de un minuto, de pie, para las dos personas que escoja el grupo. Debe incluir una anécdota y un deseo.",
+      "points": 23,
+      "penalty": {
+        "drinks": 2,
+        "quip": "por discurso flojo"
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-100",
+      "categoryId": "la-previa",
+      "type": "truth",
+      "difficulty": "hard",
+      "headline": "Red flag propia",
+      "body": "¿Cuál es su mayor red flag en una relación? Dígala mirando al grupo y que el grupo vote si es verdad.",
+      "points": 24,
+      "penalty": {
+        "drinks": 2
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-101",
+      "categoryId": "la-previa",
+      "type": "truth",
+      "difficulty": "hard",
+      "headline": "Sin mentiras, pana",
+      "body": "¿Cuál es la mentira más grande que le ha dicho a alguien de este grupo? Cuéntela completa y diga si esa persona ya lo sabe.",
+      "points": 27,
+      "penalty": {
+        "drinks": 3
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
     }
   ]
 }

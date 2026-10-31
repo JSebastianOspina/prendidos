@@ -3,7 +3,12 @@ import type { Card, Category } from '@/features/content/card-types';
 import type { GameSettings, Player } from '../../game-types';
 
 export const testCategories: Category[] = [
-  { id: 'la-previa', name: 'La Previa', mode: 'friends', freeDifficulties: ['easy', 'medium', 'hard'] },
+  {
+    id: 'la-previa',
+    name: 'La Previa',
+    mode: 'friends',
+    freeDifficulties: ['easy', 'medium', 'hard'],
+  },
   { id: 'entre-dos', name: 'Entre Dos', mode: 'couple', freeDifficulties: ['easy'] },
 ];
 

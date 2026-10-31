@@ -104,7 +104,7 @@ Status after enrichment: **Ready for proposal** (OpenSpec change `hu-00-game-fou
 | React bindings | `src/features/game/game-provider.tsx`, `src/features/game/new-game-draft.tsx`, `src/features/game/index.ts` | `GameProvider` / `useGame()`, `NewGameDraftProvider` / `useNewGameDraft()`; barrel exports types and hooks only |
 | Device state | `src/features/device/device-state.ts`, `device-storage.ts`, `device-state-provider.tsx` | `DeviceState`, versioned key `device.v1`, tolerant parse, `expo-sqlite/kv-store` adapter (sync API), `DeviceStateProvider` / `useDeviceState()` |
 | Content runtime | `src/features/content/catalog.ts`, `src/features/content/catalog/*.json` | `loadCatalog()` (validated with `validateCards` / `hasErrors`, throws on errors), `categoriesForMode(mode)`, `contentWarnings()` |
-| Navigation | `src/app/_layout.tsx`, `src/features/navigation/routes.ts`, `src/features/navigation/use-entry-redirect.ts` | Stack; 18+ redirect when `ageConfirmedAt` is missing; typed `routes` |
+| Navigation | `src/app/_layout.tsx`, `src/features/navigation/routes.ts` | Stack with `Stack.Protected`: every route but the 18+ gate needs `ageConfirmedAt`; typed `routes` |
 | Placeholders | `src/app/age-gate.tsx`, `index.tsx`, `new-game/mode.tsx`, `new-game/category.tsx`, `new-game/setup.tsx`, `play.tsx`, `results.tsx` | Each renders `PlaceholderScreen` with its name and a "Siguiente" button to the next route |
 | Shared UI | `src/components/ui/button.tsx`, `screen-container.tsx`, `card-frame.tsx`, `level-badge.tsx`, `placeholder-screen.tsx`; `src/constants/theme.ts` | Clay style from `docs/brand/design-tokens.md`; Fredoka + Nunito loaded in the root layout |
 
@@ -113,11 +113,12 @@ Template files removed: `src/app/explore.tsx`, `src/components/app-tabs*.tsx`, `
 ### Rules fixed in this story
 
 - **Turn order:** after a completed or refused individual card the turn passes to `currentPlayerIndex + 1`; wrapping to 0 completes a round (`currentRound + 1`).
-- **Group interlude:** each draw is a group card with probability 0.2 (injected `random`), never two group cards in a row, and only when an unplayed group card exists at the level. Group cards do not change `currentPlayerIndex`.
-- **Escalation:** `index = floor(progress × n)` over the ordered selected levels, clamped to `n − 1`. Rounds: `progress = (currentRound − 1) / rounds`. Points: `progress = max(score) / target`. Open: `index = floor((currentRound − 1) / 5)`.
+- **Group interlude:** each draw after an individual card is a group card with probability 0.25 (20 % of the cards shown) (injected `random`), never two group cards in a row, and only when an unplayed group card exists at the level. Group cards do not change `currentPlayerIndex`.
+- **Escalation:** `index = floor(progress × n)` over the ordered selected levels, clamped to `n − 1`. Rounds: `progress = (currentRound − 1) / rounds`. Points: `progress = max(score) / target`, never below the level of the card just played. Open: `index = floor((currentRound − 1) / 5)`.
 - **Selection order within a level:** unplayed in this game → unseen on this device first → ascending points (group cards: random). When no eligible unplayed individual card is left at the level, that level's ids leave `playedCardIds` (the pool resets).
 - **Gender targeting:** a card with `targetGender` is eligible only when another player with that exact gender exists; that player fills `{player}`. `undisclosed` is never picked.
 - **Refusal:** `scores[player] -= ceil(points / 2)`; `lastOutcome` carries the card's `DrinkPenalty` and rendered quip for HU-05. Non-drinkers still see the drink penalty until HU-11.
+- **Stale actions:** every action carries the id of the card on screen; a second tap on an answered card is ignored.
 - **Swap:** individual cards only, once per player per game (`swapsUsed[playerId]`); draws a different card at the same level with no score change.
 - **End:** rounds → after the last round completes; points → when a round completes and a score ≥ target; open → `endGame()` only. `endGame()` works at any time.
 - **Persistence:** `activeSession` saved on every change; cleared by `clearFinishedGame()`. Every shown card id is appended to `seenCardIds`. Nothing else about past games is stored.

@@ -19,7 +19,9 @@ function RootNavigator() {
   const isAgeConfirmed = ageConfirmedAt !== undefined;
 
   return (
-    <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: Colors.background } }}>
+    <Stack
+      screenOptions={{ headerShown: false, contentStyle: { backgroundColor: Colors.background } }}
+    >
       <Stack.Protected guard={!isAgeConfirmed}>
         <Stack.Screen name="age-gate" />
       </Stack.Protected>

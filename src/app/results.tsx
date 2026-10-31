@@ -16,9 +16,12 @@ export default function ResultsScreen() {
       onNext={() => {
         clearFinishedGame();
         router.dismissTo(routes.home);
-      }}>
+      }}
+    >
       {ranking.map((entry) => (
-        <AppText key={entry.player.id}>{`${entry.position}. ${entry.player.name} — ${entry.score} pts`}</AppText>
+        <AppText
+          key={entry.player.id}
+        >{`${entry.position}. ${entry.player.name} — ${entry.score} pts`}</AppText>
       ))}
     </PlaceholderScreen>
   );

@@ -1,19 +1,17 @@
 import type { Card, Category } from '@/features/content/card-types';
-import { renderGenderedText } from '@/features/content/gendered-text';
 
 import { drawCard, isGroupCard } from './card-selection';
 import { isGameOverAfterRound } from './end-condition';
 import { currentDifficultyFor } from './escalation';
 import type { GameEnvironment, GameSession, GameSettings, GameState } from './game-types';
+import { partnerOf } from './players';
+import { renderCard } from './render-card';
 import { refusalPenaltyPoints } from './scoring';
 import { validateSettings, type SettingsError } from './settings-validation';
 
+/** Card actions name the card they were made on; stale ones (a double tap) are ignored. */
 export type GameAction =
-  | { type: 'complete' }
-  | { type: 'refuse' }
-  | { type: 'swap' }
-  | { type: 'nextAfterGroupCard' }
-  | { type: 'end' };
+  { type: 'complete' | 'refuse' | 'swap' | 'nextAfterGroupCard'; cardId: string } | { type: 'end' };
 
 export type GameContext = {
   cards: readonly Card[];
@@ -32,7 +30,11 @@ export function currentCardOf(state: GameState, cards: readonly Card[]): Card | 
   return cards.find((card) => card.id === currentId);
 }
 
-type DrawOptions = { previousCardWasGroup: boolean; swapping?: Card };
+type DrawOptions = {
+  previousCardWasGroup: boolean;
+  swapping?: Card;
+  levelReached?: Card['difficulty'];
+};
 
 /** Draws the next card into the state; finishes the game when nothing can be drawn. */
 function withNextCard(session: GameSession, context: GameContext, options: DrawOptions): GameState {
@@ -46,6 +48,7 @@ function withNextCard(session: GameSession, context: GameContext, options: DrawO
       settings.endCondition,
       session.currentRound,
       session.scores,
+      options.levelReached,
     ),
     playedCardIds: session.playedCardIds,
     seenCardIds: context.seenCardIds,
@@ -84,10 +87,14 @@ export function createGame(settings: GameSettings, context: GameContext): StartR
 }
 
 /** Passes the turn; a wrap completes the round and may end the game. */
-function advanceTurn(session: GameSession, context: GameContext): GameState {
+function advanceTurn(session: GameSession, context: GameContext, answeredCard: Card): GameState {
+  const drawOptions: DrawOptions = {
+    previousCardWasGroup: false,
+    levelReached: answeredCard.difficulty,
+  };
   const nextIndex = session.currentPlayerIndex + 1;
   if (nextIndex < session.settings.players.length) {
-    return withNextCard({ ...session, currentPlayerIndex: nextIndex }, context, { previousCardWasGroup: false });
+    return withNextCard({ ...session, currentPlayerIndex: nextIndex }, context, drawOptions);
   }
   if (isGameOverAfterRound(session.settings.endCondition, session.currentRound, session.scores)) {
     return { session: { ...session, status: 'finished' } };
@@ -95,7 +102,7 @@ function advanceTurn(session: GameSession, context: GameContext): GameState {
   return withNextCard(
     { ...session, currentPlayerIndex: 0, currentRound: session.currentRound + 1 },
     context,
-    { previousCardWasGroup: false },
+    drawOptions,
   );
 }
 
@@ -106,24 +113,34 @@ export function gameReducer(state: GameState, action: GameAction, context: GameC
   if (action.type === 'end') return { ...state, session: { ...session, status: 'finished' } };
 
   const card = currentCardOf(state, context.cards);
-  if (!card) return state;
+  if (!card || action.cardId !== card.id) return state;
   const player = session.settings.players[session.currentPlayerIndex];
 
   if (isGroupCard(card)) {
     if (action.type !== 'nextAfterGroupCard') return state;
-    return withNextCard(session, context, { previousCardWasGroup: true });
+    return withNextCard(session, context, {
+      previousCardWasGroup: true,
+      levelReached: card.difficulty,
+    });
   }
 
   switch (action.type) {
     case 'complete':
     case 'refuse': {
-      const pointsDelta = action.type === 'complete' ? card.points : -refusalPenaltyPoints(card.points);
+      const pointsDelta =
+        action.type === 'complete' ? card.points : -refusalPenaltyPoints(card.points);
       const scored: GameSession = {
         ...session,
         scores: { ...session.scores, [player.id]: session.scores[player.id] + pointsDelta },
       };
+      const players = session.settings.players;
+      const copy = renderCard(card, {
+        currentPlayer: player,
+        mentionedPlayer: players.find((candidate) => candidate.id === state.mentionedPlayerId),
+        partner: session.settings.mode === 'couple' ? partnerOf(players, player.id) : undefined,
+      });
       return {
-        ...advanceTurn(scored, context),
+        ...advanceTurn(scored, context, card),
         lastOutcome:
           action.type === 'complete'
             ? { kind: 'completed', playerId: player.id, pointsDelta }
@@ -132,16 +149,17 @@ export function gameReducer(state: GameState, action: GameAction, context: GameC
                 playerId: player.id,
                 pointsDelta,
                 penalty: card.penalty,
-                penaltyQuip:
-                  card.penalty.quip === undefined
-                    ? undefined
-                    : renderGenderedText(card.penalty.quip, player.gender, {}),
+                penaltyQuip: copy.penaltyQuip,
               },
       };
     }
     case 'swap': {
       if (session.swapsUsed[player.id]) return state;
-      const swapped = withNextCard(session, context, { previousCardWasGroup: false, swapping: card });
+      const swapped = withNextCard(session, context, {
+        previousCardWasGroup: false,
+        swapping: card,
+        levelReached: card.difficulty,
+      });
       if (swapped.session.status === 'finished') return state;
       return {
         ...swapped,

@@ -23,7 +23,10 @@ type DeviceStateProviderProps = {
   now?: () => string;
 };
 
-export function DeviceStateProvider({ children, now = () => new Date().toISOString() }: DeviceStateProviderProps) {
+export function DeviceStateProvider({
+  children,
+  now = () => new Date().toISOString(),
+}: DeviceStateProviderProps) {
   const [deviceState, setDeviceState] = useState<DeviceState>(readDeviceState);
 
   const update = (change: (previous: DeviceState) => DeviceState) => {
@@ -38,14 +41,19 @@ export function DeviceStateProvider({ children, now = () => new Date().toISOStri
     ...deviceState,
     confirmAge: () => update((previous) => ({ ...previous, ageConfirmedAt: now() })),
     rememberPlayers: (players) => update((previous) => ({ ...previous, lastPlayers: players })),
-    rememberSpicyEnabled: (spicy) => update((previous) => ({ ...previous, lastSpicyEnabled: spicy })),
+    rememberSpicyEnabled: (spicy) =>
+      update((previous) => ({ ...previous, lastSpicyEnabled: spicy })),
     markCardsSeen: (cardIds) =>
       update((previous) => {
         const fresh = cardIds.filter((id) => !previous.seenCardIds.includes(id));
-        return fresh.length === 0 ? previous : { ...previous, seenCardIds: [...previous.seenCardIds, ...fresh] };
+        return fresh.length === 0
+          ? previous
+          : { ...previous, seenCardIds: [...previous.seenCardIds, ...fresh] };
       }),
     saveActiveSession: (session) =>
-      update(({ activeSession: _previousSession, ...rest }) => (session ? { ...rest, activeSession: session } : rest)),
+      update(({ activeSession: _previousSession, ...rest }) =>
+        session ? { ...rest, activeSession: session } : rest,
+      ),
   };
 
   return <DeviceStateContext value={value}>{children}</DeviceStateContext>;

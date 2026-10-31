@@ -41,7 +41,7 @@ A player SHALL be able to swap an individual card once per game for a different 
 
 ### Requirement: Group card interludes
 
-Group cards SHALL appear about 20 % of the time, never twice in a row, award no points, and not consume a turn.
+Group cards SHALL be about 20 % of the cards shown, never twice in a row, award no points, and not consume a turn.
 
 #### Scenario: Interlude keeps the turn
 
@@ -75,6 +75,11 @@ A card with a target gender SHALL only come out when another player of that gend
 
 Levels SHALL escalate with progress over the selected levels in order: thirds of the rounds, thirds of the points goal, or one level every 5 rounds in open games.
 
+#### Scenario: No step back
+
+- **WHEN** a points-goal game is at Picante and the leader's refusal drops the best score below the Picante third
+- **THEN** the level stays Picante
+
 #### Scenario: Ten rounds
 
 - **WHEN** a 10-round game with all levels is in round 5
@@ -102,3 +107,12 @@ Games by rounds SHALL end after the last round, by points when the round in whic
 
 - **WHEN** scores are 30, 30, 10
 - **THEN** positions are 1, 1, 3
+
+### Requirement: Stale actions are ignored
+
+An action SHALL apply only to the card it was made on; a repeated tap after the card changed SHALL not change the game.
+
+#### Scenario: Double tap
+
+- **WHEN** player A taps "Cumplió" twice on the same card
+- **THEN** only A's card is scored and player B's new card is untouched

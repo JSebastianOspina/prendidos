@@ -20,3 +20,8 @@ The app SHALL remember the 18+ confirmation, last players, seen cards, last Sin 
 
 - **WHEN** a finished game is cleared
 - **THEN** no session remains stored
+
+#### Scenario: Malformed saved game
+
+- **WHEN** the saved game is missing fields or points to a card that no longer ships
+- **THEN** the app starts without a game in progress instead of failing

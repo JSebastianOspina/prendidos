@@ -24,7 +24,9 @@ export function buildCatalog(sources: readonly Catalog[]): Catalog {
   const merged = mergeSources(sources);
   const errors = validateCards(merged).filter((violation) => violation.severity === 'error');
   if (hasErrors(errors)) {
-    throw new Error(`Catalog has ${errors.length} content errors: ${errors.map((error) => error.message).join('; ')}`);
+    throw new Error(
+      `Catalog has ${errors.length} content errors: ${errors.map((error) => error.message).join('; ')}`,
+    );
   }
   return merged;
 }
@@ -43,5 +45,7 @@ export function categoriesForMode(mode: GameMode): Category[] {
 
 /** Warnings a human content reviewer must look at before release. */
 export function contentWarnings(): ContentViolation[] {
-  return validateCards(mergeSources(shippedCatalogSources)).filter((violation) => violation.severity === 'warning');
+  return validateCards(mergeSources(shippedCatalogSources)).filter(
+    (violation) => violation.severity === 'warning',
+  );
 }

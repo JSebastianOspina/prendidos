@@ -6,7 +6,12 @@ export type NewPlayer = { name: string; gender: PlayerGender; drinks?: boolean }
 
 /** A local player with a generated id; drinks unless told otherwise. */
 export function createPlayer(newPlayer: NewPlayer, createId: () => string): Player {
-  return { id: createId(), name: newPlayer.name.trim(), gender: newPlayer.gender, drinks: newPlayer.drinks ?? true };
+  return {
+    id: createId(),
+    name: newPlayer.name.trim(),
+    gender: newPlayer.gender,
+    drinks: newPlayer.drinks ?? true,
+  };
 }
 
 /** Partner of the current player in couple mode: the other one of the two. */

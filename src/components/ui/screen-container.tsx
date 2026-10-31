@@ -16,7 +16,11 @@ export function ScreenContainer({ children, scroll = false, style }: ScreenConta
   const content = <View style={[styles.content, style]}>{children}</View>;
   return (
     <SafeAreaView style={styles.safeArea}>
-      {scroll ? <ScrollView contentContainerStyle={styles.scrollContent}>{content}</ScrollView> : content}
+      {scroll ? (
+        <ScrollView contentContainerStyle={styles.scrollContent}>{content}</ScrollView>
+      ) : (
+        content
+      )}
     </SafeAreaView>
   );
 }

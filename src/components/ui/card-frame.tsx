@@ -15,7 +15,12 @@ export function CardFrame({ children, tone = 'surface', style }: CardFrameProps)
   return (
     <View style={[styles.wrapper, style]}>
       <View style={styles.shadow} />
-      <View style={[styles.face, { backgroundColor: tone === 'group' ? Colors.flameYellow : Colors.surface }]}>
+      <View
+        style={[
+          styles.face,
+          { backgroundColor: tone === 'group' ? Colors.flameYellow : Colors.surface },
+        ]}
+      >
         {children}
       </View>
     </View>

@@ -17,7 +17,13 @@ export type PlaceholderScreenProps = {
 };
 
 /** Temporary screen that shows its name until its story replaces it. */
-export function PlaceholderScreen({ title, story, nextLabel = 'Siguiente', onNext, children }: PlaceholderScreenProps) {
+export function PlaceholderScreen({
+  title,
+  story,
+  nextLabel = 'Siguiente',
+  onNext,
+  children,
+}: PlaceholderScreenProps) {
   return (
     <ScreenContainer>
       <View style={styles.body}>

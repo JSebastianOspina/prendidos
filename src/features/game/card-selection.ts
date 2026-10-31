@@ -1,9 +1,17 @@
-import { groupCardTypes, type Card, type Difficulty, type GroupCard } from '@/features/content/card-types';
+import {
+  groupCardTypes,
+  type Card,
+  type Difficulty,
+  type GroupCard,
+} from '@/features/content/card-types';
 
 import type { GameSettings, Player } from './game-types';
 
-/** Share of draws that are group interludes ("Yo nunca", "Todos los que…"). */
-export const groupCardChance = 0.2;
+/**
+ * Chance that a draw after an individual card is a group interlude ("Yo nunca", "Todos los que…").
+ * Group cards never follow each other, so they make up 0.25 / 1.25 = 20 % of the cards shown.
+ */
+export const groupCardChance = 0.25;
 
 export type DrawRequest = {
   cards: readonly Card[];
@@ -36,7 +44,9 @@ function otherPlayers(settings: GameSettings, currentPlayerId: string): Player[]
 }
 
 function mentionablePlayers(card: Card, others: readonly Player[]): Player[] {
-  return card.targetGender ? others.filter((player) => player.gender === card.targetGender) : [...others];
+  return card.targetGender
+    ? others.filter((player) => player.gender === card.targetGender)
+    : [...others];
 }
 
 function pickRandom<Item>(items: readonly Item[], random: () => number): Item | undefined {
@@ -44,7 +54,11 @@ function pickRandom<Item>(items: readonly Item[], random: () => number): Item | 
 }
 
 /** Unseen cards first; individual cards by ascending points, otherwise random order. */
-function rankCandidates(candidates: readonly Card[], seen: ReadonlySet<string>, random: () => number): Card[] {
+function rankCandidates(
+  candidates: readonly Card[],
+  seen: ReadonlySet<string>,
+  random: () => number,
+): Card[] {
   const shuffled = candidates
     .map((card) => ({ card, tieBreaker: random() }))
     .sort((first, second) => first.tieBreaker - second.tieBreaker)
@@ -110,7 +124,9 @@ export function drawCard(request: DrawRequest): DrawResult | undefined {
 
   if (!card) return undefined;
 
-  const mentionedPlayer = isGroupCard(card) ? undefined : pickRandom(mentionablePlayers(card, others), random);
+  const mentionedPlayer = isGroupCard(card)
+    ? undefined
+    : pickRandom(mentionablePlayers(card, others), random);
   return {
     card,
     playedCardIds: [...playedCardIds, card.id],

@@ -11,11 +11,17 @@ export type {
   RoundCount,
   TurnOutcome,
 } from './game-types';
-export { allDifficulties, defaultEndCondition } from './game-types';
+export { allDifficulties } from '@/features/content/card-types';
+export { defaultEndCondition } from './game-types';
 export type { StartError } from './game-reducer';
 export type { SettingsError } from './settings-validation';
 export { playerLimitsByMode } from './settings-validation';
 export { refusalPenaltyPoints } from './scoring';
 export { createLocalId, createPlayer, type NewPlayer } from './players';
 export { GameProvider, useGame, type GameValue } from './game-provider';
-export { NewGameDraftProvider, useNewGameDraft, type NewGameDraft, type NewGameDraftValue } from './new-game-draft';
+export {
+  NewGameDraftProvider,
+  useNewGameDraft,
+  type NewGameDraft,
+  type NewGameDraftValue,
+} from './new-game-draft';

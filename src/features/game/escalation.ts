@@ -1,6 +1,6 @@
-import type { Difficulty } from '@/features/content/card-types';
+import { allDifficulties, type Difficulty } from '@/features/content/card-types';
 
-import { allDifficulties, type EndCondition } from './game-types';
+import type { EndCondition } from './game-types';
 
 /** Rounds per level in an open game. */
 export const openGameRoundsPerLevel = 5;
@@ -28,15 +28,20 @@ function progressLevelIndex(
   }
 }
 
-/** Level for the current progress, walking only the selected levels in order. */
+/**
+ * Level for the current progress, walking only the selected levels in order.
+ * Never below `minimumDifficulty` (the level already reached), so escalation does not step back.
+ */
 export function currentDifficultyFor(
   selectedDifficulties: readonly Difficulty[],
   endCondition: EndCondition,
   currentRound: number,
   scores: Readonly<Record<string, number>>,
+  minimumDifficulty?: Difficulty,
 ): Difficulty {
   const ordered = orderedDifficulties(selectedDifficulties);
   const levels = ordered.length > 0 ? ordered : [...allDifficulties];
-  const index = progressLevelIndex(endCondition, currentRound, scores, levels.length);
-  return levels[Math.min(levels.length - 1, Math.max(0, index))];
+  const progressIndex = progressLevelIndex(endCondition, currentRound, scores, levels.length);
+  const minimumIndex = minimumDifficulty === undefined ? -1 : levels.indexOf(minimumDifficulty);
+  return levels[Math.min(levels.length - 1, Math.max(0, progressIndex, minimumIndex))];
 }

@@ -25,7 +25,9 @@ function request(overrides: Partial<DrawRequest>): DrawRequest {
 
 describe('drawCard', () => {
   it('returns undefined when the category has no playable card', () => {
-    expect(drawCard(request({ cards: [individualCard('x', { categoryId: 'entre-dos' })] }))).toBeUndefined();
+    expect(
+      drawCard(request({ cards: [individualCard('x', { categoryId: 'entre-dos' })] })),
+    ).toBeUndefined();
   });
 
   it('takes individual cards of the current level from fewer to more points', () => {
@@ -74,9 +76,19 @@ describe('drawCard', () => {
   });
 
   it('skips spicy cards unless Sin Filtro is enabled', () => {
-    const cards = [individualCard('spicy', { heat: 'spicy', points: 1 }), individualCard('std', { points: 4 })];
+    const cards = [
+      individualCard('spicy', { heat: 'spicy', points: 1 }),
+      individualCard('std', { points: 4 }),
+    ];
     expect(drawCard(request({ cards }))?.card.id).toBe('std');
-    expect(drawCard(request({ cards, settings: friendsSettings({ spicyEnabled: true }) }))?.card.id).toBe('spicy');
+    expect(
+      drawCard(request({ cards, settings: friendsSettings({ spicyEnabled: true }) }))?.card.id,
+    ).toBe('spicy');
+  });
+
+  it('makes group cards a fifth of the cards shown', () => {
+    // A group card is an extra draw that never follows another one.
+    expect(groupCardChance / (1 + groupCardChance)).toBeCloseTo(0.2);
   });
 
   describe('group interludes', () => {
@@ -93,25 +105,35 @@ describe('drawCard', () => {
     });
 
     it('never shows two group cards in a row', () => {
-      expect(drawCard(request({ cards, random: () => 0, previousCardWasGroup: true }))?.card.id).toBe('i');
+      expect(
+        drawCard(request({ cards, random: () => 0, previousCardWasGroup: true }))?.card.id,
+      ).toBe('i');
     });
 
     it('does not draw a group card when excluded or when none is left at the level', () => {
-      expect(drawCard(request({ cards, random: () => 0, excludeGroupCards: true }))?.card.id).toBe('i');
-      expect(drawCard(request({ cards, random: () => 0, playedCardIds: ['g1'] }))?.card.id).toBe('i');
+      expect(drawCard(request({ cards, random: () => 0, excludeGroupCards: true }))?.card.id).toBe(
+        'i',
+      );
+      expect(drawCard(request({ cards, random: () => 0, playedCardIds: ['g1'] }))?.card.id).toBe(
+        'i',
+      );
     });
 
     it('orders unseen group cards at random', () => {
       const groups = [groupCard('g1'), groupCard('g3'), individualCard('i')];
       const ids = [0.9, 0.1].map(
-        (tieBreaker) => drawCard(request({ cards: groups, random: sequenceRandom([0, tieBreaker, 0.5]) }))?.card.id,
+        (tieBreaker) =>
+          drawCard(request({ cards: groups, random: sequenceRandom([0, tieBreaker, 0.5]) }))?.card
+            .id,
       );
       expect(new Set(ids).size).toBe(2);
     });
 
     it('prefers unseen group cards', () => {
       const groups = [groupCard('g1'), groupCard('g3'), individualCard('i')];
-      expect(drawCard(request({ cards: groups, random: () => 0, seenCardIds: ['g1'] }))?.card.id).toBe('g3');
+      expect(
+        drawCard(request({ cards: groups, random: () => 0, seenCardIds: ['g1'] }))?.card.id,
+      ).toBe('g3');
     });
   });
 
@@ -123,7 +145,9 @@ describe('drawCard', () => {
 
     it('returns no mentioned player when nobody else plays', () => {
       const solo = friendsSettings({ players: [ana] });
-      expect(drawCard(request({ cards: [individualCard('i')], settings: solo }))?.mentionedPlayerId).toBeUndefined();
+      expect(
+        drawCard(request({ cards: [individualCard('i')], settings: solo }))?.mentionedPlayerId,
+      ).toBeUndefined();
     });
 
     it('only draws a gender-targeted card when another player of that gender exists', () => {

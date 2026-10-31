@@ -8,7 +8,14 @@ import { readDeviceState } from '@/features/device/device-storage';
 
 import { GameProvider, useGame } from '../game-provider';
 import type { GameEnvironment } from '../game-types';
-import { ana, beto, friendsSettings, groupCard, individualCard, testCategories } from './fixtures/game-fixtures';
+import {
+  ana,
+  beto,
+  friendsSettings,
+  groupCard,
+  individualCard,
+  testCategories,
+} from './fixtures/game-fixtures';
 
 const catalog: Catalog = {
   categories: testCategories,
@@ -35,7 +42,11 @@ function wrapper({ children }: { children: ReactNode }) {
 
 beforeEach(() => {
   Storage.clearSync();
-  environment = { random: () => 0.99, createId: () => 'game-1', now: () => '2026-10-31T20:00:00.000Z' };
+  environment = {
+    random: () => 0.99,
+    createId: () => 'game-1',
+    now: () => '2026-10-31T20:00:00.000Z',
+  };
 });
 
 describe('useGame', () => {
@@ -85,7 +96,11 @@ describe('useGame', () => {
     expect(result.current.canSwap).toBe(false);
     const swappedPoints = result.current.currentCard?.points ?? 0;
     await act(() => result.current.completeCard());
-    expect(result.current.lastOutcome).toMatchObject({ kind: 'completed', playerId: 'p1', pointsDelta: swappedPoints });
+    expect(result.current.lastOutcome).toMatchObject({
+      kind: 'completed',
+      playerId: 'p1',
+      pointsDelta: swappedPoints,
+    });
     await act(() => result.current.refuseCard());
     expect(result.current.lastOutcome?.kind).toBe('refused');
     expect(result.current.ranking[0].player.name).toBe('Ana');
@@ -93,7 +108,11 @@ describe('useGame', () => {
 
   it('ends the game, clears the saved session, and forgets it on demand', async () => {
     const { result } = await renderHook(() => useGame(), { wrapper });
-    await act(() => result.current.startGame(friendsSettings({ players: [ana, beto], endCondition: { type: 'open' } })));
+    await act(() =>
+      result.current.startGame(
+        friendsSettings({ players: [ana, beto], endCondition: { type: 'open' } }),
+      ),
+    );
     await act(() => result.current.endGame());
     expect(result.current.session?.status).toBe('finished');
     expect(result.current.currentCard).toBeUndefined();
@@ -116,7 +135,9 @@ describe('useGame', () => {
   it('names the partner in couple mode', async () => {
     const { result } = await renderHook(() => useGame(), { wrapper });
     await act(() =>
-      result.current.startGame(friendsSettings({ mode: 'couple', categoryId: 'entre-dos', players: [ana, beto] })),
+      result.current.startGame(
+        friendsSettings({ mode: 'couple', categoryId: 'entre-dos', players: [ana, beto] }),
+      ),
     );
     expect(result.current.currentCardCopy?.body).toBe('Bese la mano de Beto.');
   });
@@ -129,6 +150,36 @@ describe('useGame', () => {
     const { result } = await renderHook(() => useGame(), { wrapper });
     expect(result.current.session?.id).toBe('game-1');
     expect(result.current.currentCardCopy?.body).toBe('Abrace a Beto.');
+  });
+
+  it('scores once per card when two taps land in the same render', async () => {
+    const { result } = await renderHook(() => useGame(), { wrapper });
+    await act(() => result.current.startGame(friendsSettings({ players: [ana, beto] })));
+    await act(() => {
+      result.current.completeCard();
+      result.current.completeCard();
+    });
+    expect(result.current.session?.scores).toEqual({ p1: 1, p2: 0 });
+    expect(result.current.currentPlayer?.name).toBe('Beto');
+  });
+
+  it('drops a saved game whose card no longer ships', async () => {
+    const first = await renderHook(() => useGame(), { wrapper });
+    await act(() => first.result.current.startGame(friendsSettings({ players: [ana, beto] })));
+    await first.unmount();
+
+    const { result } = await renderHook(() => useGame(), {
+      wrapper: ({ children }: { children: ReactNode }) => (
+        <DeviceStateProvider>
+          <GameProvider
+            catalog={{ ...catalog, cards: catalog.cards.filter((card) => card.id !== 'e1') }}
+          >
+            {children}
+          </GameProvider>
+        </DeviceStateProvider>
+      ),
+    });
+    expect(result.current.session).toBeUndefined();
   });
 
   it('fails loudly outside the provider', async () => {

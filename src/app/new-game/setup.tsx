@@ -15,10 +15,19 @@ export default function SetupScreen() {
     const players =
       draft.players.length >= 2
         ? draft.players
-        : demoPlayerNames.map((name) => createPlayer({ name, gender: 'undisclosed' }, createLocalId));
+        : demoPlayerNames.map((name) =>
+            createPlayer({ name, gender: 'undisclosed' }, createLocalId),
+          );
     const errors = startGame({ ...draft.toSettings(), players });
     if (errors.length === 0) router.push(routes.play);
   };
 
-  return <PlaceholderScreen title="Configurar partida" story="HU-04" nextLabel="¡A jugar!" onNext={start} />;
+  return (
+    <PlaceholderScreen
+      title="Configurar partida"
+      story="HU-04"
+      nextLabel="¡A jugar!"
+      onNext={start}
+    />
+  );
 }

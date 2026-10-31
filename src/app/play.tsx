@@ -23,11 +23,14 @@ export default function PlayScreen() {
       title="Turno"
       story="HU-05"
       nextLabel={game.isGroupInterlude ? 'Seguir' : 'Cumplió'}
-      onNext={game.isGroupInterlude ? game.nextAfterGroupCard : game.completeCard}>
+      onNext={game.isGroupInterlude ? game.nextAfterGroupCard : game.completeCard}
+    >
       {game.currentDifficulty ? <LevelBadge difficulty={game.currentDifficulty} /> : null}
       <AppText>{`Ronda ${game.session?.currentRound ?? '-'} · Le toca a ${game.currentPlayer?.name ?? '-'}`}</AppText>
       <CardFrame tone={game.isGroupInterlude ? 'group' : 'surface'}>
-        {game.currentCardCopy?.headline ? <AppText variant="button">{game.currentCardCopy.headline}</AppText> : null}
+        {game.currentCardCopy?.headline ? (
+          <AppText variant="button">{game.currentCardCopy.headline}</AppText>
+        ) : null}
         <AppText variant="card">{game.currentCardCopy?.body ?? ''}</AppText>
       </CardFrame>
       <Button label="Terminar partida" variant="secondary" onPress={game.endGame} />

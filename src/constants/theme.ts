@@ -51,7 +51,12 @@ export const Typography: Record<TypographyVariant, TextStyle> = {
   card: { fontFamily: Fonts.fredokaSemiBold, fontSize: 29, lineHeight: 35 },
   button: { fontFamily: Fonts.fredokaSemiBold, fontSize: 21, lineHeight: 26 },
   body: { fontFamily: Fonts.nunitoBold, fontSize: 16, lineHeight: 23 },
-  label: { fontFamily: Fonts.nunitoExtraBold, fontSize: 13, letterSpacing: 1, textTransform: 'uppercase' },
+  label: {
+    fontFamily: Fonts.nunitoExtraBold,
+    fontSize: 13,
+    letterSpacing: 1,
+    textTransform: 'uppercase',
+  },
 };
 
 /** 4 / 8 rhythm; `gutter` is the screen side padding. */

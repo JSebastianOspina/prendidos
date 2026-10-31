@@ -10,9 +10,9 @@ describe('renderCard', () => {
   });
 
   it('uses the neutral variant for an undisclosed player', () => {
-    expect(renderCard(individualCard('i'), { currentPlayer: cami, mentionedPlayer: ana }).headline).toBe(
-      'Hola estrella',
-    );
+    expect(
+      renderCard(individualCard('i'), { currentPlayer: cami, mentionedPlayer: ana }).headline,
+    ).toBe('Hola estrella');
   });
 
   it('fills {partner} with the partner in couple mode', () => {

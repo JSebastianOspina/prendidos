@@ -18,7 +18,7 @@ The app SHALL open into 18+ → Inicio → Modo → Categoría → Setup → Tur
 
 ### Requirement: Shipped content is valid
 
-Every bundled card SHALL pass the content validator with no errors, and La Previa SHALL hold enough standard cards for a 10-round game with 6 players without a pool reset.
+Every bundled card SHALL pass the content validator with no errors, and La Previa SHALL hold enough standard, non-targeted individual cards for a 10-round game with 6 players plus their 6 swaps without a pool reset.
 
 #### Scenario: Validator over the bundle
 

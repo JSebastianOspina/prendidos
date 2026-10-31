@@ -13,7 +13,10 @@ describe('web device storage', () => {
     const memory = new Map<string, string>();
     Object.defineProperty(globalThis, 'localStorage', {
       configurable: true,
-      value: { getItem: (key: string) => memory.get(key) ?? null, setItem: (key: string, value: string) => memory.set(key, value) },
+      value: {
+        getItem: (key: string) => memory.get(key) ?? null,
+        setItem: (key: string, value: string) => memory.set(key, value),
+      },
     });
     writeDeviceState({ ...emptyDeviceState, lastSpicyEnabled: true });
     expect(memory.has(deviceStateKey)).toBe(true);

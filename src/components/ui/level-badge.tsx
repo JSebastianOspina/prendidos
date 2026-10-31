@@ -17,7 +17,8 @@ export function LevelBadge({ difficulty }: { difficulty: Difficulty }) {
   return (
     <View
       accessibilityLabel={`Nivel ${levelLabels[difficulty]}`}
-      style={[styles.badge, { backgroundColor: colors.fill }]}>
+      style={[styles.badge, { backgroundColor: colors.fill }]}
+    >
       <AppText variant="label" color={colors.text}>
         {levelLabels[difficulty]}
       </AppText>

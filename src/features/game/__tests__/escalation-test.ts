@@ -47,6 +47,13 @@ describe('currentDifficultyFor', () => {
     expect(currentDifficultyFor([...allLevels], open, 40, {})).toBe('hard');
   });
 
+  it('never goes below the minimum level', () => {
+    const goal: EndCondition = { type: 'points', target: 100 };
+    expect(currentDifficultyFor([...allLevels], goal, 3, { a: 28 }, 'medium')).toBe('medium');
+    expect(currentDifficultyFor([...allLevels], goal, 3, { a: 80 }, 'medium')).toBe('hard');
+    expect(currentDifficultyFor(['easy', 'hard'], goal, 3, { a: 0 }, 'medium')).toBe('easy');
+  });
+
   it('falls back to every level when none is selected', () => {
     expect(currentDifficultyFor([], rounds10, 1, {})).toBe('easy');
   });

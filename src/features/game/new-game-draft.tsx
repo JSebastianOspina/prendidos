@@ -1,9 +1,14 @@
 import { createContext, use, useState, type ReactNode } from 'react';
 
-import type { Difficulty, GameMode } from '@/features/content/card-types';
+import { allDifficulties, type Difficulty, type GameMode } from '@/features/content/card-types';
 import { useDeviceState } from '@/features/device/device-state-provider';
 
-import { allDifficulties, defaultEndCondition, type EndCondition, type GameSettings, type Player } from './game-types';
+import {
+  defaultEndCondition,
+  type EndCondition,
+  type GameSettings,
+  type Player,
+} from './game-types';
 
 export type NewGameDraft = {
   mode?: GameMode;
@@ -40,7 +45,8 @@ export function NewGameDraftProvider({ children }: { children: ReactNode }) {
     spicyEnabled: device.lastSpicyEnabled,
   });
   const [draft, setDraft] = useState<NewGameDraft>(initialDraft);
-  const change = (patch: Partial<NewGameDraft>) => setDraft((previous) => ({ ...previous, ...patch }));
+  const change = (patch: Partial<NewGameDraft>) =>
+    setDraft((previous) => ({ ...previous, ...patch }));
 
   const value: NewGameDraftValue = {
     ...draft,
@@ -58,7 +64,8 @@ export function NewGameDraftProvider({ children }: { children: ReactNode }) {
     setSpicyEnabled: (spicyEnabled) => change({ spicyEnabled }),
     isReadyForSetup: draft.mode !== undefined && draft.categoryId !== undefined,
     toSettings: () => {
-      if (!draft.mode || !draft.categoryId) throw new Error('Choose a mode and a category before the setup');
+      if (!draft.mode || !draft.categoryId)
+        throw new Error('Choose a mode and a category before the setup');
       return {
         mode: draft.mode,
         categoryId: draft.categoryId,

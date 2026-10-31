@@ -8,7 +8,9 @@ import { deviceStateKey, readDeviceState } from '../device-storage';
 const player = { id: 'p1', name: 'Ana', gender: 'female' as const, drinks: true };
 
 function wrapper({ children }: { children: ReactNode }) {
-  return <DeviceStateProvider now={() => '2026-10-31T20:00:00.000Z'}>{children}</DeviceStateProvider>;
+  return (
+    <DeviceStateProvider now={() => '2026-10-31T20:00:00.000Z'}>{children}</DeviceStateProvider>
+  );
 }
 
 beforeEach(() => Storage.clearSync());
@@ -71,7 +73,9 @@ describe('useDeviceState', () => {
 
   it('uses the real clock by default', async () => {
     const { result } = await renderHook(() => useDeviceState(), {
-      wrapper: ({ children }: { children: ReactNode }) => <DeviceStateProvider>{children}</DeviceStateProvider>,
+      wrapper: ({ children }: { children: ReactNode }) => (
+        <DeviceStateProvider>{children}</DeviceStateProvider>
+      ),
     });
     await act(() => result.current.confirmAge());
     expect(Number.isNaN(Date.parse(result.current.ageConfirmedAt ?? ''))).toBe(false);

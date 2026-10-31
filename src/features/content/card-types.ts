@@ -93,3 +93,8 @@ export const placeholderRenderLength = 12;
 export const individualCardTypes: readonly IndividualCardType[] = ['challenge', 'truth'];
 
 export const groupCardTypes: readonly GroupCardType[] = ['everyoneWho', 'neverHaveIEver'];
+
+/** Levels in play order. */
+export const allDifficulties: readonly Difficulty[] = ['easy', 'medium', 'hard'];
+
+export const playerGenders: readonly PlayerGender[] = ['male', 'female', 'undisclosed'];

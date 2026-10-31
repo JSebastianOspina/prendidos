@@ -9,7 +9,9 @@ describe('players', () => {
       gender: 'female',
       drinks: true,
     });
-    expect(createPlayer({ name: 'Cami', gender: 'undisclosed', drinks: false }, () => 'y').drinks).toBe(false);
+    expect(
+      createPlayer({ name: 'Cami', gender: 'undisclosed', drinks: false }, () => 'y').drinks,
+    ).toBe(false);
   });
 
   it('finds the partner only in a pair', () => {

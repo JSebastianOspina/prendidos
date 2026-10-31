@@ -1,6 +1,11 @@
 import type { Player } from '@/features/game/game-types';
 
-import { emptyDeviceState, parseDeviceState, serializeDeviceState, type DeviceState } from '../device-state';
+import {
+  emptyDeviceState,
+  parseDeviceState,
+  serializeDeviceState,
+  type DeviceState,
+} from '../device-state';
 
 const player: Player = { id: 'p1', name: 'Ana', gender: 'female', drinks: true };
 
@@ -49,10 +54,58 @@ describe('parseDeviceState', () => {
       lastSpicyEnabled: 'yes',
       activeSession: { id: 's1' },
     });
-    expect(parseDeviceState(raw)).toEqual({ ...emptyDeviceState, lastPlayers: [player], seenCardIds: ['a'] });
+    expect(parseDeviceState(raw)).toEqual({
+      ...emptyDeviceState,
+      lastPlayers: [player],
+      seenCardIds: ['a'],
+    });
+  });
+
+  it('drops a saved game that is missing fields or out of range', () => {
+    const base = JSON.parse(
+      serializeDeviceState({
+        ...emptyDeviceState,
+        activeSession: {
+          id: 's1',
+          settings: {
+            mode: 'friends',
+            categoryId: 'la-previa',
+            players: [player],
+            selectedDifficulties: ['easy'],
+            endCondition: { type: 'open' },
+            spicyEnabled: false,
+          },
+          status: 'inProgress',
+          currentRound: 1,
+          currentPlayerIndex: 0,
+          scores: { p1: 0 },
+          playedCardIds: ['prev-001'],
+          swapsUsed: {},
+          couplePaywallShown: false,
+          startedAt: '2026-10-31T20:00:00.000Z',
+        },
+      }),
+    );
+    const broken = [
+      { swapsUsed: undefined },
+      { currentPlayerIndex: 3 },
+      { playedCardIds: [] },
+      { scores: { p1: 'x' } },
+      { settings: { ...base.activeSession.settings, players: [{ id: 'p1' }] } },
+      { settings: { ...base.activeSession.settings, endCondition: { type: 'forever' } } },
+      { settings: { ...base.activeSession.settings, selectedDifficulties: 'easy' } },
+      { settings: { ...base.activeSession.settings, mode: 'solo' } },
+    ];
+    for (const change of broken) {
+      const raw = JSON.stringify({ ...base, activeSession: { ...base.activeSession, ...change } });
+      expect(parseDeviceState(raw).activeSession).toBeUndefined();
+    }
+    expect(parseDeviceState(JSON.stringify(base)).activeSession?.id).toBe('s1');
   });
 
   it('ignores non-array lists', () => {
-    expect(parseDeviceState(JSON.stringify({ lastPlayers: 'x', seenCardIds: {} }))).toEqual(emptyDeviceState);
+    expect(parseDeviceState(JSON.stringify({ lastPlayers: 'x', seenCardIds: {} }))).toEqual(
+      emptyDeviceState,
+    );
   });
 });

@@ -20,15 +20,15 @@ All cards are `heat: "standard"`. There are no `spicy` cards in this batch.
 
 ## Counts
 
-### La Previa (`prev-001` … `prev-083`, 83 cards)
+### La Previa (`prev-001` … `prev-101`, 101 cards)
 
 | Difficulty | Individual (challenge / truth) | Group (everyoneWho / neverHaveIEver) | Total |
 | ---------- | ------------------------------ | ------------------------------------ | ----- |
-| easy       | 26                             | 7                                    | 33    |
-| medium     | 20                             | 5                                    | 25    |
-| hard       | 20                             | 5                                    | 25    |
+| easy       | 32                             | 7                                    | 39    |
+| medium     | 26                             | 5                                    | 31    |
+| hard       | 26                             | 5                                    | 31    |
 
-By type: 53 challenge, 13 truth, 10 neverHaveIEver, 7 everyoneWho. Ten cards use `{player}`, four of them with `targetGender` (two `male`, two `female`). Eight cards set `requiresConsent`, sixteen set `reachesOutside`.
+By type: 65 challenge, 19 truth, 10 neverHaveIEver, 7 everyoneWho. Ten cards use `{player}`, four of them with `targetGender` (two `male`, two `female`). Nine cards set `requiresConsent`, nineteen set `reachesOutside`.
 
 ### Entre Dos (`dos-001` … `dos-030`, 30 cards)
 

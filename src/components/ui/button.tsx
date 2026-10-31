@@ -46,7 +46,14 @@ export function Button({
   const height = size === 'turn' ? TouchTarget.turnAction : 60;
 
   return (
-    <View style={[styles.wrapper, { height: height + ShadowOffset.button }, disabled && styles.disabled, style]}>
+    <View
+      style={[
+        styles.wrapper,
+        { height: height + ShadowOffset.button },
+        disabled && styles.disabled,
+        style,
+      ]}
+    >
       <View style={[styles.shadow, { height, top: ShadowOffset.button }]} />
       <Pressable
         accessibilityRole="button"
@@ -58,7 +65,8 @@ export function Button({
           styles.face,
           { height, backgroundColor: fill.background },
           pressed && { transform: [{ translateY: PressedTravel }] },
-        ]}>
+        ]}
+      >
         <AppText variant="button" color={fill.text}>
           {label}
         </AppText>

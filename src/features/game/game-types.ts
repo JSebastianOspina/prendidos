@@ -93,5 +93,3 @@ export type GameEnvironment = {
 };
 
 export const defaultEndCondition: EndCondition = { type: 'rounds', rounds: 10 };
-
-export const allDifficulties: readonly Difficulty[] = ['easy', 'medium', 'hard'];

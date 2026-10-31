@@ -10,6 +10,14 @@ describe('routes', () => {
       routes.newGame.setup,
       routes.play,
       routes.results,
-    ]).toEqual(['/age-gate', '/', '/new-game/mode', '/new-game/category', '/new-game/setup', '/play', '/results']);
+    ]).toEqual([
+      '/age-gate',
+      '/',
+      '/new-game/mode',
+      '/new-game/category',
+      '/new-game/setup',
+      '/play',
+      '/results',
+    ]);
   });
 });

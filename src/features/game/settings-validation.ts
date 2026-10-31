@@ -3,11 +3,7 @@ import type { Category } from '@/features/content/card-types';
 import type { GameSettings } from './game-types';
 
 export type SettingsError =
-  | 'playerCount'
-  | 'selectedDifficulties'
-  | 'category'
-  | 'playerName'
-  | 'playerId';
+  'playerCount' | 'selectedDifficulties' | 'category' | 'playerName' | 'playerId';
 
 export const playerLimitsByMode = {
   friends: { min: 2, max: 12 },
