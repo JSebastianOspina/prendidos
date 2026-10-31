@@ -1,6 +1,7 @@
 /** Public surface of the game feature for screens: types, hooks, and helpers. */
 export type {
   EndCondition,
+  GameEnvironment,
   GameSession,
   GameSettings,
   GameStatus,
