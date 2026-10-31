@@ -97,7 +97,7 @@ Docs: https://docs.expo.dev/eas/index.md
 - Local state: `useState` / `useReducer` inside components. The React Compiler is enabled (`app.json` → `experiments.reactCompiler`), so do **not** add `useMemo` / `useCallback` / `memo` by default — only when profiling shows a need.
 - Game session state: a reducer (`useReducer`) or small store owned by the game feature; state transitions are pure functions covered by unit tests.
 - Server/async state: not applicable today (no backend). If a remote API is added, use TanStack Query and update this section.
-- Persistence: on-device storage for progress, scores, and unlocked content. The library is **to be decided** (candidates: `expo-sqlite`, `expo-sqlite/kv-store`, `expo-secure-store` for small secrets) — record the choice with `/create-adr` before implementing.
+- Persistence: `expo-sqlite/kv-store` through `src/features/device/device-storage.ts` (ADR-0001). `expo-secure-store` is reserved for future secrets.
 - Form handling: plain controlled inputs; add a form library only through an ADR.
 
 ---

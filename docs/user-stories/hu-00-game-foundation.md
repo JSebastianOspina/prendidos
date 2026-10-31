@@ -79,3 +79,61 @@ The repo today has the card content model and its validator, but no game rules, 
 ## Business Value
 
 Lets six screens be built in parallel within the hour without contradicting each other, and guarantees the partida follows the PRD rules everywhere, which is the whole product promise.
+
+---
+
+## Original
+
+The sections above are the original product story (written with `write-us`).
+
+## Enhanced (enrich-us, technical detail)
+
+Status after enrichment: **Ready for proposal** (OpenSpec change `hu-00-game-foundation`).
+
+### Modules and files
+
+| Area | Path | Contents |
+| ---- | ---- | -------- |
+| Game types | `src/features/game/game-types.ts` | `Player`, `GameSettings`, `EndCondition`, `GameSession` (fields exactly as `docs/data-model.md`), `GameState`, `TurnOutcome`, `RankingEntry`, `RenderedCard` |
+| Escalation | `src/features/game/escalation.ts` | `orderedDifficulties(selected)`, `currentDifficultyFor(settings, session)` — thirds of rounds / of the points goal; open games step up every 5 rounds |
+| Card selection | `src/features/game/card-selection.ts` | `drawCard({ cards, settings, session, seenCardIds, difficulty, random, wantGroupCard })` — category + heat filter, no repeats, unseen first, ascending points, gender eligibility, per-level pool reset |
+| Scoring and end | `src/features/game/scoring.ts`, `src/features/game/end-condition.ts`, `src/features/game/ranking.ts` | `refusalPenaltyPoints(points) = ceil(points / 2)`, `isGameOver`, `rankPlayers` (ties share the position: 1, 1, 3) |
+| Reducer | `src/features/game/game-reducer.ts` | Pure `gameReducer(state, action, context)`: `start`, `complete`, `refuse`, `swap`, `nextAfterGroupCard`, `end` |
+| Card copy | `src/features/game/render-card.ts` | Renders headline, body and penalty quip through `renderGenderedText` (current player's gender; `{player}` = random other eligible player; `{partner}` in couple mode; group cards neutral) |
+| Settings validation | `src/features/game/settings-validation.ts` | `validateSettings(settings)` — 2–12 players in `friends`, exactly 2 in `couple`, non-empty difficulties, category of the mode |
+| React bindings | `src/features/game/game-provider.tsx`, `src/features/game/new-game-draft.tsx`, `src/features/game/index.ts` | `GameProvider` / `useGame()`, `NewGameDraftProvider` / `useNewGameDraft()`; barrel exports types and hooks only |
+| Device state | `src/features/device/device-state.ts`, `device-storage.ts`, `device-state-provider.tsx` | `DeviceState`, versioned key `device.v1`, tolerant parse, `expo-sqlite/kv-store` adapter (sync API), `DeviceStateProvider` / `useDeviceState()` |
+| Content runtime | `src/features/content/catalog.ts`, `src/features/content/catalog/*.json` | `loadCatalog()` (validated with `validateCards` / `hasErrors`, throws on errors), `categoriesForMode(mode)`, `contentWarnings()` |
+| Navigation | `src/app/_layout.tsx`, `src/features/navigation/routes.ts` | Stack with `Stack.Protected`: every route but the 18+ gate needs `ageConfirmedAt`; typed `routes` |
+| Placeholders | `src/app/age-gate.tsx`, `index.tsx`, `new-game/mode.tsx`, `new-game/category.tsx`, `new-game/setup.tsx`, `play.tsx`, `results.tsx` | Each renders `PlaceholderScreen` with its name and a "Siguiente" button to the next route |
+| Shared UI | `src/components/ui/button.tsx`, `screen-container.tsx`, `card-frame.tsx`, `level-badge.tsx`, `placeholder-screen.tsx`; `src/constants/theme.ts` | Clay style from `docs/brand/design-tokens.md`; Fredoka + Nunito loaded in the root layout |
+
+Template files removed: `src/app/explore.tsx`, `src/components/app-tabs*.tsx`, `animated-icon*`, `hint-row.tsx`, `web-badge.tsx`, `external-link.tsx`, `ui/collapsible.tsx`, `themed-*` and `src/hooks/use-color-scheme*` when unused.
+
+### Rules fixed in this story
+
+- **Turn order:** after a completed or refused individual card the turn passes to `currentPlayerIndex + 1`; wrapping to 0 completes a round (`currentRound + 1`).
+- **Group interlude:** each draw after an individual card is a group card with probability 0.25 (20 % of the cards shown) (injected `random`), never two group cards in a row, and only when an unplayed group card exists at the level. Group cards do not change `currentPlayerIndex`.
+- **Escalation:** `index = floor(progress × n)` over the ordered selected levels, clamped to `n − 1`. Rounds: `progress = (currentRound − 1) / rounds`. Points: `progress = max(score) / target`, never below the level of the card just played. Open: `index = floor((currentRound − 1) / 5)`.
+- **Selection order within a level:** unplayed in this game → unseen on this device first → ascending points (group cards: random). When no eligible unplayed individual card is left at the level, that level's ids leave `playedCardIds` (the pool resets).
+- **Gender targeting:** a card with `targetGender` is eligible only when another player with that exact gender exists; that player fills `{player}`. `undisclosed` is never picked.
+- **Refusal:** `scores[player] -= ceil(points / 2)`; `lastOutcome` carries the card's `DrinkPenalty` and rendered quip for HU-05. Non-drinkers still see the drink penalty until HU-11.
+- **Stale actions:** every action carries the id of the card on screen; a second tap on an answered card is ignored.
+- **Swap:** individual cards only, once per player per game (`swapsUsed[playerId]`); draws a different card at the same level with no score change.
+- **End:** rounds → after the last round completes; points → when a round completes and a score ≥ target; open → `endGame()` only. `endGame()` works at any time.
+- **Persistence:** `activeSession` saved on every change; cleared by `clearFinishedGame()`. Every shown card id is appended to `seenCardIds`. Nothing else about past games is stored.
+- **Current card:** the last element of `playedCardIds` is the card on screen, so the session alone is enough to resume (HU-12).
+
+### Storage
+
+`expo-sqlite/kv-store` (ADR-0001). One JSON value under `device.v1`; unknown or corrupt data falls back to the empty state. Offline by design: no network calls.
+
+### Non-functional
+
+- No personal data leaves the device; no analytics in this story.
+- Pure engine modules import nothing from React or Expo; 100 % branch target for `src/features/game/*.ts` pure modules, ≥ 90 % overall on `src/features/**`.
+- Light theme only, portrait only, touch targets ≥ 48 pt, Fredoka/Nunito.
+
+### Definition of done
+
+`npm test -- --coverage` ≥ 90 % on `src/features/**`, `npx expo lint` and `npx tsc --noEmit` clean, the app shows the placeholder flow in the iOS Simulator, ADR-0001 recorded, README ownership table matches the real paths.
