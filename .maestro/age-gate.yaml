@@ -5,12 +5,13 @@ appId: ${APP_ID}
 ---
 - launchApp:
     clearState: true
-- assertVisible: '¿Es mayor de 18 años?'
-- tapOn: 'Soy menor de 18'
+- assertVisible: '¿Ya es mayor de edad?'
+- assertVisible: 'Se lo preguntamos una sola vez.'
+- tapOn: 'Soy menor de edad'
 - assertVisible: 'Prendidos es solo para mayores de edad.*'
-- assertVisible: '¿Es mayor de 18 años?'
+- assertVisible: '¿Ya es mayor de edad?'
 - tapOn: 'Soy mayor de 18 años'
-- assertNotVisible: '¿Es mayor de 18 años?'
+- assertNotVisible: '¿Ya es mayor de edad?'
 - stopApp
 - launchApp
-- assertNotVisible: '¿Es mayor de 18 años?'
+- assertNotVisible: '¿Ya es mayor de edad?'
