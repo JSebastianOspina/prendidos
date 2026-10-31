@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "hooks": {
+    "beforeReadFile": [
+      {
+        "command": ".cursor/hooks/block-sensitive-paths.sh",
+        "failClosed": true
+      }
+    ],
+    "preToolUse": [
+      {
+        "matcher": "Write",
+        "command": ".cursor/hooks/block-sensitive-paths.sh",
+        "failClosed": true
+      }
+    ],
+    "beforeShellExecution": [
+      {
+        "command": ".cursor/hooks/block-destructive-shell.sh",
+        "failClosed": true
+      }
+    ],
+    "afterFileEdit": [
+      {
+        "command": ".cursor/hooks/post-edit-verify.sh",
+        "timeout": 120
+      }
+    ]
+  }
+}

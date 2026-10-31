@@ -1,0 +1,41 @@
+id: create-rest-endpoint
+name: Create NestJS REST endpoint
+description: Agent reads backend standards, scaffolds a health-check module with kebab-case files, and avoids extra dependencies.
+fixture: sandbox
+workspace: backend
+prompt: |
+  Read docs/backend-standards.md and docs/base-standards.md before writing any code.
+
+  Create a NestJS GET endpoint at /api/v1/health-check:
+  - New module under src/modules/health-check/
+  - health-check.controller.ts and health-check.service.ts (kebab-case file names)
+  - Register the module in src/app.module.ts
+  - Add a Jest unit test for the service
+  - Use NestJS patterns from the standards (controller + service, no Express)
+
+  Do not add new npm dependencies. Use only packages already listed in package.json.
+timeout_seconds: 600
+assertions:
+  - type: files_exist
+    paths:
+      - src/modules/health-check/health-check.controller.ts
+      - src/modules/health-check/health-check.service.ts
+      - src/modules/health-check/health-check.service.spec.ts
+  - type: file_matches
+    path: src/modules/health-check/health-check.controller.ts
+    pattern: "@Controller\\(['\"]health-check['\"]\\)"
+  - type: file_matches
+    path: src/modules/health-check/health-check.controller.ts
+    pattern: "@Get\\(\\)"
+  - type: kebab_case_paths
+    glob: 'src/modules/health-check/**/*.ts'
+  - type: no_forbidden_imports
+    glob: 'src/modules/health-check/**/*.ts'
+    forbidden:
+      - express
+      - fastify
+      - '@nestjs/platform-express'
+  - type: no_new_dependencies
+    package_json: package.json
+  - type: file_updated
+    path: src/app.module.ts

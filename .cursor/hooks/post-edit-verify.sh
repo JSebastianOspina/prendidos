@@ -1,0 +1,1 @@
+../../ai-specs/hooks/scripts/post-edit-verify.sh

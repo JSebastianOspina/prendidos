@@ -1,0 +1,1 @@
+../../ai-specs/hooks/scripts/test-hooks.py

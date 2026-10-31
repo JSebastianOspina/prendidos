@@ -1,0 +1,73 @@
+#!/usr/bin/env bash
+# Check out the same branch in every managed sibling repository.
+
+set -euo pipefail
+
+source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/lib/common.sh"
+
+usage() {
+  cat <<'USAGE'
+Usage:
+  scripts/branch-all <branch-name> [--create]
+
+Options:
+  --create    Create branch if it does not exist locally or remotely.
+USAGE
+}
+
+if [[ "${#REPOS[@]}" -eq 0 ]]; then
+  warn "No sibling repos in sibling-repos.env. Nothing to switch."
+  exit 0
+fi
+
+if [[ $# -lt 1 ]]; then
+  usage
+  exit 1
+fi
+
+branch_name="$1"
+create_if_missing=0
+
+if [[ $# -ge 2 && "$2" == "--create" ]]; then
+  create_if_missing=1
+fi
+
+branch_errors=0
+
+for repo in "${REPOS[@]}"; do
+  target="$(repo_path "${repo}")"
+  log ""
+  log "==> ${repo}"
+
+  if ! is_git_repo "${target}"; then
+    warn "Repository not found at ${target}. Skipping."
+    continue
+  fi
+
+  git -C "${target}" fetch --all --prune
+
+  if git -C "${target}" show-ref --verify --quiet "refs/heads/${branch_name}"; then
+    git -C "${target}" checkout "${branch_name}" || branch_errors=1
+    continue
+  fi
+
+  if git -C "${target}" show-ref --verify --quiet "refs/remotes/origin/${branch_name}"; then
+    git -C "${target}" checkout -b "${branch_name}" --track "origin/${branch_name}" || branch_errors=1
+    continue
+  fi
+
+  if [[ "${create_if_missing}" -eq 1 ]]; then
+    git -C "${target}" checkout -b "${branch_name}" || branch_errors=1
+  else
+    warn "Branch ${branch_name} does not exist in ${repo}. Use --create to create it."
+    branch_errors=1
+  fi
+done
+
+log ""
+if [[ "${branch_errors}" -ne 0 ]]; then
+  err "branch-all finished with errors."
+  exit 1
+fi
+
+log "branch-all completed."

@@ -1,0 +1,78 @@
+#!/usr/bin/env bash
+# Clone missing sibling repositories into the workspace (parent of this brain repo).
+
+set -euo pipefail
+
+source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/lib/common.sh"
+
+if [[ "${#REPOS[@]}" -eq 0 ]]; then
+  warn "No sibling repos found. Add *_REPO_URL entries to sibling-repos.env (source of truth), then re-run."
+  exit 0
+fi
+
+log "Workspace: ${WORKSPACE_DIR}"
+mkdir -p "${WORKSPACE_DIR}"
+
+missing_urls=0
+invalid_urls=0
+clone_errors=0
+
+for repo in "${REPOS[@]}"; do
+  target="$(repo_path "${repo}")"
+  log ""
+  log "==> ${repo}"
+
+  if is_git_repo "${target}"; then
+    log "Already present at ${target}"
+    continue
+  fi
+
+  if [[ -e "${target}" ]]; then
+    warn "Path exists but is not a git repository: ${target}. Skipping."
+    continue
+  fi
+
+  repo_url="$(repo_url_from_env "${repo}")"
+  if [[ -z "${repo_url}" ]]; then
+    warn "No URL configured for ${repo}. Add $(echo "${repo}" | tr '[:lower:]-' '[:upper:]_')_REPO_URL to sibling-repos.env (and commit), then re-run."
+    missing_urls=1
+    continue
+  fi
+
+  if [[ "${repo_url}" == *"YOUR_BITBUCKET_WORKSPACE"* ]]; then
+    warn "Placeholder URL for ${repo} still contains YOUR_BITBUCKET_WORKSPACE. Edit sibling-repos.env with the real Bitbucket workspace slug, then re-run."
+    invalid_urls=1
+    continue
+  fi
+
+  if ! is_ssh_clone_url "${repo_url}"; then
+    err "Invalid clone URL for ${repo}: ${repo_url}"
+    err "Only Bitbucket SSH URLs are allowed (git@bitbucket.org:<workspace>/<repo>.git). HTTPS is never allowed."
+    invalid_urls=1
+    continue
+  fi
+
+  if git clone "${repo_url}" "${target}"; then
+    log "Cloned ${repo} into ${target}"
+  else
+    err "Clone failed for ${repo} (${repo_url})"
+    clone_errors=1
+  fi
+done
+
+log ""
+if [[ "${clone_errors}" -ne 0 ]]; then
+  err "Bootstrap finished with clone errors."
+  exit 1
+fi
+
+if [[ "${invalid_urls}" -ne 0 ]]; then
+  err "Bootstrap finished. Some URLs are invalid (placeholders or non-SSH). Fix sibling-repos.env and re-run."
+  exit 1
+fi
+
+if [[ "${missing_urls}" -ne 0 ]]; then
+  warn "Bootstrap finished. Some repositories were not cloned due to missing URLs in sibling-repos.env."
+else
+  log "Bootstrap completed."
+fi

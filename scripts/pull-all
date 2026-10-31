@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+# Fast-forward pull each managed sibling repository.
+
+set -euo pipefail
+
+source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/lib/common.sh"
+
+if [[ "${#REPOS[@]}" -eq 0 ]]; then
+  warn "No sibling repos in sibling-repos.env. Nothing to pull."
+  exit 0
+fi
+
+pull_errors=0
+
+for repo in "${REPOS[@]}"; do
+  target="$(repo_path "${repo}")"
+  log ""
+  log "==> ${repo}"
+
+  if ! is_git_repo "${target}"; then
+    warn "Repository not found at ${target}. Skipping."
+    continue
+  fi
+
+  current_branch="$(git -C "${target}" branch --show-current)"
+  log "Branch: ${current_branch:-detached}"
+
+  if git -C "${target}" pull --ff-only; then
+    log "Updated ${repo}"
+  else
+    err "Pull failed for ${repo}"
+    pull_errors=1
+  fi
+done
+
+log ""
+if [[ "${pull_errors}" -ne 0 ]]; then
+  err "pull-all finished with errors."
+  exit 1
+fi
+
+log "pull-all completed."

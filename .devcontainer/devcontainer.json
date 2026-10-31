@@ -1,0 +1,35 @@
+{
+  "name": "Prendidos",
+  "comment": "Copy templates/devcontainer/ to .devcontainer/ \u2014 see README \u00a7 Templates",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-24.04",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "24"
+    },
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "3.12"
+    },
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "editorconfig.editorconfig",
+        "ms-azuretools.vscode-docker",
+        "redhat.vscode-yaml",
+        "expo.vscode-expo-tools"
+      ],
+      "settings": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "files.eol": "\n"
+      }
+    }
+  },
+  "postCreateCommand": "bash scripts/setup-dev-tooling.sh --install-only 2>/dev/null || pip3 install --user pre-commit pyyaml",
+  "postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}",
+  "remoteUser": "vscode"
+}

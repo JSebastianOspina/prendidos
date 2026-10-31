@@ -1,0 +1,74 @@
+# OpenSpec project configuration (OpenSpec 1.16 format).
+# Adapted from templates/openspec-config.example.yaml (Harness, OpenSpec 1.5 format):
+#   - rules._global  → folded into `context` (1.16 only accepts artifact IDs under `rules`)
+#   - rules.apply / rules.archive → `operations.<op>.guidance`
+#   - backend / serverless / database rules removed (no backend in this repo yet)
+#   - E2E: Maestro (not Cypress)
+#
+# Durable customization belongs in this file + docs/ + ai-specs/ (+ templates/, scripts/).
+# Do NOT edit OpenSpec-generated skills/commands under .claude/ — they are
+# overwritten by `openspec update`.
+
+schema: spec-driven
+
+context: |
+  Product: Prendidos — native party drinking game for Android and iPhone. Players pick a category and mode
+  (friends or couple) and play challenges with difficulty levels; completing challenges earns points.
+  18+ audience: age gate before first play; drinking challenges offer a non-alcoholic alternative.
+  No backend: challenge content is bundled and game state/progress live on-device. Payments only via
+  App Store / Google Play in-app purchases (never handle card data).
+  Tech stack: TypeScript, Expo SDK 58, React Native 0.88, React 19.3, Expo Router (src/app/), @expo/ui,
+  react-native-reanimated 4, EAS (Build, Submit, Update). Package manager: npm.
+  Expo changes every SDK: never rely on memory for Expo / EAS / React Native APIs — read the `expo`
+  major version in package.json and check https://docs.expo.dev/versions/v<major>.0.0/ or
+  https://docs.expo.dev/llms.txt before designing or implementing.
+  Install dependencies only with `npx expo install`. Never create or edit ios/ or android/ by hand
+  (Continuous Native Generation) — use app.json and config plugins.
+  Testing: Jest (jest-expo) + React Native Testing Library for unit/component tests; Maestro flows in .maestro/ for E2E.
+  Branching: trunk-based (short-lived branches off main). Conventional Commits. Repo hosted on GitHub.
+  All code, comments, and documentation must be in English; user-facing copy is Spanish.
+  File naming: kebab-case for source files and folders (see docs/base-standards.md).
+  Test coverage target: 90% minimum.
+
+  Standards (single source of truth) — read and apply before creating or implementing any artifact:
+  - docs/base-standards.md — core principles, TDD, naming, language policy, Expo platform summary (§2.3)
+  - docs/frontend-standards.md — Expo platform rules, components, UI/UX, testing
+  - docs/security-standards.md — OWASP, secrets, auth + Agent operational constraints (Harness invariant)
+  - docs/data-model.md — on-device domain entities (Category, Challenge, GameSession, Progress, Entitlement)
+  - docs/development_guide.md — setup, test and EAS commands
+  - docs/documentation-standards.md — docs structure and maintenance
+  - docs/openspec-tasks-mandatory-steps.md — required steps for OpenSpec tasks.md files
+  For implementation: adopt ai-specs/agents/frontend-developer.md (and ai-specs/agents/security-auditor.md
+  for security-sensitive changes) and use ai-specs/skills/ for workflow guidance.
+  Never edit OpenSpec-generated files under .claude/ to customize workflow — put durable rules here and in docs/.
+
+rules:
+  proposal:
+    - Call out auth/authz/security impact; note SECURITY REVIEW NEEDED when applicable
+    - State which platforms are affected (iOS, Android, web) and whether a new development build is required (native modules)
+
+  specs:
+    - Include authorization scenarios when the change touches access control
+    - Cover offline, loading, empty, and error states for screens that fetch data
+
+  design:
+    - Verify every Expo / React Native API against the versioned Expo docs for the SDK in package.json
+    - Prefer Expo modules and @expo/ui over third-party libraries; justify any new native dependency
+    - Native configuration goes in app.json or config plugins, never in ios/ or android/
+
+  tasks:
+    - Follow docs/openspec-tasks-mandatory-steps.md when writing tasks.md
+    - Include `npx expo lint` and `npx tsc --noEmit` as final verification tasks
+    - Application code changes need automated tests; docs/*.md for architecture/flow; README.md when install/commands/features change
+    - Comment SECURITY REVIEW NEEDED on auth/authz/security-impacting changes
+
+operations:
+  apply:
+    guidance:
+      - Read and follow docs/openspec-tasks-mandatory-steps.md and docs/security-standards.md § Agent operational constraints
+      - Add dependencies only with `npx expo install`; run `npx expo lint` and `npx tsc --noEmit` before marking a task done
+      - If a blocked privileged command is still required, instruct the human with the exact command and consequences, wait for confirmation, then continue — do not bypass the hook
+
+  archive:
+    guidance:
+      - Confirm SECURITY REVIEW NEEDED items were addressed or explicitly deferred with human acknowledgment before archive

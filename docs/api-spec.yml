@@ -1,0 +1,26 @@
+# NOT APPLICABLE YET — Prendidos has no backend API (see docs/base-standards.md §2.4).
+# Harness template kept for when an API is added. Do not generate endpoints from it.
+openapi: 3.0.0
+
+info:
+  title: '[Project Name] API'
+  description: |
+    Harness template — customize using the setup prompt in README.md (§ Customize docs/).
+
+    Define paths, schemas, and auth after domain context and backend standards are confirmed.
+    Remove this placeholder notice from the description when customization is complete.
+  version: 0.0.0
+  contact:
+    name: '[Team Name]'
+
+servers:
+  - url: http://localhost:3000
+    description: Local development
+
+paths: {}
+
+components:
+  schemas: {}
+  securitySchemes: {}
+
+tags: []

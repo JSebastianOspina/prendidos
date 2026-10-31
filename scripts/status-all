@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+# Show short branch status for each managed sibling repository.
+
+set -euo pipefail
+
+source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/lib/common.sh"
+
+if [[ "${#REPOS[@]}" -eq 0 ]]; then
+  warn "No sibling repos in sibling-repos.env. Nothing to status."
+  exit 0
+fi
+
+for repo in "${REPOS[@]}"; do
+  target="$(repo_path "${repo}")"
+  log ""
+  log "==> ${repo}"
+
+  if ! is_git_repo "${target}"; then
+    warn "Repository not found at ${target}."
+    continue
+  fi
+
+  git -C "${target}" status --short --branch
+done
+
+log ""
+log "status-all completed."

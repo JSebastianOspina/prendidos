@@ -1,0 +1,39 @@
+id: create-react-component
+name: Create React component with Flux UI
+description: Agent reads frontend standards, creates a Flux UI component with kebab-case paths, and avoids alternate UI libraries.
+fixture: sandbox
+workspace: frontend
+prompt: |
+  Read docs/frontend-standards.md and docs/base-standards.md before writing any code.
+
+  Create a StatusBadge React component:
+  - Path: src/components/status-badge/status-badge.tsx
+  - Use @flux-ui/core for the badge UI (import from the design system)
+  - Export a typed StatusBadge component with variant and label props
+  - Add status-badge.test.tsx with React Testing Library
+  - Use kebab-case file and folder names
+
+  Do not add new npm dependencies. Do not use Bootstrap, MUI, or Chakra.
+timeout_seconds: 600
+assertions:
+  - type: files_exist
+    paths:
+      - src/components/status-badge/status-badge.tsx
+      - src/components/status-badge/status-badge.test.tsx
+  - type: file_matches
+    path: src/components/status-badge/status-badge.tsx
+    pattern: '@flux-ui/core'
+  - type: file_matches
+    path: src/components/status-badge/status-badge.tsx
+    pattern: 'export.*StatusBadge'
+  - type: kebab_case_paths
+    glob: 'src/components/status-badge/**/*.{ts,tsx}'
+  - type: no_forbidden_imports
+    glob: 'src/components/status-badge/**/*.{ts,tsx}'
+    forbidden:
+      - bootstrap
+      - '@mui/material'
+      - '@chakra-ui/react'
+      - antd
+  - type: no_new_dependencies
+    package_json: package.json

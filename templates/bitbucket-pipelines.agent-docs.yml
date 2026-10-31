@@ -1,0 +1,17 @@
+# Bitbucket Pipelines — Harness brain repo (agent-docs)
+# Applied by scripts/init.sh when --type multi-repo.
+# Also ships at the Harness repo root as bitbucket-pipelines.yml.
+#
+# Gate: Prettier check on Markdown (docs, skills, agents, ADRs).
+
+image: node:24
+
+pipelines:
+  default:
+    - step:
+        name: Check Markdown Formatting
+        caches:
+          - node
+        script:
+          - npm ci
+          - npx prettier --check "**/*.md"

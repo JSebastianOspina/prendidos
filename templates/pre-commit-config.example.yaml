@@ -1,0 +1,70 @@
+# Harness pre-commit template — copy to repo root as .pre-commit-config.yaml
+#
+# Companion files (copy together):
+#   templates/scripts/pre-commit/*.sh  →  scripts/pre-commit/
+#
+# Install:
+#   bash scripts/setup-dev-tooling.sh
+#   # or manually:
+#   pip install pre-commit
+#   pre-commit install
+#
+# Run on all files:
+#   pre-commit run --all-files
+
+default_language_version:
+  python: python3
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: trailing-whitespace
+        exclude: ^(docs/architecture/|.+\.md)$
+      - id: end-of-file-fixer
+      - id: check-yaml
+        args: [--unsafe] # allows custom YAML tags in some OpenSpec files
+      - id: check-json
+      - id: check-added-large-files
+        args: [--maxkb=500]
+      - id: detect-private-key
+      - id: check-merge-conflict
+      - id: mixed-line-ending
+        args: [--fix=lf]
+
+  - repo: local
+    hooks:
+      - id: forbid-env-files
+        name: Block .env files (allow .env.example)
+        entry: bash scripts/pre-commit/forbid-env-files.sh
+        language: system
+        files: (^|/)\.env(\..+)?$
+
+      - id: forbid-secrets-paths
+        name: Block secrets/ directory
+        entry: bash scripts/pre-commit/forbid-secrets-paths.sh
+        language: system
+        files: (^|/)secrets/
+
+      - id: kebab-case-ts-files
+        name: Kebab-case TypeScript file names
+        entry: bash scripts/pre-commit/kebab-case-lint.sh
+        language: system
+        pass_filenames: false
+        files: \.(ts|tsx)$
+
+      # Brain repo only — static Harness evals (no API key). Remove if not an agent-docs repo.
+      - id: harness-static-evals
+        name: Harness static evals
+        entry: bash scripts/run-evals.sh
+        language: system
+        pass_filenames: false
+        files: ^(ai-specs/|docs/|\.claude/|\.cursor/)
+
+      # App repos — uncomment when package.json defines "lint"
+      # - id: npm-lint
+      #   name: npm run lint
+      #   entry: bash scripts/pre-commit/npm-lint-if-defined.sh
+      #   language: system
+      #   pass_filenames: false
+      #   files: \.(ts|tsx|js|jsx)$
