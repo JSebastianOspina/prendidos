@@ -1499,6 +1499,1318 @@
       "heat": "standard",
       "requiresConsent": false,
       "reachesOutside": false
+    },
+    {
+      "id": "prev-102",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "easy",
+      "headline": "Uy pana, ese like",
+      "body": "Dele like a una foto de su crush de hace más de un año y no lo quite en toda la noche.",
+      "points": 7,
+      "penalty": {
+        "drinks": 1,
+        "quip": "por gallina"
+      },
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": true
+    },
+    {
+      "id": "prev-103",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "easy",
+      "headline": "Pies libres",
+      "body": "Quítese los zapatos y las medias hasta que le vuelva a tocar. El grupo decide dónde los esconde.",
+      "points": 3,
+      "penalty": {
+        "drinks": 1,
+        "quip": "por pena de pies"
+      },
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-104",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "easy",
+      "headline": "Voz de medianoche",
+      "body": "Lea los ingredientes de algo que tenga cerca con la voz más seductora que tenga, durante 20 segundos y sin reírse.",
+      "points": 5,
+      "penalty": {
+        "drinks": 1,
+        "quip": "por reírse"
+      },
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-105",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "easy",
+      "headline": "Piropo sin filtro",
+      "body": "Dígale a {player} el piropo más atrevido que se sepa, sin groserías. El grupo decide si pasó la prueba.",
+      "points": 6,
+      "penalty": {
+        "drinks": 1,
+        "quip": "por piropo flojo"
+      },
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-106",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "easy",
+      "headline": "Guiño constante",
+      "body": "Durante una ronda, cada vez que {player} hable, guíñele el ojo. Si se le olvida una vez, no cumplió.",
+      "points": 4,
+      "penalty": {
+        "drinks": 1,
+        "quip": "por mala memoria"
+      },
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-107",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "easy",
+      "headline": "Cultura chopística sin filtro",
+      "body": "Lugares raros para dar un beso. Por turnos con la persona de su derecha: el que repita o se quede en blanco pierde.",
+      "points": 5,
+      "penalty": {
+        "drinks": 1,
+        "quip": "por falta de calle"
+      },
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-108",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "easy",
+      "headline": "Besos volados",
+      "body": "Mándele un beso volado a cada persona del grupo, con un apodo coqueto distinto para cada una.",
+      "points": 3,
+      "penalty": {
+        "drinks": 1
+      },
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-109",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "easy",
+      "headline": "Sticker coqueto",
+      "body": "Mándele a su crush el sticker más coqueto que tenga, sin texto. Si responde antes del final del juego, lea la respuesta.",
+      "points": 8,
+      "penalty": {
+        "drinks": 1,
+        "quip": "por gallina"
+      },
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": true
+    },
+    {
+      "id": "prev-110",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "easy",
+      "headline": "Comercial de perfume",
+      "body": "Camine hacia {player} en cámara lenta como en un comercial de perfume y termine con la mirada más intensa que tenga.",
+      "points": 5,
+      "penalty": {
+        "drinks": 1,
+        "quip": "por reírse"
+      },
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-111",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "easy",
+      "headline": "Besito de bienvenida",
+      "body": "Dele un beso en la mejilla a la persona que escoja el grupo y dígale «gracias por venir a mi noche».",
+      "points": 4,
+      "penalty": {
+        "drinks": 1
+      },
+      "heat": "spicy",
+      "requiresConsent": true,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-112",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "easy",
+      "headline": "Spa de manos",
+      "body": "Hágale un masaje de manos de 30 segundos a quien escoja, narrando como si fuera un spa de lujo.",
+      "points": 5,
+      "penalty": {
+        "drinks": 1,
+        "quip": "por manos frías"
+      },
+      "heat": "spicy",
+      "requiresConsent": true,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-113",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "easy",
+      "headline": "Fuego en la historia",
+      "body": "Reaccione con 🔥 a la última historia de alguien que le guste. No vale explicar nada.",
+      "points": 6,
+      "penalty": {
+        "drinks": 1,
+        "quip": "por arrugarse"
+      },
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": true
+    },
+    {
+      "id": "prev-114",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "easy",
+      "headline": "Coqueteo de telenovela",
+      "body": "Coquetéele a {player} durante 30 segundos solo con frases de telenovela. Si usted se ríe primero, no cumplió.",
+      "points": 6,
+      "penalty": {
+        "drinks": 1,
+        "quip": "por reírse primero"
+      },
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-115",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "easy",
+      "headline": "Contacto sospechoso",
+      "body": "Muestre con qué nombre tiene guardado a su último crush en el celular y explique por qué. Sin apellidos.",
+      "points": 5,
+      "penalty": {
+        "drinks": 1,
+        "quip": "por esconder cosas"
+      },
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-116",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "easy",
+      "headline": "Mirada de conquista",
+      "body": "Hágale a {player} su mejor mirada de conquista durante diez segundos. {player} decide si funcionó.",
+      "points": 3,
+      "penalty": {
+        "drinks": 1
+      },
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-117",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "easy",
+      "headline": "Apodos con picante",
+      "body": "Invéntele un apodo coqueto a cada persona del grupo y úselos durante una ronda completa.",
+      "points": 4,
+      "penalty": {
+        "drinks": 1,
+        "quip": "por mala memoria"
+      },
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-118",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "easy",
+      "headline": "Espejo del levante",
+      "body": "Imite cómo coquetea {player} cuando le gusta alguien. El grupo vota si se parece.",
+      "points": 6,
+      "penalty": {
+        "drinks": 1,
+        "quip": "por actuar mal"
+      },
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-119",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "easy",
+      "headline": "La peor frase",
+      "body": "Actúe con {player} la peor frase de levante que le han dicho, como si de verdad hubiera funcionado.",
+      "points": 5,
+      "penalty": {
+        "drinks": 1
+      },
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-120",
+      "categoryId": "la-previa",
+      "type": "truth",
+      "difficulty": "easy",
+      "headline": "Crush de pantalla",
+      "body": "¿Cuál fue su crush de famoso o famosa más vergonzoso? Cuente qué era lo que le gustaba.",
+      "points": 3,
+      "penalty": {
+        "drinks": 1
+      },
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-121",
+      "categoryId": "la-previa",
+      "type": "truth",
+      "difficulty": "easy",
+      "headline": "Beso en lugar raro",
+      "body": "¿Cuál es el lugar más raro donde se ha dado un beso? Diga el lugar, sin nombres.",
+      "points": 5,
+      "penalty": {
+        "drinks": 1
+      },
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-122",
+      "categoryId": "la-previa",
+      "type": "truth",
+      "difficulty": "easy",
+      "headline": "Primer beso, versión oso",
+      "body": "¿Cómo fue su primer beso? Cuéntelo en 30 segundos con todos los detalles bobos.",
+      "points": 4,
+      "penalty": {
+        "drinks": 1
+      },
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-123",
+      "categoryId": "la-previa",
+      "type": "truth",
+      "difficulty": "easy",
+      "headline": "Lo primero que mira",
+      "body": "¿Qué es lo primero que le mira a alguien que le gusta? Responda con honestidad, el grupo sabe.",
+      "points": 3,
+      "penalty": {
+        "drinks": 1
+      },
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-124",
+      "categoryId": "la-previa",
+      "type": "truth",
+      "difficulty": "easy",
+      "headline": "Ex time",
+      "body": "¿Qué es lo más ridículo que hizo para olvidar a un ex? Cuéntelo sin recortar.",
+      "points": 6,
+      "penalty": {
+        "drinks": 1
+      },
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-125",
+      "categoryId": "la-previa",
+      "type": "truth",
+      "difficulty": "easy",
+      "headline": "Match raro",
+      "body": "¿Cuál ha sido el match o la cita de aplicación más rara que ha tenido? Sin nombres.",
+      "points": 5,
+      "penalty": {
+        "drinks": 1
+      },
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-126",
+      "categoryId": "la-previa",
+      "type": "neverHaveIEver",
+      "difficulty": "easy",
+      "body": "…he coqueteado con alguien solo para que me invitara a algo.",
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-127",
+      "categoryId": "la-previa",
+      "type": "neverHaveIEver",
+      "difficulty": "easy",
+      "body": "…he dado un beso en un juego como este.",
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-128",
+      "categoryId": "la-previa",
+      "type": "neverHaveIEver",
+      "difficulty": "easy",
+      "body": "…me he escondido para que mi ex no me viera en la calle.",
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-129",
+      "categoryId": "la-previa",
+      "type": "everyoneWho",
+      "difficulty": "easy",
+      "headline": "¡Todos!",
+      "body": "Los que se hayan dado un beso en la primera cita.",
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-130",
+      "categoryId": "la-previa",
+      "type": "everyoneWho",
+      "difficulty": "easy",
+      "headline": "Todos los que…",
+      "body": "Los que tengan guardado a alguien con un emoji en vez de nombre.",
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-131",
+      "categoryId": "la-previa",
+      "type": "everyoneWho",
+      "difficulty": "easy",
+      "headline": "¡Confiesen!",
+      "body": "Los que hayan revisado el perfil de la pareja nueva de su ex.",
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-132",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "medium",
+      "headline": "Pensé en usted",
+      "body": "Mándele a su crush una nota de voz que diga solo «pensé en usted» y nada más. Si responde antes del final del juego, lea la respuesta.",
+      "points": 16,
+      "penalty": {
+        "drinks": 2,
+        "quip": "por gallina"
+      },
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": true
+    },
+    {
+      "id": "prev-133",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "medium",
+      "headline": "Brazo por encima",
+      "body": "Siéntese junto a {player}, con el brazo por encima de sus hombros, durante una ronda completa.",
+      "points": 13,
+      "penalty": {
+        "drinks": 1
+      },
+      "heat": "spicy",
+      "requiresConsent": true,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-134",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "medium",
+      "headline": "Perreo sin tocar",
+      "body": "Baile reguetón para {player} durante 20 segundos, sin tocarle. El grupo pone nota de 1 a 10.",
+      "points": 15,
+      "penalty": {
+        "drinks": 1,
+        "quip": "por pies de palo"
+      },
+      "heat": "spicy",
+      "requiresConsent": true,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-135",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "medium",
+      "headline": "Spa de hombros",
+      "body": "Hágale un masaje de hombros de un minuto a la persona que escoja el grupo, con voz de spa.",
+      "points": 14,
+      "penalty": {
+        "drinks": 1
+      },
+      "heat": "spicy",
+      "requiresConsent": true,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-136",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "medium",
+      "headline": "Like arqueológico",
+      "body": "Dele like a una foto de su ex de hace más de un año y no lo quite en toda la noche.",
+      "points": 17,
+      "penalty": {
+        "drinks": 2,
+        "quip": "por arrugarse"
+      },
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": true
+    },
+    {
+      "id": "prev-137",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "medium",
+      "headline": "Mejilla en cámara lenta",
+      "body": "Dele un beso en la mejilla a {player} en cámara lenta mientras el grupo le pone música romántica.",
+      "points": 14,
+      "penalty": {
+        "drinks": 1
+      },
+      "heat": "spicy",
+      "requiresConsent": true,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-138",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "medium",
+      "headline": "Secreto al oído",
+      "body": "Susúrrele a {player} al oído la frase más coqueta que se le ocurra. {player} decide si la repite en voz alta.",
+      "points": 15,
+      "penalty": {
+        "drinks": 1,
+        "quip": "por arrugarse"
+      },
+      "heat": "spicy",
+      "requiresConsent": true,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-139",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "medium",
+      "headline": "Show de pasarela",
+      "body": "Quítese la chaqueta y un accesorio como en un show, con la música que ponga el grupo. Nada más que eso.",
+      "points": 13,
+      "penalty": {
+        "drinks": 1,
+        "quip": "por pena"
+      },
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-140",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "medium",
+      "headline": "Historia sospechosa",
+      "body": "Suba a mejores amigos una historia con su mano y la de {player} entrelazadas, con un corazón. No la borre en 15 minutos.",
+      "points": 18,
+      "penalty": {
+        "drinks": 2,
+        "quip": "por miedo al chisme"
+      },
+      "heat": "spicy",
+      "requiresConsent": true,
+      "reachesOutside": true
+    },
+    {
+      "id": "prev-141",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "medium",
+      "headline": "Cultura chopística del ex",
+      "body": "Excusas para no contestarle a un ex. Por turnos con quien escoja: el que repita o se demore pierde.",
+      "points": 11,
+      "penalty": {
+        "drinks": 1,
+        "quip": "por falta de ideas"
+      },
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-142",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "medium",
+      "headline": "Emoji del parche",
+      "body": "El grupo escoge un emoji y usted se lo manda, sin texto, a la última persona con la que coqueteó. Lea la respuesta si llega.",
+      "points": 16,
+      "penalty": {
+        "drinks": 2,
+        "quip": "por gallina"
+      },
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": true
+    },
+    {
+      "id": "prev-143",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "medium",
+      "headline": "Amor prohibido",
+      "body": "Con {player}, actúen 30 segundos una escena de telenovela en la que se confiesan un amor prohibido. El grupo decide si hubo química.",
+      "points": 14,
+      "penalty": {
+        "drinks": 1,
+        "quip": "por actuar mal"
+      },
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-144",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "medium",
+      "headline": "Ranking del levante",
+      "body": "Ordene al grupo de quién es más probable que tenga un romance esta noche y defienda su lista en 30 segundos.",
+      "points": 12,
+      "penalty": {
+        "drinks": 1
+      },
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-145",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "medium",
+      "headline": "Llegó {el seductor|la seductora|la persona más seductora}",
+      "body": "Durante una ronda hable solo con voz seductora, hasta para pedir que le pasen algo. Si se le sale la voz normal, no cumplió.",
+      "points": 13,
+      "penalty": {
+        "drinks": 1,
+        "quip": "por perder el papel"
+      },
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-146",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "medium",
+      "headline": "Cara a cara",
+      "body": "Pónganse frente a frente con {player} a un palmo de distancia durante 30 segundos, sin hablar. El primero que se ría pierde.",
+      "points": 15,
+      "penalty": {
+        "drinks": 1,
+        "quip": "por reírse primero"
+      },
+      "heat": "spicy",
+      "requiresConsent": true,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-147",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "medium",
+      "headline": "Canción para el ex",
+      "body": "Mándele a su ex el link de una canción que escoja el grupo, sin texto. Si responde, lea la respuesta en voz alta.",
+      "points": 19,
+      "penalty": {
+        "drinks": 2,
+        "quip": "por cobardía"
+      },
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": true
+    },
+    {
+      "id": "prev-148",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "medium",
+      "headline": "Bachata de cierre",
+      "body": "Baile una bachata con quien escoja, bien cerca, con las manos en la cintura y los hombros. Una canción completa.",
+      "points": 17,
+      "penalty": {
+        "drinks": 2,
+        "quip": "por pies de palo"
+      },
+      "heat": "spicy",
+      "requiresConsent": true,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-149",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "medium",
+      "headline": "Selfie con intención",
+      "body": "Muestre la última selfie que se tomó para mandársela a alguien que le gusta, sin decir a quién.",
+      "points": 16,
+      "penalty": {
+        "drinks": 1,
+        "quip": "por esconder cosas"
+      },
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-150",
+      "categoryId": "la-previa",
+      "type": "truth",
+      "difficulty": "medium",
+      "headline": "Una sola vez más",
+      "body": "¿Con quién de su pasado volvería a salir una sola vez? Diga solo la inicial y por qué.",
+      "points": 14,
+      "penalty": {
+        "drinks": 1
+      },
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-151",
+      "categoryId": "la-previa",
+      "type": "truth",
+      "difficulty": "medium",
+      "headline": "Oso romántico",
+      "body": "¿Cuál ha sido el momento más incómodo de una noche romántica? Con todo el oso y sin detalles gráficos.",
+      "points": 15,
+      "penalty": {
+        "drinks": 1
+      },
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-152",
+      "categoryId": "la-previa",
+      "type": "truth",
+      "difficulty": "medium",
+      "headline": "Contactos besados",
+      "body": "¿A cuántas personas de su lista de contactos ha besado? Diga el número, no los nombres.",
+      "points": 16,
+      "penalty": {
+        "drinks": 2
+      },
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-153",
+      "categoryId": "la-previa",
+      "type": "truth",
+      "difficulty": "medium",
+      "headline": "Lo más atrevido",
+      "body": "¿Qué es lo más atrevido que ha hecho para llamar la atención de alguien que le gustaba?",
+      "points": 13,
+      "penalty": {
+        "drinks": 1
+      },
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-154",
+      "categoryId": "la-previa",
+      "type": "truth",
+      "difficulty": "medium",
+      "headline": "Si tuviera que escoger",
+      "body": "Si tuviera que darle un beso a alguien de este grupo, ¿a quién sería y por qué? La razón vale más que el nombre.",
+      "points": 18,
+      "penalty": {
+        "drinks": 2
+      },
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-155",
+      "categoryId": "la-previa",
+      "type": "truth",
+      "difficulty": "medium",
+      "headline": "Red flag ignorada",
+      "body": "¿Cuál es la red flag que le ignoró a un ex y de la que se arrepiente? Cuente cómo se dio cuenta.",
+      "points": 12,
+      "penalty": {
+        "drinks": 1
+      },
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-156",
+      "categoryId": "la-previa",
+      "type": "neverHaveIEver",
+      "difficulty": "medium",
+      "body": "…he besado a alguien cuyo nombre no recordaba al otro día.",
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-157",
+      "categoryId": "la-previa",
+      "type": "neverHaveIEver",
+      "difficulty": "medium",
+      "body": "…he vuelto con un ex después de jurar que no lo haría.",
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-158",
+      "categoryId": "la-previa",
+      "type": "neverHaveIEver",
+      "difficulty": "medium",
+      "body": "…he mandado un mensaje coqueto al chat equivocado.",
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-159",
+      "categoryId": "la-previa",
+      "type": "everyoneWho",
+      "difficulty": "medium",
+      "headline": "¡Todos!",
+      "body": "Los que hayan besado a alguien de este grupo.",
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-160",
+      "categoryId": "la-previa",
+      "type": "everyoneWho",
+      "difficulty": "medium",
+      "headline": "Todos los que…",
+      "body": "Los que le hayan escrito a un ex en el último mes.",
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-161",
+      "categoryId": "la-previa",
+      "type": "everyoneWho",
+      "difficulty": "medium",
+      "headline": "¡Confiesen!",
+      "body": "Los que hayan aceptado una cita solo por la comida gratis.",
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-162",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "hard",
+      "headline": "Nota del ex",
+      "body": "Llame a su ex en altavoz y pídale una nota del 1 al 10 de su relación. Cuelgue apenas le dé el número.",
+      "points": 27,
+      "penalty": {
+        "drinks": 3,
+        "quip": "por gallina"
+      },
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": true
+    },
+    {
+      "id": "prev-163",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "hard",
+      "headline": "Un pico y ya",
+      "body": "Dele un pico de máximo tres segundos a quien escoja. El grupo cuenta en voz alta.",
+      "points": 26,
+      "penalty": {
+        "drinks": 2,
+        "quip": "por arrugarse"
+      },
+      "heat": "spicy",
+      "requiresConsent": true,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-164",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "hard",
+      "headline": "Trono humano",
+      "body": "Siéntese en las piernas de {player} durante una ronda completa y responda desde ahí todo lo que le pregunte el grupo.",
+      "points": 24,
+      "penalty": {
+        "drinks": 2
+      },
+      "heat": "spicy",
+      "requiresConsent": true,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-165",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "hard",
+      "headline": "Dictado coqueto",
+      "body": "El grupo le dicta un mensaje coqueto para su crush, sin groserías, y usted lo envía palabra por palabra.",
+      "points": 28,
+      "penalty": {
+        "drinks": 3,
+        "quip": "por miedo al rechazo"
+      },
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": true
+    },
+    {
+      "id": "prev-166",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "hard",
+      "headline": "Reseña de la cita",
+      "body": "Llame en altavoz a la última persona con la que salió y pregúntele qué fue lo que más le gustó de esa cita.",
+      "points": 25,
+      "penalty": {
+        "drinks": 3,
+        "quip": "por gallina"
+      },
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": true
+    },
+    {
+      "id": "prev-167",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "hard",
+      "headline": "Reguetón pegado",
+      "body": "Baile una canción completa de reguetón con quien escoja, bien cerca, con las manos en la cintura y los hombros.",
+      "points": 23,
+      "penalty": {
+        "drinks": 2,
+        "quip": "por pies de palo"
+      },
+      "heat": "spicy",
+      "requiresConsent": true,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-168",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "hard",
+      "headline": "Lo que pasa en la previa",
+      "body": "Suba una historia para todos sus seguidores abrazando a quien escoja el grupo, con el texto «lo que pasa en la previa…». No la borre en 15 minutos.",
+      "points": 29,
+      "penalty": {
+        "drinks": 3,
+        "quip": "por miedo al chisme"
+      },
+      "heat": "spicy",
+      "requiresConsent": true,
+      "reachesOutside": true
+    },
+    {
+      "id": "prev-169",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "hard",
+      "headline": "Spa de lujo",
+      "body": "Hágale a {player} un masaje de cuello y hombros de un minuto, con los ojos cerrados y narrando como sesión de spa.",
+      "points": 21,
+      "penalty": {
+        "drinks": 2
+      },
+      "heat": "spicy",
+      "requiresConsent": true,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-170",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "hard",
+      "headline": "Beso a ciegas",
+      "body": "Con los ojos cerrados, dele un beso en la mejilla a quien el grupo ponga frente a usted y adivine quién es.",
+      "points": 22,
+      "penalty": {
+        "drinks": 2,
+        "quip": "por mal olfato"
+      },
+      "heat": "spicy",
+      "requiresConsent": true,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-171",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "hard",
+      "headline": "Amor de telenovela",
+      "body": "Declárele su amor a {player} como su amor prohibido de telenovela: 45 segundos, de rodillas y sin reírse.",
+      "points": 23,
+      "penalty": {
+        "drinks": 2,
+        "quip": "por actuar mal"
+      },
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-172",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "hard",
+      "headline": "Bio comprometida",
+      "body": "Ponga en su bio «en una relación con» y el nombre de {player} hasta mañana.",
+      "points": 26,
+      "penalty": {
+        "drinks": 3,
+        "quip": "por arrugarse"
+      },
+      "heat": "spicy",
+      "requiresConsent": true,
+      "reachesOutside": true
+    },
+    {
+      "id": "prev-173",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "hard",
+      "headline": "Show completo",
+      "body": "Quítese los zapatos, las medias, la chaqueta y los accesorios en un minuto, con música de show que ponga el grupo. Nada más que eso.",
+      "points": 21,
+      "penalty": {
+        "drinks": 2,
+        "quip": "por pena"
+      },
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-174",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "hard",
+      "headline": "Despecho en audio",
+      "body": "Mándele a su ex una nota de voz cantando el coro de la canción de despecho que escoja el grupo.",
+      "points": 27,
+      "penalty": {
+        "drinks": 3,
+        "quip": "por arrugarse"
+      },
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": true
+    },
+    {
+      "id": "prev-175",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "hard",
+      "headline": "Rodilla con rodilla",
+      "body": "Siéntese frente a {player}, rodilla con rodilla, y dígale tres cosas de su forma de ser que le parecen atractivas, mirándole a los ojos.",
+      "points": 25,
+      "penalty": {
+        "drinks": 2,
+        "quip": "por pena con el cariño"
+      },
+      "heat": "spicy",
+      "requiresConsent": true,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-176",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "hard",
+      "headline": "Abrazo con propuesta",
+      "body": "Abrace a quien escoja durante un minuto mientras le susurra cómo sería su cita perfecta con esa persona.",
+      "points": 22,
+      "penalty": {
+        "drinks": 2
+      },
+      "heat": "spicy",
+      "requiresConsent": true,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-177",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "hard",
+      "headline": "¿Y si nos vemos?",
+      "body": "Escríbale a su culito o pétalo «¿y si nos vemos?» y lea la respuesta en voz alta cuando llegue.",
+      "points": 25,
+      "penalty": {
+        "drinks": 2,
+        "quip": "por gallina"
+      },
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": true
+    },
+    {
+      "id": "prev-178",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "hard",
+      "headline": "Rueda de prensa del amor",
+      "body": "Durante dos rondas el grupo le pregunta por su vida amorosa y usted responde como celebridad, sin mentir y sin detalles gráficos.",
+      "points": 24,
+      "penalty": {
+        "drinks": 2,
+        "quip": "por esconder cosas"
+      },
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-179",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "hard",
+      "headline": "Se calentó esta vuelta",
+      "body": "Escoja a alguien y, durante una ronda, cada vez que esa persona hable, usted le responde con un piropo. Si se le acaban, no cumplió.",
+      "points": 23,
+      "penalty": {
+        "drinks": 2,
+        "quip": "por falta de piropos"
+      },
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-180",
+      "categoryId": "la-previa",
+      "type": "truth",
+      "difficulty": "hard",
+      "headline": "¿Con quién esta noche?",
+      "body": "¿Con quién de este grupo se daría un beso esta noche? Responda mirando a esa persona.",
+      "points": 28,
+      "penalty": {
+        "drinks": 3
+      },
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-181",
+      "categoryId": "la-previa",
+      "type": "truth",
+      "difficulty": "hard",
+      "headline": "Lo más loco",
+      "body": "¿Cuál es el lugar más loco donde ha estado con alguien? Diga el lugar, no los detalles.",
+      "points": 26,
+      "penalty": {
+        "drinks": 3
+      },
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-182",
+      "categoryId": "la-previa",
+      "type": "truth",
+      "difficulty": "hard",
+      "headline": "Celos del parche",
+      "body": "¿Ha sentido celos por alguien de este grupo? Diga de quién y por qué.",
+      "points": 24,
+      "penalty": {
+        "drinks": 2
+      },
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-183",
+      "categoryId": "la-previa",
+      "type": "truth",
+      "difficulty": "hard",
+      "headline": "El mensaje pendiente",
+      "body": "¿A qué ex le escribiría hoy si nadie se enterara? Diga el nombre y qué le diría.",
+      "points": 25,
+      "penalty": {
+        "drinks": 2
+      },
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-184",
+      "categoryId": "la-previa",
+      "type": "truth",
+      "difficulty": "hard",
+      "headline": "Noche de famoso",
+      "body": "¿Con qué famoso o famosa se iría de rumba toda una noche y cómo terminaría? Sin detalles gráficos.",
+      "points": 22,
+      "penalty": {
+        "drinks": 2
+      },
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-185",
+      "categoryId": "la-previa",
+      "type": "truth",
+      "difficulty": "hard",
+      "headline": "Sin mentiras, parce",
+      "body": "¿Alguna vez le ha gustado la pareja de alguien de este grupo? Responda sí o no y cuente cómo se le pasó.",
+      "points": 29,
+      "penalty": {
+        "drinks": 3
+      },
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-186",
+      "categoryId": "la-previa",
+      "type": "neverHaveIEver",
+      "difficulty": "hard",
+      "body": "…he besado a dos personas en la misma noche.",
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-187",
+      "categoryId": "la-previa",
+      "type": "neverHaveIEver",
+      "difficulty": "hard",
+      "body": "…he tenido algo con alguien de este grupo.",
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-188",
+      "categoryId": "la-previa",
+      "type": "neverHaveIEver",
+      "difficulty": "hard",
+      "body": "…he dicho el nombre equivocado en un momento romántico.",
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-189",
+      "categoryId": "la-previa",
+      "type": "everyoneWho",
+      "difficulty": "hard",
+      "headline": "¡Confiesen!",
+      "body": "Los que hayan tenido algo con alguien que sus amigos no aprobaban.",
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-190",
+      "categoryId": "la-previa",
+      "type": "everyoneWho",
+      "difficulty": "hard",
+      "headline": "¡Todos!",
+      "body": "Los que hayan tenido un romance de vacaciones que nadie conoce.",
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-191",
+      "categoryId": "la-previa",
+      "type": "everyoneWho",
+      "difficulty": "hard",
+      "headline": "Todos los que…",
+      "body": "Los que se hayan escapado de una fiesta con alguien.",
+      "heat": "spicy",
+      "requiresConsent": false,
+      "reachesOutside": false
     }
   ]
 }

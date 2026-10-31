@@ -442,6 +442,881 @@
       "requiresConsent": false,
       "reachesOutside": false,
       "headline": "¡Confiesen!"
+    },
+    {
+      "id": "dos-031",
+      "categoryId": "entre-dos",
+      "type": "challenge",
+      "difficulty": "easy",
+      "headline": "Imitación de pareja",
+      "body": "Imite durante 20 segundos a {partner} apenas se levanta de la cama. {partner} pone nota de 1 a 10; con menos de 6, no cumplió.",
+      "points": 4,
+      "penalty": {
+        "drinks": 1,
+        "quip": "por actuar mal"
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "dos-032",
+      "categoryId": "entre-dos",
+      "type": "challenge",
+      "difficulty": "easy",
+      "headline": "Apodo nuevo",
+      "body": "Invéntele a {partner} un apodo cariñoso nuevo y úselo durante dos rondas. Si se le olvida una vez, no cumplió.",
+      "points": 3,
+      "penalty": {
+        "drinks": 1,
+        "quip": "por mala memoria"
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "dos-033",
+      "categoryId": "entre-dos",
+      "type": "challenge",
+      "difficulty": "easy",
+      "headline": "Narrador del amor",
+      "body": "Narre como partido de fútbol cómo se conocieron con {partner}, en 30 segundos y sin reírse.",
+      "points": 5,
+      "penalty": {
+        "drinks": 1,
+        "quip": "por reírse"
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "dos-034",
+      "categoryId": "entre-dos",
+      "type": "challenge",
+      "difficulty": "easy",
+      "headline": "Cultura chopística de dos",
+      "body": "Por turnos, nombren lugares donde han estado juntos. El primero que repita o se quede cinco segundos en blanco pierde.",
+      "points": 4,
+      "penalty": {
+        "drinks": 1,
+        "quip": "por mala memoria"
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "dos-035",
+      "categoryId": "entre-dos",
+      "type": "challenge",
+      "difficulty": "easy",
+      "headline": "Serenata exprés",
+      "body": "Cántele a {partner} el coro de una canción romántica, cambiando la letra para que hable de ustedes dos.",
+      "points": 6,
+      "penalty": {
+        "drinks": 1,
+        "quip": "por desafinar"
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "dos-036",
+      "categoryId": "entre-dos",
+      "type": "challenge",
+      "difficulty": "easy",
+      "headline": "Teletienda del amor",
+      "body": "Véndale a {partner} sus propias virtudes como comercial de teletienda durante 30 segundos. Si {partner} no compra, no cumplió.",
+      "points": 5,
+      "penalty": {
+        "drinks": 1,
+        "quip": "por vendehúmo"
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "dos-037",
+      "categoryId": "entre-dos",
+      "type": "challenge",
+      "difficulty": "easy",
+      "headline": "Arqueología de galería",
+      "body": "Busque la foto más vieja que tenga con {partner} y cuente con detalles qué estaba pasando ese día.",
+      "points": 3,
+      "penalty": {
+        "drinks": 1
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "dos-038",
+      "categoryId": "entre-dos",
+      "type": "challenge",
+      "difficulty": "easy",
+      "headline": "Abrazo con lista",
+      "body": "Abrace a {partner} por la espalda durante 15 segundos mientras le dice tres cosas que le gustan de su forma de ser.",
+      "points": 4,
+      "penalty": {
+        "drinks": 1
+      },
+      "heat": "standard",
+      "requiresConsent": true,
+      "reachesOutside": false
+    },
+    {
+      "id": "dos-039",
+      "categoryId": "entre-dos",
+      "type": "challenge",
+      "difficulty": "easy",
+      "headline": "Saludo secreto",
+      "body": "Inventen un saludo secreto de pareja de cinco pasos y háganlo dos veces seguidas sin equivocarse.",
+      "points": 5,
+      "penalty": {
+        "drinks": 1,
+        "quip": "por descoordinados"
+      },
+      "heat": "standard",
+      "requiresConsent": true,
+      "reachesOutside": false
+    },
+    {
+      "id": "dos-040",
+      "categoryId": "entre-dos",
+      "type": "challenge",
+      "difficulty": "easy",
+      "headline": "Voz de radio romántica",
+      "body": "Lea en voz alta el último mensaje que le mandó a {partner}, con voz de locutor de radio romántica a medianoche.",
+      "points": 5,
+      "penalty": {
+        "drinks": 1,
+        "quip": "por reírse"
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "dos-041",
+      "categoryId": "entre-dos",
+      "type": "challenge",
+      "difficulty": "easy",
+      "headline": "Reporte para la familia",
+      "body": "Mándele a su mamá o a su papá un mensaje contando qué es lo que más le gusta de {partner} y lea la respuesta en voz alta.",
+      "points": 6,
+      "penalty": {
+        "drinks": 1,
+        "quip": "por pena"
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": true
+    },
+    {
+      "id": "dos-042",
+      "categoryId": "entre-dos",
+      "type": "challenge",
+      "difficulty": "easy",
+      "headline": "Adivina adivinador",
+      "body": "Piense en un recuerdo de los dos. {partner} tiene tres preguntas de sí o no para adivinarlo. Si no lo adivina, usted lo cuenta con todos los detalles.",
+      "points": 3,
+      "penalty": {
+        "drinks": 1
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "dos-043",
+      "categoryId": "entre-dos",
+      "type": "truth",
+      "difficulty": "easy",
+      "headline": "Primera cita",
+      "body": "¿Qué recuerda de su primera cita con {partner}? Cuente tres detalles y {partner} dice si son ciertos.",
+      "points": 3,
+      "penalty": {
+        "drinks": 1
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "dos-044",
+      "categoryId": "entre-dos",
+      "type": "truth",
+      "difficulty": "easy",
+      "headline": "Canción de los dos",
+      "body": "¿Qué canción le hace pensar en {partner} y por qué? Si no se acuerda del nombre, tarárela.",
+      "points": 2,
+      "penalty": {
+        "drinks": 1
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "dos-045",
+      "categoryId": "entre-dos",
+      "type": "truth",
+      "difficulty": "easy",
+      "headline": "Superpoder de pareja",
+      "body": "Si {partner} tuviera un superpoder según su forma de ser, ¿cuál sería? Explique por qué.",
+      "points": 3,
+      "penalty": {
+        "drinks": 1
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "dos-046",
+      "categoryId": "entre-dos",
+      "type": "truth",
+      "difficulty": "easy",
+      "headline": "Ternura secreta",
+      "body": "¿Qué hace {partner} en la casa que le parece tierno y nunca se lo ha dicho? Dígaselo ahora.",
+      "points": 4,
+      "penalty": {
+        "drinks": 1
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "dos-047",
+      "categoryId": "entre-dos",
+      "type": "neverHaveIEver",
+      "difficulty": "easy",
+      "body": "…he revisado las fotos viejas de mi pareja hasta llegar a la primera.",
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "dos-048",
+      "categoryId": "entre-dos",
+      "type": "neverHaveIEver",
+      "difficulty": "easy",
+      "body": "…me he puesto ropa de mi pareja sin pedirla.",
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "dos-049",
+      "categoryId": "entre-dos",
+      "type": "everyoneWho",
+      "difficulty": "easy",
+      "headline": "¡Todos!",
+      "body": "Los que tengan en el celular una foto de su pareja dormida.",
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "dos-050",
+      "categoryId": "entre-dos",
+      "type": "everyoneWho",
+      "difficulty": "easy",
+      "headline": "Todos los que…",
+      "body": "Los que hayan inventado una excusa para quedarse un rato más con alguien.",
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "dos-051",
+      "categoryId": "entre-dos",
+      "type": "challenge",
+      "difficulty": "medium",
+      "headline": "Susurro de novela",
+      "body": "Susúrrele a {partner} al oído la lista del mercado con la voz más seductora que tenga. Si usted se ríe primero, no cumplió.",
+      "points": 14,
+      "penalty": {
+        "drinks": 1,
+        "quip": "por reírse primero"
+      },
+      "heat": "standard",
+      "requiresConsent": true,
+      "reachesOutside": false
+    },
+    {
+      "id": "dos-052",
+      "categoryId": "entre-dos",
+      "type": "challenge",
+      "difficulty": "medium",
+      "headline": "Retrato a ciegas",
+      "body": "Con los ojos cerrados, dibuje la cara de {partner} en 30 segundos. Fírmelo y regáleselo con una dedicatoria.",
+      "points": 11,
+      "penalty": {
+        "drinks": 1
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "dos-053",
+      "categoryId": "entre-dos",
+      "type": "challenge",
+      "difficulty": "medium",
+      "headline": "Lento sin música",
+      "body": "Bailen lento un minuto sin música, solo con la canción que {partner} vaya tarareando. Sin soltarse.",
+      "points": 15,
+      "penalty": {
+        "drinks": 1,
+        "quip": "por pies de palo"
+      },
+      "heat": "standard",
+      "requiresConsent": true,
+      "reachesOutside": false
+    },
+    {
+      "id": "dos-054",
+      "categoryId": "entre-dos",
+      "type": "challenge",
+      "difficulty": "medium",
+      "headline": "Modo conquista",
+      "body": "Haga de cuenta que acaba de conocer a {partner} en una fiesta e intente sacarle el número en un minuto, con su mejor estrategia.",
+      "points": 16,
+      "penalty": {
+        "drinks": 2,
+        "quip": "por falta de calle"
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "dos-055",
+      "categoryId": "entre-dos",
+      "type": "challenge",
+      "difficulty": "medium",
+      "headline": "Teléfono del chisme",
+      "body": "Llame en altavoz a un amigo o amiga y pregúntele qué pensó la primera vez que usted le habló de {partner}.",
+      "points": 15,
+      "penalty": {
+        "drinks": 2,
+        "quip": "por gallina"
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": true
+    },
+    {
+      "id": "dos-056",
+      "categoryId": "entre-dos",
+      "type": "challenge",
+      "difficulty": "medium",
+      "headline": "Sesión de fotos",
+      "body": "Hágale a {partner} una sesión de fotos de revista de 30 segundos, dando instrucciones de pose. {partner} escoge la mejor.",
+      "points": 12,
+      "penalty": {
+        "drinks": 1
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "dos-057",
+      "categoryId": "entre-dos",
+      "type": "challenge",
+      "difficulty": "medium",
+      "headline": "Beso en cámara lenta",
+      "body": "Dele a {partner} un beso en la frente en cámara lenta, mientras usted mismo hace la música de película con la boca.",
+      "points": 13,
+      "penalty": {
+        "drinks": 1,
+        "quip": "por poco romántico"
+      },
+      "heat": "standard",
+      "requiresConsent": true,
+      "reachesOutside": false
+    },
+    {
+      "id": "dos-058",
+      "categoryId": "entre-dos",
+      "type": "challenge",
+      "difficulty": "medium",
+      "headline": "Te quiero regional",
+      "body": "Dígale «te quiero» a {partner} en cinco acentos de Colombia distintos, sin repetir. {partner} juzga si valieron.",
+      "points": 13,
+      "penalty": {
+        "drinks": 1,
+        "quip": "por acento pailas"
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "dos-059",
+      "categoryId": "entre-dos",
+      "type": "challenge",
+      "difficulty": "medium",
+      "headline": "Estilista de confianza",
+      "body": "Péinele el pelo a {partner} con el estilo que usted cree que le quedaría mejor y defiéndalo como estilista de farándula.",
+      "points": 12,
+      "penalty": {
+        "drinks": 1
+      },
+      "heat": "standard",
+      "requiresConsent": true,
+      "reachesOutside": false
+    },
+    {
+      "id": "dos-060",
+      "categoryId": "entre-dos",
+      "type": "challenge",
+      "difficulty": "medium",
+      "headline": "Encuesta de pareja",
+      "body": "Suba una historia con una encuesta: «¿Quién se enamoró primero?», con su nombre y el de {partner}. No la borre en 15 minutos y lean el resultado.",
+      "points": 17,
+      "penalty": {
+        "drinks": 2,
+        "quip": "por miedo al resultado"
+      },
+      "heat": "standard",
+      "requiresConsent": true,
+      "reachesOutside": true
+    },
+    {
+      "id": "dos-061",
+      "categoryId": "entre-dos",
+      "type": "challenge",
+      "difficulty": "medium",
+      "headline": "Canción dedicada",
+      "body": "Escoja una canción para {partner} y cante el coro mirándole a los ojos, sin reírse ni bajar la mirada.",
+      "points": 14,
+      "penalty": {
+        "drinks": 1,
+        "quip": "por desafinar"
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "dos-062",
+      "categoryId": "entre-dos",
+      "type": "challenge",
+      "difficulty": "medium",
+      "headline": "El gran juicio",
+      "body": "{partner} le acusa de su peor manía y usted tiene 45 segundos para defenderse como en un juicio de telenovela. {partner} da el veredicto.",
+      "points": 13,
+      "penalty": {
+        "drinks": 1,
+        "quip": "por mala defensa"
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "dos-063",
+      "categoryId": "entre-dos",
+      "type": "truth",
+      "difficulty": "medium",
+      "headline": "Celos time",
+      "body": "¿Cuál es la cosa más boba que le ha dado celos de {partner}? Cuéntela completa, sin recortar.",
+      "points": 15,
+      "penalty": {
+        "drinks": 1
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "dos-064",
+      "categoryId": "entre-dos",
+      "type": "truth",
+      "difficulty": "medium",
+      "headline": "Primer beso",
+      "body": "Cuente cómo fue el primer beso con {partner}: dónde estaban y qué pensó justo después.",
+      "points": 16,
+      "penalty": {
+        "drinks": 2
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "dos-065",
+      "categoryId": "entre-dos",
+      "type": "truth",
+      "difficulty": "medium",
+      "headline": "Debilidad confesa",
+      "body": "¿Qué gesto de {partner} le gusta tanto que lo esperaría todo el día? Hágalo para que {partner} lo vea.",
+      "points": 12,
+      "penalty": {
+        "drinks": 1
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "dos-066",
+      "categoryId": "entre-dos",
+      "type": "truth",
+      "difficulty": "medium",
+      "headline": "Contacto guardado",
+      "body": "¿Con qué nombre tiene guardado a {partner} en el celular? Muéstrelo y cuente la historia de ese nombre.",
+      "points": 11,
+      "penalty": {
+        "drinks": 1
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "dos-067",
+      "categoryId": "entre-dos",
+      "type": "neverHaveIEver",
+      "difficulty": "medium",
+      "body": "…he ensayado frente al espejo lo que le iba a decir a alguien que me gustaba.",
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "dos-068",
+      "categoryId": "entre-dos",
+      "type": "neverHaveIEver",
+      "difficulty": "medium",
+      "body": "…he releído una conversación vieja solo para sonreír.",
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "dos-069",
+      "categoryId": "entre-dos",
+      "type": "everyoneWho",
+      "difficulty": "medium",
+      "headline": "¡Todos!",
+      "body": "Los que hayan dicho «no pasa nada» cuando sí pasaba algo.",
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "dos-070",
+      "categoryId": "entre-dos",
+      "type": "everyoneWho",
+      "difficulty": "medium",
+      "headline": "Todos los que…",
+      "body": "Los que hayan planeado una sorpresa que salió mal.",
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "dos-071",
+      "categoryId": "entre-dos",
+      "type": "challenge",
+      "difficulty": "hard",
+      "headline": "Anuncio familiar",
+      "body": "Llame en altavoz a alguien de su familia y explíquele en un minuto por qué {partner} es la mejor decisión que ha tomado.",
+      "points": 25,
+      "penalty": {
+        "drinks": 3,
+        "quip": "por gallina"
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": true
+    },
+    {
+      "id": "dos-072",
+      "categoryId": "entre-dos",
+      "type": "challenge",
+      "difficulty": "hard",
+      "headline": "Votos improvisados",
+      "body": "Dígale a {partner} unos votos de boda improvisados de 45 segundos, de pie y mirándole a los ojos. Sin reírse.",
+      "points": 24,
+      "penalty": {
+        "drinks": 2,
+        "quip": "por arrugarse"
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "dos-073",
+      "categoryId": "entre-dos",
+      "type": "challenge",
+      "difficulty": "hard",
+      "headline": "Salsa de cachete",
+      "body": "Bailen una salsa completa cachete con cachete, con vueltas incluidas. Si alguien pisa al otro tres veces, no cumplieron.",
+      "points": 23,
+      "penalty": {
+        "drinks": 2,
+        "quip": "por pies de palo"
+      },
+      "heat": "standard",
+      "requiresConsent": true,
+      "reachesOutside": false
+    },
+    {
+      "id": "dos-074",
+      "categoryId": "entre-dos",
+      "type": "challenge",
+      "difficulty": "hard",
+      "headline": "Declaración en video",
+      "body": "Grábese diciendo lo que más le gusta de su relación con {partner} y súbalo a mejores amigos por 30 minutos.",
+      "points": 27,
+      "penalty": {
+        "drinks": 3,
+        "quip": "por cobardía"
+      },
+      "heat": "standard",
+      "requiresConsent": true,
+      "reachesOutside": true
+    },
+    {
+      "id": "dos-075",
+      "categoryId": "entre-dos",
+      "type": "challenge",
+      "difficulty": "hard",
+      "headline": "Cuenta regresiva",
+      "body": "Pónganse frente a frente, a un palmo de distancia, y cuenten juntos de 30 a 0 mirándose a los ojos. Si alguien se ríe, vuelven a empezar una vez.",
+      "points": 22,
+      "penalty": {
+        "drinks": 2,
+        "quip": "por reírse primero"
+      },
+      "heat": "standard",
+      "requiresConsent": true,
+      "reachesOutside": false
+    },
+    {
+      "id": "dos-076",
+      "categoryId": "entre-dos",
+      "type": "challenge",
+      "difficulty": "hard",
+      "headline": "El primer mensaje",
+      "body": "Lea en voz alta el primer mensaje que le mandó a {partner}, con la actuación que merece. Si ya no lo tiene, recréelo de memoria.",
+      "points": 21,
+      "penalty": {
+        "drinks": 2
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "dos-077",
+      "categoryId": "entre-dos",
+      "type": "challenge",
+      "difficulty": "hard",
+      "headline": "Piropo al oído",
+      "body": "Susúrrele a {partner} al oído el piropo más atrevido que se le ocurra, sin groserías. {partner} decide si lo repite en voz alta.",
+      "points": 26,
+      "penalty": {
+        "drinks": 3,
+        "quip": "por arrugarse"
+      },
+      "heat": "standard",
+      "requiresConsent": true,
+      "reachesOutside": false
+    },
+    {
+      "id": "dos-078",
+      "categoryId": "entre-dos",
+      "type": "challenge",
+      "difficulty": "hard",
+      "headline": "Calificación del cómplice",
+      "body": "Llame en altavoz al mejor amigo o amiga de {partner} y pídale una nota del 1 al 10 como pareja de {partner}, con una razón. Sin reclamar.",
+      "points": 28,
+      "penalty": {
+        "drinks": 3,
+        "quip": "por miedo a la nota"
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": true
+    },
+    {
+      "id": "dos-079",
+      "categoryId": "entre-dos",
+      "type": "challenge",
+      "difficulty": "hard",
+      "headline": "Retrato hablado",
+      "body": "Describa a {partner} durante 30 segundos como la persona más atractiva del mundo, sin repetir un solo adjetivo.",
+      "points": 23,
+      "penalty": {
+        "drinks": 2,
+        "quip": "por falta de palabras"
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "dos-080",
+      "categoryId": "entre-dos",
+      "type": "challenge",
+      "difficulty": "hard",
+      "headline": "La gran propuesta",
+      "body": "Propóngale a {partner} un plan para el próximo fin de semana con discurso, anillo improvisado y rodilla en el piso. Si {partner} no acepta el plan, no cumplió.",
+      "points": 24,
+      "penalty": {
+        "drinks": 2,
+        "quip": "por mala negociación"
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "dos-081",
+      "categoryId": "entre-dos",
+      "type": "challenge",
+      "difficulty": "hard",
+      "headline": "Perfil de pareja",
+      "body": "Ponga una foto con {partner} como foto de perfil durante una hora, con el pie de foto que escoja {partner}.",
+      "points": 25,
+      "penalty": {
+        "drinks": 2,
+        "quip": "por pena con la foto"
+      },
+      "heat": "standard",
+      "requiresConsent": true,
+      "reachesOutside": true
+    },
+    {
+      "id": "dos-082",
+      "categoryId": "entre-dos",
+      "type": "challenge",
+      "difficulty": "hard",
+      "headline": "Sin palabras",
+      "body": "Durante dos rondas solo puede comunicarse con {partner} con gestos y miradas. Si dice una palabra, no cumplió.",
+      "points": 21,
+      "penalty": {
+        "drinks": 2,
+        "quip": "por hablar de más"
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "dos-083",
+      "categoryId": "entre-dos",
+      "type": "truth",
+      "difficulty": "hard",
+      "headline": "Flechazo",
+      "body": "¿Qué fue lo primero que le pareció atractivo de {partner}? Dígalo con detalles y mirándole a los ojos.",
+      "points": 24,
+      "penalty": {
+        "drinks": 2
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "dos-084",
+      "categoryId": "entre-dos",
+      "type": "truth",
+      "difficulty": "hard",
+      "headline": "Sueño compartido",
+      "body": "¿Alguna vez ha soñado con {partner}? Cuente el sueño más raro o más bonito, sin inventar nada.",
+      "points": 22,
+      "penalty": {
+        "drinks": 2
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "dos-085",
+      "categoryId": "entre-dos",
+      "type": "truth",
+      "difficulty": "hard",
+      "headline": "Miedo de verdad",
+      "body": "¿Qué es lo que más miedo le da de su relación con {partner}? Responda con calma y sin hacer chiste.",
+      "points": 27,
+      "penalty": {
+        "drinks": 3
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "dos-086",
+      "categoryId": "entre-dos",
+      "type": "truth",
+      "difficulty": "hard",
+      "headline": "Ganas guardadas",
+      "body": "¿Cuál ha sido el momento en que más ganas tuvo de besar a {partner} y no pudo? Cuente dónde estaban.",
+      "points": 25,
+      "penalty": {
+        "drinks": 2
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "dos-087",
+      "categoryId": "entre-dos",
+      "type": "neverHaveIEver",
+      "difficulty": "hard",
+      "body": "…he planeado una cita entera en mi cabeza antes de atreverme a pedirla.",
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "dos-088",
+      "categoryId": "entre-dos",
+      "type": "neverHaveIEver",
+      "difficulty": "hard",
+      "body": "…he fingido que no me importaba un mensaje que me tenía feliz.",
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "dos-089",
+      "categoryId": "entre-dos",
+      "type": "everyoneWho",
+      "difficulty": "hard",
+      "headline": "¡Confiesen!",
+      "body": "Los que se hayan enamorado más rápido de lo que admitieron.",
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "dos-090",
+      "categoryId": "entre-dos",
+      "type": "everyoneWho",
+      "difficulty": "hard",
+      "headline": "Todos los que…",
+      "body": "Los que hayan guardado un recuerdo bobo de una cita: una boleta, un papelito o una servilleta.",
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
     }
   ]
 }
