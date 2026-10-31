@@ -36,7 +36,7 @@ flowchart TB
 
 | Element             | Description                                                                                                                                                                                                             |
 | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Players**         | Adults (18+) playing in a group of friends or as a couple. They pick a category, choose a difficulty, and complete challenges ("retos") to earn points, usually passing one device around.                              |
+| **Players**         | Adults (18+) playing in a group of friends or as a couple. They pick a category and take turns with cards (retos, verdades, group cards) whose difficulty escalates during the game, earning points, usually passing one device around.                              |
 | **Prendidos**       | Expo / React Native app for iOS and Android. Challenge content and game state live on-device; there is no backend. Contains alcohol references, so it enforces an 18+ age gate and carries a matching store age rating. |
 | **Apple App Store** | Distributes the iOS app, applies the age rating, and processes in-app purchases (planned). Purchases are store-managed — the app never handles card data.                                                               |
 | **Google Play**     | Distributes the Android app, applies the content rating, and processes in-app purchases (planned) through Play Billing.                                                                                                 |

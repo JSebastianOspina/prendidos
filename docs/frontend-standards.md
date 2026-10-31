@@ -121,7 +121,7 @@ Not applicable today: Prendidos has no backend, and challenge content is bundled
 - Layout: portrait only (`app.json` → `orientation: portrait`); respect safe areas; support small (iPhone SE) to large phones.
 - Accessibility target: WCAG 2.1 AA equivalents for mobile — `accessibilityLabel` / `accessibilityRole` on interactive elements, Dynamic Type / font scaling, minimum 44×44 pt touch targets, sufficient contrast in both themes. Run `/accessibility-audit` before merging UI changes.
 - Copy and i18n: user-facing copy is **Spanish** (product language); code, identifiers, and docs stay in English. Keep copy in one place per feature so it can move to an i18n library later.
-- Responsible-drinking UX: show an 18+ age confirmation before first play and never pressure players to drink — every drinking challenge must offer a non-alcoholic alternative.
+- Responsible-drinking UX: show an 18+ age confirmation before first play and never pressure players to drink — players marked as non-drinkers get a generic non-alcoholic penalty per difficulty, and no penalty asks for more than 3 drinks or to finish a drink (App Store guideline 1.4.3; see `docs/prd.md` §5.8).
 
 ---
 
