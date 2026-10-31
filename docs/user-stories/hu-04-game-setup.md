@@ -1,5 +1,7 @@
 # HU-04 — Game setup
 
+> **Update (2026-10-31):** the design alignment changed this screen. Setup has avatars, collapsed rows, and FIN / NIVELES / ORDEN chips, and it redirects to Inicio when the draft is not ready. The current behavior lives in `openspec/specs/game-setup/spec.md`; see `docs/design/review/README.md`. The sections below keep the original plan.
+
 | Field      | Value                                              |
 | ---------- | -------------------------------------------------- |
 | Status     | Enriched                                           |

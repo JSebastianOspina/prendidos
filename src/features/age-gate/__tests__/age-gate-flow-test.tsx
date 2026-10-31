@@ -21,7 +21,6 @@ const routerContext = {
   _layout: RootLayout,
   index: HomeStub,
   'age-gate': AgeGateRoute,
-  'new-game/mode': OtherScreenStub,
   'new-game/category': OtherScreenStub,
   'new-game/setup': OtherScreenStub,
   play: OtherScreenStub,

@@ -1,5 +1,7 @@
 # HU-02 — Home screen
 
+> **Update (2026-10-31):** the design alignment changed this screen. Inicio has no "Nueva partida" button: the Amigos and Pareja cards sit on Inicio and lead straight to the categories. The current behavior lives in `openspec/specs/home-screen/spec.md`; see `docs/design/review/README.md`. The sections below keep the original plan.
+
 | Field      | Value                                   |
 | ---------- | --------------------------------------- |
 | Status     | Implemented (`openspec/changes/archive/2026-10-31-hu-02-home`) |

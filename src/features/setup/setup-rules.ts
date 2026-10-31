@@ -1,6 +1,36 @@
 /** Pure rules of the game setup screen (no React). */
 import { allDifficulties, type Difficulty, type GameMode } from '@/features/content/card-types';
-import { createPlayer, playerLimitsByMode, type EndCondition, type Player } from '@/features/game';
+import {
+  createPlayer,
+  nextFreeAvatar,
+  playerLimitsByMode,
+  type EndCondition,
+  type Player,
+} from '@/features/game';
+
+/** Rows above this index are always expanded; later rows collapse to a summary. */
+export const alwaysExpandedRowCount = 2;
+
+/** A row is expanded when it is one of the first two, or the one row the user opened. */
+export function isRowExpanded(
+  index: number,
+  playerId: string,
+  expandedPlayerId: string | undefined,
+): boolean {
+  return index < alwaysExpandedRowCount || playerId === expandedPlayerId;
+}
+
+/** Moves the player at `index` to the next avatar in brand order that no other player has. */
+export function changeAvatar(players: readonly Player[], index: number): Player[] {
+  const othersAvatars = players
+    .filter((_, position) => position !== index)
+    .map((player) => player.avatarId);
+  return players.map((player, position) =>
+    position === index
+      ? { ...player, avatarId: nextFreeAvatar(player.avatarId, othersAvatars) }
+      : player,
+  );
+}
 
 /** A new row: no name yet, gender not disclosed, drinks, and an avatar nobody else has. */
 export function createEmptyPlayer(

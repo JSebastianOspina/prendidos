@@ -1,5 +1,7 @@
 # HU-03 — Choose mode and category
 
+> **Update (2026-10-31):** the design alignment changed this screen. There is no separate mode screen or `/new-game/mode` route: the mode is chosen on Inicio, and the category screen falls back to Inicio. The current behavior lives in `openspec/specs/category-picker/spec.md`; see `docs/design/review/README.md`. The sections below keep the original plan.
+
 | Field      | Value                                                     |
 | ---------- | --------------------------------------------------------- |
 | Status     | Implemented (OpenSpec change archived, PR open)           |
