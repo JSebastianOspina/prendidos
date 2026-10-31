@@ -56,7 +56,7 @@
     "testPathIgnorePatterns": [
       "/node_modules/",
       "/__tests__/fixtures/",
-      "/.claude/worktrees/"
+      "<rootDir>/.claude/worktrees/"
     ],
     "collectCoverageFrom": [
       "src/features/**/*.{ts,tsx}",
