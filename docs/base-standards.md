@@ -107,6 +107,7 @@ For detailed standards and guidelines specific to different areas of the project
 - [Serverless Standards](./serverless-standards.md) - **Not applicable yet** (no serverless layer) — Harness template kept for later
 - [Development Guide](./development_guide.md) - Local setup, commands, testing, and EAS workflows
 - [Data Model](./data-model.md) - On-device domain entities (categories, cards, players, game sessions, device state, products, entitlements)
+- [Brand](./brand/README.md) and [Design Tokens](./brand/design-tokens.md) - Mascot references and rules, plus the UI color, typography, shape, elevation, and motion tokens
 - [Security Standards](./security-standards.md) - OWASP Top 10, secrets management, auth standards, and dependency hygiene
 - [Documentation Standards](./documentation-standards.md) - Technical documentation structure, formatting, and maintenance guidelines, including AI standards like this document
 - [OpenSpec Tasks Mandatory Steps](./openspec-tasks-mandatory-steps.md) - Required checklist and execution rules when creating or updating OpenSpec `tasks.md` files

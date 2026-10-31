@@ -1,0 +1,47 @@
+{
+  "v": 3,
+  "createdOnFiles": { "v": 1, "at": "2026-10-31T16:00:00Z" },
+  "title": "Prendidos — propuesta visual",
+  "launch": { "view": "canvas" },
+  "pages": [],
+  "boards": {
+    "Main.dc.html": { "x": 0, "y": 0, "w": 1760, "h": 1180, "title": "Sistema visual" },
+    "mascota.dc.html": { "x": 1840, "y": 0, "w": 1240, "h": 1180, "title": "Mascota: Prendido" },
+    "edad.dc.html": { "x": 0, "y": 1540, "w": 390, "h": 844, "title": "1 · Confirmación 18+" },
+    "inicio.dc.html": { "x": 470, "y": 1540, "w": 390, "h": 844, "title": "2 · Inicio" },
+    "categorias.dc.html": { "x": 940, "y": 1540, "w": 390, "h": 844, "title": "3 · Categorías" },
+    "setup.dc.html": { "x": 1410, "y": 1540, "w": 390, "h": 844, "title": "4 · Setup de partida" },
+    "turno.dc.html": { "x": 1880, "y": 1540, "w": 390, "h": 844, "title": "5 · Turno (reto)" },
+    "grupal.dc.html": { "x": 2350, "y": 1540, "w": 390, "h": 844, "title": "6 · Interludio grupal" },
+    "nivel.dc.html": { "x": 2820, "y": 1540, "w": 390, "h": 844, "title": "7 · Sube de nivel" },
+    "ranking.dc.html": { "x": 3290, "y": 1540, "w": 390, "h": 844, "title": "8 · Ranking final" },
+    "splash.dc.html": { "x": 0, "y": 2744, "w": 390, "h": 844, "title": "9 · Splash" },
+    "pareja.dc.html": { "x": 470, "y": 2744, "w": 390, "h": 844, "title": "10 · Categorías de Pareja" },
+    "paywall.dc.html": { "x": 940, "y": 2744, "w": 390, "h": 844, "title": "11 · Paywall suave (Pareja)" },
+    "empate.dc.html": { "x": 1410, "y": 2744, "w": 390, "h": 844, "title": "12 · Ranking con empate" },
+    "pausa.dc.html": { "x": 1880, "y": 2744, "w": 390, "h": 844, "title": "13 · Pausa / terminar" }
+  },
+  "order": [
+    "Main.dc.html",
+    "mascota.dc.html",
+    "edad.dc.html",
+    "inicio.dc.html",
+    "categorias.dc.html",
+    "setup.dc.html",
+    "turno.dc.html",
+    "grupal.dc.html",
+    "nivel.dc.html",
+    "ranking.dc.html",
+    "splash.dc.html",
+    "pareja.dc.html",
+    "paywall.dc.html",
+    "empate.dc.html",
+    "pausa.dc.html"
+  ],
+  "notes": {
+    "titleSystem": { "x": 0, "y": -300, "text": "Prendidos · sistema visual y mascota", "kind": "title1", "maxW": 3080 },
+    "titleScreens": { "x": 0, "y": 1240, "text": "Pantallas clave del MVP", "kind": "title1", "maxW": 3680 },
+    "titleMissing": { "x": 0, "y": 2444, "text": "Pantallas y estados que pide el PRD", "kind": "title1", "maxW": 2270 }
+  },
+  "designSystems": []
+}

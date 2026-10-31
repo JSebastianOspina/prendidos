@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Mascota Prendido por nivel</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&amp;family=Nunito:wght@600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width: 1240px; height: 1180px; box-sizing: border-box; padding: 56px; background: #FFF7ED; color: #2A1608; font-family: 'Nunito', sans-serif; display: flex; flex-direction: column; gap: 28px">
+  <header style="display: flex; justify-content: space-between; align-items: flex-end; gap: 24px">
+    <div style="display: flex; flex-direction: column; gap: 8px">
+      <h1 style="margin: 0; font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 56px; line-height: 1">Prendido, la mascota</h1>
+      <p style="margin: 0; font-size: 18px; font-weight: 700; color: #7C2D12">Gato blanco, pícaro y seguro, con una llama en la cabeza. Guía completa: docs/brand/README.md</p>
+    </div>
+    <span style="padding: 8px 14px; background: #FFFFFF; border: 3px dashed #2A1608; border-radius: 14px; font-size: 13px; font-weight: 800; letter-spacing: 0.04em">PLACEHOLDER IA: llama plana dibujada encima; SVG final pendiente</span>
+  </header>
+
+  <h2 style="margin: 0; font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 30px">La llama crece con el nivel</h2>
+  <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px">
+
+    <figure style="margin: 0; display: flex; flex-direction: column; background: #FFFFFF; border: 3px solid #2A1608; border-radius: 28px; box-shadow: 0 6px 0 #2A1608; overflow: hidden">
+      <div style="padding: 14px 20px; background: #6EE7B7; border-bottom: 3px solid #2A1608; font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 24px">Suave</div>
+      <div style="position: relative; height: 330px">
+        <img src="/_blob/d29045c3065a5d7c5aa4ba94e6fa88e2" alt="Prendido relajado con una llama pequeña" style="position: absolute; left: 92px; top: 130px; width: 160px; height: auto">
+        <svg width="72" height="86" viewBox="0 0 100 120" aria-hidden="true" style="position: absolute; left: 136px; top: 114px"><path d="M50 4 C58 22 70 26 72 40 C78 34 80 28 80 22 C92 38 96 56 96 74 C96 100 76 116 50 116 C24 116 4 100 4 74 C4 56 12 42 22 32 C24 42 28 46 32 48 C30 30 38 16 50 4 Z" fill="#C01E1B" stroke="#2A1608" stroke-width="5" stroke-linejoin="round"></path><path d="M50 34 C56 48 66 54 68 66 C72 62 74 58 74 54 C80 64 82 74 82 84 C82 102 68 112 50 112 C32 112 18 102 18 84 C18 72 24 64 30 58 C32 66 36 70 40 70 C38 56 42 44 50 34 Z" fill="#F97316" stroke="#2A1608" stroke-width="4" stroke-linejoin="round"></path><path d="M50 64 C56 74 64 80 64 92 C64 102 58 108 50 108 C42 108 36 102 36 92 C36 84 42 80 44 74 C46 78 48 78 50 64 Z" fill="#FACC15" stroke="#2A1608" stroke-width="4" stroke-linejoin="round"></path></svg>
+      </div>
+      <figcaption style="padding: 0 20px 20px; font-size: 16px; font-weight: 700; line-height: 1.4">Relajado, ojos cerrados. Llama pequeña.</figcaption>
+    </figure>
+
+    <figure style="margin: 0; display: flex; flex-direction: column; background: #FFFFFF; border: 3px solid #2A1608; border-radius: 28px; box-shadow: 0 6px 0 #2A1608; overflow: hidden">
+      <div style="padding: 14px 20px; background: #F97316; border-bottom: 3px solid #2A1608; font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 24px">Picante</div>
+      <div style="position: relative; height: 330px">
+        <img src="/_blob/cffa6568525d5cb2c2a069ce523c4bb2" alt="Prendido con mirada pícara y una llama mediana" style="position: absolute; left: 92px; top: 130px; width: 160px; height: auto">
+        <svg width="104" height="125" viewBox="0 0 100 120" aria-hidden="true" style="position: absolute; left: 120px; top: 74px"><path d="M50 4 C58 22 70 26 72 40 C78 34 80 28 80 22 C92 38 96 56 96 74 C96 100 76 116 50 116 C24 116 4 100 4 74 C4 56 12 42 22 32 C24 42 28 46 32 48 C30 30 38 16 50 4 Z" fill="#C01E1B" stroke="#2A1608" stroke-width="4" stroke-linejoin="round"></path><path d="M50 34 C56 48 66 54 68 66 C72 62 74 58 74 54 C80 64 82 74 82 84 C82 102 68 112 50 112 C32 112 18 102 18 84 C18 72 24 64 30 58 C32 66 36 70 40 70 C38 56 42 44 50 34 Z" fill="#F97316" stroke="#2A1608" stroke-width="3.5" stroke-linejoin="round"></path><path d="M50 64 C56 74 64 80 64 92 C64 102 58 108 50 108 C42 108 36 102 36 92 C36 84 42 80 44 74 C46 78 48 78 50 64 Z" fill="#FACC15" stroke="#2A1608" stroke-width="3.5" stroke-linejoin="round"></path></svg>
+      </div>
+      <figcaption style="padding: 0 20px 20px; font-size: 16px; font-weight: 700; line-height: 1.4">Ceja levantada, sonrisa de lado. Llama mediana.</figcaption>
+    </figure>
+
+    <figure style="margin: 0; display: flex; flex-direction: column; background: #FFFFFF; border: 3px solid #2A1608; border-radius: 28px; box-shadow: 0 6px 0 #2A1608; overflow: hidden">
+      <div style="padding: 14px 20px; background: #C01E1B; color: #FFFFFF; border-bottom: 3px solid #2A1608; font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 24px">Prendido</div>
+      <div style="position: relative; height: 330px">
+        <img src="/_blob/5e8d9a6325293285c43246c9028cf781" alt="Prendido riéndose con la cabeza en llamas" style="position: absolute; left: 92px; top: 130px; width: 160px; height: auto">
+        <svg width="170" height="204" viewBox="0 0 100 120" aria-hidden="true" style="position: absolute; left: 86px; top: 4px"><path d="M50 4 C58 22 70 26 72 40 C78 34 80 28 80 22 C92 38 96 56 96 74 C96 100 76 116 50 116 C24 116 4 100 4 74 C4 56 12 42 22 32 C24 42 28 46 32 48 C30 30 38 16 50 4 Z" fill="#C01E1B" stroke="#2A1608" stroke-width="2.6" stroke-linejoin="round"></path><path d="M50 34 C56 48 66 54 68 66 C72 62 74 58 74 54 C80 64 82 74 82 84 C82 102 68 112 50 112 C32 112 18 102 18 84 C18 72 24 64 30 58 C32 66 36 70 40 70 C38 56 42 44 50 34 Z" fill="#F97316" stroke="#2A1608" stroke-width="2.4" stroke-linejoin="round"></path><path d="M50 64 C56 74 64 80 64 92 C64 102 58 108 50 108 C42 108 36 102 36 92 C36 84 42 80 44 74 C46 78 48 78 50 64 Z" fill="#FACC15" stroke="#2A1608" stroke-width="2.4" stroke-linejoin="round"></path></svg>
+      </div>
+      <figcaption style="padding: 0 20px 20px; font-size: 16px; font-weight: 700; line-height: 1.4">Carcajada. La cabeza entera en llamas: el pico de la partida.</figcaption>
+    </figure>
+  </div>
+
+  <div style="display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 28px">
+    <section style="background: #FFFFFF; border: 3px solid #2A1608; border-radius: 28px; box-shadow: 0 6px 0 #2A1608; padding: 24px 28px; display: flex; flex-direction: column; gap: 10px">
+      <h2 style="margin: 0; font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 26px">Reglas de uso</h2>
+      <ul style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; font-size: 15px; font-weight: 700; line-height: 1.4">
+        <li>Contorno tinta #2A1608, grueso y parejo: el mismo de la interfaz. Nunca negro puro.</li>
+        <li>Llama plana de 3 capas (rojo de marca, naranja #F97316, amarillo #FACC15) con contorno. Nunca tipo emoji ni con degradado.</li>
+        <li>Pícaro y seguro de sí. Nunca borracho, enfermo ni infantil: no usar las caras 4 y 7 de la hoja de expresiones.</li>
+        <li>Aparece en splash, inicio, 18+, subida de nivel, ranking y paywall. Nunca compite con el texto de una carta.</li>
+      </ul>
+    </section>
+    <section style="background: #FFFFFF; border: 3px solid #2A1608; border-radius: 28px; box-shadow: 0 6px 0 #2A1608; padding: 24px 28px; display: flex; flex-direction: column; gap: 12px">
+      <h2 style="margin: 0; font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 26px">Ícono a 48 px</h2>
+      <div style="display: flex; align-items: flex-end; gap: 18px">
+        <img src="/_blob/85d7ba142c366dae83eeda9ab63f6034" alt="Ícono de la app a 96 px" width="96" height="96" style="display: block; width: 96px; height: 96px; border-radius: 22px">
+        <img src="/_blob/85d7ba142c366dae83eeda9ab63f6034" alt="Ícono de la app a 48 px" width="48" height="48" style="display: block; width: 48px; height: 48px; border-radius: 12px">
+      </div>
+      <p style="margin: 0; font-size: 14px; font-weight: 700; line-height: 1.4; color: #475569">A 48 px se leen orejas, llama y cabeza; el guiño y los bigotes se pierden. Pedir una versión simple para tamaños chicos.</p>
+    </section>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1240,"height":1180}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>
