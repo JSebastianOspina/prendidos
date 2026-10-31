@@ -2,20 +2,26 @@ import { Redirect, router } from 'expo-router';
 import { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import { AppText } from '@/components/ui/app-text';
 import { Button } from '@/components/ui/button';
 import { ScreenContainer } from '@/components/ui/screen-container';
-import { Colors, Spacing } from '@/constants/theme';
-import { useGame, useNewGameDraft } from '@/features/game';
+import { Spacing } from '@/constants/theme';
+import { categoriesForMode } from '@/features/content/catalog';
+import { useGame, useNewGameDraft, type GameSettings } from '@/features/game';
 import { routes } from '@/features/navigation/routes';
 
-import { resultsCopy } from './results-copy';
-import { groupRankingByPosition } from './ranking-groups';
-import { RankingList } from './ranking-list';
+import { Podium } from './podium';
+import { RankingHeader } from './ranking-header';
+import { layoutRanking } from './ranking-layout';
+import { RankingRows } from './ranking-rows';
+import { rankingEyebrow, resultsCopy } from './results-copy';
+import { roundsPlayed } from './rounds-played';
 import { ResultsUpsellSlot } from './upsell-slot';
-import { WinnerCard } from './winner-card';
 
-/** Final ranking: winner moment, full ranking, and the replay / home actions. */
+function categoryNameOf({ mode, categoryId }: GameSettings): string | undefined {
+  return categoriesForMode(mode).find((category) => category.id === categoryId)?.name;
+}
+
+/** Final ranking: crowned header, podium, remaining rows, and the replay / home actions. */
 export function ResultsScreen() {
   const { session, ranking, clearFinishedGame } = useGame();
   const draft = useNewGameDraft();
@@ -25,8 +31,12 @@ export function ResultsScreen() {
   if (isLeaving) return null;
   if (session?.status !== 'finished') return <Redirect href={routes.home} />;
 
-  const groups = groupRankingByPosition(ranking);
-  const [winnerGroup] = groups;
+  const { winners, podium, rows } = layoutRanking(ranking);
+  const eyebrow = rankingEyebrow({
+    categoryName: categoryNameOf(session.settings),
+    endCondition: session.settings.endCondition,
+    roundsPlayed: roundsPlayed(session),
+  });
 
   const playAgain = () => {
     const { mode, categoryId, players, selectedDifficulties, endCondition, spicyEnabled } =
@@ -50,31 +60,47 @@ export function ResultsScreen() {
 
   return (
     <ScreenContainer scroll>
-      <View style={styles.heading}>
-        <AppText variant="label" color={Colors.textSecondary}>
-          {resultsCopy.eyebrow}
-        </AppText>
-        <AppText variant="title" accessibilityRole="header">
-          {resultsCopy.title}
-        </AppText>
-      </View>
-      {winnerGroup ? <WinnerCard group={winnerGroup} /> : null}
-      <RankingList groups={groups} />
+      <RankingHeader
+        eyebrow={eyebrow}
+        winnerNames={winners.map((winner) => winner.player.name)}
+      />
+      <Podium entries={podium} isTieForFirst={winners.length > 1} />
+      <RankingRows entries={rows} />
       <ResultsUpsellSlot />
       <View style={styles.actions}>
-        <Button label={resultsCopy.playAgain} size="turn" onPress={playAgain} />
-        <Button label={resultsCopy.backHome} variant="secondary" onPress={goHome} />
+        <Button
+          label={resultsCopy.backHome}
+          accessibilityLabel={resultsCopy.backHomeAccessibilityLabel}
+          variant="secondary"
+          onPress={goHome}
+          style={styles.homeAction}
+        />
+        <Button
+          label={resultsCopy.playAgain}
+          accessibilityLabel={resultsCopy.playAgainAccessibilityLabel}
+          onPress={playAgain}
+          style={styles.playAgainAction}
+        />
       </View>
     </ScreenContainer>
   );
 }
 
 const styles = StyleSheet.create({
-  heading: {
-    gap: Spacing.xs,
-  },
   actions: {
     marginTop: 'auto',
+    flexDirection: 'row',
     gap: Spacing.md,
+  },
+  // 2 : 3 instead of the proposal's 1 : 2 so "Inicio" fits the button padding at 375 pt.
+  homeAction: {
+    flexGrow: 2,
+    flexShrink: 1,
+    flexBasis: 0,
+  },
+  playAgainAction: {
+    flexGrow: 3,
+    flexShrink: 1,
+    flexBasis: 0,
   },
 });

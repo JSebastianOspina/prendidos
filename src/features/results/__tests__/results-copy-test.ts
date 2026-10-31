@@ -1,9 +1,11 @@
 import {
   formatPoints,
   joinPlayerNames,
-  rankingRowAccessibilityLabel,
+  rankingEntryAccessibilityLabel,
+  rankingEyebrow,
+  sharedFirstPlaceLine,
   spokenPoints,
-  winnerAccessibilityLabel,
+  winnerTitle,
 } from '../results-copy';
 
 describe('formatPoints', () => {
@@ -26,17 +28,61 @@ describe('spokenPoints', () => {
   });
 });
 
-describe('accessibility labels', () => {
-  it('describes a ranking row with position, names, and score', () => {
-    expect(rankingRowAccessibilityLabel(1, ['Ana', 'Luis'], 10)).toBe(
-      'Puesto 1: Ana y Luis, 10 puntos',
+describe('rankingEntryAccessibilityLabel', () => {
+  it('describes a podium step or row with position, full name, and score', () => {
+    expect(rankingEntryAccessibilityLabel(1, 'Maximiliano Andrés', 12)).toBe(
+      'Puesto 1: Maximiliano Andrés, 12 puntos',
     );
+    expect(rankingEntryAccessibilityLabel(5, 'Caro', -3)).toBe('Puesto 5: Caro, menos 3 puntos');
+  });
+});
+
+describe('rankingEyebrow', () => {
+  it('names the category and the rounds of a rounds game', () => {
+    expect(
+      rankingEyebrow({
+        categoryName: 'La Previa',
+        endCondition: { type: 'rounds', rounds: 10 },
+        roundsPlayed: 10,
+      }),
+    ).toBe('La Previa · 10 rondas');
   });
 
-  it('describes a single winner and a tie for first', () => {
-    expect(winnerAccessibilityLabel(['Ana'], 12)).toBe('Ganó Ana con 12 puntos');
-    expect(winnerAccessibilityLabel(['Ana', 'Luis'], 10)).toBe(
-      'Empate en el primer puesto: Ana y Luis con 10 puntos',
+  it('uses the singular for one round of an open game', () => {
+    expect(
+      rankingEyebrow({ categoryName: 'La Previa', endCondition: { type: 'open' }, roundsPlayed: 1 }),
+    ).toBe('La Previa · 1 ronda');
+  });
+
+  it('names the target of a points game', () => {
+    expect(
+      rankingEyebrow({
+        categoryName: 'Entre Dos',
+        endCondition: { type: 'points', target: 100 },
+        roundsPlayed: 4,
+      }),
+    ).toBe('Entre Dos · Meta 100 pts');
+  });
+
+  it('shows only the game length when the category is unknown', () => {
+    expect(
+      rankingEyebrow({ endCondition: { type: 'rounds', rounds: 5 }, roundsPlayed: 5 }),
+    ).toBe('5 rondas');
+  });
+});
+
+describe('winnerTitle and sharedFirstPlaceLine', () => {
+  it('names a single winner', () => {
+    expect(winnerTitle(['Vale'])).toBe('¡Ganó Vale!');
+  });
+
+  it('announces a tie for first and names everyone who shares it', () => {
+    expect(winnerTitle(['Vale', 'Juanpa'])).toBe('¡Empate arriba!');
+    expect(sharedFirstPlaceLine(['Vale', 'Juanpa'])).toBe(
+      'Vale y Juanpa comparten el primer puesto.',
+    );
+    expect(sharedFirstPlaceLine(['Ana', 'Beto', 'Isabel'])).toBe(
+      'Ana, Beto e Isabel comparten el primer puesto.',
     );
   });
 });
