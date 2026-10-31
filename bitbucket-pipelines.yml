@@ -1,0 +1,84 @@
+# Bitbucket Pipelines — Prendidos (Expo app).
+# Adapted from templates/bitbucket-pipelines.yml. NOT ACTIVE while the repo lives on GitHub
+# (see .github/workflows/ci.yml); kept ready for a future migration to Bitbucket.
+#
+# Trunk-based: PR gate on every pull request, merge gate on main.
+# Removed from the Harness template (not applicable — no backend / web build):
+#   integration tests, API contract check, migration review, Cypress E2E, pa11y, bundlesize.
+# E2E runs with Maestro on simulators, outside this pipeline (see docs/development_guide.md).
+
+image: node:24
+
+definitions:
+  caches:
+    node: node_modules
+
+  steps:
+    - step: &lint-typecheck
+        name: Lint and Type Check
+        caches: [node]
+        script:
+          - npm ci
+          - npm run lint
+          # Generates the git-ignored expo-env.d.ts and typed-routes declarations
+          - npx expo customize tsconfig.json
+          - npm run typecheck
+
+    - step: &unit-tests
+        name: Unit Tests (≥ 90% coverage)
+        caches: [node]
+        script:
+          - npm ci
+          # Skips until Jest is installed and package.json defines "test"
+          - |
+            if node -e "process.exit(require('./package.json').scripts?.test ? 0 : 1)"; then
+              npm test -- --coverage --coverageThreshold='{"global":{"lines":90}}'
+            else
+              echo "No test script yet — skipping."
+            fi
+
+    - step: &security-scan
+        name: Security Scan
+        caches: [node]
+        script:
+          - npm ci
+          # Fails on high/critical advisories not listed in .audit-allowlist.json
+          - node scripts/audit-gate.js
+
+    - step: &harness-checks
+        name: Harness checks (kebab-case + static evals)
+        image: python:3.12
+        script:
+          - bash scripts/pre-commit/kebab-case-lint.sh
+          - bash scripts/run-evals.sh
+
+    - step: &dependency-audit
+        name: Weekly Dependency Audit
+        caches: [node]
+        script:
+          - npm ci
+          - npm audit --json > audit-report.json || true
+          - node templates/audit-report.js
+        artifacts:
+          - audit-report.json
+
+pipelines:
+  pull-requests:
+    '**':
+      - parallel:
+          - step: *lint-typecheck
+          - step: *unit-tests
+          - step: *security-scan
+          - step: *harness-checks
+
+  branches:
+    main:
+      - parallel:
+          - step: *lint-typecheck
+          - step: *unit-tests
+          - step: *security-scan
+          - step: *harness-checks
+
+  custom:
+    weekly-health-check:
+      - step: *dependency-audit

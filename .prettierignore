@@ -1,0 +1,10 @@
+node_modules
+package-lock.json
+.claude
+.cursor
+.devcontainer
+ai-specs/evals/fixtures
+CHANGELOG.md
+LICENSE
+*.min.js
+*.min.css

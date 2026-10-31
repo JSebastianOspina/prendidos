@@ -41,3 +41,11 @@ example
 # generated native folders
 /ios
 /android
+
+# env files (Harness: never commit .env; keep .env.example)
+.env
+.env.*
+!.env.example
+
+# Harness evals virtualenv / coverage
+coverage/

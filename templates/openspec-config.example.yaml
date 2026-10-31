@@ -1,0 +1,67 @@
+# OpenSpec project configuration — copy to openspec/config.yaml after `openspec init`.
+# Trim entries to match only the docs/ files and ai-specs/agents/ roles your project has.
+#
+# Durable customization belongs in this file + docs/ + ai-specs/ (+ templates/, scripts/).
+# Do NOT edit OpenSpec-generated skills/commands under .cursor/ or .claude/ — they are
+# overwritten by `openspec update`. Put apply/tasks rules here (rules.apply, rules.tasks).
+# Harness-owned skills live in ai-specs/skills/ and are symlinked via scripts/sync-skills.sh.
+
+schema: spec-driven
+
+context: |
+  Tech stack: TypeScript, Node.js, NestJS, Prisma, React, @flux-ui/core — Domain-Driven Design (DDD)
+  E2E testing: Cypress (override in docs/development_guide.md if the project uses Playwright)
+  Architecture: Clean Architecture with Domain, Application, and Presentation layers
+  Conventional commits. All code, comments, and documentation must be in English.
+  File naming: kebab-case for source files and folders (see docs/base-standards.md).
+  Test coverage target: 90% minimum across all layers.
+
+  Standards (single source of truth): Read and apply when creating or implementing:
+  - docs/base-standards.md — core principles, TDD, naming, language policy
+  - docs/backend-standards.md — API design, database, testing, error handling
+  - docs/frontend-standards.md — React patterns, UI/UX, component testing
+  - docs/serverless-standards.md — Lambda patterns, cold-start, cloud-native
+  - docs/security-standards.md — OWASP, secrets, auth, compliance + Agent operational constraints (Harness invariant)
+  - docs/api-spec.yml — API contracts and endpoint definitions
+  - docs/data-model.md — domain entities and database schema
+  - docs/documentation-standards.md — docs structure and maintenance
+  - docs/openspec-tasks-mandatory-steps.md — required steps for OpenSpec tasks.md files
+  For implementation: adopt the relevant agent from ai-specs/agents/ and use ai-specs/skills/ for workflow guidance.
+
+rules:
+  _global:
+    - Before creating any artifact, read and apply docs/base-standards.md
+    - For backend artifacts, read docs/backend-standards.md and adopt ai-specs/agents/backend-developer.md
+    - For frontend artifacts, read docs/frontend-standards.md and adopt ai-specs/agents/frontend-developer.md
+    - For serverless artifacts, read docs/serverless-standards.md and adopt ai-specs/agents/serverless-developer.md
+    - For security-sensitive changes, read docs/security-standards.md (including § Agent operational constraints) and adopt ai-specs/agents/security-auditor.md
+    - Use docs/api-spec.yml and docs/data-model.md for API and data consistency
+    - Never edit OpenSpec-generated files under .cursor/ or .claude/ to customize workflow — put durable rules here and in docs/; Harness skills belong in ai-specs/skills/
+
+  proposal:
+    - Call out auth/authz/security or schema impact; note SECURITY REVIEW NEEDED when applicable
+    - Prefer backwards-compatible schema plans (expand/contract) when persistence changes
+
+  specs:
+    - Include soft-delete and authorization scenarios when the change touches delete or access control (when the project uses those patterns)
+
+  design:
+    - Schema changes must be versioned ORM migrations only — never ad-hoc SQL execution plans
+    - Document backwards-compatibility / expand-contract when the data model changes
+
+  tasks:
+    - Follow docs/openspec-tasks-mandatory-steps.md when writing tasks.md
+    - Never execute direct database queries or destructive DB commands from the agent; observe/mutate via HTTP or official Jest/e2e runners
+    - If a blocked privileged command is still required (e.g. prisma db seed), instruct the human with the exact command and consequences, wait for confirmation, then continue — do not skip and do not bypass the hook
+    - Soft-delete preferred when the project defines it; if not, HITL still applies for mutating/destructive actions
+    - Application code changes need automated tests; docs/*.md for architecture/flow; README.md when install/commands/features change
+    - Comment SECURITY REVIEW NEEDED on auth/authz/security-impacting changes
+
+  apply:
+    - Read and follow docs/openspec-tasks-mandatory-steps.md and docs/security-standards.md § Agent operational constraints
+    - Never execute privileged/destructive DB commands from the agent shell; if still required, HITL with exact command to the human, wait, then continue
+    - Mutating API plans need one explicit human grant per session; soft-delete via API preferred after grant; cleanup only via API
+    - Schema changes must use versioned migrations with backwards compatibility; run migration-review when schema files change
+
+  archive:
+    - Confirm SECURITY REVIEW NEEDED items and migration-review were addressed or explicitly deferred with human acknowledgment before archive

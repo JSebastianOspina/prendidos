@@ -1,0 +1,10 @@
+{
+  "advisories": [
+    {
+      "id": "GHSA-mrhx-c7xc-m3w5",
+      "package": "zod",
+      "reason": "zod@3 is only pulled in by build/lint tooling (@expo/cli, eslint-plugin-react-hooks) and is not part of the app bundle. The fix exists only in zod 4, which @expo/cli 58 does not support.",
+      "reviewBy": "2026-12-31"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+# Ad-hoc reviewer teams for Bitbucket CODEOWNERS (@teams/<name>).
+# Add/remove people here — CODEOWNERS path rules stay stable.
+# Emails must match each Atlassian/Bitbucket account.
+
+default:
+  contributors:
+    - jospina@ubits.co
+    - jbustos@ubits.co
+    - cburbano@ubits.co
+  reviews:
+    strategy: least_busy
+    select: 2

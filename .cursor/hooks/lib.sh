@@ -1,0 +1,1 @@
+../../ai-specs/hooks/scripts/lib.sh

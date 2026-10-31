@@ -1,0 +1,33 @@
+id: create-database-migration
+name: Create Prisma database migration
+description: Agent extends the Prisma schema and adds a migration without unauthorized dependencies.
+fixture: sandbox
+workspace: backend
+prompt: |
+  Read docs/backend-standards.md and docs/data-model.md before making changes.
+
+  Add a UserProfile model to prisma/schema.prisma with:
+  - id (String, @id, @default(cuid()))
+  - email (String, unique)
+  - displayName (String)
+  - createdAt (DateTime, @default(now()))
+
+  Create a new Prisma migration folder under prisma/migrations/ with a descriptive name.
+  Do not run destructive database commands. Do not add new npm dependencies.
+timeout_seconds: 600
+assertions:
+  - type: file_matches
+    path: prisma/schema.prisma
+    pattern: 'model UserProfile'
+  - type: file_matches
+    path: prisma/schema.prisma
+    pattern: "email\\s+String\\s+@unique"
+  - type: glob_exists
+    pattern: 'prisma/migrations/*/migration.sql'
+  - type: no_forbidden_content
+    glob: 'prisma/migrations/**/*.sql'
+    forbidden:
+      - 'DROP TABLE'
+      - 'DROP DATABASE'
+  - type: no_new_dependencies
+    package_json: package.json

@@ -1,0 +1,72 @@
+# CI for Prendidos (GitHub Actions) — mirrors bitbucket-pipelines.yml.
+# Trunk-based: runs on every pull request and on pushes to main.
+
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint-typecheck:
+    name: Lint and Type Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      # Generates the git-ignored expo-env.d.ts and typed-routes declarations
+      - run: npx expo customize tsconfig.json
+      - run: npm run typecheck
+
+  unit-tests:
+    name: Unit Tests (≥ 90% coverage)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      # Skips until Jest is installed and package.json defines "test" (see docs/development_guide.md).
+      - name: Run Jest
+        run: |
+          if node -e "process.exit(require('./package.json').scripts?.test ? 0 : 1)"; then
+            npm test -- --coverage --coverageThreshold='{"global":{"lines":90}}'
+          else
+            echo "No test script yet — skipping."
+          fi
+
+  security-scan:
+    name: Security Scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      # Fails on high/critical advisories not listed in .audit-allowlist.json
+      - run: node scripts/audit-gate.js
+
+  harness-checks:
+    name: Harness checks (kebab-case + static evals)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: bash scripts/pre-commit/kebab-case-lint.sh
+      - run: bash scripts/run-evals.sh

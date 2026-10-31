@@ -1,0 +1,218 @@
+# Bitbucket Pipelines Template — harness
+# Copy to the root of your project as bitbucket-pipelines.yml
+# Also copy companion files from templates/:
+#   templates/pa11yci.json        → .pa11yci.json
+#   templates/audit-report.js     → scripts/audit-report.js
+#   templates/pre-commit-config.example.yaml + templates/scripts/pre-commit/  →  bash scripts/setup-dev-tooling.sh
+#   templates/devcontainer/         → .devcontainer/ (via setup-dev-tooling.sh)
+# Enable/disable steps progressively as your project matures.
+#
+# Gate tiers:
+#   1. PR gate      — every PR (fast, < 5 min)
+#   2. Merge gate   — on merge to main/develop (< 12 min)
+#   3. Release gate — on release/* branches (< 30 min)
+#   4. Scheduled    — weekly health checks
+
+image: node:20
+
+definitions:
+  caches:
+    node: node_modules
+
+  steps:
+    - step: &lint-typecheck
+        name: Lint and Type Check
+        caches: [node]
+        script:
+          - npm ci
+          - npm run lint
+          - npm run typecheck
+
+    - step: &unit-tests
+        name: Unit Tests (≥ 90% coverage)
+        caches: [node]
+        script:
+          - npm ci
+          - npm test -- --coverage --coverageThreshold='{"global":{"lines":90}}'
+
+    - step: &security-scan
+        name: Security Scan
+        caches: [node]
+        script:
+          - npm ci
+          - npm audit --audit-level=high
+          # Uncomment to add Snyk:
+          # - npx snyk test --severity-threshold=high
+
+    - step: &build-check
+        name: Build
+        caches: [node]
+        script:
+          - npm ci
+          - npm run build
+
+    - step: &kebab-lint
+        name: Kebab-case File Name Lint
+        script:
+          - |
+            VIOLATIONS=$(find . -name "*.ts" -o -name "*.tsx" | grep -v node_modules | grep -v dist | grep -E '[A-Z]' || true)
+            if [ -n "$VIOLATIONS" ]; then
+              echo "ERROR: Non-kebab-case file names found:"
+              echo "$VIOLATIONS"
+              exit 1
+            fi
+            echo "All file names are kebab-case ✓"
+
+    # Uncomment for Harness brain repos (agent-docs) — static eval tier, no API key required
+    # - step: &harness-evals-static
+    #     name: Harness Evals (static)
+    #     script:
+    #       - bash scripts/run-evals.sh
+    #
+    # Optional agent-tier evals — requires CURSOR_API_KEY repository variable
+    # - step: &harness-evals-agent
+    #     name: Harness Evals (agent golden tasks)
+    #     script:
+    #       - pip install -r ai-specs/evals/requirements.txt
+    #       - pip install -r ai-specs/evals/requirements-agent.txt
+    #       - bash scripts/run-evals.sh --agent --changed
+
+    - step: &integration-tests
+        name: Integration Tests
+        caches: [node]
+        script:
+          - npm ci
+          - npm run test:integration
+
+    - step: &api-contract-check
+        name: API Contract Check
+        caches: [node]
+        script:
+          - npm ci
+          # Add your API contract validation tool here
+          # e.g., openapi-diff or spectral
+          - npx @stoplight/spectral-cli lint docs/api-spec.yml
+
+    - step: &accessibility-audit
+        name: Accessibility Audit
+        caches: [node]
+        script:
+          - npm ci
+          - npm run build:frontend
+          # Add axe-core or pa11y for automated a11y checks
+          - npx pa11y-ci --config .pa11yci.json || echo "Review a11y findings"
+
+    - step: &migration-review
+        name: Migration Safety Check
+        caches: [node]
+        script:
+          - |
+            # Check if any migration files changed
+            MIGRATIONS=$(git diff --name-only origin/main...HEAD | grep -E 'prisma/migrations|migrations' || true)
+            if [ -n "$MIGRATIONS" ]; then
+              echo "Migration files changed — manual review required:"
+              echo "$MIGRATIONS"
+              # Add your migration safety check script here
+            else
+              echo "No migration changes detected ✓"
+            fi
+
+    - step: &e2e-tests
+        name: E2E Tests (Cypress)
+        caches: [node]
+        script:
+          - npm ci
+          - npx cypress install
+          - npm run test:e2e
+
+    - step: &performance-check
+        name: Performance Check
+        caches: [node]
+        script:
+          - npm ci
+          - npm run build
+          # Bundle size check — adjust limit per project
+          - npx bundlesize
+
+    - step: &dependency-audit
+        name: Weekly Dependency Audit
+        caches: [node]
+        script:
+          - npm ci
+          - npm audit --json > audit-report.json || true
+          - node scripts/audit-report.js
+        artifacts:
+          - audit-report.json
+
+pipelines:
+  # ── Tier 1: PR Gate ──────────────────────────────────────────────────────
+  pull-requests:
+    '**':
+      - parallel:
+          - step: *lint-typecheck
+          - step: *unit-tests
+          - step: *security-scan
+          - step: *build-check
+          - step: *kebab-lint
+
+  branches:
+    # ── Tier 2: Merge Gate ───────────────────────────────────────────────────
+    main:
+      - parallel:
+          - step: *lint-typecheck
+          - step: *unit-tests
+          - step: *security-scan
+          - step: *build-check
+      - parallel:
+          - step: *integration-tests
+          - step: *api-contract-check
+          - step: *migration-review
+
+    develop:
+      - parallel:
+          - step: *lint-typecheck
+          - step: *unit-tests
+          - step: *security-scan
+      - parallel:
+          - step: *integration-tests
+          - step: *api-contract-check
+          - step: *accessibility-audit
+
+    # ── Tier 3: Release Gate ─────────────────────────────────────────────────
+    'release/*':
+      - parallel:
+          - step: *lint-typecheck
+          - step: *unit-tests
+          - step: *security-scan
+          - step: *build-check
+      - parallel:
+          - step: *integration-tests
+          - step: *api-contract-check
+          - step: *migration-review
+          - step: *accessibility-audit
+      - step: *e2e-tests
+      - step: *performance-check
+
+    'hotfix/*':
+      - parallel:
+          - step: *lint-typecheck
+          - step: *unit-tests
+          - step: *security-scan
+      - step: *integration-tests
+
+  # ── Tier 4: Scheduled — Weekly ───────────────────────────────────────────
+  custom:
+    weekly-health-check:
+      - step: *dependency-audit
+      - step:
+          name: Dead Code Analysis
+          caches: [node]
+          script:
+            - npm ci
+            - npx ts-prune --error || echo "Review dead code findings"
+      - step:
+          name: Standards Drift Check
+          script:
+            - |
+              echo "Checking for kebab-case violations..."
+              find . -name "*.ts" -o -name "*.tsx" | grep -v node_modules | grep -v dist | grep -E '[A-Z]' && exit 1 || echo "No violations ✓"

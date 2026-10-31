@@ -1,0 +1,9 @@
+# Bitbucket Code Owners — user-event-manager-services (operations)
+# Docs: https://support.atlassian.com/bitbucket-cloud/docs/set-up-and-use-code-owners/
+#
+# IMPORTANT: Bitbucket reads this file from the *destination* branch of the PR
+# (e.g. develop). Merge these files to develop before they take effect.
+# Manage people in .bitbucket/teams.yaml — keep path rules here.
+
+# Default owners (fallback when no more-specific rule matches)
+* @teams/default

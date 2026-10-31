@@ -1,0 +1,2 @@
+# Optional — install only for agent-tier evals:
+# cursor-sdk>=0.1.0
