@@ -12,11 +12,13 @@
 schema: spec-driven
 
 context: |
-  Product: Prendidos — native party drinking game for Android and iPhone. Players pick a category and mode
-  (friends or couple) and play challenges with difficulty levels; completing challenges earns points.
-  18+ audience: age gate before first play; drinking challenges offer a non-alcoholic alternative.
-  No backend: challenge content is bundled and game state/progress live on-device. Payments only via
-  App Store / Google Play in-app purchases (never handle card data).
+  Product: Prendidos — native party drinking game for Android and iPhone (Colombia, Spanish copy).
+  Players pick a mode (friends or couple) and one category, then take turns with cards (challenges, truths,
+  and group cards) whose difficulty escalates automatically; completing earns points, refusing subtracts
+  half and triggers the card's penalty. Product source of truth: docs/prd.md (Spanish).
+  18+ audience: age gate before first play; non-drinking players get generic alternative penalties; no
+  penalty exceeds 3 drinks. No backend: content is bundled and game state lives on-device. Payments only via
+  App Store / Google Play non-consumable in-app purchases (never handle card data).
   Tech stack: TypeScript, Expo SDK 58, React Native 0.88, React 19.3, Expo Router (src/app/), @expo/ui,
   react-native-reanimated 4, EAS (Build, Submit, Update). Package manager: npm.
   Expo changes every SDK: never rely on memory for Expo / EAS / React Native APIs — read the `expo`

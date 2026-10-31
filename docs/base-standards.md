@@ -24,6 +24,7 @@ alwaysApply: true
   - Configuration files and scripts
   - Git commit messages
   - Test names and descriptions
+- **Exception — Product Requirements Document**: `docs/prd.md` is written in Spanish by product decision. All other documentation stays in English; user-facing product copy is Spanish.
 
 ## 2.1 Project Context
 
@@ -99,11 +100,13 @@ Harness ships **default profiles per layer**. Each project may override them dur
 
 For detailed standards and guidelines specific to different areas of the project, refer to:
 
+- [Product Requirements (PRD)](./prd.md) - Product goal, audience, game mechanics, content, monetization, compliance, and MVP scope (in Spanish). Read before writing user stories or OpenSpec proposals
+
 - [Backend Standards](./backend-standards.md) - **Not applicable yet** (no backend) — Harness template kept for when one is added
 - [Frontend Standards](./frontend-standards.md) - Expo / React Native platform rules, components, UI/UX guidelines, and frontend architecture
 - [Serverless Standards](./serverless-standards.md) - **Not applicable yet** (no serverless layer) — Harness template kept for later
 - [Development Guide](./development_guide.md) - Local setup, commands, testing, and EAS workflows
-- [Data Model](./data-model.md) - On-device domain entities (categories, challenges, game sessions, purchases)
+- [Data Model](./data-model.md) - On-device domain entities (categories, cards, players, game sessions, device state, products, entitlements)
 - [Security Standards](./security-standards.md) - OWASP Top 10, secrets management, auth standards, and dependency hygiene
 - [Documentation Standards](./documentation-standards.md) - Technical documentation structure, formatting, and maintenance guidelines, including AI standards like this document
 - [OpenSpec Tasks Mandatory Steps](./openspec-tasks-mandatory-steps.md) - Required checklist and execution rules when creating or updating OpenSpec `tasks.md` files

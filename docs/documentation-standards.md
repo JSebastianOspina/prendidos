@@ -14,6 +14,7 @@ AI specs refers to the documents that explain AI agents how to behave, document,
 ## General rules
 
 - ALWAYS WRITE IN ENGLISH, including comments and any explanation in the files. This applies both to creating new documentation and updating existing one, and it also applies to documentation within the code (comments, explanations of functions or fields, etc.).
+- Only exception: `docs/prd.md` (Product Requirements Document) is written in Spanish (see `docs/base-standards.md` §2).
 
 ## Technical Documentation
 
