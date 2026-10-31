@@ -4,10 +4,9 @@ import { ScrollView, StyleSheet, View } from 'react-native';
 
 import { AppText } from '@/components/ui/app-text';
 import { Button } from '@/components/ui/button';
-import { levelLabels } from '@/components/ui/level-badge';
 import { ScreenContainer } from '@/components/ui/screen-container';
-import { Colors, LevelColors, Spacing } from '@/constants/theme';
-import { allDifficulties } from '@/features/content/card-types';
+import { Colors, Spacing } from '@/constants/theme';
+import { categoriesForMode } from '@/features/content/catalog';
 import {
   createLocalId,
   playerLimitsByMode,
@@ -17,17 +16,19 @@ import {
 } from '@/features/game';
 import { routes } from '@/features/navigation/routes';
 
-import { endConditionLabel, setupCopy } from './copy';
-import { OptionChip } from './option-chip';
+import { AddPlayerButton } from './add-player-button';
+import { setupCopy, startButtonLabel } from './copy';
+import { GameOptions } from './game-options';
 import { PlayerRow } from './player-row';
+import { PlayerSummaryRow } from './player-summary-row';
+import { SetupHeader } from './setup-header';
 import {
+  changeAvatar,
   createEmptyPlayer,
-  endConditionOptions,
   hasMissingName,
-  isSameEndCondition,
+  isRowExpanded,
   preparePlayersForMode,
   shufflePlayers,
-  toggleDifficulty,
   trimPlayerNames,
 } from './setup-rules';
 import { SpicySwitchSlot } from './spicy-switch-slot';
@@ -37,19 +38,21 @@ export type SetupScreenProps = {
   random?: () => number;
 };
 
-/** "Setup de partida": players, turn order, levels, and end condition, then "Empezar". */
+/** "Setup de partida": players, turn order, levels, and end condition, then "¡A jugar!". */
 export function SetupScreen({ random = Math.random }: SetupScreenProps) {
   const draft = useNewGameDraft();
   const { startGame } = useGame();
   const [attemptedStart, setAttemptedStart] = useState(false);
   const [startFailed, setStartFailed] = useState(false);
-  const { mode, players, setPlayers, isReadyForSetup } = draft;
+  /** The one row from the third on that the user opened; the first two are always open. */
+  const [expandedPlayerId, setExpandedPlayerId] = useState<string | undefined>(undefined);
+  const { mode, categoryId, players, setPlayers, isReadyForSetup } = draft;
   const [wasReadyAtMount] = useState(isReadyForSetup);
 
   // Redirect only when opened without mode or category; a later draft reset (while this screen
   // sits under another one) must not replace the screen the user is looking at.
   useEffect(() => {
-    if (!wasReadyAtMount) router.replace(routes.newGame.mode);
+    if (!wasReadyAtMount) router.replace(routes.home);
   }, [wasReadyAtMount]);
 
   useEffect(() => {
@@ -60,6 +63,7 @@ export function SetupScreen({ random = Math.random }: SetupScreenProps) {
 
   if (!mode || !isReadyForSetup) return null;
 
+  const categoryName = categoriesForMode(mode).find((category) => category.id === categoryId)?.name;
   const limits = playerLimitsByMode[mode];
   const canAddPlayer = players.length < limits.max;
   const canRemovePlayer = players.length > limits.min;
@@ -69,6 +73,11 @@ export function SetupScreen({ random = Math.random }: SetupScreenProps) {
     setPlayers(players.map((player, position) => (position === index ? changed : player)));
   const removePlayer = (index: number) =>
     setPlayers(players.filter((_, position) => position !== index));
+  const addPlayer = () => {
+    const newPlayer = createEmptyPlayer(createLocalId, players);
+    setPlayers([...players, newPlayer]);
+    setExpandedPlayerId(newPlayer.id);
+  };
 
   const start = () => {
     setAttemptedStart(true);
@@ -83,87 +92,49 @@ export function SetupScreen({ random = Math.random }: SetupScreenProps) {
 
   return (
     <ScreenContainer>
+      <SetupHeader categoryName={categoryName} />
+
       <ScrollView
         style={styles.form}
         contentContainerStyle={styles.formContent}
         keyboardShouldPersistTaps="handled"
       >
-        <AppText variant="title" accessibilityRole="header">
-          {setupCopy.title}
-        </AppText>
+        {players.map((player, index) => {
+          const position = index + 1;
+          const showMissingName = attemptedStart && hasMissingName(player);
+          return isRowExpanded(index, player.id, expandedPlayerId) ? (
+            <PlayerRow
+              key={player.id}
+              player={player}
+              position={position}
+              showMissingName={showMissingName}
+              canRemove={canRemovePlayer}
+              onChange={(changed) => updatePlayer(index, changed)}
+              onChangeAvatar={() => setPlayers(changeAvatar(players, index))}
+              onRemove={() => removePlayer(index)}
+            />
+          ) : (
+            <PlayerSummaryRow
+              key={player.id}
+              player={player}
+              position={position}
+              showMissingName={showMissingName}
+              canRemove={canRemovePlayer}
+              onExpand={() => setExpandedPlayerId(player.id)}
+              onRemove={() => removePlayer(index)}
+            />
+          );
+        })}
 
-        <View style={styles.sectionHeader}>
-          <View style={styles.sectionTitle}>
-            <AppText variant="label">{setupCopy.playersHeading}</AppText>
-            <AppText variant="body" color={Colors.textMuted}>
-              {setupCopy.playersHint}
-            </AppText>
-          </View>
-          <Button
-            variant="secondary"
-            label={setupCopy.shuffle}
-            onPress={() => setPlayers(shufflePlayers(players, random))}
-            style={styles.shuffleButton}
-          />
-        </View>
+        {canAddPlayer ? <AddPlayerButton onPress={addPlayer} /> : null}
 
-        {players.map((player, index) => (
-          <PlayerRow
-            key={player.id}
-            player={player}
-            position={index + 1}
-            showMissingName={attemptedStart && hasMissingName(player)}
-            canRemove={canRemovePlayer}
-            onChange={(changed) => updatePlayer(index, changed)}
-            onRemove={() => removePlayer(index)}
-          />
-        ))}
-
-        {canAddPlayer ? (
-          <Button
-            variant="secondary"
-            label={setupCopy.addPlayer}
-            onPress={() => setPlayers([...players, createEmptyPlayer(createLocalId, players)])}
-          />
-        ) : null}
-
-        <View style={styles.section}>
-          <AppText variant="label">{setupCopy.levelsHeading}</AppText>
-          <AppText variant="body" color={Colors.textMuted}>
-            {setupCopy.levelsHint}
-          </AppText>
-          <View style={styles.chips}>
-            {allDifficulties.map((difficulty) => (
-              <OptionChip
-                key={difficulty}
-                role="checkbox"
-                label={levelLabels[difficulty]}
-                selected={draft.selectedDifficulties.includes(difficulty)}
-                selectedColors={LevelColors[difficulty]}
-                onPress={() =>
-                  draft.setSelectedDifficulties(
-                    toggleDifficulty(draft.selectedDifficulties, difficulty),
-                  )
-                }
-              />
-            ))}
-          </View>
-        </View>
-
-        <View style={styles.section}>
-          <AppText variant="label">{setupCopy.endHeading}</AppText>
-          <View style={styles.chips}>
-            {endConditionOptions.map((endCondition) => (
-              <OptionChip
-                key={endConditionLabel(endCondition)}
-                role="radio"
-                label={endConditionLabel(endCondition)}
-                selected={isSameEndCondition(draft.endCondition, endCondition)}
-                onPress={() => draft.setEndCondition(endCondition)}
-              />
-            ))}
-          </View>
-        </View>
+        <GameOptions
+          endCondition={draft.endCondition}
+          selectedDifficulties={draft.selectedDifficulties}
+          onEndConditionChange={draft.setEndCondition}
+          onDifficultiesChange={draft.setSelectedDifficulties}
+          onShuffle={() => setPlayers(shufflePlayers(players, random))}
+        />
 
         {mode === 'friends' ? <SpicySwitchSlot /> : null}
       </ScrollView>
@@ -179,7 +150,7 @@ export function SetupScreen({ random = Math.random }: SetupScreenProps) {
             {setupCopy.startFailed}
           </AppText>
         ) : null}
-        <Button size="turn" label={setupCopy.start} onPress={start} />
+        <Button size="turn" label={startButtonLabel(players.length)} onPress={start} />
       </View>
     </ScreenContainer>
   );
@@ -190,29 +161,8 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   formContent: {
-    gap: Spacing.lg,
-    paddingBottom: Spacing.lg,
-  },
-  sectionHeader: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
     gap: Spacing.md,
-  },
-  sectionTitle: {
-    flex: 1,
-    gap: Spacing.xs,
-  },
-  shuffleButton: {
-    alignSelf: 'center',
-  },
-  section: {
-    gap: Spacing.sm,
-  },
-  chips: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: Spacing.sm,
+    paddingBottom: Spacing.lg,
   },
   footer: {
     gap: Spacing.sm,
