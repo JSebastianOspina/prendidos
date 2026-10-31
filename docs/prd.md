@@ -9,7 +9,7 @@ alwaysApply: false
 
 | Campo              | Valor                                                    |
 | ------------------ | -------------------------------------------------------- |
-| Versión            | 1.0 (MVP)                                                |
+| Versión            | 1.1 (MVP) — Sin Filtro pasa de categoría a capa opcional |
 | Fecha              | 2026-10-31                                               |
 | Lanzamiento meta   | Publicado en App Store y Google Play antes del 2026-12-15 |
 | Plataformas        | iOS y Android (web fuera de alcance)                     |
@@ -83,6 +83,7 @@ Si se cumplen, se invierte en más packs de contenido y en expansión a LatAm.
 | Verdad             | —                | Carta individual: el jugador de turno debe responder con la verdad                    |
 | Carta grupal       | —                | "Todos los que…" o "Yo nunca": interludio que involucra a todo el grupo               |
 | Castigo            | —                | Lo que hace el jugador al negarse a una carta (tomar, o la alternativa si no toma)    |
+| Sin Filtro         | `heat: 'spicy'`  | Capa opcional de cartas más atrevidas (no explícitas) en modo Amigos. Apagada por defecto; se desbloquea con compra (ver §6.4) |
 | Partida            | `GameSession`    | Una sesión de juego desde el setup hasta el ranking final                             |
 | Ronda              | —                | Un turno de cada jugador                                                              |
 | Pack               | —                | Producto de compra única que desbloquea contenido                                     |
@@ -128,6 +129,7 @@ En una sola pantalla de configuración:
 2. **Orden de turnos**: el orden en que se ingresaron los jugadores, con un botón para **barajar**.
 3. **Niveles** (opcional): por defecto se usan los tres con escalada automática. Se puede restringir a **uno o varios niveles**; la escalada recorre solo los elegidos.
 4. **Fin de partida** (ver §5.7): por defecto **10 rondas**.
+5. **Retos Sin Filtro** (solo modo Amigos, ver §6.4): interruptor **apagado en el primer uso**; después el setup recuerda la última elección del dispositivo. Si no está desbloqueado, se ve con candado y abre el paywall.
 
 ### 5.4 Niveles y puntos
 
@@ -229,12 +231,13 @@ Todo funciona **sin conexión**, excepto comprar y restaurar compras.
 | Modo   | Categoría (nombre provisional) | Tono                    | Acceso                                     | Cartas |
 | ------ | ------------------------------ | ----------------------- | ------------------------------------------ | ------ |
 | Amigos | **La Previa**                  | Rumba ligera            | Gratis                                     | 90     |
-| Amigos | **Sin Filtro**                 | Más atrevida            | Pack pago                                  | 90     |
+| Amigos | **La Previa** · capa Sin Filtro | Más atrevida, no explícita | Pack pago + interruptor en el setup     | 90     |
 | Pareja | **Entre Dos**                  | Coqueta, no explícita   | Suave gratis; Picante + Prendido pagos     | 90     |
 
-- 90 cartas por categoría = **30 por nivel**, repartidas según la proporción de §5.6.
+- Cada bloque de 90 cartas = **30 por nivel**, repartidas según la proporción de §5.6.
 - Total del lanzamiento: unas **270 cartas**, más la lista genérica de castigos alternativos por nivel.
 - Nombres y temas de las categorías son **provisionales**.
+- Cada categoría nueva de Amigos trae sus propias cartas Sin Filtro.
 
 > Referencia de volumen: 10 rondas × 6 jugadores = 60 turnos, unas 20 cartas individuales por nivel en una sola partida.
 
@@ -250,6 +253,25 @@ Todo funciona **sin conexión**, excepto comprar y restaurar compras.
 - El modo Pareja es **coqueto y picante, no explícito**.
 - Ningún castigo excede 3 tragos ni pide fondo blanco.
 - Sin contenido que humille o discrimine por género, orientación, origen o apariencia.
+- El reto en sí se puede cumplir sin tomar: el trago solo aparece como castigo.
+- **Consentimiento:** las cartas con contacto físico muestran "Solo si la otra persona acepta". Si dice que no, el jugador escoge a otra persona y quien se negó nunca recibe castigo.
+- Solo involucra a personas presentes: nada de leer, enviar ni publicar chats o fotos de terceros.
+- Reglas detalladas y ejemplos para escribir cartas: `docs/content/README.md` y la skill `write-cards`.
+
+### 6.4 Capa Sin Filtro
+
+Cartas más atrevidas que se mezclan con la categoría elegida cuando el grupo enciende el interruptor del setup (§5.3).
+
+| Aspecto          | Regla                                                                                                   |
+| ---------------- | ------------------------------------------------------------------------------------------------------- |
+| Modos            | Solo **Amigos** en el lanzamiento. Pareja ya monetiza por niveles                                        |
+| Por defecto      | Apagada en el primer uso; el setup recuerda la última elección                                           |
+| Acceso           | Pack Sin Filtro o Pase total (§7), además del acceso normal a la categoría y al nivel                   |
+| Qué agrega       | Besos con consentimiento mutuo, baile sensual sin tocar zonas íntimas, sentarse en las piernas, quitarse zapatos, medias, chaqueta o accesorios, confesiones sexuales sin detalles gráficos, doble sentido |
+| Qué no agrega    | Todo lo prohibido en §6.3 sigue prohibido: la capa es lo más atrevido que permiten las tiendas, no una excepción |
+| Escalada         | Las cartas Sin Filtro tienen nivel y puntos como las demás y siguen la misma escalada (§5.5)            |
+
+La proporción de cartas Sin Filtro dentro de la partida se define en diseño técnico (§12).
 
 ---
 
@@ -259,7 +281,7 @@ Compras únicas (non-consumable) gestionadas por App Store y Google Play. La app
 
 | Producto                        | Contenido                                           | Precio            |
 | ------------------------------- | --------------------------------------------------- | ----------------- |
-| Pack **Sin Filtro**             | Categoría completa (Amigos)                         | USD 1,99 (~COP 8.900) |
+| Pack **Sin Filtro**             | Capa Sin Filtro en todas las categorías de Amigos a las que el usuario tenga acceso, actuales y futuras (§6.4) | USD 1,99 (~COP 8.900) |
 | Pack **Entre Dos: Picante + Prendido** | Niveles Picante y Prendido de la categoría de Pareja | USD 1,99      |
 | **Pase total**                  | Todo el contenido actual **y futuro**, de por vida  | USD 2,99          |
 
@@ -272,6 +294,7 @@ Compras únicas (non-consumable) gestionadas por App Store y Google Play. La app
 | Dónde                                  | Comportamiento                                                                                       |
 | -------------------------------------- | ---------------------------------------------------------------------------------------------------- |
 | Selector de categorías                 | Las categorías bloqueadas se ven con candado y abren el paywall.                                     |
+| Interruptor Sin Filtro (setup, Amigos) | Bloqueado con candado; al tocarlo abre el paywall del pack Sin Filtro.                               |
 | Pareja, al llegar la escalada a Picante | Aparece **una vez** un paywall suave ("Desbloquea el siguiente nivel"). Si no compra, la partida **sigue solo con Suave**. |
 | Ranking final                          | Upsell no intrusivo hacia el contenido bloqueado del modo jugado.                                    |
 
@@ -282,6 +305,7 @@ Compras únicas (non-consumable) gestionadas por App Store y Google Play. La app
 - **Verificación de edad:** al primer uso, pantalla **"Soy mayor de 18 años"** con aviso de consumo responsable. Se pide una sola vez y se guarda localmente. Quien no confirma no puede jugar.
 - **Clasificación en las tiendas:** 18+ en App Store y Mature 17+ (IARC) en Google Play, por referencias al alcohol y contenido sugerente.
 - **Consumo responsable:** límites de castigo (§5.8), opción "No toma" por jugador y mensajes de consumo responsable (p. ej. no manejar si se tomó).
+- **Transparencia con la revisión de las tiendas:** la capa Sin Filtro se describe en las notas de revisión con instrucciones para verla. Nunca se oculta contenido ni se activa contenido nuevo de forma remota después de la revisión (App Store 2.5.19, 2.5.2 y 2.3.1). Esconderlo arriesga la cuenta de desarrollador completa, no solo esta app. Capturas y metadatos de las tiendas se mantienen aptos para 4+ (guía 2.3.8).
 - **Privacidad:** sin cuentas ni datos personales fuera del dispositivo. Los nombres y géneros de los jugadores **nunca salen del dispositivo** ni se envían en la analítica.
 
 ---
@@ -300,8 +324,8 @@ Compras únicas (non-consumable) gestionadas por App Store y Google Play. La app
 ### 10.1 Dentro del MVP
 
 - Modos Amigos y Pareja.
-- 3 categorías (§6.1) con retos, verdades, "Todos los que…" y "Yo nunca".
-- Setup con jugadores, género, "No toma", orden, filtro de niveles y fin de partida.
+- 2 categorías (§6.1) con retos, verdades, "Todos los que…" y "Yo nunca", más la capa Sin Filtro para La Previa (§6.4).
+- Setup con jugadores, género, "No toma", orden, filtro de niveles, fin de partida e interruptor Sin Filtro.
 - Escalada automática, puntos, castigos, cambio de carta y ranking.
 - Retomar una partida interrumpida.
 - Compras: 2 packs y el Pase total, más restaurar compras.
@@ -325,6 +349,8 @@ Compras únicas (non-consumable) gestionadas por App Store y Google Play. La app
 | ------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
 | Rechazo en App Store por incentivar el consumo excesivo de alcohol (guideline 1.4.3) | Límites de castigo, opción "No toma", mensajes de consumo responsable, revisión humana del contenido. |
 | Rechazo por contenido sexual en el modo Pareja                            | Contenido coqueto, no explícito; clasificación 18+ / Mature 17+.            |
+| Rechazo por la capa Sin Filtro                                            | Mismas reglas de §6.3, apagada por defecto, detrás de compra y declarada en las notas de revisión (§8). |
+| El contenido que cumple las políticas resulta aburrido                    | La skill `write-cards` conserva el riesgo social del reto; prueba con 10 cartas en `docs/content/trials/`. Validar con un playtest antes del lanzamiento. |
 | Plazo corto (15 de diciembre)                                             | MVP recortado; contenido en paralelo con el desarrollo; dejar margen para la revisión de las tiendas. |
 | 270 cartas pueden repetirse rápido en grupos que juegan seguido           | Historial de cartas vistas; nuevos packs vía EAS Update / versión.          |
 | Solo 2 productos pagos limitan los ingresos iniciales                     | El objetivo del MVP es validar la conversión, no maximizar ingresos.        |
@@ -342,3 +368,4 @@ Decisiones de implementación que no cambian el producto y se resuelven en OpenS
 - Valor de N para la escalada en partidas abiertas.
 - Algoritmo exacto para intercalar cartas grupales y respetar la proporción del §5.6.
 - Formato de los placeholders y de las variantes de género en el contenido.
+- Proporción de cartas Sin Filtro dentro de la partida cuando el interruptor está encendido.
