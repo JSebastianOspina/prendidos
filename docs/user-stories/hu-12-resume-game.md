@@ -21,7 +21,7 @@ Party phones get locked, calls come in, apps get closed. The game state is alrea
 
 ## Acceptance Criteria
 
-- [ ] When a game is in progress, the home screen shows a dark "Continuar partida" button above "Nueva partida", with the players' names or count and the current round.
+- [ ] When a game is in progress, the home screen shows a dark "Continuar partida" card above the Amigos and Pareja cards, with the players' names or count and the current round.
 - [ ] Tapping it returns to the turn screen with the same player, card, scores, round, and level as when the app was left.
 - [ ] Starting a new game while one is in progress asks for confirmation that the current game will be abandoned.
 - [ ] After a game ends, the button disappears.

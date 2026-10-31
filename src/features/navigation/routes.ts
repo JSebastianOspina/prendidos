@@ -3,7 +3,6 @@ export const routes = {
   ageGate: '/age-gate',
   home: '/',
   newGame: {
-    mode: '/new-game/mode',
     category: '/new-game/category',
     setup: '/new-game/setup',
   },
