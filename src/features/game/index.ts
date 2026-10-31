@@ -19,6 +19,7 @@ export type { SettingsError } from './settings-validation';
 export { playerLimitsByMode } from './settings-validation';
 export { refusalPenaltyPoints } from './scoring';
 export { createLocalId, createPlayer, type NewPlayer } from './players';
+export { avatarIds, nextFreeAvatar, pickFreeAvatar, type AvatarId } from './avatars';
 export { GameProvider, useGame, type GameValue } from './game-provider';
 export {
   NewGameDraftProvider,

@@ -127,7 +127,7 @@ Character traits come from [`README.md`](./README.md). UI-specific rules:
 - **Brand red:** the cat sits on `brandRed` in the app icon, the splash, the home logo tile, and the level-up screen. The home header itself stays on `background`: a full-width red band was tried and rejected as too heavy.
 - **Attitude:** never use the drowsy or drunk-looking expressions (`4` and both `7` in `references/mascot-expressions-ai-draft.jpg`).
 - **Small sizes:** at 48 px the silhouette (ears, flame, white head) still reads, but the wink and whiskers do not. Request a simplified icon for 48 px and below.
-- **Placeholders:** AI drafts are allowed only as marked placeholders in proposals. They must never ship in the app.
+- **Interim art:** the AI drafts ship in the app as interim art until the vector redraw (`README.md`, decision of 2026-10-31). Show them through `Mascot` (art `wink`, `laugh`, `relaxed`, `smirk`, `pointing`, `icon`), never as raw image files. The "PLACEHOLDER IA" tags in the proposal are annotations, not UI.
 
 ### Flame by level (level-up screen)
 
@@ -157,7 +157,7 @@ Each player is shown with a cat avatar instead of an initial. The set, each cat'
 - **Name:** always shown next to the avatar; the avatar never replaces it.
 - **Frame:** the same square frame with padding for all 12, on `surface`, with a 2 px `ink` border and a radius of about a quarter of the side. Never crop to a circle: hats, headphones, and caps extend past the head.
 - **Change:** in setup the avatar is a button (`accessibilityLabel` "Cambiar avatar de {nombre}") with a small `primary` swap badge in the corner.
-- **Placeholders:** until the SVGs exist, proposals use crops of `references/player-avatars-ai-draft.jpg` marked "PLACEHOLDER IA". They must never ship.
+- **Interim art:** until the SVGs exist, the app shows crops of `references/player-avatars-ai-draft.jpg` through `PlayerAvatar`, which draws this frame.
 
 ### Sizes
 
