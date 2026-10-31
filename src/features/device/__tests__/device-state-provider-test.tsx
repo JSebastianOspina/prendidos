@@ -5,7 +5,13 @@ import type { ReactNode } from 'react';
 import { DeviceStateProvider, useDeviceState } from '../device-state-provider';
 import { deviceStateKey, readDeviceState } from '../device-storage';
 
-const player = { id: 'p1', name: 'Ana', gender: 'female' as const, drinks: true };
+const player = {
+  id: 'p1',
+  name: 'Ana',
+  gender: 'female' as const,
+  drinks: true,
+  avatarId: 'avatar-01' as const,
+};
 
 function wrapper({ children }: { children: ReactNode }) {
   return (

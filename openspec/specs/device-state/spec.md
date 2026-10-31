@@ -28,3 +28,17 @@ The app SHALL remember the 18+ confirmation, last players, seen cards, last Sin 
 
 - **WHEN** the saved game is missing fields or points to a card that no longer ships
 - **THEN** the app starts without a game in progress instead of failing
+
+### Requirement: Remembered avatars
+
+The device state SHALL keep each remembered player's avatar and each saved-game player's avatar. A saved player without a valid avatar SHALL get the first avatar no other player in the same list has, instead of being dropped.
+
+#### Scenario: Older save without avatars
+
+- **WHEN** the stored last players are Ana and Beto with no avatar
+- **THEN** they are read back with avatars 1 and 2
+
+#### Scenario: Avatar survives a restart
+
+- **WHEN** Vale was remembered with avatar 7 and the app is reopened
+- **THEN** Vale is read back with avatar 7

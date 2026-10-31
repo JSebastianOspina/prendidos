@@ -10,21 +10,34 @@ import type { GameMode } from '@/features/content/card-types';
 import { validCards, validCategories } from '@/features/content/__tests__/fixtures/valid-catalog';
 import { DeviceStateProvider } from '@/features/device/device-state-provider';
 import { deviceStateKey, readDeviceState } from '@/features/device/device-storage';
-import {
-  GameProvider,
-  NewGameDraftProvider,
-  useNewGameDraft,
-  type Player,
-} from '@/features/game';
+import { GameProvider, NewGameDraftProvider, useNewGameDraft, type Player } from '@/features/game';
 import { routes } from '@/features/navigation/routes';
 
 import { SetupScreen } from '../setup-screen';
 
 jest.mock('expo-router', () => ({ router: { push: jest.fn(), replace: jest.fn() } }));
 
-const ana: Player = { id: 'p1', name: 'Ana', gender: 'female', drinks: true };
-const beto: Player = { id: 'p2', name: 'Beto', gender: 'male', drinks: true };
-const cami: Player = { id: 'p3', name: 'Cami', gender: 'undisclosed', drinks: false };
+const ana: Player = {
+  id: 'p1',
+  name: 'Ana',
+  gender: 'female',
+  drinks: true,
+  avatarId: 'avatar-01',
+};
+const beto: Player = {
+  id: 'p2',
+  name: 'Beto',
+  gender: 'male',
+  drinks: true,
+  avatarId: 'avatar-02',
+};
+const cami: Player = {
+  id: 'p3',
+  name: 'Cami',
+  gender: 'undisclosed',
+  drinks: false,
+  avatarId: 'avatar-03',
+};
 
 const categoryByMode: Record<GameMode, string> = { friends: 'la-previa', couple: 'entre-dos' };
 
@@ -215,7 +228,9 @@ describe('SetupScreen start', () => {
     // The catalog lacks the chosen friends category, so the engine refuses to start.
     await renderSetup('friends', () => 0, coupleOnlyCategories);
     await fireEvent.press(screen.getByRole('button', { name: 'Empezar' }));
-    expect(screen.getByText('No se pudo empezar la partida. Vuelva y elija otra categoría.')).toBeTruthy();
+    expect(
+      screen.getByText('No se pudo empezar la partida. Vuelva y elija otra categoría.'),
+    ).toBeTruthy();
     expect(router.push).not.toHaveBeenCalled();
   });
 });

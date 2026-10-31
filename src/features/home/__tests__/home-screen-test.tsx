@@ -19,7 +19,13 @@ import { HomeScreen } from '../home-screen';
 
 jest.mock('expo-router', () => ({ router: { push: jest.fn() } }));
 
-const rememberedPlayer: Player = { id: 'p1', name: 'Ana', gender: 'female', drinks: true };
+const rememberedPlayer: Player = {
+  id: 'p1',
+  name: 'Ana',
+  gender: 'female',
+  drinks: true,
+  avatarId: 'avatar-01',
+};
 
 const friendsCardName = `${homeCopy.modes.friends.title}. ${homeCopy.modes.friends.subtitle}`;
 const coupleCardName = `${homeCopy.modes.couple.title}. ${homeCopy.modes.couple.subtitle}`;

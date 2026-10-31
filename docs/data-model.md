@@ -126,8 +126,11 @@ Sin Filtro is not a category: it is the `spicy` heat layer inside `friends` cate
 | `name`   | string       | Yes      | Display name                                         |
 | `gender` | PlayerGender | Yes      | `male` \| `female` \| `undisclosed` (Prefiero no decir) |
 | `drinks` | boolean      | Yes      | `false` = gets alternative penalties instead of drinks |
+| `avatarId` | AvatarId   | Yes      | `avatar-01` … `avatar-12` (`src/features/game/avatars.ts`, brand order in `docs/brand/README.md`); a new player gets the first one nobody has |
 
 **Privacy:** player names and genders never leave the device and are never sent to analytics.
+
+**Saved data from older builds:** a remembered or saved-game player without a valid `avatarId` is kept and gets the first avatar nobody in the same list has.
 
 ### GameSettings
 

@@ -3,7 +3,7 @@ import type { Player, RankingEntry } from '@/features/game';
 import { groupRankingByPosition } from '../ranking-groups';
 
 function player(id: string, name: string): Player {
-  return { id, name, gender: 'undisclosed', drinks: true };
+  return { id, name, gender: 'undisclosed', drinks: true, avatarId: 'avatar-01' };
 }
 
 const ana = player('p1', 'Ana');

@@ -34,14 +34,30 @@ jest.mock('expo-router', () => ({
   },
 }));
 
-const ana: Player = { id: 'p1', name: 'Ana', gender: 'female', drinks: true };
-const luis: Player = { id: 'p2', name: 'Luis', gender: 'male', drinks: true };
-const beto: Player = { id: 'p3', name: 'Beto', gender: 'undisclosed', drinks: false };
+const ana: Player = {
+  id: 'p1',
+  name: 'Ana',
+  gender: 'female',
+  drinks: true,
+  avatarId: 'avatar-01',
+};
+const luis: Player = {
+  id: 'p2',
+  name: 'Luis',
+  gender: 'male',
+  drinks: true,
+  avatarId: 'avatar-02',
+};
+const beto: Player = {
+  id: 'p3',
+  name: 'Beto',
+  gender: 'undisclosed',
+  drinks: false,
+  avatarId: 'avatar-03',
+};
 
 const catalog: Catalog = {
-  categories: [
-    { id: 'la-previa', name: 'La Previa', mode: 'friends', freeDifficulties: ['easy'] },
-  ],
+  categories: [{ id: 'la-previa', name: 'La Previa', mode: 'friends', freeDifficulties: ['easy'] }],
   // Every card is worth 6: completing adds 6, refusing subtracts 3.
   cards: ['c1', 'c2', 'c3', 'c4', 'c5', 'c6'].map((id) => individualCard(id, { points: 6 })),
 };

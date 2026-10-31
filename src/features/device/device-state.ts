@@ -8,6 +8,7 @@ import {
   type Difficulty,
   type PlayerGender,
 } from '@/features/content/card-types';
+import { avatarIds, pickFreeAvatar, type AvatarId } from '@/features/game/avatars';
 import type { GameSession, Player } from '@/features/game/game-types';
 
 export type DeviceState = {
@@ -33,7 +34,10 @@ function isRecord(value: unknown): value is UnknownRecord {
   return typeof value === 'object' && value !== null && !Array.isArray(value);
 }
 
-function isPlayer(value: unknown): value is Player {
+/** A saved player; builds before avatars existed stored no `avatarId`. */
+type SavedPlayer = Omit<Player, 'avatarId'> & { avatarId?: unknown };
+
+function isSavedPlayer(value: unknown): value is SavedPlayer {
   return (
     isRecord(value) &&
     typeof value.id === 'string' &&
@@ -41,6 +45,22 @@ function isPlayer(value: unknown): value is Player {
     playerGenders.includes(value.gender as PlayerGender) &&
     typeof value.drinks === 'boolean'
   );
+}
+
+const isAvatarId = (value: unknown): value is AvatarId => avatarIds.includes(value as AvatarId);
+
+/** Keeps valid avatars and gives the others the first avatar nobody in the list has yet. */
+function withAvatars(players: readonly SavedPlayer[]): Player[] {
+  const kept = players.map((player) => (isAvatarId(player.avatarId) ? player.avatarId : undefined));
+  const taken = kept.filter((avatarId) => avatarId !== undefined);
+  return players.map((player, index) => {
+    let avatarId = kept[index];
+    if (avatarId === undefined) {
+      avatarId = pickFreeAvatar(taken);
+      taken.push(avatarId);
+    }
+    return { ...player, avatarId };
+  });
 }
 
 function isEndCondition(value: unknown): boolean {
@@ -64,7 +84,7 @@ function isGameSettings(value: unknown): value is GameSession['settings'] {
     typeof value.categoryId === 'string' &&
     Array.isArray(value.players) &&
     value.players.length > 0 &&
-    value.players.every(isPlayer) &&
+    value.players.every(isSavedPlayer) &&
     Array.isArray(value.selectedDifficulties) &&
     value.selectedDifficulties.every((difficulty) =>
       allDifficulties.includes(difficulty as Difficulty),
@@ -114,12 +134,18 @@ export function parseDeviceState(raw: string | null): DeviceState {
   if (!isRecord(parsed)) return emptyDeviceState;
 
   const state: DeviceState = {
-    lastPlayers: listOf(parsed.lastPlayers, isPlayer),
+    lastPlayers: withAvatars(listOf(parsed.lastPlayers, isSavedPlayer)),
     seenCardIds: listOf(parsed.seenCardIds, isString),
     lastSpicyEnabled: parsed.lastSpicyEnabled === true,
   };
   if (isString(parsed.ageConfirmedAt)) state.ageConfirmedAt = parsed.ageConfirmedAt;
-  if (isGameSession(parsed.activeSession)) state.activeSession = parsed.activeSession;
+  if (isGameSession(parsed.activeSession)) {
+    const session = parsed.activeSession;
+    state.activeSession = {
+      ...session,
+      settings: { ...session.settings, players: withAvatars(session.settings.players) },
+    };
+  }
   return state;
 }
 

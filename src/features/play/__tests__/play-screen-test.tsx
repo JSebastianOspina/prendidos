@@ -201,7 +201,9 @@ describe('PlayScreen', () => {
   });
 
   it('shows the round without a total in open games', async () => {
-    await renderPlay({ settings: friendsSettings({ players: [ana, beto], endCondition: { type: 'open' } }) });
+    await renderPlay({
+      settings: friendsSettings({ players: [ana, beto], endCondition: { type: 'open' } }),
+    });
     expect(screen.getByText('Ronda 1')).toBeTruthy();
   });
 

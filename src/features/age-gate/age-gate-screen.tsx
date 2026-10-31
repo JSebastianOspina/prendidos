@@ -1,13 +1,16 @@
 import { useState } from 'react';
-import { ScrollView, StyleSheet, View } from 'react-native';
+import { Pressable, ScrollView, StyleSheet, useWindowDimensions, View } from 'react-native';
 
 import { AppText } from '@/components/ui/app-text';
 import { Button } from '@/components/ui/button';
+import { Mascot } from '@/components/ui/mascot';
 import { ScreenContainer } from '@/components/ui/screen-container';
-import { BorderWidth, Colors, Radius, ShadowOffset, Spacing } from '@/constants/theme';
+import { BorderWidth, Colors, Fonts, Radius, Spacing, TouchTarget } from '@/constants/theme';
 import { useDeviceState } from '@/features/device/device-state-provider';
 
 import { ageGateCopy } from './age-gate-copy';
+import { mascotHeightFor } from './age-gate-layout';
+import { ModerationCard } from './moderation-card';
 
 /**
  * One-time 18+ gate shown before any other screen (PRD §8).
@@ -19,26 +22,20 @@ import { ageGateCopy } from './age-gate-copy';
  */
 export function AgeGateScreen() {
   const { confirmAge } = useDeviceState();
+  const { height: windowHeight } = useWindowDimensions();
   const [hasDeclined, setHasDeclined] = useState(false);
 
   return (
     <ScreenContainer>
       <ScrollView style={styles.scroll} contentContainerStyle={styles.content}>
-        <View style={styles.logoTile}>
-          <View style={styles.logoShadow} />
-          <View style={styles.logoFace}>
-            <AppText variant="title" color={Colors.white}>
-              {ageGateCopy.wordmark}
-            </AppText>
-          </View>
-        </View>
-        <AppText variant="label" color={Colors.textSecondary} style={styles.centered}>
-          {ageGateCopy.adultsOnlyLabel}
-        </AppText>
+        <Mascot art="pointing" size={mascotHeightFor(windowHeight)} style={styles.mascot} />
         <AppText variant="title" accessibilityRole="header" style={styles.centered}>
           {ageGateCopy.question}
         </AppText>
-        <AppText style={styles.centered}>{ageGateCopy.responsibleDrinkingNotice}</AppText>
+        <AppText color={Colors.textSecondary} style={[styles.centered, styles.subtitle]}>
+          {ageGateCopy.subtitle}
+        </AppText>
+        <ModerationCard message={ageGateCopy.moderationNotice} />
       </ScrollView>
       <View style={styles.actions}>
         {/* In the fixed footer, so the message is never scrolled out of view on small phones. */}
@@ -54,11 +51,19 @@ export function AgeGateScreen() {
           </View>
         ) : null}
         <Button label={ageGateCopy.confirmAction} onPress={confirmAge} />
-        <Button
-          label={ageGateCopy.declineAction}
-          variant="secondary"
+        <Pressable
+          accessibilityRole="button"
+          accessibilityLabel={ageGateCopy.declineAction}
           onPress={() => setHasDeclined(true)}
-        />
+          style={({ pressed }) => [styles.declineLink, pressed && styles.declineLinkPressed]}
+        >
+          <AppText color={Colors.textSecondary} style={styles.declineLinkText}>
+            {ageGateCopy.declineAction}
+          </AppText>
+        </Pressable>
+        <AppText color={Colors.textMuted} style={[styles.centered, styles.footnote]}>
+          {ageGateCopy.askedOnceNote}
+        </AppText>
       </View>
     </ScreenContainer>
   );
@@ -71,30 +76,18 @@ const styles = StyleSheet.create({
   content: {
     flexGrow: 1,
     justifyContent: 'center',
-    alignItems: 'center',
     gap: Spacing.lg,
     paddingBottom: Spacing.lg,
   },
-  logoTile: {
-    paddingBottom: ShadowOffset.card,
-    marginBottom: Spacing.sm,
-  },
-  logoShadow: {
-    ...StyleSheet.absoluteFill,
-    top: ShadowOffset.card,
-    borderRadius: Radius.xl,
-    backgroundColor: Colors.ink,
-  },
-  logoFace: {
-    backgroundColor: Colors.brandRed,
-    borderRadius: Radius.xl,
-    borderWidth: BorderWidth.regular,
-    borderColor: Colors.ink,
-    paddingHorizontal: Spacing.xl,
-    paddingVertical: Spacing.lg,
+  mascot: {
+    alignSelf: 'center',
   },
   centered: {
     textAlign: 'center',
+  },
+  subtitle: {
+    fontSize: 17,
+    lineHeight: 25,
   },
   declined: {
     backgroundColor: Colors.surfaceSoft,
@@ -104,6 +97,23 @@ const styles = StyleSheet.create({
     padding: Spacing.lg,
   },
   actions: {
-    gap: Spacing.md,
+    gap: Spacing.sm,
+  },
+  declineLink: {
+    minHeight: TouchTarget.minimum,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: Spacing.lg,
+  },
+  declineLinkPressed: {
+    opacity: 0.6,
+  },
+  declineLinkText: {
+    fontFamily: Fonts.nunitoExtraBold,
+    textAlign: 'center',
+  },
+  footnote: {
+    fontSize: 13,
+    lineHeight: 18,
   },
 });
