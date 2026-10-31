@@ -4,11 +4,11 @@
 | ---------- | ---------------------------------------------------------------- |
 | Status     | Ready for enrichment                                             |
 | Priority   | P0 — blocks every other story                                    |
-| Depends on | `card-content-model` OpenSpec change archived and committed      |
+| Depends on | `card-content-model` (archived, merged into `main` in PR #6)     |
 | Blocks     | HU-01 … HU-15                                                    |
 | Screen     | None (transversal). Leaves an empty placeholder for every screen |
 | PRD        | §5 (whole section), §5.10, §6.1, §9                              |
-| Builds on  | `src/features/content/` (types, text rendering, validator) and `docs/data-model.md` from `feature/card-content-model` |
+| Builds on  | `src/features/content/` (types, text rendering, validator) and `docs/data-model.md`, both on `main` |
 
 ## User Story
 
@@ -32,7 +32,7 @@ The repo today has the card content model and its validator, but no game rules, 
 - [ ] No card repeats within a game. Cards never seen on this phone come out before cards already seen. When a level runs out of cards, its pool resets.
 - [ ] Levels escalate with progress: with all three levels and a game by rounds, the first third is Suave, the second Picante, the last Prendido. By points goal, thirds are measured against the goal. With restricted levels, only the chosen levels are walked in that order. Within a level, cards come out from fewer to more points.
 - [ ] A card aimed at a gender comes out only when a player of that gender exists other than the current player; otherwise it is skipped. A player marked "Prefiero no decir" is never picked by such a card.
-- [ ] Card text shows the current player's name where it mentions the player, a random other player where it mentions another, the partner in Pareja mode, and the right gender agreement for the player mentioned; "Prefiero no decir" gets neutral wording.
+- [ ] Card text speaks to the current player and agrees with their gender; "Prefiero no decir" gets neutral wording. Where the text mentions another player, a random other player's name appears; in Pareja it is the partner. Group cards never mention a specific player and always read neutral.
 - [ ] A game by rounds ends when the last round completes. A game by points goal ends when the round in which someone reached the goal is completed. An open game ends when the group ends it. Any game can be ended early.
 - [ ] The final ranking orders players by score; tied players share the same position.
 - [ ] While a game is still in progress, the current level, round, points, and whose turn it is can be read at any moment.
@@ -46,7 +46,7 @@ The repo today has the card content model and its validator, but no game rules, 
 **Launch content**
 
 - [ ] The app ships with real cards for the two launch categories (La Previa for Amigos, Entre Dos for Pareja) in all three levels, enough to play a 10-round game with 6 players in La Previa without the pool resetting. HU-07 completes the catalog; this story brings the first playable batch.
-- [ ] Every shipped card passes the content validator; a card that fails never reaches the app.
+- [ ] Every shipped card passes the content validator with no errors; a card with an error never reaches the app, and warnings are listed for the content reviewer.
 - [ ] For this story all content is treated as unlocked. Locks and purchases arrive with HU-08 and HU-09.
 
 **Screen flow**

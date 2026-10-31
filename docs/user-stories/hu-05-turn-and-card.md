@@ -25,7 +25,7 @@ This is where the game lives: a party-sized card, three decisions (Cumplió, No 
 
 - [ ] The screen shows whose turn it is (player name, large), the current round and level, and the card: headline, instruction text, points badge, and penalty line ("Toma 2 tragos — por aguafiestas").
 - [ ] Reto and Verdad are visually distinguishable; Verdad is clearly a question to answer, Reto an action to do.
-- [ ] The card text uses the players' names and gender agreement; mentions of another player show a real name from the table.
+- [ ] The card text speaks to the current player with their gender agreement; mentions of another player show a real name from the table (the partner in Pareja).
 - [ ] A card that involves touch shows "Solo si la otra persona acepta". A card that reaches outside the room shows the short outside-contact reminder.
 - [ ] The level color (Suave green, Picante orange, Prendido red with white text) is visible on the card.
 

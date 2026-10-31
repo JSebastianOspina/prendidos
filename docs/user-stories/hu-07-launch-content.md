@@ -24,7 +24,7 @@ The content model and validator exist, but there are no real cards. The legacy c
 - [ ] La Previa (Amigos) has at least 30 standard cards per level (Suave, Picante, Prendido), mixed roughly 60 % retos, 20 % verdades, 20 % group cards ("Todos los que…", "Yo nunca").
 - [ ] La Previa has at least 30 Sin Filtro cards per level, kept in the catalog but only reachable once HU-10 ships.
 - [ ] Entre Dos (Pareja) has at least 30 cards per level, flirty and suggestive, never explicit.
-- [ ] Every card passes the content validator (points within its level, 1–3 drinks, headline and body length, no banned phrases, well-formed mentions and gender variants).
+- [ ] Every card passes the content validator with no errors (points within its level, 1–3 drinks, headline, body, and quip length, no banned phrases, well-formed mentions and gender variants, no mentions in group cards); warnings are resolved or justified in the review notes.
 - [ ] Every card follows the voice and policy in `docs/content/README.md` and the skill: Colombian Spanish, inclusive wording, consent flagged where there is touch, outside-the-room flagged where it reaches outside.
 - [ ] A human has reviewed every card before it ships (reviewer and date noted in the content folder).
 - [ ] Cards aimed at a gender are a minority and never target "Prefiero no decir".

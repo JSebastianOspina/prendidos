@@ -101,6 +101,7 @@ Harness ships **default profiles per layer**. Each project may override them dur
 For detailed standards and guidelines specific to different areas of the project, refer to:
 
 - [Product Requirements (PRD)](./prd.md) - Product goal, audience, game mechanics, content, monetization, compliance, and MVP scope (in Spanish). Read before writing user stories or OpenSpec proposals
+- [User Stories](./user-stories/README.md) - MVP user stories (HU-00 … HU-15), execution phases, and the file ownership map that lets one agent per screen work in parallel. Read before `enrich-us` or `/opsx:propose` for any screen
 
 - [Backend Standards](./backend-standards.md) - **Not applicable yet** (no backend) — Harness template kept for when one is added
 - [Frontend Standards](./frontend-standards.md) - Expo / React Native platform rules, components, UI/UX guidelines, and frontend architecture

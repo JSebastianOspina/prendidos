@@ -8,7 +8,7 @@ This README is the one technical document in the folder: it fixes **who owns whi
 
 | ID    | Story                                                                        | Phase        | Depends on                   |
 | ----- | ---------------------------------------------------------------------------- | ------------ | ---------------------------- |
-| HU-00 | [Game foundation](./hu-00-game-foundation.md)                                | A (blocking) | `card-content-model` archived |
+| HU-00 | [Game foundation](./hu-00-game-foundation.md)                                | A (blocking) | `main` (PR #6 merged)        |
 | HU-01 | [Age confirmation (18+)](./hu-01-age-gate.md)                                | B (parallel) | HU-00                        |
 | HU-02 | [Home screen](./hu-02-home.md)                                               | B (parallel) | HU-00                        |
 | HU-03 | [Choose mode and category](./hu-03-mode-and-category.md)                     | B (parallel) | HU-00                        |
@@ -29,8 +29,8 @@ This README is the one technical document in the folder: it fixes **who owns whi
 
 **Phase A — sequential, one session**
 
-1. Archive the `card-content-model` change and commit it (`feature/card-content-model`). Parallel worktrees branch from commits; uncommitted work is invisible to them.
-2. HU-00 on a branch stacked on that commit. It ends with: tests green, lint and typecheck clean, placeholders visible in the app, and this README's ownership table confirmed against the real paths.
+1. `card-content-model` is archived and merged into `main` (PR #6). Parallel worktrees branch from commits, so HU-00 starts from `main`.
+2. HU-00 on a branch off `main`. It ends with: tests green, lint and typecheck clean, placeholders visible in the app, and this README's ownership table confirmed against the real paths.
 
 **Phase B — parallel, one agent per story, each in its own worktree branched from HU-00's final commit**
 
@@ -57,7 +57,7 @@ Paths are relative to the repo root. **Shared (read-only)** means: created by HU
 | Device storage             | `src/features/device/` (storage adapter, `useDeviceState()`), ADR in `docs/adr/`              | Age confirmation, last players, seen cards, last Sin Filtro, active session              |
 | Content runtime            | `src/features/content/catalog.ts` (loads and validates the bundled JSON), `src/features/content/catalog/*.json` (seed batch) | Types, text rendering, and validator already exist from `card-content-model` (see "Reuse, do not redefine"). No new text renderer |
 | Shared UI                  | `src/components/ui/` (button, screen container, card frame, level badge), `src/constants/theme.ts` (tokens from `docs/brand/design-tokens.md`) | Light theme only                                                                        |
-| Dependencies               | `package.json`, `package-lock.json`, `app.json`                                               | Storage library and React Native Testing Library installed here. Nobody else installs   |
+| Dependencies               | `package.json`, `package-lock.json`, `app.json`                                               | Storage library and React Native Testing Library (`npx expo install @testing-library/react-native --dev`, v14+) installed here, with the first component test. Nobody else installs |
 
 ### Owned per Phase B story
 
@@ -71,7 +71,7 @@ Paths are relative to the repo root. **Shared (read-only)** means: created by HU
 | HU-06 | `src/app/results.tsx`                 | `src/features/results/`            | —                                                      |
 | HU-07 | —                                     | —                                  | `src/features/content/catalog/*.json` only, plus `docs/content/` review notes |
 
-Each story also owns its own tests (next to the code, `*.test.ts(x)` or `__tests__/`), its OpenSpec change folder under `openspec/changes/`, and its Maestro flow under `.maestro/` if it adds one.
+Each story also owns its own tests (`__tests__/<module>-test.ts(x)` next to the code, fixtures in `__tests__/fixtures/`, per `docs/frontend-standards.md` § Testing), its OpenSpec change folder under `openspec/changes/`, and its Maestro flow under `.maestro/` if it adds one. Coverage is measured on `src/features/**` only, so every feature folder must carry its own tests.
 
 ### Rules for Phase B agents
 
@@ -83,17 +83,18 @@ Each story also owns its own tests (next to the code, `*.test.ts(x)` or `__tests
 6. Before declaring done: `npm test`, `npx expo lint`, `npx tsc --noEmit`, and the screen visible in the running app.
 7. Commit on your own branch with Conventional Commits; never rebase or merge another story's branch.
 
-## Reuse, do not redefine (already on `feature/card-content-model`)
+## Reuse, do not redefine (already on `main` since PR #6)
 
 HU-00 imports these and builds on them. A second definition of any of them anywhere in `src/` is a defect.
 
 | Already exists in `src/features/content/` | What it gives                                                                                                        | Used by                                   |
 | ----------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | ----------------------------------------- |
 | `card-types.ts`                           | `GameMode`, `Difficulty`, `CardType`, `Heat`, `PlayerGender`, `TargetGender`, `GenderedText`, `DrinkPenalty`, `Category`, `Card` = `IndividualCard \| GroupCard`, `pointsRangeByDifficulty`, `individualCardTypes`, `groupCardTypes`, `copyLengthLimits` | Engine, draft, every screen that shows a card or a level |
-| `gendered-text.ts`                        | `renderGenderedText(text, gender, placeholderValues)` resolves `{player}` / `{partner}` and `{m\|f\|n}` variants for one player; `parseGenderedText`, `renderAllGenders`, `longestRenderedLength` | Engine (turn copy), HU-05 card face       |
-| `validate-cards.ts`                       | `validateCards(catalog) → ContentViolation[]`; catalog shape is `{ categories: Category[]; cards: Card[] }`           | `catalog.ts` loader and the HU-07 content check |
-| `banned-phrases.ts`                       | `bannedPhrases`, `findBannedPhrases(text)`                                                                           | Validator only                            |
-| `__tests__/fixtures/valid-catalog.ts`     | `validCategories` (`la-previa`, `entre-dos`) and one valid card per type: the template for the seed JSON             | HU-00 seed batch, HU-07                   |
+| `gendered-text.ts`                        | `renderGenderedText(text, gender, placeholderValues)`: `gender` is the **current player's** (variants agree with them, `undisclosed` → neutral); `placeholderValues` gives `player` (**another** player picked at random) and `partner` (couple mode). Group cards take no placeholders and always render neutral. Also `parseGenderedText`, `renderAllGenders`, `longestRenderedLength` | Engine (turn copy), HU-05 card face |
+| `validate-cards.ts`                       | `validateCards(catalog) → ContentViolation[]` with `severity: 'error' \| 'warning'`; `hasErrors(violations)` decides whether content can ship; catalog shape is `{ categories: Category[]; cards: Card[] }` | `catalog.ts` loader and the HU-07 content check |
+| `banned-phrases.ts`                       | `bannedPhrases`, `normalizeForMatching(text)`, `findBannedPhrases(text)`                                             | Validator only                            |
+| `__tests__/fixtures/valid-catalog.ts`     | `validCategories` (`la-previa`, `entre-dos`) and `validCards` (challenge, spicy challenge, truth, "Yo nunca", "Todos los que…"): the template for the seed JSON | HU-00 seed batch, HU-07 |
+| `__tests__/write-cards-skill-test.ts`     | Proves the `write-cards` skill's documented output validates; HU-07 content must pass the same `validateCards` call | HU-07                                     |
 
 The bundled JSON files in `src/features/content/catalog/` use exactly the validator's catalog shape, so the same `validateCards` runs in a test over the shipped content.
 
