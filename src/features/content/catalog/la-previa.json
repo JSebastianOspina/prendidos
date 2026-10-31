@@ -1,0 +1,1223 @@
+{
+  "categories": [
+    {
+      "id": "la-previa",
+      "name": "La Previa",
+      "description": "Retos y confesiones para calentar motores con el parche antes de salir.",
+      "mode": "friends",
+      "freeDifficulties": [
+        "easy",
+        "medium",
+        "hard"
+      ]
+    }
+  ],
+  "cards": [
+    {
+      "id": "prev-001",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "easy",
+      "headline": "Cultura time",
+      "body": "Marcas de carros. Por turnos con la persona de su derecha: el primero que repita o se quede en blanco cinco segundos pierde.",
+      "points": 3,
+      "penalty": {
+        "drinks": 1,
+        "quip": "por falta de calle"
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-002",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "easy",
+      "headline": "Teletienda a las 3 a. m.",
+      "body": "Venda el objeto que tenga más cerca como comercial de teletienda durante 30 segundos. El grupo decide si compró.",
+      "points": 5,
+      "penalty": {
+        "drinks": 1,
+        "quip": "por vendehúmo"
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-003",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "easy",
+      "headline": "Narrador oficial",
+      "body": "Durante una ronda narre como partido de fútbol todo lo que haga la persona de su izquierda. Sin pausas largas.",
+      "points": 4,
+      "penalty": {
+        "drinks": 1
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-004",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "easy",
+      "headline": "Llegó {el enamorado|la enamorada|alguien muy enamorado}",
+      "body": "Durante dos rondas, todo lo que diga termina en «mi amor». Cada vez que se le olvide, el grupo le grita.",
+      "points": 6,
+      "penalty": {
+        "drinks": 1,
+        "quip": "por mala memoria"
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-005",
+      "categoryId": "la-previa",
+      "type": "truth",
+      "difficulty": "easy",
+      "headline": "Historytime",
+      "body": "Cuente la excusa más absurda que ha dado para no ir a un plan. El grupo vota si se la creería.",
+      "points": 3,
+      "penalty": {
+        "drinks": 1
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-006",
+      "categoryId": "la-previa",
+      "type": "truth",
+      "difficulty": "easy",
+      "headline": "Playlist secreta",
+      "body": "¿Cuál es la canción que más pena le da tener en su playlist? Cuéntela sin esconder nada.",
+      "points": 2,
+      "penalty": {
+        "drinks": 1
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-007",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "easy",
+      "headline": "Muestre eso",
+      "body": "Muestre su tiempo en pantalla de esta semana y la app que más usó. Sin trampa y sin esconder nada.",
+      "points": 4,
+      "penalty": {
+        "drinks": 1,
+        "quip": "por hacer trampa"
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-008",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "easy",
+      "headline": "¡Abra la jeta!",
+      "body": "Imite el animal que escoja el grupo hasta que alguien lo adivine. Si nadie lo adivina en 30 segundos, no cumplió.",
+      "points": 5,
+      "penalty": {
+        "drinks": 1
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-009",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "easy",
+      "headline": "Uyy parce, a llamar",
+      "body": "Llame a su mamá en altavoz y pregúntele cuál era su apodo de bebé. Después cuente qué le contestó.",
+      "points": 6,
+      "penalty": {
+        "drinks": 1,
+        "quip": "por gallina"
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": true
+    },
+    {
+      "id": "prev-010",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "easy",
+      "headline": "Audio de la fama",
+      "body": "Ponga en altavoz el último audio que mandó. Si es muy privado, ponga el anterior.",
+      "points": 5,
+      "penalty": {
+        "drinks": 1
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-011",
+      "categoryId": "la-previa",
+      "type": "truth",
+      "difficulty": "easy",
+      "headline": "Oso de la noche",
+      "body": "¿Cuál ha sido su mayor oso en una fiesta? Cuéntelo con todos los detalles que se acuerde.",
+      "points": 4,
+      "penalty": {
+        "drinks": 1,
+        "quip": "por esconder cosas"
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-012",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "easy",
+      "headline": "Piedra, papel o tijera",
+      "body": "Juegue con quien escoja. Quien pierda hace el reto sano que diga quien ganó, dentro de lo legal.",
+      "points": 5,
+      "penalty": {
+        "drinks": 1
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-013",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "easy",
+      "headline": "Se puso chimba esto",
+      "body": "Presente a cada persona del grupo como locutor de radio, con un título inventado para cada una. Diez segundos por persona.",
+      "points": 6,
+      "penalty": {
+        "drinks": 1
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-014",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "easy",
+      "headline": "Teléfono roto",
+      "body": "Invente una frase de diez palabras y pásela en susurros por todo el grupo. Si la última persona la dice igual, cumplió.",
+      "points": 3,
+      "penalty": {
+        "drinks": 1
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-015",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "easy",
+      "headline": "Voz de documental",
+      "body": "Cuente cómo le fue hoy con voz de narrador de documental de animales, durante 30 segundos y sin reírse.",
+      "points": 4,
+      "penalty": {
+        "drinks": 1,
+        "quip": "por reírse"
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-016",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "easy",
+      "headline": "Acento de moda",
+      "body": "Durante una ronda hable con acento paisa, costeño o rolo, el que escoja el grupo. Si se le sale el suyo, no cumplió.",
+      "points": 6,
+      "penalty": {
+        "drinks": 1
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-017",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "easy",
+      "headline": "Sorpresa en la galería",
+      "body": "Muestre la foto número 30 de su galería y explique la historia. Si es muy privada, la 31.",
+      "points": 5,
+      "penalty": {
+        "drinks": 1
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-018",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "easy",
+      "headline": "El ranking del parche",
+      "body": "Ordene al grupo de quién es más probable que llegue tarde a su propia boda. Quien se queje tiene 15 segundos para argumentar.",
+      "points": 4,
+      "penalty": {
+        "drinks": 1
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-019",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "easy",
+      "headline": "Duelo de miradas",
+      "body": "Concurso de miradas de 30 segundos con {player}. El primero que se ría pierde y el grupo lo celebra.",
+      "points": 3,
+      "penalty": {
+        "drinks": 1,
+        "quip": "por reírse primero"
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-020",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "easy",
+      "headline": "Piropo exprés",
+      "body": "Dígale a {player} un piropo original y sin groserías. Si la mayoría del grupo lo aprueba, cumplió.",
+      "points": 5,
+      "penalty": {
+        "drinks": 1,
+        "quip": "por piropo malo"
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false,
+      "targetGender": "female"
+    },
+    {
+      "id": "prev-021",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "easy",
+      "headline": "Coro familiar",
+      "body": "Mande una nota de voz al chat de su familia cantando el coro que escoja el grupo y lea en voz alta la primera reacción.",
+      "points": 6,
+      "penalty": {
+        "drinks": 1,
+        "quip": "por desafinar"
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": true
+    },
+    {
+      "id": "prev-022",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "easy",
+      "headline": "Estado de la previa",
+      "body": "Suba un estado con la foto que escoja el grupo, sin texto, y no lo borre en 15 minutos.",
+      "points": 7,
+      "penalty": {
+        "drinks": 1,
+        "quip": "por arrugarse"
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": true
+    },
+    {
+      "id": "prev-023",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "easy",
+      "headline": "Foto de perfil exagerada",
+      "body": "Cambie su foto de perfil por la selfie más exagerada que se tome ahora mismo, durante 30 minutos.",
+      "points": 7,
+      "penalty": {
+        "drinks": 1
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": true
+    },
+    {
+      "id": "prev-024",
+      "categoryId": "la-previa",
+      "type": "truth",
+      "difficulty": "easy",
+      "headline": "Apodo time",
+      "body": "¿Cuál es el apodo más ridículo que le han puesto y quién se lo puso?",
+      "points": 3,
+      "penalty": {
+        "drinks": 1
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-025",
+      "categoryId": "la-previa",
+      "type": "truth",
+      "difficulty": "easy",
+      "headline": "Crush time",
+      "body": "Sin decir el nombre: describa a su crush ideal en tres palabras. El grupo intenta adivinar de quién habla.",
+      "points": 4,
+      "penalty": {
+        "drinks": 1
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-026",
+      "categoryId": "la-previa",
+      "type": "truth",
+      "difficulty": "easy",
+      "headline": "Plan raro",
+      "body": "¿Cuál es el plan más raro al que ha ido por no quedarse en la casa? Cuente cómo terminó.",
+      "points": 3,
+      "penalty": {
+        "drinks": 1
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-027",
+      "categoryId": "la-previa",
+      "type": "neverHaveIEver",
+      "difficulty": "easy",
+      "body": "…se me ha pasado la parada del bus por ir dormiendo.",
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-028",
+      "categoryId": "la-previa",
+      "type": "neverHaveIEver",
+      "difficulty": "easy",
+      "body": "…he fingido que me encantaba un regalo que no me gustó nada.",
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-029",
+      "categoryId": "la-previa",
+      "type": "neverHaveIEver",
+      "difficulty": "easy",
+      "body": "…he buscado un perfil en redes a las 3 a. m. sin ninguna excusa.",
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-030",
+      "categoryId": "la-previa",
+      "type": "neverHaveIEver",
+      "difficulty": "easy",
+      "body": "…me he comido la comida de otra persona de la nevera.",
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-031",
+      "categoryId": "la-previa",
+      "type": "everyoneWho",
+      "difficulty": "easy",
+      "body": "Los que hayan mandado un mensaje al chat equivocado.",
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false,
+      "headline": "¡Todos!"
+    },
+    {
+      "id": "prev-032",
+      "categoryId": "la-previa",
+      "type": "everyoneWho",
+      "difficulty": "easy",
+      "body": "Los que hayan llegado tarde a un plan esta semana.",
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false,
+      "headline": "Todos los que…"
+    },
+    {
+      "id": "prev-033",
+      "categoryId": "la-previa",
+      "type": "everyoneWho",
+      "difficulty": "easy",
+      "body": "Los que tengan más de 20 notificaciones sin leer ahorita mismo.",
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false,
+      "headline": "¡Atención!"
+    },
+    {
+      "id": "prev-034",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "medium",
+      "headline": "Reality show",
+      "body": "Llame a alguien del colegio en altavoz y convénzalo en un minuto de que usted va a salir en un reality. Sin reírse.",
+      "points": 13,
+      "penalty": {
+        "drinks": 1,
+        "quip": "por poco convincente"
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": true
+    },
+    {
+      "id": "prev-035",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "medium",
+      "headline": "Mensaje sin contexto",
+      "body": "Mándele «¿usted también lo sintió?» al quinto chat de su WhatsApp (si es del trabajo, al siguiente) y lea la respuesta en voz alta.",
+      "points": 16,
+      "penalty": {
+        "drinks": 2,
+        "quip": "por quedarse con la duda"
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": true
+    },
+    {
+      "id": "prev-036",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "medium",
+      "headline": "Consejo de amor",
+      "body": "Escríbale a su papá o a su mamá pidiéndole un consejo de amor y lea la respuesta en voz alta cuando llegue.",
+      "points": 14,
+      "penalty": {
+        "drinks": 1
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": true
+    },
+    {
+      "id": "prev-037",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "medium",
+      "headline": "Cambio de cara",
+      "body": "Cambie su foto de perfil por una selfie con la persona de su izquierda durante una hora.",
+      "points": 15,
+      "penalty": {
+        "drinks": 1,
+        "quip": "por pena con la foto"
+      },
+      "heat": "standard",
+      "requiresConsent": true,
+      "reachesOutside": true
+    },
+    {
+      "id": "prev-038",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "medium",
+      "headline": "Búsquedas de la vergüenza",
+      "body": "Muestre las últimas tres búsquedas de su Google. Si el grupo no le cree, escoge una cuarta.",
+      "points": 12,
+      "penalty": {
+        "drinks": 1,
+        "quip": "por esconder cosas"
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-039",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "medium",
+      "headline": "Hombro con hombro",
+      "body": "Siéntese hombro con hombro con quien escoja y no se separen durante dos rondas. Hablan solo entre ustedes dos.",
+      "points": 15,
+      "penalty": {
+        "drinks": 2
+      },
+      "heat": "standard",
+      "requiresConsent": true,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-040",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "medium",
+      "headline": "Abrazo de oso",
+      "body": "Abrazo de 20 segundos con quien escoja, sin reírse, mientras el grupo cuenta en voz alta.",
+      "points": 14,
+      "penalty": {
+        "drinks": 1,
+        "quip": "por abrazo flojo"
+      },
+      "heat": "standard",
+      "requiresConsent": true,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-041",
+      "categoryId": "la-previa",
+      "type": "truth",
+      "difficulty": "medium",
+      "headline": "Cita de terror",
+      "body": "¿Cuál ha sido la peor primera cita que ha tenido? Cuente todo lo que se acuerde.",
+      "points": 12,
+      "penalty": {
+        "drinks": 1
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-042",
+      "categoryId": "la-previa",
+      "type": "truth",
+      "difficulty": "medium",
+      "headline": "Misión impresionar",
+      "body": "¿Qué es lo más raro que ha hecho para impresionar a alguien que le gustaba?",
+      "points": 13,
+      "penalty": {
+        "drinks": 1,
+        "quip": "por quedarse callado"
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-043",
+      "categoryId": "la-previa",
+      "type": "truth",
+      "difficulty": "medium",
+      "headline": "Cariño sincero",
+      "body": "¿Cuál es la mejor cualidad de {player} y cuál es su peor manía? Hable con cariño.",
+      "points": 12,
+      "penalty": {
+        "drinks": 1
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-044",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "medium",
+      "headline": "Imitación fatal",
+      "body": "Imite a alguien del grupo hasta que adivinen quién es. Si nadie acierta en un minuto, no cumplió.",
+      "points": 13,
+      "penalty": {
+        "drinks": 1,
+        "quip": "por actuar mal"
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-045",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "medium",
+      "headline": "Llegó {el rey|la reina|la realeza}",
+      "body": "Durante una ronda, el grupo le habla como si usted fuera de la realeza y usted responde solo con frases de telenovela.",
+      "points": 14,
+      "penalty": {
+        "drinks": 1
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-046",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "medium",
+      "headline": "Excusas time",
+      "body": "Con quien escoja, digan por turnos excusas para no ir al trabajo. Quien repita o se demore diez segundos pierde.",
+      "points": 11,
+      "penalty": {
+        "drinks": 1,
+        "quip": "por falta de ideas"
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-047",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "medium",
+      "headline": "El parche decide",
+      "body": "Ordene al grupo de quién es más probable que se case primero y defienda su lista en 30 segundos.",
+      "points": 14,
+      "penalty": {
+        "drinks": 2
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-048",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "medium",
+      "headline": "Nota de voz cursi",
+      "body": "Mándele una nota de voz a un amigo diciéndole «te quiero, parce» cantado como reguetón, sin explicarle por qué. Lea su respuesta.",
+      "points": 17,
+      "penalty": {
+        "drinks": 2,
+        "quip": "por poco romántico"
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": true
+    },
+    {
+      "id": "prev-049",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "medium",
+      "headline": "Selfie del parche",
+      "body": "Tómense una selfie grupal con la pose más dramática y suba la que elija el grupo a su historia por 15 minutos.",
+      "points": 16,
+      "penalty": {
+        "drinks": 1
+      },
+      "heat": "standard",
+      "requiresConsent": true,
+      "reachesOutside": true
+    },
+    {
+      "id": "prev-050",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "medium",
+      "headline": "Dedicatoria",
+      "body": "Cante el coro de la canción que escoja el grupo mirando fijamente a {player}, sin reírse.",
+      "points": 15,
+      "penalty": {
+        "drinks": 2,
+        "quip": "por reírse"
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-051",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "medium",
+      "headline": "Doblaje en vivo",
+      "body": "Durante una ronda repita todo lo que diga la persona de su derecha, exagerando como si fuera una telenovela.",
+      "points": 13,
+      "penalty": {
+        "drinks": 1
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-052",
+      "categoryId": "la-previa",
+      "type": "truth",
+      "difficulty": "medium",
+      "headline": "Momento sad de la noche",
+      "body": "¿Cuál es el mensaje del que más se arrepiente de haber enviado? Cuente qué decía.",
+      "points": 14,
+      "penalty": {
+        "drinks": 2
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-053",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "medium",
+      "headline": "Baile a la carta",
+      "body": "Baile 20 segundos para {player} intentando que le suba la nota que le dio a su manera de bailar.",
+      "points": 16,
+      "penalty": {
+        "drinks": 1,
+        "quip": "por pies de palo"
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false,
+      "targetGender": "male"
+    },
+    {
+      "id": "prev-054",
+      "categoryId": "la-previa",
+      "type": "neverHaveIEver",
+      "difficulty": "medium",
+      "body": "…le he dado like a una foto muy vieja de alguien por accidente y me dio pena.",
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-055",
+      "categoryId": "la-previa",
+      "type": "neverHaveIEver",
+      "difficulty": "medium",
+      "body": "…he llorado con un comercial.",
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-056",
+      "categoryId": "la-previa",
+      "type": "neverHaveIEver",
+      "difficulty": "medium",
+      "body": "…he escrito un mensaje larguísimo y nunca lo envié.",
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-057",
+      "categoryId": "la-previa",
+      "type": "everyoneWho",
+      "difficulty": "medium",
+      "body": "Los que hayan revisado el perfil de alguien hoy, sin excusa.",
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false,
+      "headline": "¡Todos!"
+    },
+    {
+      "id": "prev-058",
+      "categoryId": "la-previa",
+      "type": "everyoneWho",
+      "difficulty": "medium",
+      "body": "Los que hayan dicho «ya casi llego» estando todavía en la casa.",
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false,
+      "headline": "Todos los que…"
+    },
+    {
+      "id": "prev-059",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "hard",
+      "headline": "Cartagena, ahí voy",
+      "body": "Llame a un amigo en altavoz y dígale que se va a vivir a Cartagena. Antes de colgar, confiese que era una broma.",
+      "points": 24,
+      "penalty": {
+        "drinks": 3,
+        "quip": "por arrugarse"
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": true
+    },
+    {
+      "id": "prev-060",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "hard",
+      "headline": "Bio por encargo",
+      "body": "Cambie su bio por la frase que escriba el grupo hasta mañana. Sin groserías y sin nombres de nadie.",
+      "points": 22,
+      "penalty": {
+        "drinks": 2,
+        "quip": "por desconfiar"
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": true
+    },
+    {
+      "id": "prev-061",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "hard",
+      "headline": "Historia para todos",
+      "body": "Suba una historia a todos sus seguidores cantando el coro que escoja el grupo y no la borre en 15 minutos.",
+      "points": 25,
+      "penalty": {
+        "drinks": 3,
+        "quip": "por gallina"
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": true
+    },
+    {
+      "id": "prev-062",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "hard",
+      "headline": "Galería abierta",
+      "body": "El grupo escoge una foto entre las últimas 100 de su galería. Usted la muestra y la explica sin saltarse nada.",
+      "points": 23,
+      "penalty": {
+        "drinks": 2
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-063",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "hard",
+      "headline": "Baile lento",
+      "body": "Baile lento con quien escoja la canción más cursi que encuentre el grupo. Mínimo un minuto, mirándose a los ojos.",
+      "points": 26,
+      "penalty": {
+        "drinks": 2
+      },
+      "heat": "standard",
+      "requiresConsent": true,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-064",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "hard",
+      "headline": "Un minuto sin parpadear",
+      "body": "Un minuto entero mirando a los ojos a {player} sin hablar, sin reírse y a menos de un metro. El grupo juzga si lo logró.",
+      "points": 24,
+      "penalty": {
+        "drinks": 2,
+        "quip": "por reírse primero"
+      },
+      "heat": "standard",
+      "requiresConsent": true,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-065",
+      "categoryId": "la-previa",
+      "type": "truth",
+      "difficulty": "hard",
+      "headline": "Mensaje a las 3 a. m.",
+      "body": "¿A quién de este grupo le escribiría a las 3 a. m. y por qué? Responda mirándole a los ojos.",
+      "points": 25,
+      "penalty": {
+        "drinks": 2
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-066",
+      "categoryId": "la-previa",
+      "type": "truth",
+      "difficulty": "hard",
+      "headline": "Cumplidos sin red",
+      "body": "Dígale a cada persona del grupo lo que más le gusta de esa persona, una frase por persona y mirándole a los ojos.",
+      "points": 22,
+      "penalty": {
+        "drinks": 2,
+        "quip": "por pena con el cariño"
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-067",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "hard",
+      "headline": "Final de telenovela",
+      "body": "Declárese a {player} como en el final de una telenovela, de rodillas y con la música dramática que ponga el grupo.",
+      "points": 27,
+      "penalty": {
+        "drinks": 3,
+        "quip": "por tanto drama"
+      },
+      "heat": "standard",
+      "requiresConsent": true,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-068",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "hard",
+      "headline": "Karaoke del despecho",
+      "body": "Cante a todo pulmón la canción de despecho que escoja el grupo, de pie en el centro y con gestos, hasta el segundo coro.",
+      "points": 22,
+      "penalty": {
+        "drinks": 2,
+        "quip": "por desafinar"
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-069",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "hard",
+      "headline": "Rueda de prensa",
+      "body": "Durante dos rondas conteste todo lo que le pregunte el grupo como si fuera una celebridad en rueda de prensa, sin salirse del personaje.",
+      "points": 21,
+      "penalty": {
+        "drinks": 2
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-070",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "hard",
+      "headline": "Llegó {el dueño|la dueña|el alma} de la noche",
+      "body": "Durante dos rondas dice que sí a todo lo que el grupo le pida, dentro de lo legal, sano y sin tocar a nadie.",
+      "points": 28,
+      "penalty": {
+        "drinks": 3,
+        "quip": "por llevar la contraria"
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-071",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "hard",
+      "headline": "Dictado del parche",
+      "body": "El grupo le dicta un mensaje de amor exagerado y usted se lo manda a su mejor amigo o amiga, palabra por palabra.",
+      "points": 25,
+      "penalty": {
+        "drinks": 2,
+        "quip": "por mensaje flojo"
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": true
+    },
+    {
+      "id": "prev-072",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "hard",
+      "headline": "Feliz cumpleaños fuera de fecha",
+      "body": "Llame a alguien del parche que no esté aquí y cántele feliz cumpleaños en altavoz, aunque no sea su cumpleaños.",
+      "points": 23,
+      "penalty": {
+        "drinks": 2,
+        "quip": "por voz de lija"
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": true
+    },
+    {
+      "id": "prev-073",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "hard",
+      "headline": "Duelo de baile",
+      "body": "Duelo de baile contra quien escoja: 30 segundos cada uno con la canción que ponga el grupo. Pierde quien reciba menos aplausos.",
+      "points": 23,
+      "penalty": {
+        "drinks": 2,
+        "quip": "por pies de palo"
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-074",
+      "categoryId": "la-previa",
+      "type": "truth",
+      "difficulty": "hard",
+      "headline": "Verdad con cariño",
+      "body": "Dígale a {player} una verdad que nunca le ha dicho, con cariño y sin ofender.",
+      "points": 24,
+      "penalty": {
+        "drinks": 2
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false,
+      "targetGender": "male"
+    },
+    {
+      "id": "prev-075",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "hard",
+      "headline": "Escena de despedida",
+      "body": "Actúe con {player} una escena de telenovela de 45 segundos en la que se despiden para siempre. El grupo aplaude si fue convincente.",
+      "points": 26,
+      "penalty": {
+        "drinks": 3,
+        "quip": "por actuar mal"
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-076",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "hard",
+      "headline": "Sin parar",
+      "body": "Cuente en 60 segundos, sin parar, la historia más vergonzosa de su vida. Si se detiene más de tres segundos, no cumplió.",
+      "points": 23,
+      "penalty": {
+        "drinks": 2
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-077",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "hard",
+      "headline": "Consejo de conquista",
+      "body": "Pídale a {player} un consejo de conquista y dígale cuál parte del consejo usaría de verdad.",
+      "points": 22,
+      "penalty": {
+        "drinks": 2,
+        "quip": "por cobardía"
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false,
+      "targetGender": "female"
+    },
+    {
+      "id": "prev-078",
+      "categoryId": "la-previa",
+      "type": "challenge",
+      "difficulty": "hard",
+      "headline": "Portada de álbum",
+      "body": "Haga una foto de grupo en pose de portada de álbum y suba la que elija el grupo a mejores amigos por 30 minutos.",
+      "points": 24,
+      "penalty": {
+        "drinks": 2
+      },
+      "heat": "standard",
+      "requiresConsent": true,
+      "reachesOutside": true
+    },
+    {
+      "id": "prev-079",
+      "categoryId": "la-previa",
+      "type": "neverHaveIEver",
+      "difficulty": "hard",
+      "body": "…he pasado una noche entera pensando en lo que dije en una fiesta.",
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-080",
+      "categoryId": "la-previa",
+      "type": "neverHaveIEver",
+      "difficulty": "hard",
+      "body": "…he mentido sobre dónde estaba para no ir a un plan y me descubrieron.",
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-081",
+      "categoryId": "la-previa",
+      "type": "neverHaveIEver",
+      "difficulty": "hard",
+      "body": "…me ha gustado alguien que ya tenía pareja.",
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false
+    },
+    {
+      "id": "prev-082",
+      "categoryId": "la-previa",
+      "type": "everyoneWho",
+      "difficulty": "hard",
+      "body": "Los que alguna vez hayan tenido un crush con alguien de este grupo.",
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false,
+      "headline": "¡Confiesen!"
+    },
+    {
+      "id": "prev-083",
+      "categoryId": "la-previa",
+      "type": "everyoneWho",
+      "difficulty": "hard",
+      "body": "Los que hayan dejado en visto a alguien importante esta semana.",
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false,
+      "headline": "Todos los que…"
+    }
+  ]
+}

@@ -2,4 +2,4 @@
 
 | ADR | Title | Date | Status |
 |-----|-------|------|--------|
-| — | No ADRs yet. Run `/create-adr` to document your first architectural decision. | — | — |
+| [0001](./0001-on-device-storage-expo-sqlite-kv-store.md) | On-device storage with expo-sqlite/kv-store | 2026-10-31 | Accepted |

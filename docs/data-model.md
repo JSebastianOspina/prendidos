@@ -9,8 +9,8 @@ alwaysApply: false
 
 | Field              | Value                                                               |
 | ------------------ | ------------------------------------------------------------------- |
-| Customized         | Yes (domain only — storage not decided)                             |
-| Database engine    | None server-side. On-device storage, library to be decided via ADR  |
+| Customized         | Yes                                                                 |
+| Database engine    | None server-side. On-device `expo-sqlite/kv-store`, key `device.v1` ([ADR-0001](./adr/0001-on-device-storage-expo-sqlite-kv-store.md)) |
 | ORM / access layer | Repository adapters in `src/features/<feature>/` over local storage |
 | Product source     | [`docs/prd.md`](./prd.md) (Spanish) — this model must stay aligned  |
 
