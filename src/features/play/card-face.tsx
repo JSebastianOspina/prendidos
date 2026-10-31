@@ -1,143 +1,228 @@
 import { StyleSheet, View } from 'react-native';
 
 import { AppText } from '@/components/ui/app-text';
-import { CardFrame } from '@/components/ui/card-frame';
 import { levelLabels } from '@/components/ui/level-badge';
-import { BorderWidth, Colors, LevelColors, Radius, Spacing } from '@/constants/theme';
+import { PlayerAvatar } from '@/components/ui/player-avatar';
+import { BorderWidth, Colors, Fonts, LevelColors, Radius, Spacing } from '@/constants/theme';
 import type { Card, GroupCard, IndividualCard } from '@/features/content/card-types';
-import type { RenderedCard } from '@/features/game';
+import type { Player, RenderedCard } from '@/features/game';
 
 import { penaltyLine, playCopy, pointsLabel } from './copy';
+import { PlayCard } from './play-pieces';
+
+/** Small tilt from the proposal; individual cards lean left, group cards right. */
+const individualCardTilt = -1.5;
+const groupCardTilt = 1.5;
+const turnAvatarSize = 60;
 
 type CardFaceProps = {
   card: Card;
   /** Copy already rendered for the current player by the game. */
   copy: RenderedCard;
+  /** Whose turn it is; shown inside individual cards. */
+  player: Player;
 };
 
 /** The card in the middle of the turn screen: individual (Reto / Verdad) or group interlude. */
-export function CardFace({ card, copy }: CardFaceProps) {
+export function CardFace({ card, copy, player }: CardFaceProps) {
   switch (card.type) {
     case 'challenge':
     case 'truth':
-      return <IndividualCardFace card={card} copy={copy} />;
+      return <IndividualCardFace card={card} copy={copy} player={player} />;
     case 'everyoneWho':
     case 'neverHaveIEver':
       return <GroupCardFace card={card} copy={copy} />;
   }
 }
 
-function CardNotes({ card }: { card: Card }) {
+function CardNotes({ card, color }: { card: Card; color: string }) {
   return (
     <>
-      {card.requiresConsent ? (
-        <AppText color={Colors.textSecondary}>{playCopy.consentNote}</AppText>
-      ) : null}
-      {card.reachesOutside ? (
-        <AppText color={Colors.textSecondary}>{playCopy.outsideNote}</AppText>
-      ) : null}
+      {card.requiresConsent ? <AppText color={color}>{playCopy.consentNote}</AppText> : null}
+      {card.reachesOutside ? <AppText color={color}>{playCopy.outsideNote}</AppText> : null}
     </>
   );
 }
 
-export function IndividualCardFace({ card, copy }: { card: IndividualCard; copy: RenderedCard }) {
+function PenaltyFooter({ card, copy }: { card: IndividualCard; copy: RenderedCard }) {
+  // Until HU-11 adds alternative penalties, players who do not drink also see the drinks.
+  return (
+    <View style={styles.penaltyFooter}>
+      <AppText variant="label" color={Colors.textMuted}>
+        {playCopy.ifRefused}
+      </AppText>
+      <AppText style={styles.strong}>{penaltyLine(card.penalty.drinks, copy.penaltyQuip)}</AppText>
+    </View>
+  );
+}
+
+export function IndividualCardFace({
+  card,
+  copy,
+  player,
+}: {
+  card: IndividualCard;
+  copy: RenderedCard;
+  player: Player;
+}) {
   const level = LevelColors[card.difficulty];
   const isChallenge = card.type === 'challenge';
 
   return (
-    <CardFrame>
-      <View style={[styles.strip, { backgroundColor: level.fill }]}>
-        <View style={[styles.typeTag, isChallenge ? styles.challengeTag : styles.truthTag]}>
-          <AppText variant="label" color={isChallenge ? Colors.white : Colors.ink}>
-            {isChallenge ? playCopy.challengeTag : playCopy.truthTag}
-          </AppText>
+    <PlayCard
+      fill={level.fill}
+      rotation={individualCardTilt}
+      footer={<PenaltyFooter card={card} copy={copy} />}
+    >
+      <View style={styles.chipRow}>
+        <View style={styles.chips}>
+          <View style={[styles.chip, styles.typeChip]}>
+            <AppText variant="label">
+              {isChallenge ? playCopy.challengeTag : playCopy.truthTag}
+            </AppText>
+          </View>
+          <View
+            style={[styles.chip, styles.levelChip]}
+            accessible
+            accessibilityLabel={`Nivel ${levelLabels[card.difficulty]}`}
+          >
+            <AppText variant="label">{levelLabels[card.difficulty]}</AppText>
+          </View>
         </View>
-        <AppText
-          variant="label"
-          color={level.text}
-          accessibilityLabel={`Nivel ${levelLabels[card.difficulty]}`}
-          style={styles.levelName}
-        >
-          {levelLabels[card.difficulty]}
-        </AppText>
         <View style={styles.pointsBadge}>
-          <AppText variant="label" color={Colors.ink}>
-            {pointsLabel(card.points)}
+          <AppText variant="button">{pointsLabel(card.points)}</AppText>
+        </View>
+      </View>
+
+      <View style={styles.playerRow}>
+        <PlayerAvatar avatarId={player.avatarId} size={turnAvatarSize} playerName={player.name} />
+        <View style={styles.playerName}>
+          <AppText color={level.text} style={styles.strong}>
+            {playCopy.turnOf}
+          </AppText>
+          <AppText
+            variant="display"
+            color={level.text}
+            accessibilityRole="header"
+            numberOfLines={1}
+            adjustsFontSizeToFit
+          >
+            {player.name}
           </AppText>
         </View>
       </View>
-      <AppText variant="label" color={Colors.textSecondary}>
+
+      <AppText variant="label" color={level.text}>
         {isChallenge ? playCopy.challengeHint : playCopy.truthHint}
       </AppText>
       {copy.headline ? (
-        <AppText variant="title" accessibilityRole="header">
+        <AppText variant="button" color={level.text}>
           {copy.headline}
         </AppText>
       ) : null}
-      <AppText variant="card">{copy.body}</AppText>
-      <CardNotes card={card} />
-      <View style={styles.penaltyRow}>
-        <AppText variant="label" color={Colors.textMuted}>
-          {playCopy.ifRefused}
-        </AppText>
-        <AppText variant="button">{penaltyLine(card.penalty.drinks, copy.penaltyQuip)}</AppText>
-      </View>
-    </CardFrame>
+      <AppText variant="card" color={level.text}>
+        {copy.body}
+      </AppText>
+      <CardNotes card={card} color={level.text} />
+    </PlayCard>
   );
 }
 
 export function GroupCardFace({ card, copy }: { card: GroupCard; copy: RenderedCard }) {
   return (
-    <CardFrame tone="group">
-      <AppText variant="label">{playCopy.forTheGroup}</AppText>
-      <AppText variant="title" accessibilityRole="header">
+    <PlayCard fill={Colors.flameYellow} rotation={groupCardTilt}>
+      <View
+        style={[styles.chip, styles.everyoneChip]}
+        accessible
+        accessibilityLabel={playCopy.forTheGroup}
+      >
+        <AppText variant="button">{playCopy.everyoneChip}</AppText>
+      </View>
+      <AppText variant="display" accessibilityRole="header">
         {copy.headline ?? playCopy.groupHeadlines[card.type]}
       </AppText>
       <AppText variant="card">{copy.body}</AppText>
-      <CardNotes card={card} />
-      <AppText>{playCopy.groupHint}</AppText>
-    </CardFrame>
+      <CardNotes card={card} color={Colors.ink} />
+      <View style={styles.spacer} />
+      <View style={styles.ruleBox}>
+        <AppText style={styles.strong}>{playCopy.groupRule}</AppText>
+        <AppText color={Colors.textMuted}>{playCopy.groupRuleNote}</AppText>
+      </View>
+    </PlayCard>
   );
 }
 
 const styles = StyleSheet.create({
-  strip: {
+  chipRow: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
     gap: Spacing.sm,
-    borderRadius: Radius.md,
-    borderWidth: BorderWidth.small,
-    borderColor: Colors.ink,
-    padding: Spacing.sm,
   },
-  typeTag: {
+  chips: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    flexShrink: 1,
+    gap: Spacing.sm,
+  },
+  chip: {
     borderRadius: Radius.pill,
-    borderWidth: BorderWidth.small,
+    borderWidth: BorderWidth.regular,
     borderColor: Colors.ink,
     paddingHorizontal: Spacing.md,
     paddingVertical: Spacing.xs,
   },
-  challengeTag: {
-    backgroundColor: Colors.ink,
-  },
-  truthTag: {
+  typeChip: {
     backgroundColor: Colors.surface,
   },
-  levelName: {
-    flex: 1,
+  levelChip: {
+    backgroundColor: Colors.surfaceSoft,
+  },
+  everyoneChip: {
+    alignSelf: 'flex-start',
+    backgroundColor: Colors.surface,
   },
   pointsBadge: {
+    flexShrink: 0,
+    minWidth: 56,
+    minHeight: 56,
+    alignItems: 'center',
+    justifyContent: 'center',
     borderRadius: Radius.pill,
-    borderWidth: BorderWidth.small,
+    borderWidth: BorderWidth.regular,
     borderColor: Colors.ink,
     backgroundColor: Colors.points,
     paddingHorizontal: Spacing.md,
-    paddingVertical: Spacing.xs,
   },
-  penaltyRow: {
-    borderTopWidth: BorderWidth.small,
+  playerRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: Spacing.md,
+  },
+  playerName: {
+    flex: 1,
+  },
+  strong: {
+    fontFamily: Fonts.nunitoExtraBold,
+  },
+  penaltyFooter: {
+    backgroundColor: Colors.surface,
+    borderTopWidth: BorderWidth.regular,
     borderTopColor: Colors.ink,
-    paddingTop: Spacing.md,
+    paddingHorizontal: Spacing.xl,
+    paddingTop: Spacing.lg,
+    paddingBottom: Spacing.gutter,
     gap: Spacing.xs,
+  },
+  spacer: {
+    flexGrow: 1,
+  },
+  ruleBox: {
+    backgroundColor: Colors.surface,
+    borderRadius: Radius.lg,
+    borderWidth: BorderWidth.regular,
+    borderColor: Colors.ink,
+    padding: Spacing.lg,
+    gap: Spacing.sm,
   },
 });

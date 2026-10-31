@@ -1,10 +1,39 @@
-import { drinksLabel, penaltyLine, pointsLabel, roundLabel, signedPointsLabel } from '../copy';
+import {
+  continueWithLabel,
+  drinksLabel,
+  interludeLabel,
+  levelUpLine,
+  penaltyLine,
+  pointsLabel,
+  roundLabel,
+  signedPointsLabel,
+  swapLabel,
+} from '../copy';
 
 describe('play copy', () => {
-  it('shows the round with the total only for games that end by rounds', () => {
+  it('reads the round per end condition', () => {
     expect(roundLabel(3, { type: 'rounds', rounds: 10 })).toBe('Ronda 3 de 10');
-    expect(roundLabel(3, { type: 'points', target: 200 })).toBe('Ronda 3');
+    expect(roundLabel(3, { type: 'points', target: 200 })).toBe('Ronda 3 · Meta 200 pts');
     expect(roundLabel(7, { type: 'open' })).toBe('Ronda 7');
+  });
+
+  it('marks the group interlude in the round label', () => {
+    expect(interludeLabel(4, { type: 'rounds', rounds: 10 })).toBe('Ronda 4 de 10 · Interludio');
+    expect(interludeLabel(2, { type: 'open' })).toBe('Ronda 2 · Interludio');
+  });
+
+  it('counts the swaps left', () => {
+    expect(swapLabel(true)).toBe('Cambiar (1)');
+    expect(swapLabel(false)).toBe('Cambiar (0)');
+  });
+
+  it('names who is due after the interlude', () => {
+    expect(continueWithLabel('Juanpa')).toBe('Seguir: le toca a Juanpa');
+  });
+
+  it('describes the new level with its points range', () => {
+    expect(levelUpLine('hard')).toBe('Subimos a nivel Prendido: cartas de 21 a 30 puntos.');
+    expect(levelUpLine('medium')).toBe('Subimos a nivel Picante: cartas de 11 a 20 puntos.');
   });
 
   it('agrees drinks in number', () => {
