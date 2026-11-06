@@ -14,10 +14,10 @@
 
 ## Unit Test Results
 
-- Targeted tests: 392 passed, 0 failed, 0 skipped (22 suites)
-- Full suite: 602 passed, 0 failed, 0 skipped (49 suites)
-- Runtime: 2.6 s targeted, 4.6 s full with coverage
-- Coverage on `src/features/**` (threshold 90 %): 99.47 % statements, 96.61 % branches, 99.46 % functions, 99.70 % lines
+- Targeted tests: 597 passed, 0 failed, 0 skipped (36 suites, `content`, `play`, `results`, `game`, `components/ui`, `hooks`) — re-run after the card fit (D13), the turn actions (D15), the no-repeat rule (D16), and illustration batches 2 and 3 (D14, D17)
+- Full suite: 711 passed, 0 failed, 0 skipped (51 suites)
+- Runtime: about 3 s targeted, 8.6 s full with coverage
+- Coverage on `src/features/**` (threshold 90 %): 99.49 % statements, 96.79 % branches, 99.47 % functions, 99.71 % lines
 - Notes: no flaky tests and no retries. Reanimated 4 needed its documented Jest setup (`resolver` and `jest-setup.ts` with `setUpTests()` in the `package.json` `jest` block, design D8). Two category-picker tests now expect Entre Dos Picante to hold 31 cards, after the new HU-15 card `dos-091`.
 
 ## Spec Scenario Coverage (task 12.1)
@@ -42,12 +42,12 @@ All touched tests use the async RNTL v14 APIs (`await render`, `await renderHook
 
 `npx expo export --platform ios`, measured with `du -sk`:
 
-| Measure            | Before 11.1 | After 11.3 | Change  |
-| ------------------ | ----------- | ---------- | ------- |
-| Whole export       | 8,468 KB    | 8,784 KB   | +316 KB |
-| `assets/`          | 4,508 KB    | 4,816 KB   | +308 KB |
+| Measure            | Before 11.1 | After 11.3 | After 11.10 (batch 2) | After 11.17 (batch 3) | Change   |
+| ------------------ | ----------- | ---------- | --------------------- | --------------------- | -------- |
+| Whole export       | 8,468 KB    | 8,784 KB   | 9,204 KB              | 9,532 KB              | +1,064 KB |
+| `assets/`          | 4,508 KB    | 4,816 KB   | 5,228 KB              | 5,552 KB              | +1,044 KB |
 
-The 19 card PNGs total 401 KB (256-color palette PNGs, 384 px tall), under the 1.5 MB budget. "Before" already held the Phase A `card-mascot-surprised.png`.
+The 55 card PNGs total 1,007 KB (1,031,044 bytes; 256-color palette PNGs, 384 px tall), under the 1.5 MB budget. "Before" already held the Phase A `card-mascot-surprised.png`. The export also grew with code and catalog changes, not only images.
 
 ## Data safety
 

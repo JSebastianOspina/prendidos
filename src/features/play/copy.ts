@@ -15,10 +15,7 @@ export const playCopy = {
   groupRule: 'El que le aplique, toma.',
   groupRuleNote: 'Sin puntos. No cuenta para el ranking.',
   challengeTag: 'Reto',
-  challengeHint: 'Hágalo',
   truthTag: 'Verdad',
-  truthHint: 'Responda con la verdad',
-  ifRefused: 'Si no cumple',
   consentNote: 'Solo si la otra persona acepta',
   outsideNote:
     'Nunca a alguien que lo haya bloqueado. Sin señal, sin redes o sin respuesta, igual cuenta como cumplido.',
@@ -87,6 +84,11 @@ export function penaltyLine(drinks: DrinkCount, quip?: string): string {
 
 export function pointsLabel(points: number): string {
   return `${points} ${Math.abs(points) === 1 ? 'pt' : 'pts'}`;
+}
+
+/** "+5" / "−3" (typographic minus), for the turn action badges. */
+export function signedPoints(points: number): string {
+  return `${points < 0 ? '−' : '+'}${Math.abs(points)}`;
 }
 
 /** "+5 pts" / "−3 pts" (typographic minus). */

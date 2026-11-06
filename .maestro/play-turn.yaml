@@ -1,0 +1,82 @@
+# HU-05 / HU-15 — a short game of La Previa: age gate, mode and category, two players, a turn
+# card (inside its entrance), "No cumplió" pressed right after the next card appears, a swap,
+# then Pausa → end, and the ranking with the crowned winner header.
+# Turn order is shuffled and group interludes are random, so the flow continues past any
+# interlude and checks whose turn it is by the shared "Le toca a" line.
+# app.json has no bundle identifier yet: run with `maestro test -e APP_ID=<bundle id> .maestro/play-turn.yaml`
+# (Expo Go: `host.exp.Exponent`, after opening the project once from `npx expo start`).
+appId: ${APP_ID}
+---
+- launchApp:
+    clearState: true
+- tapOn:
+    id: age-confirm
+- tapOn:
+    id: mode-friends
+- tapOn:
+    id: category-la-previa
+- tapOn:
+    id: player-name-1
+- inputText: Ana
+- tapOn:
+    id: player-name-2
+- inputText: Beto
+- hideKeyboard
+- tapOn:
+    id: start-game
+
+# First card (skip a group interlude if the game opens with one).
+- runFlow:
+    when:
+      visible:
+        id: group-continue
+    commands:
+      - tapOn:
+          id: group-continue
+- assertVisible:
+    id: card-entrance
+- assertVisible: Le toca a
+- tapOn:
+    id: turn-complete
+
+# The next card: press "No cumplió" as soon as it appears, while it is still entering.
+# (A second "¡Cumplió!" inside 600 ms would be dropped by the HU-05 double-tap guard.)
+- runFlow:
+    when:
+      visible:
+        id: group-continue
+    commands:
+      - tapOn:
+          id: group-continue
+- assertVisible: Le toca a
+- tapOn:
+    id: turn-refuse
+- assertVisible: ".+ no cumplió"
+- tapOn:
+    id: refusal-next
+- runFlow:
+    when:
+      visible:
+        id: group-continue
+    commands:
+      - tapOn:
+          id: group-continue
+- assertVisible: Le toca a
+
+# Swap the card once.
+- tapOn:
+    id: swap-button
+- assertVisible: Cambiar \(0\)
+- assertVisible:
+    id: card-entrance
+
+# Pause and end, then the ranking.
+- tapOn:
+    id: pause-button
+- tapOn:
+    id: pause-end-game
+- assertVisible:
+    id: ranking-title
+- assertVisible: "¡(Ganó|Empate).*"
+- assertVisible:
+    id: winner-mascot-entrance

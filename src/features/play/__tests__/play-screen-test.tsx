@@ -124,7 +124,7 @@ afterEach(() => {
 });
 
 const completeFive = `${playCopy.completed} +5 pts`;
-const refuseFive = `${playCopy.refused} −3 pts`;
+const refuseFive = `${playCopy.refused} −3 pts, Toma 1 trago`;
 const anyComplete = /^¡Cumplió!/;
 
 async function pressMatching(name: RegExp) {
@@ -163,7 +163,7 @@ describe('PlayScreen', () => {
     expect(screen.getByLabelText('Avatar de Ana')).toBeTruthy();
     expect(screen.getByText('Abrace a Beto.')).toBeTruthy();
     expect(screen.getByText('5 pts')).toBeTruthy();
-    expect(screen.getByText('Toma 1 trago — por floja')).toBeTruthy();
+    expect(screen.queryByText('Toma 1 trago — por floja')).toBeNull();
     expect(screen.queryByText(/Ana · /)).toBeNull();
     expect(screen.getByRole('button', { name: completeFive })).toBeTruthy();
     expect(screen.getByRole('button', { name: refuseFive })).toBeTruthy();
@@ -363,7 +363,7 @@ describe('PlayScreen', () => {
       const card = within(cardEntrance());
       expect(card.getByText('Ana')).toBeTruthy();
       expect(card.getByText('Abrace a Beto.')).toBeTruthy();
-      expect(card.getByText('Toma 1 trago — por floja')).toBeTruthy();
+      expect(card.getByText('5 pts')).toBeTruthy();
       expect(screen.getByRole('button', { name: completeFive })).toBeTruthy();
       expect(screen.getByRole('button', { name: refuseFive })).toBeTruthy();
     });
@@ -425,6 +425,37 @@ describe('PlayScreen', () => {
       await renderPlay();
       await fireEvent(screen.getByRole('button', { name: completeFive }), 'pressIn');
       expect(Haptics.performAndroidHapticsAsync).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  describe('turn action badges and penalty', () => {
+    it('shows the points as corner badges, keeping the full sentence for screen readers', async () => {
+      await renderPlay();
+      const complete = within(screen.getByRole('button', { name: completeFive }));
+      const refuse = within(screen.getByRole('button', { name: refuseFive }));
+
+      expect(complete.getByText('+5')).toBeTruthy();
+      expect(complete.queryByText('+5 pts')).toBeNull();
+      expect(refuse.getByText('−3')).toBeTruthy();
+      expect(refuse.queryByText('−3 pts')).toBeNull();
+    });
+
+    it('shows the penalty under No cumplió, without the quip', async () => {
+      await renderPlay();
+      const refuse = within(screen.getByRole('button', { name: refuseFive }));
+      expect(refuse.getByText('Toma 1 trago')).toBeTruthy();
+      expect(screen.queryByText(/por floja/)).toBeNull();
+    });
+
+    it('shows the drink penalty to a player who does not drink until HU-11', async () => {
+      await renderPlay({ settings: friendsSettings({ players: [{ ...ana, drinks: false }, beto] }) });
+      expect(screen.getByRole('button', { name: refuseFive })).toBeTruthy();
+    });
+
+    it('still shows the quip in the refusal overlay', async () => {
+      await renderPlay();
+      await press(refuseFive);
+      expect(screen.getByText('Toma 1 trago — por floja')).toBeTruthy();
     });
   });
 });

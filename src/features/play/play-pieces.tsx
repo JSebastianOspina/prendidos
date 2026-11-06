@@ -6,11 +6,13 @@ import { useRef, type ReactNode } from 'react';
 import { Pressable, StyleSheet, View, type StyleProp, type ViewStyle } from 'react-native';
 import Animated from 'react-native-reanimated';
 
+import { AppText } from '@/components/ui/app-text';
 import { repeatedPressWindowMs } from '@/components/ui/button';
 import { usePressFeedback } from '@/components/ui/use-press-feedback';
 import {
   BorderWidth,
   Colors,
+  Fonts,
   PressedTravel,
   Radius,
   ShadowOffset,
@@ -27,6 +29,10 @@ export type ClayButtonProps = {
   disabled?: boolean;
   style?: StyleProp<ViewStyle>;
   faceStyle?: StyleProp<ViewStyle>;
+  /** Stable selector for E2E flows (`.maestro/`). */
+  testID?: string;
+  /** Drawn on the top-right corner, outside the face, so it does not sink with the press. */
+  badge?: ReactNode;
 };
 
 /**
@@ -43,6 +49,8 @@ export function ClayButton({
   disabled = false,
   style,
   faceStyle,
+  testID,
+  badge,
 }: ClayButtonProps) {
   const lastPressAt = useRef<number | undefined>(undefined);
   const { onPressIn, onPressOut, animatedFaceStyle } = usePressFeedback({
@@ -61,6 +69,7 @@ export function ClayButton({
     <View style={[{ height: height + shadow }, disabled && styles.disabled, style]}>
       <View style={[styles.buttonShadow, { height, top: shadow }]} />
       <Pressable
+        testID={testID}
         accessibilityRole="button"
         accessibilityLabel={accessibilityLabel}
         accessibilityState={{ disabled }}
@@ -75,10 +84,14 @@ export function ClayButton({
         >
           {children}
         </Animated.View>
+        {badge ? <View style={styles.badgeCorner}>{badge}</View> : null}
       </Pressable>
     </View>
   );
 }
+
+/** Space between the pieces inside a game card (compact, so the card fits the visible area). */
+export const playCardBodyGap = Spacing.sm;
 
 export type PlayCardProps = {
   fill: string;
@@ -103,7 +116,41 @@ export function PlayCard({ fill, rotation, children, footer, style }: PlayCardPr
   );
 }
 
+/** Round "+N" / "−N" badge for a turn action: amber when it adds points, red when it takes them. */
+export function PointsBadge({ label, tone }: { label: string; tone: 'gain' | 'loss' }) {
+  const isGain = tone === 'gain';
+  return (
+    <View style={[styles.pointsBadge, { backgroundColor: isGain ? Colors.points : Colors.negative }]}>
+      <AppText style={styles.pointsBadgeText} color={isGain ? Colors.ink : Colors.white}>
+        {label}
+      </AppText>
+    </View>
+  );
+}
+
+const pointsBadgeSize = 36;
+
 const styles = StyleSheet.create({
+  badgeCorner: {
+    position: 'absolute',
+    top: -Spacing.sm,
+    right: -Spacing.xs,
+  },
+  pointsBadge: {
+    minWidth: pointsBadgeSize,
+    height: pointsBadgeSize,
+    borderRadius: Radius.pill,
+    borderWidth: BorderWidth.small,
+    borderColor: Colors.ink,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: Spacing.xs,
+  },
+  pointsBadgeText: {
+    fontFamily: Fonts.nunitoExtraBold,
+    fontSize: 15,
+    lineHeight: 18,
+  },
   buttonShadow: {
     position: 'absolute',
     left: 0,
@@ -142,7 +189,7 @@ const styles = StyleSheet.create({
   },
   cardBody: {
     flexGrow: 1,
-    padding: Spacing.xl,
-    gap: Spacing.md,
+    padding: Spacing.lg,
+    gap: playCardBodyGap,
   },
 });

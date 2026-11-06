@@ -84,6 +84,8 @@ Fredoka for titles and card text; Nunito for everything else. Load them with `@e
 
 Support Dynamic Type and font scaling; card text must stay readable at arm's length.
 
+**Card text steps** (`CardTextSteps` in `src/constants/theme.ts`): the turn card fits the visible area between the top bar and the turn actions without scrolling. Its body uses the largest of three sizes that fits, 29 / 35, 24 / 29, or 20 / 25 (size / line height, each scaled by the system font size), and steps down only when the card would otherwise scroll, or once more for an illustrated card when that gives its illustration at least 72 pt. Below 20 pt the card scrolls instead of shrinking further, which only happens at the largest accessibility sizes. The illustration takes the space left (72–160 pt); a card's own illustration may cost the body at most one step, never below 20 pt, while the default level face never does.
+
 ## Shape and Elevation
 
 | Token               | Value                                   |
@@ -105,7 +107,7 @@ Android elevation cannot draw a hard offset shadow. Build it as an `ink` layer b
 ## Spacing and Touch
 
 - 4 / 8 spacing rhythm; 20 screen gutter; respect safe areas on every fixed bar.
-- Minimum touch target 44 × 44 pt (iOS) / 48 × 48 dp (Android). Turn actions ("Cumplió" / "No cumplió") are 72 high, at the bottom, within thumb reach.
+- Minimum touch target 44 × 44 pt (iOS) / 48 × 48 dp (Android). Turn actions ("Cumplió" / "No cumplió") are 72 high, at the bottom, within thumb reach. Each carries a round 36 pt points badge on its top-right corner that does not sink with the press: `points` amber with "+N" on "¡Cumplió!", `negative` red with white "−N" on "No cumplió". "No cumplió" shows the penalty as its second line ("Toma 2 tragos"); the individual card has no penalty footer and no hint line (HU-15, decision of 2026-11-06).
 
 ## Motion
 
@@ -142,7 +144,7 @@ Character traits come from [`README.md`](./README.md). UI-specific rules:
 - **Brand red:** the cat sits on `brandRed` in the app icon, the splash, the home logo tile, and the level-up screen. The home header itself stays on `background`: a full-width red band was tried and rejected as too heavy.
 - **Attitude:** never use the drowsy or drunk-looking expressions (`4` and both `7` in `references/mascot-expressions-ai-draft.jpg`).
 - **Small sizes:** at 48 px the silhouette (ears, flame, white head) still reads, but the wink and whiskers do not. Request a simplified icon for 48 px and below.
-- **Interim art:** the AI drafts ship in the app as interim art until the vector redraw (`README.md`, decision of 2026-10-31). Show them through `Mascot` (art `wink`, `laugh`, `relaxed`, `smirk`, `pointing`, `icon`) and card illustrations through `CardIllustration` (the 24 library keys), never as raw image files. The "PLACEHOLDER IA" tags in the proposal are annotations, not UI.
+- **Interim art:** the AI drafts ship in the app as interim art until the vector redraw (`README.md`, decision of 2026-10-31). Show them through `Mascot` (art `wink`, `laugh`, `relaxed`, `smirk`, `pointing`, `icon`) and card illustrations through `CardIllustration` (the 60 library keys), never as raw image files. The "PLACEHOLDER IA" tags in the proposal are annotations, not UI.
 
 ### Flame by level (level-up screen)
 
@@ -164,7 +166,7 @@ Character traits come from [`README.md`](./README.md). UI-specific rules:
 | `Pareja` paywall         | Smirking face                               | Reference exists               |
 | Game card                | Card illustration library piece, in the illustration slot only | Interim art (HU-15)  |
 
-On the game card the mascot appears **only in the illustration slot**: centered below the card text and notes, at most 120 pt tall, decorative, and only when it fits the visible card area. When it does not fit, the card renders text-only: the card text and the player's name always come first (HU-15, decision of 2026-11-05; library in [`README.md`](./README.md#card-illustration-library)).
+On the game card the mascot appears **only in the illustration slot**: centered below the card text and notes, 72–160 pt tall in the space the text leaves (the card's illustration, or its level's face when it has none), decorative, and only when it fits the visible card area. When it does not fit, the card renders text-only: the card text and the player's name always come first (HU-15, decision of 2026-11-05; library in [`README.md`](./README.md#card-illustration-library)).
 
 ## Player Avatars in the UI
 

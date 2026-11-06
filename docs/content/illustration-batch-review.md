@@ -1,5 +1,5 @@
 ---
-description: Review note for the HU-15 content batch — four new cards written for illustration keys no card fit, plus the illustration tags added across the launch catalog. Pending human review.
+description: Review note for the HU-15 content batch — four new cards written for illustration keys no card fit, plus the illustration tags (batches 1 to 3) added across the launch catalog. Pending human review.
 alwaysApply: false
 ---
 
@@ -32,7 +32,13 @@ Reviewer checklist for this batch:
 
 ## Illustration Tags
 
-105 of 285 shipped cards now carry an `illustration` key (La Previa 69 of 194, Entre Dos 36 of 91), and every key of the 24-key library is used. Tags follow the library's "typical cards" column: the level faces by mood (relaxed Suave, smirk Picante, laugh Prendido), format keys on every "Cultura time", "Historytime", and "Momento sad" card ("Cultura chopística" trivia rounds also take `mascot-monocle`), and props by mechanic (`phone-ringing` only on `reachesOutside` calls and messages, `microphone` on singing dares). Review the tags with the cards: a tag that changes the meaning of a card, or a drink prop outside a group toast, is rejected.
+**Batch 1 (24 keys):** 105 of 285 cards were tagged. Tags follow the library's "typical cards" column: the level faces by mood (relaxed Suave, smirk Picante, laugh Prendido), format keys on every "Cultura time", "Historytime", and "Momento sad" card ("Cultura chopística" trivia rounds also take `mascot-monocle`), and props by mechanic (`phone-ringing` only on `reachesOutside` calls and messages, `microphone` on singing dares).
+
+**Batch 2 (18 more keys, 2026-11-06):** 167 more cards were tagged by theme with the sheet 2 pieces (romance and kisses `heart-arrow`; messages `chat-bubbles`; posts and likes `like-heart`; hugs and touch `mascot-hug`; ex and despecho `mascot-broken-heart`; lies and excuses `mascot-fingers-crossed`; and so on, see `docs/brand/README.md` § Card Illustration Library). Two cards moved to a better-fitting key: `prev-099` "Discurso de boda" (`mascot-pointing` → `ring-box`) and `dos-080` "La gran propuesta" (`mascot-laugh` → `ring-box`). Two singing cards (`prev-021`, `prev-061`) took `microphone`, and three dance cards (`prev-148`, `prev-167`, `dos-053`) took `mascot-dancing`.
+
+**Batch 3 (18 more keys, 2026-11-06):** 88 cards were moved or tagged to split the largest groups by what each card asks: voice notes `voice-note`, written or dictated messages `mascot-typing`, emojis and stickers `emoji-faces`, wrong chat and notifications `mascot-phone-shock`, kisses `mascot-kissing`, first kisses and shy confessions `mascot-blushing`, photos `photo-camera`, bio and profile `profile-card`, galleries `photo-gallery`, catwalk and show `mascot-posing`, massages `mascot-spa`, staring contests `staring-eyes`, timed dares `stopwatch`, games `rock-paper-scissors`, partner dances `dance-shoes`, songs `headphones-music`, gossip `mascot-gossip`, and a birthday `confetti`. The 13 cards that showed only their level face got a key (the two calls among them take `phone-ringing`).
+
+All 285 shipped cards now carry their own key, and no key serves more than 12 cards (before batch 3, `chat-bubbles` and `heart-arrow` served 20 each). The game also avoids showing the same illustration on two cards in a row (`game-engine`). Every key of the 60-key library is used. Review the tags with the cards: a tag that changes the meaning of a card, or a drink prop outside a group toast, is rejected.
 
 ## Validation
 

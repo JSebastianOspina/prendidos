@@ -98,7 +98,12 @@ export function LevelUpOverlay({ level, roundText, onContinue }: LevelUpOverlayP
           <View style={styles.moderation}>
             <AppText style={[styles.strong, styles.centered]}>{playCopy.moderation}</AppText>
           </View>
-          <Button label={playCopy.keepPartying} variant="onBrand" onPress={onContinue} />
+          <Button
+            label={playCopy.keepPartying}
+            variant="onBrand"
+            onPress={onContinue}
+            testID="level-up-continue"
+          />
         </ScrollView>
       </SafeAreaView>
     </View>

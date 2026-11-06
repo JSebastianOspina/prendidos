@@ -5,7 +5,7 @@ alwaysApply: false
 
 # Card Templates
 
-**Status: data model adopted.** The `Card` shape below is now in [`../data-model.md`](../data-model.md) and implemented in `src/features/content/` (types and `validateCards`) through the OpenSpec change `card-content-model`. The rendering rules below are implemented for illustrations by HU-15 (`hu-15-illustrations-and-motion`): a closed 24-key library ([`../brand/README.md` § Card Illustration Library](../brand/README.md#card-illustration-library)), the illustration slot below the text, and the "text wins" fallback.
+**Status: data model adopted.** The `Card` shape below is now in [`../data-model.md`](../data-model.md) and implemented in `src/features/content/` (types and `validateCards`) through the OpenSpec change `card-content-model`. The rendering rules below are implemented for illustrations by HU-15 (`hu-15-illustrations-and-motion`): a closed 60-key library ([`../brand/README.md` § Card Illustration Library](../brand/README.md#card-illustration-library)), the illustration slot below the text, and the "text wins" fallback.
 
 ## What the Legacy Cards Show
 
@@ -25,9 +25,9 @@ The 31 designed cards in `legacy/cards/` are square images with the text baked i
 ## Rendering Rules
 
 1. **Never bake text into images.** The app renders all copy natively, because the copy needs gender variants and `{player}` placeholders (PRD §5.6), the alternative penalty for players who don't drink (§5.8), Dynamic Type and screen readers, and copy fixes through EAS Update without new art.
-2. **The penalty is not part of the copy.** The turn screen already shows it in its own row ("Si no cumple · Toma 2 tragos"); the body only says what to do.
+2. **The penalty is not part of the copy.** The turn screen shows it under the "No cumplió" action ("Toma 2 tragos"; the quip appears in the refusal overlay); the body only says what to do.
 3. **The template is derived, not stored.** A card with an `illustration` renders the illustrated layout; without one, the text-only layout. A stored `template` field would allow invalid pairs (illustrated with no image).
-4. **Text wins.** If the headline and body don't fit at the current font scale, the illustration is hidden and the card falls back to text-only.
+4. **Text wins.** The card first fits its text to the visible area (the body steps down 29 → 24 → 20 pt only when needed; see `../brand/design-tokens.md` § Typography). The illustration then takes only the space left, 72–160 pt tall; with less room a card with its own illustration key may drop the body one more step (never below 20 pt) when that frees 72 pt for it; otherwise the card falls back to text-only. A card without a key shows its level's mascot face, only in space the text already leaves.
 5. **Colors come from the level tokens** (`levelEasy`, `levelMedium`, `levelHard`, and `flameYellow` for group interludes in [`../brand/design-tokens.md`](../brand/design-tokens.md)), not the legacy blue / orange / red.
 6. **Illustrations are a bundled library** addressed by key, drawn in the brand style (flat vector, `ink` outline). A card picks one; it never ships its own image.
 
@@ -44,10 +44,10 @@ The legacy square becomes the middle of the existing turn screen (prototype `tur
 │ │  ¡Cultura time!           │ │  headline   ← card face
 │ │  Marcas de carros. El que │ │  body
 │ │  repita o se equivoque…   │ │
-│ │          (monocle)        │ │  illustration (optional)
+│ │          (monocle)        │ │  illustration (key or level face)
 │ └───────────────────────────┘ │
-│ Si no cumple · Toma 1 trago   │  penalty row (or alternative)
-│ [No cumplió −8] [¡Cumplió!]   │
+│ [No cumplió (−8)] [¡Cumplió! (+15)] │  corner badges; penalty under
+│  Toma 1 trago                 │  "No cumplió" (or alternative)
 └───────────────────────────────┘
 ```
 
@@ -100,4 +100,4 @@ Group cards (`everyoneWho`, `neverHaveIEver`) keep a fixed headline from their t
 | Mascot on the game card                    | **Closed (HU-15, 2026-11-05):** allowed only in the illustration slot, below the text, hidden when it does not fit (rule 4). `design-tokens.md` § Where the mascot appears was amended |
 | Recurring formats as data                  | Add later: a `format` key that brings a default headline and illustration ("Cultura time"). Start with plain `headline` + `illustration` |
 | Speech bubbles                             | Out of the MVP: they are more baked-in copy. Keep them in the illustration art only if they carry no game text |
-| Illustration library size for launch       | **Closed (HU-15, 2026-11-05):** 24 keys carried over from the legacy cast (17 mascot pieces, 5 props, 2 guest animals); see the brand README library table |
+| Illustration library size for launch       | **Closed (HU-15, 2026-11-05):** 24 keys carried over from the legacy cast (17 mascot pieces, 5 props, 2 guest animals), extended on 2026-11-06 to 60 with two more batches chosen by card theme; see the brand README library table |

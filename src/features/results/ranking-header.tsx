@@ -43,7 +43,7 @@ export function RankingHeader({ eyebrow, winnerNames }: RankingHeaderProps) {
           <AppText variant="label" color={Colors.textSecondary}>
             {eyebrow}
           </AppText>
-          <AppText variant="title" accessibilityRole="header">
+          <AppText variant="title" accessibilityRole="header" testID="ranking-title">
             {winnerTitle(winnerNames)}
           </AppText>
         </View>

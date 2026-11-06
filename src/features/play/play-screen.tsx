@@ -15,15 +15,17 @@ import { routes } from '@/features/navigation/routes';
 import { CardFace } from './card-face';
 import {
   continueWithLabel,
+  drinksLabel,
   interludeLabel,
   penaltyLine,
   playCopy,
   roundLabel,
+  signedPoints,
   signedPointsLabel,
 } from './copy';
 import { LevelUpOverlay } from './level-up-overlay';
 import { PlayOverlay } from './play-overlay';
-import { ClayButton } from './play-pieces';
+import { ClayButton, PointsBadge } from './play-pieces';
 import { InterludeTopBar, TurnTopBar } from './turn-top-bar';
 import { turnProgress } from './turn-progress';
 
@@ -34,16 +36,18 @@ function isHigherLevel(next: Difficulty, previous: Difficulty): boolean {
   return allDifficulties.indexOf(next) > allDifficulties.indexOf(previous);
 }
 
-function ActionLabel({ title, points }: { title: string; points: string }) {
+function ActionLabel({ title, detail }: { title: string; detail?: string }) {
   return (
     <>
-      {/* One line each, so the points line never overflows the 72 pt button (375 pt phones). */}
+      {/* One line each, so the detail line never overflows the 72 pt button (375 pt phones). */}
       <AppText variant="button" numberOfLines={1} adjustsFontSizeToFit>
         {title}
       </AppText>
-      <AppText style={styles.strong} numberOfLines={1}>
-        {points}
-      </AppText>
+      {detail ? (
+        <AppText style={styles.strong} numberOfLines={1} adjustsFontSizeToFit>
+          {detail}
+        </AppText>
+      ) : null}
     </>
   );
 }
@@ -54,6 +58,7 @@ function ContinueButton({ player, onPress }: { player?: Player; onPress: () => v
     <ClayButton
       accessibilityLabel={label}
       onPress={onPress}
+      testID="group-continue"
       fill={Colors.primary}
       height={continueButtonHeight}
       faceStyle={styles.continueFace}
@@ -121,6 +126,7 @@ export function PlayScreen() {
     currentCard && !game.isGroupInterlude && currentCard.points !== undefined
       ? currentCard
       : undefined;
+  const refusalPoints = individualCard ? refusalPenaltyPoints(individualCard.points) : 0;
 
   const refuse = () => {
     if (!currentPlayer) return;
@@ -184,28 +190,30 @@ export function PlayScreen() {
               <ContinueButton player={currentPlayer} onPress={game.nextAfterGroupCard} />
             ) : individualCard ? (
               <View style={styles.actions}>
+                {/* The penalty lives on the refuse action (no footer on the card); its quip shows in the refusal overlay. */}
                 <ClayButton
-                  accessibilityLabel={`${playCopy.refused} ${signedPointsLabel(-refusalPenaltyPoints(individualCard.points))}`}
+                  accessibilityLabel={`${playCopy.refused} ${signedPointsLabel(-refusalPoints)}, ${drinksLabel(individualCard.penalty.drinks)}`}
                   onPress={refuse}
+                  testID="turn-refuse"
                   height={TouchTarget.turnAction}
                   style={styles.refuseAction}
+                  badge={<PointsBadge label={signedPoints(-refusalPoints)} tone="loss" />}
                 >
                   <ActionLabel
                     title={playCopy.refused}
-                    points={signedPointsLabel(-refusalPenaltyPoints(individualCard.points))}
+                    detail={drinksLabel(individualCard.penalty.drinks)}
                   />
                 </ClayButton>
                 <ClayButton
                   accessibilityLabel={`${playCopy.completed} ${signedPointsLabel(individualCard.points)}`}
                   onPress={game.completeCard}
+                  testID="turn-complete"
                   fill={Colors.levelEasy}
                   height={TouchTarget.turnAction}
                   style={styles.completeAction}
+                  badge={<PointsBadge label={signedPoints(individualCard.points)} tone="gain" />}
                 >
-                  <ActionLabel
-                    title={playCopy.completed}
-                    points={signedPointsLabel(individualCard.points)}
-                  />
+                  <ActionLabel title={playCopy.completed} />
                 </ClayButton>
               </View>
             ) : null
@@ -226,7 +234,11 @@ export function PlayScreen() {
           <AppText variant="button" color={Colors.negative}>
             {signedPointsLabel(penaltyOutcome.pointsDelta)}
           </AppText>
-          <Button label={playCopy.next} onPress={() => setRefusingPlayerId(undefined)} />
+          <Button
+            label={playCopy.next}
+            onPress={() => setRefusingPlayerId(undefined)}
+            testID="refusal-next"
+          />
         </PlayOverlay>
       ) : null}
 
@@ -241,7 +253,12 @@ export function PlayScreen() {
             </AppText>
           </View>
           <Button label={playCopy.keepPlaying} onPress={() => setPauseVisible(false)} />
-          <Button label={playCopy.endAndRank} variant="secondary" onPress={endFromPause} />
+          <Button
+            label={playCopy.endAndRank}
+            variant="secondary"
+            onPress={endFromPause}
+            testID="pause-end-game"
+          />
         </PlayOverlay>
       ) : null}
 

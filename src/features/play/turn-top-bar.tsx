@@ -22,6 +22,7 @@ function PauseButton({ onPress }: { onPress: () => void }) {
     <ClayButton
       accessibilityLabel={playCopy.pauseButton}
       onPress={onPress}
+      testID="pause-button"
       height={TouchTarget.minimum}
       style={styles.square}
       faceStyle={styles.pauseFace}
@@ -92,6 +93,7 @@ export function TurnTopBar({
       <ClayButton
         accessibilityLabel={canSwap ? playCopy.swap : playCopy.swapUsed}
         onPress={onSwap}
+        testID="swap-button"
         disabled={!canSwap}
         height={TouchTarget.minimum}
       >

@@ -59,6 +59,17 @@ export const Typography: Record<TypographyVariant, TextStyle> = {
   },
 };
 
+/**
+ * Turn card body sizes, largest first. The card uses the largest step that fits the visible
+ * area and scrolls only past the last one (design tokens § Typography, "Card text steps").
+ * React Native scales each by the system font size.
+ */
+export const CardTextSteps = [
+  { fontSize: 29, lineHeight: 35 },
+  { fontSize: 24, lineHeight: 29 },
+  { fontSize: 20, lineHeight: 25 },
+] as const satisfies readonly TextStyle[];
+
 /** 4 / 8 rhythm; `gutter` is the screen side padding. */
 export const Spacing = {
   xs: 4,

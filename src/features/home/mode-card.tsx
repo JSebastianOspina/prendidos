@@ -21,6 +21,7 @@ export type ModeCardProps = {
   /** Decorative art pinned to the top-right corner. */
   illustration: ReactNode;
   onPress: () => void;
+  testID?: string;
 };
 
 /** Big clay card for one game mode: art up top, title and subtitle at the bottom. */
@@ -31,11 +32,13 @@ export function ModeCard({
   minHeight,
   illustration,
   onPress,
+  testID,
 }: ModeCardProps) {
   return (
     <View style={styles.wrapper}>
       <View style={styles.shadow} />
       <Pressable
+        testID={testID}
         accessibilityRole="button"
         accessibilityLabel={`${title}. ${subtitle}`}
         onPress={onPress}

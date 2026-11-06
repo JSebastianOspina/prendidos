@@ -168,4 +168,48 @@ describe('drawCard', () => {
       expect(result?.mentionedPlayerId).toBe(beto.id);
     });
   });
+
+  describe('variety of illustrations', () => {
+    it('skips a candidate with the same illustration as the card on screen', () => {
+      const cards = [
+        individualCard('think', { points: 2, illustration: 'mascot-thinking' }),
+        individualCard('watch', { points: 3, illustration: 'moon-stars' }),
+      ];
+      expect(drawCard(request({ cards }))?.card.id).toBe('think');
+      expect(drawCard(request({ cards, avoidIllustration: 'mascot-thinking' }))?.card.id).toBe('watch');
+    });
+
+    it('counts the level face of a card without a key', () => {
+      const cards = [
+        individualCard('plain', { points: 2 }),
+        individualCard('tagged', { points: 3, illustration: 'mascot-shh' }),
+      ];
+      expect(drawCard(request({ cards, avoidIllustration: 'mascot-relaxed' }))?.card.id).toBe('tagged');
+    });
+
+    it('shows the same illustration again when every candidate shares it', () => {
+      const cards = [
+        individualCard('a', { points: 2, illustration: 'mascot-rose' }),
+        individualCard('b', { points: 3, illustration: 'mascot-rose' }),
+      ];
+      expect(drawCard(request({ cards, avoidIllustration: 'mascot-rose' }))?.card.id).toBe('a');
+    });
+
+    it('applies to group interludes too', () => {
+      const cards = [
+        individualCard('solo', { points: 2 }),
+        groupCard('g1', { illustration: 'heart-arrow' }),
+        groupCard('g2', { illustration: 'ring-box' }),
+      ];
+      const ids = new Set(
+        [0.01, 0.02, 0.03, 0.04].map(
+          (value) =>
+            drawCard(
+              request({ cards, avoidIllustration: 'heart-arrow', random: sequenceRandom([0, value, value, value]) }),
+            )?.card.id,
+        ),
+      );
+      expect(ids).toEqual(new Set(['g2']));
+    });
+  });
 });

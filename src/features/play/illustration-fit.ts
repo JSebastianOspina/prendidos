@@ -1,22 +1,20 @@
 import { Spacing } from '@/constants/theme';
 
 /** Tallest a card illustration is drawn on the turn card, in points. */
-export const cardIllustrationHeight = 120;
+export const cardIllustrationMaxHeight = 160;
+
+/** Below this height the card renders text-only, in points. */
+export const cardIllustrationMinHeight = 72;
 
 /** Space kept between the card text and the illustration, in points. */
 export const cardIllustrationGap = Spacing.md;
 
-export type IllustrationFitInput = {
-  /** Free height left below the card text, measured with the illustration hidden. */
-  slotHeight: number;
-  illustrationHeight: number;
-  gap: number;
-};
-
 /**
- * "Text wins": the illustration shows only when it fits the free space under the
- * text without scrolling. A slot of 0 means the text already fills the card.
+ * "Text wins": the illustration takes only the free space left under the fitted text
+ * (`slotHeight`, measured with the illustration out of the layout flow), up to 160 pt.
+ * Returns `null` when less than 72 pt is left, so the card renders text-only.
  */
-export function fitsIllustration({ slotHeight, illustrationHeight, gap }: IllustrationFitInput): boolean {
-  return slotHeight >= illustrationHeight + gap;
+export function illustrationHeightFor(slotHeight: number): number | null {
+  const height = Math.min(cardIllustrationMaxHeight, slotHeight - cardIllustrationGap);
+  return height >= cardIllustrationMinHeight ? height : null;
 }

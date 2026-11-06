@@ -4,12 +4,12 @@
 
 ### Requirement: Card illustration library
 
-The app SHALL bundle one card illustration per key of the 24-key card illustration library (`docs/brand/README.md` § Card Illustration Library), and the library SHALL hold no key without bundled art.
+The app SHALL bundle one card illustration per key of the 60-key card illustration library (`docs/brand/README.md` § Card Illustration Library), and the library SHALL hold no key without bundled art.
 
 #### Scenario: Launch library keys
 
 - **WHEN** the library keys are listed
-- **THEN** they are, in order: `mascot-wink`, `mascot-relaxed`, `mascot-smirk`, `mascot-laugh`, `mascot-pointing`, `mascot-surprised`, `mascot-monocle`, `mascot-reading-book`, `mascot-crying`, `mascot-sad-map-pin`, `mascot-blowing-kiss`, `mascot-sunglasses`, `mascot-dancing`, `mascot-tongue-out`, `mascot-annoyed`, `mascot-selfie`, `mascot-diva`, `phone-ringing`, `microphone`, `animal-wheel`, `shot-glass-on-fire`, `glasses-toasting`, `rooster`, `two-dogs`
+- **THEN** they are, in order: `mascot-wink`, `mascot-relaxed`, `mascot-smirk`, `mascot-laugh`, `mascot-pointing`, `mascot-surprised`, `mascot-monocle`, `mascot-reading-book`, `mascot-crying`, `mascot-sad-map-pin`, `mascot-blowing-kiss`, `mascot-sunglasses`, `mascot-dancing`, `mascot-tongue-out`, `mascot-annoyed`, `mascot-selfie`, `mascot-diva`, `phone-ringing`, `microphone`, `animal-wheel`, `shot-glass-on-fire`, `glasses-toasting`, `rooster`, `two-dogs`, `mascot-heart-eyes`, `mascot-shh`, `mascot-broken-heart`, `mascot-rose`, `mascot-hug`, `mascot-telenovela`, `mascot-fingers-crossed`, `mascot-thinking`, `mascot-megaphone`, `chat-bubbles`, `like-heart`, `heart-arrow`, `theater-masks`, `disco-ball`, `moon-stars`, `gift-box`, `ring-box`, `pizza-slice`, `voice-note`, `mascot-typing`, `emoji-faces`, `mascot-phone-shock`, `mascot-kissing`, `mascot-blushing`, `photo-camera`, `profile-card`, `photo-gallery`, `mascot-posing`, `mascot-spa`, `staring-eyes`, `stopwatch`, `rock-paper-scissors`, `dance-shoes`, `headphones-music`, `mascot-gossip`, `confetti`
 
 #### Scenario: Every key has art
 

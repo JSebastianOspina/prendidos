@@ -34,6 +34,8 @@ A white cartoon cat with a flame on its head ("prendido" = lit up). It evolves t
 | `references/mascot-expressions-ai-draft.jpg`     | Facial expression sheet (2000 px)         | Needs revision               |
 | `references/player-avatars-ai-draft.jpg`         | 12 player avatars, 4 × 3 grid (2000 px)   | Approved direction           |
 | `references/card-illustrations-ai-draft.jpg`     | 18 card illustrations, 6 × 3 grid (2752 × 1536, 2K upscale, saved at JPEG quality 85 to stay under the 500 KB repo limit) | Approved 2026-11-05 (HU-15); cropped and bundled |
+| `references/card-illustrations-2-ai-draft.jpg`   | 18 more card illustrations, 6 × 3 grid (2752 × 1536, 2K upscale, JPEG quality 85) | Approved 2026-11-06 (HU-15 batch 2) |
+| `references/card-illustrations-3-ai-draft.jpg`   | 18 more card illustrations, 6 × 3 grid (2752 × 1536, 2K upscale, JPEG quality 85) | Approved 2026-11-06 (HU-15 batch 3) |
 
 ## Player Avatars
 
@@ -69,7 +71,7 @@ Avatars have their own palette, separate from the UI tokens, in grid order (left
 
 Cards can carry one decorative illustration, picked by key from this closed set (HU-15, decision of 2026-11-05). The library carries the legacy Flutter cast (`docs/content/legacy/cards/`) into the current brand. The keys live in `illustrationKeys` (`src/features/content/card-types.ts`); the content validator rejects any other key, and screens show the art only through `CardIllustration` (`src/components/ui/`).
 
-`Source`: **bundled** = reuses existing mascot art in `assets/images/brand/`; **expressions #N** = cropped from `references/mascot-expressions-ai-draft.jpg`; **sheet #N** = cropped from `references/card-illustrations-ai-draft.jpg`. All 24 keys ship today: the bundled ones through `mascotArt`, the other 19 as `assets/images/brand/card-<key>.png` (384 px tall, 256-color palette PNGs, about 0.4 MB in total), written by `scripts/crop-brand-art.py --cards-only`.
+`Source`: **bundled** = reuses existing mascot art in `assets/images/brand/`; **expressions #N** = cropped from `references/mascot-expressions-ai-draft.jpg`; **sheet #N** = cropped from `references/card-illustrations-ai-draft.jpg`; **sheet 2 #N** = cropped from `references/card-illustrations-2-ai-draft.jpg` (batch 2, 2026-11-06); **sheet 3 #N** = cropped from `references/card-illustrations-3-ai-draft.jpg` (batch 3, 2026-11-06). All 60 keys ship today: the bundled ones through `mascotArt`, the other 55 as `assets/images/brand/card-<key>.png` (384 px tall, 256-color palette PNGs, about 1 MB in total), written by `scripts/crop-brand-art.py --cards-only`.
 
 | #  | Key                   | Art                                                        | Typical cards                                  | Source         |
 | -- | --------------------- | ---------------------------------------------------------- | ---------------------------------------------- | -------------- |
@@ -97,6 +99,42 @@ Cards can carry one decorative illustration, picked by key from this closed set 
 | 22 | `glasses-toasting`    | Two glasses clinking                                       | Friendship toasts                              | sheet #16      |
 | 23 | `rooster`             | Cartoon rooster, mid-cluck                                 | Animal imitation dares                         | sheet #17      |
 | 24 | `two-dogs`            | Two dogs, one in sunglasses                                | "Hablen ladrando", animal rounds               | sheet #18      |
+| 25 | `mascot-heart-eyes` | Big heart-shaped eyes | Crush, admiration, flechazo | sheet 2 #1 |
+| 26 | `mascot-shh` | Paw on its lips, shushing | Secrets, whispers, confessions | sheet 2 #2 |
+| 27 | `mascot-broken-heart` | Sad, holding a cracked heart | Ex, despecho, regrets | sheet 2 #3 |
+| 28 | `mascot-rose` | Rose between its teeth, sly look | Pickup lines, seductive voice | sheet 2 #4 |
+| 29 | `mascot-hug` | Hugging a big red heart | Hugs, closeness, massages | sheet 2 #5 |
+| 30 | `mascot-telenovela` | Dramatic swoon, paw on its forehead | Telenovela scenes, declarations | sheet 2 #6 |
+| 31 | `mascot-fingers-crossed` | Sly look, crossed fingers | Lies, excuses, "ya casi llego" | sheet 2 #7 |
+| 32 | `mascot-thinking` | Paw on chin, eyebrow raised | Guessing, mime, predictions | sheet 2 #8 |
+| 33 | `mascot-megaphone` | Shouting into a megaphone | Narrator, host, teletienda, radio | sheet 2 #9 |
+| 34 | `chat-bubbles` | Phone with three blank chat bubbles | Messages, "visto", wrong chat | sheet 2 #10 |
+| 35 | `like-heart` | Heart in a round notification bubble | Stories, likes, bio, profile photo | sheet 2 #11 |
+| 36 | `heart-arrow` | Heart pierced by an arrow | Kisses and romance | sheet 2 #12 |
+| 37 | `theater-masks` | Comedy and tragedy masks | Imitations, accents, dubbing | sheet 2 #13 |
+| 38 | `disco-ball` | Sparkling disco ball | Parties, nights out | sheet 2 #14 |
+| 39 | `moon-stars` | Crescent moon and three stars | "3 a. m.", dreams | sheet 2 #15 |
+| 40 | `gift-box` | Wrapped gift box with a bow | Gifts, surprises, date mementos | sheet 2 #16 |
+| 41 | `ring-box` | Open ring box with a ring | Weddings, vows, proposals | sheet 2 #17 |
+| 42 | `pizza-slice` | Slice of pizza | Fridge, free food | sheet 2 #18 |
+| 43 | `voice-note` | Phone with a sound-wave bubble | Voice notes and audios | sheet 3 #1 |
+| 44 | `mascot-typing` | Typing fast on a phone, tongue out | Dictated or written messages | sheet 3 #2 |
+| 45 | `emoji-faces` | Three emoji faces (laughing, heart eyes, fire) | Emojis, stickers, reactions | sheet 3 #3 |
+| 46 | `mascot-phone-shock` | Shocked at its phone | Wrong chat, "visto", notifications | sheet 3 #4 |
+| 47 | `mascot-kissing` | Puckered lips, eyes closed | Kiss dares | sheet 3 #5 |
+| 48 | `mascot-blushing` | Shy, blushing cheeks | First kiss, shy confessions | sheet 3 #6 |
+| 49 | `photo-camera` | Retro camera with a flash spark | Photos, group photo, video | sheet 3 #7 |
+| 50 | `profile-card` | Profile card with blank lines | Bio, profile, profile photo | sheet 3 #8 |
+| 51 | `photo-gallery` | Phone with a photo grid | Gallery dares | sheet 3 #9 |
+| 52 | `mascot-posing` | Model pose with sparkles | Catwalk, perfume ad, show | sheet 3 #10 |
+| 53 | `mascot-spa` | Towel and cucumber slices | Massages, spa | sheet 3 #11 |
+| 54 | `staring-eyes` | Two big staring eyes | Staring contests, face to face | sheet 3 #12 |
+| 55 | `stopwatch` | Stopwatch | Timed dares | sheet 3 #13 |
+| 56 | `rock-paper-scissors` | Three paws: rock, paper, scissors | Duels, games, secret handshake | sheet 3 #14 |
+| 57 | `dance-shoes` | Dance shoes with music notes | Partner dances | sheet 3 #15 |
+| 58 | `headphones-music` | Headphones with music notes | Playlists, songs | sheet 3 #16 |
+| 59 | `mascot-gossip` | Paw by its mouth, whispering | Gossip, nicknames | sheet 3 #17 |
+| 60 | `confetti` | Confetti popper | Celebrations, birthdays | sheet 3 #18 |
 
 Dropped legacy pieces: the police cap (stereotype), the Spain map pin with speech bubbles (baked-in text and an insult), diva lips and the "XXX" phone (redesigned above), and the full-body wink holding a shot (the mascot never holds a drink; `mascot-pointing` replaces it).
 
@@ -107,7 +145,7 @@ Dropped legacy pieces: the police cap (stereotype), the Spain map pin with speec
 - **No text** inside any piece: no speech bubbles, signs, or screen text (`docs/content/card-templates.md` rendering rule 1).
 - **Drink props** (`shot-glass-on-fire`, `glasses-toasting`) only on group toasts or cards whose instruction is a shared drink. Never on cards about drinking fast or a lot, never with a character drinking (`ai-specs/skills/write-cards/references/policy.md`, App Store guideline 1.4.3).
 - **Never** drunk, dizzy, sleepy, or sick. The expressions sheet faces `4` and both `7` stay banned.
-- **Frame:** each piece is cropped to its content on a transparent background. Faces are square; full-body pieces, `mascot-dancing`, and props keep their own aspect ratio. Pieces render up to 120 pt tall on the card, so crops aim for about 360 px tall (3×) and are never upscaled.
+- **Frame:** each piece is cropped to its content on a transparent background. Faces are square; full-body pieces, `mascot-dancing`, and props keep their own aspect ratio. Pieces render 72–160 pt tall on the card, sized to the space left under the text. Crops are 384 px tall: sharp at 2×, and upscaled at most 1.25× at 3× when a piece reaches 160 pt (accepted for the interim art). Cards without an illustration key show their level's mascot face (`mascot-relaxed`, `mascot-smirk`, `mascot-laugh`) in the same slot.
 - **Decorative:** the card text carries the card; screen readers skip the illustration.
 
 ## Known Issues
@@ -119,5 +157,7 @@ Dropped legacy pieces: the police cap (stereotype), the Spain map pin with speec
 - **Expressions**: two portraits are labeled `7`; the embarrassed face (`5`) fills the whole head with coral instead of two flat blush ovals.
 - **Avatars**: the bandana paisley and the sombrero weave are too detailed for 48 px; simplify them when vectorizing. The source has a white background that must become transparent.
 - **Card illustrations**: generated in Google Flow with Nano Banana Pro (candidate 3 of 4, product owner approved 2026-11-05, no pieces rejected). The sheet is an AI 2K upscale of a 1376 × 768 original, so pieces are about 300–340 px tall, slightly under the ~360 px ideal for 120 pt at 3×. The shot glass (`15`) has layered liquid and the two dogs (`18`) carry more shading than the flat style; simplify both when vectorizing. The ringing phone (`12`) is a retro handset.
+- **Card illustrations, sheet 2**: generated in Google Flow with Nano Banana Pro (candidate 1 of 4, product owner approved 2026-11-06; candidates 2 and 4 drew the cats without the flame). No pieces rejected. The crossed fingers (`7`) are raised in front instead of behind the back, and the like bubble (`11`) has a pin-like tail; both still read as intended.
+- **Card illustrations, sheet 3**: generated in Google Flow with Nano Banana Pro (candidate 2 of 4, product owner approved 2026-11-06). Rejected: candidate 3 (a landline instead of a phone, and the profile card merged with the gallery), candidate 4 (a fully pink head on the blushing cat), candidate 1 (a second cat-with-phone too close to the typing cat). No pieces rejected. The dance shoes (`15`) read as ballet flats, and the emoji faces (`3`) carry light shading.
 - **Format**: all files are raster, and the interim app art inherits the drafts' emoji-like flame and a faint white edge on `brandRed`. The final logo and mascot must be redrawn or traced as SVG.
 - **Ownership**: purely AI-generated images may have weak copyright protection; human redrawing of the final assets strengthens it.

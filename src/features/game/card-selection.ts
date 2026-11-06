@@ -3,7 +3,9 @@ import {
   type Card,
   type Difficulty,
   type GroupCard,
+  type IllustrationKey,
 } from '@/features/content/card-types';
+import { shownIllustrationFor } from '@/features/content/shown-illustration';
 
 import type { GameSettings, Player } from './game-types';
 
@@ -26,6 +28,8 @@ export type DrawRequest = {
   excludeGroupCards?: boolean;
   /** Never drawn, even after a pool reset (the card being swapped). */
   excludedCardIds?: readonly string[];
+  /** Shown illustration of the card on screen; the next card prefers a different one. */
+  avoidIllustration?: IllustrationKey;
   random: () => number;
 };
 
@@ -71,10 +75,16 @@ function rankCandidates(
   });
 }
 
+/** First ranked card whose shown illustration differs from `avoid`; the first one otherwise. */
+function preferDifferentIllustration(ranked: readonly Card[], avoid?: IllustrationKey): Card | undefined {
+  if (avoid === undefined) return ranked[0];
+  return ranked.find((card) => shownIllustrationFor(card) !== avoid) ?? ranked[0];
+}
+
 /**
  * Picks the next card for the current player: no repeats within the game, unseen on the
  * device first, fewer points first, about one group interlude in five, gender targeting,
- * and a pool reset when the level runs out.
+ * a pool reset when the level runs out, and no illustration twice in a row when avoidable.
  */
 export function drawCard(request: DrawRequest): DrawResult | undefined {
   const { settings, random } = request;
@@ -105,7 +115,7 @@ export function drawCard(request: DrawRequest): DrawResult | undefined {
 
   let card: Card | undefined;
   if (wantsGroupCard) {
-    card = rankCandidates(unplayedGroupCards, seen, random)[0];
+    card = preferDifferentIllustration(rankCandidates(unplayedGroupCards, seen, random), request.avoidIllustration);
   } else {
     const individualAtLevel = atLevel.filter((candidate) => !isGroupCard(candidate));
     let candidates = individualAtLevel.filter(isUnplayed);
@@ -119,7 +129,7 @@ export function drawCard(request: DrawRequest): DrawResult | undefined {
       const unplayedAnyLevel = individualAnyLevel.filter(isUnplayed);
       candidates = unplayedAnyLevel.length > 0 ? unplayedAnyLevel : individualAnyLevel;
     }
-    card = rankCandidates(candidates, seen, random)[0];
+    card = preferDifferentIllustration(rankCandidates(candidates, seen, random), request.avoidIllustration);
   }
 
   if (!card) return undefined;

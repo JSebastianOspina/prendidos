@@ -39,6 +39,7 @@ function CategoryEntry({ mode, category, onChoose }: CategoryEntryProps) {
       cardCount={totalCards(cardCounts)}
       isFree={isFullyFree(category)}
       onPress={onChoose}
+      testID={`category-${category.id}`}
     />
   );
 }

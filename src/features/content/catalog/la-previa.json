@@ -44,7 +44,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-megaphone"
     },
     {
       "id": "prev-003",
@@ -59,7 +60,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-megaphone"
     },
     {
       "id": "prev-004",
@@ -108,7 +110,7 @@
       "heat": "standard",
       "requiresConsent": false,
       "reachesOutside": false,
-      "illustration": "mascot-relaxed"
+      "illustration": "headphones-music"
     },
     {
       "id": "prev-007",
@@ -173,7 +175,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "voice-note"
     },
     {
       "id": "prev-011",
@@ -189,7 +192,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "disco-ball"
     },
     {
       "id": "prev-012",
@@ -204,7 +208,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "rock-paper-scissors"
     },
     {
       "id": "prev-013",
@@ -235,7 +240,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-shh"
     },
     {
       "id": "prev-015",
@@ -251,7 +257,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-megaphone"
     },
     {
       "id": "prev-016",
@@ -266,7 +273,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "theater-masks"
     },
     {
       "id": "prev-017",
@@ -282,7 +290,7 @@
       "heat": "standard",
       "requiresConsent": false,
       "reachesOutside": false,
-      "illustration": "mascot-surprised"
+      "illustration": "photo-gallery"
     },
     {
       "id": "prev-018",
@@ -314,7 +322,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "staring-eyes"
     },
     {
       "id": "prev-020",
@@ -348,7 +357,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": true
+      "reachesOutside": true,
+      "illustration": "voice-note"
     },
     {
       "id": "prev-022",
@@ -364,7 +374,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": true
+      "reachesOutside": true,
+      "illustration": "photo-camera"
     },
     {
       "id": "prev-023",
@@ -395,7 +406,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-gossip"
     },
     {
       "id": "prev-025",
@@ -410,7 +422,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-heart-eyes"
     },
     {
       "id": "prev-026",
@@ -436,7 +449,8 @@
       "body": "…se me ha pasado la parada del bus por ir dormiendo.",
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "moon-stars"
     },
     {
       "id": "prev-028",
@@ -446,7 +460,8 @@
       "body": "…he fingido que me encantaba un regalo que no me gustó nada.",
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "gift-box"
     },
     {
       "id": "prev-029",
@@ -456,7 +471,8 @@
       "body": "…he buscado un perfil en redes a las 3 a. m. sin ninguna excusa.",
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "moon-stars"
     },
     {
       "id": "prev-030",
@@ -466,40 +482,44 @@
       "body": "…me he comido la comida de otra persona de la nevera.",
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "pizza-slice"
     },
     {
       "id": "prev-031",
       "categoryId": "la-previa",
       "type": "everyoneWho",
       "difficulty": "easy",
+      "headline": "¡Todos!",
       "body": "Los que hayan mandado un mensaje al chat equivocado.",
       "heat": "standard",
       "requiresConsent": false,
       "reachesOutside": false,
-      "headline": "¡Todos!"
+      "illustration": "mascot-phone-shock"
     },
     {
       "id": "prev-032",
       "categoryId": "la-previa",
       "type": "everyoneWho",
       "difficulty": "easy",
+      "headline": "Todos los que…",
       "body": "Los que hayan llegado tarde a un plan esta semana.",
       "heat": "standard",
       "requiresConsent": false,
       "reachesOutside": false,
-      "headline": "Todos los que…"
+      "illustration": "mascot-fingers-crossed"
     },
     {
       "id": "prev-033",
       "categoryId": "la-previa",
       "type": "everyoneWho",
       "difficulty": "easy",
+      "headline": "¡Atención!",
       "body": "Los que tengan más de 20 notificaciones sin leer ahorita mismo.",
       "heat": "standard",
       "requiresConsent": false,
       "reachesOutside": false,
-      "headline": "¡Atención!"
+      "illustration": "mascot-phone-shock"
     },
     {
       "id": "prev-034",
@@ -532,7 +552,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": true
+      "reachesOutside": true,
+      "illustration": "mascot-typing"
     },
     {
       "id": "prev-036",
@@ -547,7 +568,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": true
+      "reachesOutside": true,
+      "illustration": "mascot-typing"
     },
     {
       "id": "prev-037",
@@ -563,7 +585,8 @@
       },
       "heat": "standard",
       "requiresConsent": true,
-      "reachesOutside": true
+      "reachesOutside": true,
+      "illustration": "profile-card"
     },
     {
       "id": "prev-038",
@@ -595,7 +618,8 @@
       },
       "heat": "standard",
       "requiresConsent": true,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-hug"
     },
     {
       "id": "prev-040",
@@ -611,7 +635,8 @@
       },
       "heat": "standard",
       "requiresConsent": true,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-hug"
     },
     {
       "id": "prev-041",
@@ -643,7 +668,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-blushing"
     },
     {
       "id": "prev-043",
@@ -658,7 +684,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-hug"
     },
     {
       "id": "prev-044",
@@ -707,7 +734,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-fingers-crossed"
     },
     {
       "id": "prev-047",
@@ -739,7 +767,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": true
+      "reachesOutside": true,
+      "illustration": "voice-note"
     },
     {
       "id": "prev-049",
@@ -787,7 +816,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "theater-masks"
     },
     {
       "id": "prev-052",
@@ -831,7 +861,8 @@
       "body": "…le he dado like a una foto muy vieja de alguien por accidente y me dio pena.",
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-phone-shock"
     },
     {
       "id": "prev-055",
@@ -852,29 +883,32 @@
       "body": "…he escrito un mensaje larguísimo y nunca lo envié.",
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-typing"
     },
     {
       "id": "prev-057",
       "categoryId": "la-previa",
       "type": "everyoneWho",
       "difficulty": "medium",
+      "headline": "¡Todos!",
       "body": "Los que hayan revisado el perfil de alguien hoy, sin excusa.",
       "heat": "standard",
       "requiresConsent": false,
       "reachesOutside": false,
-      "headline": "¡Todos!"
+      "illustration": "profile-card"
     },
     {
       "id": "prev-058",
       "categoryId": "la-previa",
       "type": "everyoneWho",
       "difficulty": "medium",
+      "headline": "Todos los que…",
       "body": "Los que hayan dicho «ya casi llego» estando todavía en la casa.",
       "heat": "standard",
       "requiresConsent": false,
       "reachesOutside": false,
-      "headline": "Todos los que…"
+      "illustration": "mascot-fingers-crossed"
     },
     {
       "id": "prev-059",
@@ -907,7 +941,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": true
+      "reachesOutside": true,
+      "illustration": "profile-card"
     },
     {
       "id": "prev-061",
@@ -923,7 +958,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": true
+      "reachesOutside": true,
+      "illustration": "microphone"
     },
     {
       "id": "prev-062",
@@ -939,7 +975,7 @@
       "heat": "standard",
       "requiresConsent": false,
       "reachesOutside": false,
-      "illustration": "mascot-surprised"
+      "illustration": "photo-gallery"
     },
     {
       "id": "prev-063",
@@ -955,7 +991,7 @@
       "heat": "standard",
       "requiresConsent": true,
       "reachesOutside": false,
-      "illustration": "mascot-dancing"
+      "illustration": "dance-shoes"
     },
     {
       "id": "prev-064",
@@ -972,7 +1008,7 @@
       "heat": "standard",
       "requiresConsent": true,
       "reachesOutside": false,
-      "illustration": "mascot-wink"
+      "illustration": "staring-eyes"
     },
     {
       "id": "prev-065",
@@ -987,7 +1023,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "moon-stars"
     },
     {
       "id": "prev-066",
@@ -1003,7 +1040,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-heart-eyes"
     },
     {
       "id": "prev-067",
@@ -1019,7 +1057,8 @@
       },
       "heat": "standard",
       "requiresConsent": true,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-telenovela"
     },
     {
       "id": "prev-068",
@@ -1085,7 +1124,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": true
+      "reachesOutside": true,
+      "illustration": "mascot-typing"
     },
     {
       "id": "prev-072",
@@ -1101,7 +1141,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": true
+      "reachesOutside": true,
+      "illustration": "confetti"
     },
     {
       "id": "prev-073",
@@ -1151,7 +1192,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-telenovela"
     },
     {
       "id": "prev-076",
@@ -1167,7 +1209,7 @@
       "heat": "standard",
       "requiresConsent": false,
       "reachesOutside": false,
-      "illustration": "mascot-laugh"
+      "illustration": "stopwatch"
     },
     {
       "id": "prev-077",
@@ -1184,6 +1226,7 @@
       "heat": "standard",
       "requiresConsent": false,
       "reachesOutside": false,
+      "illustration": "mascot-rose",
       "targetGender": "female"
     },
     {
@@ -1199,7 +1242,8 @@
       },
       "heat": "standard",
       "requiresConsent": true,
-      "reachesOutside": true
+      "reachesOutside": true,
+      "illustration": "photo-camera"
     },
     {
       "id": "prev-079",
@@ -1209,7 +1253,8 @@
       "body": "…he pasado una noche entera pensando en lo que dije en una fiesta.",
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "moon-stars"
     },
     {
       "id": "prev-080",
@@ -1219,7 +1264,8 @@
       "body": "…he mentido sobre dónde estaba para no ir a un plan y me descubrieron.",
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-fingers-crossed"
     },
     {
       "id": "prev-081",
@@ -1229,7 +1275,8 @@
       "body": "…me ha gustado alguien que ya tenía pareja.",
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-shh"
     },
     {
       "id": "prev-082",
@@ -1241,18 +1288,19 @@
       "heat": "standard",
       "requiresConsent": false,
       "reachesOutside": false,
-      "illustration": "mascot-surprised"
+      "illustration": "mascot-blushing"
     },
     {
       "id": "prev-083",
       "categoryId": "la-previa",
       "type": "everyoneWho",
       "difficulty": "hard",
+      "headline": "Todos los que…",
       "body": "Los que hayan dejado en visto a alguien importante esta semana.",
       "heat": "standard",
       "requiresConsent": false,
       "reachesOutside": false,
-      "headline": "Todos los que…"
+      "illustration": "mascot-phone-shock"
     },
     {
       "id": "prev-084",
@@ -1285,7 +1333,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "pizza-slice"
     },
     {
       "id": "prev-086",
@@ -1302,7 +1351,7 @@
       "heat": "standard",
       "requiresConsent": false,
       "reachesOutside": false,
-      "illustration": "mascot-relaxed"
+      "illustration": "stopwatch"
     },
     {
       "id": "prev-087",
@@ -1317,7 +1366,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "emoji-faces"
     },
     {
       "id": "prev-088",
@@ -1332,7 +1382,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-thinking"
     },
     {
       "id": "prev-089",
@@ -1347,7 +1398,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-fingers-crossed"
     },
     {
       "id": "prev-090",
@@ -1414,7 +1466,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": true
+      "reachesOutside": true,
+      "illustration": "like-heart"
     },
     {
       "id": "prev-094",
@@ -1429,7 +1482,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-heart-eyes"
     },
     {
       "id": "prev-095",
@@ -1445,7 +1499,7 @@
       "heat": "standard",
       "requiresConsent": false,
       "reachesOutside": false,
-      "illustration": "mascot-surprised"
+      "illustration": "mascot-gossip"
     },
     {
       "id": "prev-096",
@@ -1478,7 +1532,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": true
+      "reachesOutside": true,
+      "illustration": "phone-ringing"
     },
     {
       "id": "prev-098",
@@ -1495,7 +1550,7 @@
       "heat": "standard",
       "requiresConsent": false,
       "reachesOutside": false,
-      "illustration": "mascot-sunglasses"
+      "illustration": "mascot-posing"
     },
     {
       "id": "prev-099",
@@ -1512,7 +1567,7 @@
       "heat": "standard",
       "requiresConsent": false,
       "reachesOutside": false,
-      "illustration": "mascot-pointing"
+      "illustration": "ring-box"
     },
     {
       "id": "prev-100",
@@ -1560,7 +1615,8 @@
       },
       "heat": "spicy",
       "requiresConsent": false,
-      "reachesOutside": true
+      "reachesOutside": true,
+      "illustration": "like-heart"
     },
     {
       "id": "prev-103",
@@ -1593,7 +1649,8 @@
       },
       "heat": "spicy",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-rose"
     },
     {
       "id": "prev-105",
@@ -1609,7 +1666,8 @@
       },
       "heat": "spicy",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-rose"
     },
     {
       "id": "prev-106",
@@ -1675,7 +1733,8 @@
       },
       "heat": "spicy",
       "requiresConsent": false,
-      "reachesOutside": true
+      "reachesOutside": true,
+      "illustration": "emoji-faces"
     },
     {
       "id": "prev-110",
@@ -1691,7 +1750,8 @@
       },
       "heat": "spicy",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-posing"
     },
     {
       "id": "prev-111",
@@ -1706,7 +1766,8 @@
       },
       "heat": "spicy",
       "requiresConsent": true,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-kissing"
     },
     {
       "id": "prev-112",
@@ -1723,7 +1784,7 @@
       "heat": "spicy",
       "requiresConsent": true,
       "reachesOutside": false,
-      "illustration": "mascot-relaxed"
+      "illustration": "mascot-spa"
     },
     {
       "id": "prev-113",
@@ -1739,7 +1800,8 @@
       },
       "heat": "spicy",
       "requiresConsent": false,
-      "reachesOutside": true
+      "reachesOutside": true,
+      "illustration": "emoji-faces"
     },
     {
       "id": "prev-114",
@@ -1755,7 +1817,8 @@
       },
       "heat": "spicy",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-telenovela"
     },
     {
       "id": "prev-115",
@@ -1804,7 +1867,8 @@
       },
       "heat": "spicy",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-rose"
     },
     {
       "id": "prev-118",
@@ -1820,7 +1884,8 @@
       },
       "heat": "spicy",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-rose"
     },
     {
       "id": "prev-119",
@@ -1835,7 +1900,8 @@
       },
       "heat": "spicy",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "theater-masks"
     },
     {
       "id": "prev-120",
@@ -1850,7 +1916,8 @@
       },
       "heat": "spicy",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-heart-eyes"
     },
     {
       "id": "prev-121",
@@ -1865,7 +1932,8 @@
       },
       "heat": "spicy",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-kissing"
     },
     {
       "id": "prev-122",
@@ -1880,7 +1948,8 @@
       },
       "heat": "spicy",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-blushing"
     },
     {
       "id": "prev-123",
@@ -1895,7 +1964,8 @@
       },
       "heat": "spicy",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-heart-eyes"
     },
     {
       "id": "prev-124",
@@ -1926,7 +1996,8 @@
       },
       "heat": "spicy",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "heart-arrow"
     },
     {
       "id": "prev-126",
@@ -1936,7 +2007,8 @@
       "body": "…he coqueteado con alguien solo para que me invitara a algo.",
       "heat": "spicy",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-rose"
     },
     {
       "id": "prev-127",
@@ -1946,7 +2018,8 @@
       "body": "…he dado un beso en un juego como este.",
       "heat": "spicy",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-kissing"
     },
     {
       "id": "prev-128",
@@ -1956,7 +2029,8 @@
       "body": "…me he escondido para que mi ex no me viera en la calle.",
       "heat": "spicy",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-broken-heart"
     },
     {
       "id": "prev-129",
@@ -1967,7 +2041,8 @@
       "body": "Los que se hayan dado un beso en la primera cita.",
       "heat": "spicy",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "heart-arrow"
     },
     {
       "id": "prev-130",
@@ -1978,7 +2053,8 @@
       "body": "Los que tengan guardado a alguien con un emoji en vez de nombre.",
       "heat": "spicy",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "emoji-faces"
     },
     {
       "id": "prev-131",
@@ -1989,7 +2065,8 @@
       "body": "Los que hayan revisado el perfil de la pareja nueva de su ex.",
       "heat": "spicy",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-broken-heart"
     },
     {
       "id": "prev-132",
@@ -2005,7 +2082,8 @@
       },
       "heat": "spicy",
       "requiresConsent": false,
-      "reachesOutside": true
+      "reachesOutside": true,
+      "illustration": "voice-note"
     },
     {
       "id": "prev-133",
@@ -2020,7 +2098,8 @@
       },
       "heat": "spicy",
       "requiresConsent": true,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-hug"
     },
     {
       "id": "prev-134",
@@ -2052,7 +2131,8 @@
       },
       "heat": "spicy",
       "requiresConsent": true,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-spa"
     },
     {
       "id": "prev-136",
@@ -2068,7 +2148,8 @@
       },
       "heat": "spicy",
       "requiresConsent": false,
-      "reachesOutside": true
+      "reachesOutside": true,
+      "illustration": "mascot-broken-heart"
     },
     {
       "id": "prev-137",
@@ -2117,7 +2198,8 @@
       },
       "heat": "spicy",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-posing"
     },
     {
       "id": "prev-140",
@@ -2133,7 +2215,8 @@
       },
       "heat": "spicy",
       "requiresConsent": true,
-      "reachesOutside": true
+      "reachesOutside": true,
+      "illustration": "like-heart"
     },
     {
       "id": "prev-141",
@@ -2166,7 +2249,8 @@
       },
       "heat": "spicy",
       "requiresConsent": false,
-      "reachesOutside": true
+      "reachesOutside": true,
+      "illustration": "emoji-faces"
     },
     {
       "id": "prev-143",
@@ -2182,7 +2266,8 @@
       },
       "heat": "spicy",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-telenovela"
     },
     {
       "id": "prev-144",
@@ -2231,7 +2316,8 @@
       },
       "heat": "spicy",
       "requiresConsent": true,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "staring-eyes"
     },
     {
       "id": "prev-147",
@@ -2247,7 +2333,8 @@
       },
       "heat": "spicy",
       "requiresConsent": false,
-      "reachesOutside": true
+      "reachesOutside": true,
+      "illustration": "mascot-broken-heart"
     },
     {
       "id": "prev-148",
@@ -2263,7 +2350,8 @@
       },
       "heat": "spicy",
       "requiresConsent": true,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "dance-shoes"
     },
     {
       "id": "prev-149",
@@ -2295,7 +2383,8 @@
       },
       "heat": "spicy",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-shh"
     },
     {
       "id": "prev-151",
@@ -2310,7 +2399,8 @@
       },
       "heat": "spicy",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-blushing"
     },
     {
       "id": "prev-152",
@@ -2326,7 +2416,7 @@
       "heat": "spicy",
       "requiresConsent": false,
       "reachesOutside": false,
-      "illustration": "mascot-surprised"
+      "illustration": "mascot-gossip"
     },
     {
       "id": "prev-153",
@@ -2341,7 +2431,8 @@
       },
       "heat": "spicy",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-rose"
     },
     {
       "id": "prev-154",
@@ -2356,7 +2447,8 @@
       },
       "heat": "spicy",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-blushing"
     },
     {
       "id": "prev-155",
@@ -2382,7 +2474,8 @@
       "body": "…he besado a alguien cuyo nombre no recordaba al otro día.",
       "heat": "spicy",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "heart-arrow"
     },
     {
       "id": "prev-157",
@@ -2392,7 +2485,8 @@
       "body": "…he vuelto con un ex después de jurar que no lo haría.",
       "heat": "spicy",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-broken-heart"
     },
     {
       "id": "prev-158",
@@ -2402,7 +2496,8 @@
       "body": "…he mandado un mensaje coqueto al chat equivocado.",
       "heat": "spicy",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-phone-shock"
     },
     {
       "id": "prev-159",
@@ -2413,7 +2508,8 @@
       "body": "Los que hayan besado a alguien de este grupo.",
       "heat": "spicy",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "heart-arrow"
     },
     {
       "id": "prev-160",
@@ -2424,7 +2520,8 @@
       "body": "Los que le hayan escrito a un ex en el último mes.",
       "heat": "spicy",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-broken-heart"
     },
     {
       "id": "prev-161",
@@ -2435,7 +2532,8 @@
       "body": "Los que hayan aceptado una cita solo por la comida gratis.",
       "heat": "spicy",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "pizza-slice"
     },
     {
       "id": "prev-162",
@@ -2468,7 +2566,8 @@
       },
       "heat": "spicy",
       "requiresConsent": true,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-kissing"
     },
     {
       "id": "prev-164",
@@ -2483,7 +2582,8 @@
       },
       "heat": "spicy",
       "requiresConsent": true,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-hug"
     },
     {
       "id": "prev-165",
@@ -2499,7 +2599,8 @@
       },
       "heat": "spicy",
       "requiresConsent": false,
-      "reachesOutside": true
+      "reachesOutside": true,
+      "illustration": "mascot-typing"
     },
     {
       "id": "prev-166",
@@ -2515,7 +2616,8 @@
       },
       "heat": "spicy",
       "requiresConsent": false,
-      "reachesOutside": true
+      "reachesOutside": true,
+      "illustration": "phone-ringing"
     },
     {
       "id": "prev-167",
@@ -2531,7 +2633,8 @@
       },
       "heat": "spicy",
       "requiresConsent": true,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "dance-shoes"
     },
     {
       "id": "prev-168",
@@ -2547,7 +2650,8 @@
       },
       "heat": "spicy",
       "requiresConsent": true,
-      "reachesOutside": true
+      "reachesOutside": true,
+      "illustration": "like-heart"
     },
     {
       "id": "prev-169",
@@ -2562,7 +2666,8 @@
       },
       "heat": "spicy",
       "requiresConsent": true,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-spa"
     },
     {
       "id": "prev-170",
@@ -2578,7 +2683,8 @@
       },
       "heat": "spicy",
       "requiresConsent": true,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-kissing"
     },
     {
       "id": "prev-171",
@@ -2594,7 +2700,8 @@
       },
       "heat": "spicy",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-telenovela"
     },
     {
       "id": "prev-172",
@@ -2610,7 +2717,8 @@
       },
       "heat": "spicy",
       "requiresConsent": true,
-      "reachesOutside": true
+      "reachesOutside": true,
+      "illustration": "profile-card"
     },
     {
       "id": "prev-173",
@@ -2626,7 +2734,8 @@
       },
       "heat": "spicy",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-posing"
     },
     {
       "id": "prev-174",
@@ -2642,7 +2751,8 @@
       },
       "heat": "spicy",
       "requiresConsent": false,
-      "reachesOutside": true
+      "reachesOutside": true,
+      "illustration": "mascot-broken-heart"
     },
     {
       "id": "prev-175",
@@ -2658,7 +2768,8 @@
       },
       "heat": "spicy",
       "requiresConsent": true,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-hug"
     },
     {
       "id": "prev-176",
@@ -2673,7 +2784,8 @@
       },
       "heat": "spicy",
       "requiresConsent": true,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-hug"
     },
     {
       "id": "prev-177",
@@ -2689,7 +2801,8 @@
       },
       "heat": "spicy",
       "requiresConsent": false,
-      "reachesOutside": true
+      "reachesOutside": true,
+      "illustration": "mascot-typing"
     },
     {
       "id": "prev-178",
@@ -2738,7 +2851,8 @@
       },
       "heat": "spicy",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-blushing"
     },
     {
       "id": "prev-181",
@@ -2753,7 +2867,8 @@
       },
       "heat": "spicy",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "disco-ball"
     },
     {
       "id": "prev-182",
@@ -2768,7 +2883,8 @@
       },
       "heat": "spicy",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-shh"
     },
     {
       "id": "prev-183",
@@ -2783,7 +2899,8 @@
       },
       "heat": "spicy",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-broken-heart"
     },
     {
       "id": "prev-184",
@@ -2798,7 +2915,8 @@
       },
       "heat": "spicy",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "disco-ball"
     },
     {
       "id": "prev-185",
@@ -2813,7 +2931,8 @@
       },
       "heat": "spicy",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-shh"
     },
     {
       "id": "prev-186",
@@ -2823,7 +2942,8 @@
       "body": "…he besado a dos personas en la misma noche.",
       "heat": "spicy",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "heart-arrow"
     },
     {
       "id": "prev-187",
@@ -2833,7 +2953,8 @@
       "body": "…he tenido algo con alguien de este grupo.",
       "heat": "spicy",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-shh"
     },
     {
       "id": "prev-188",
@@ -2843,7 +2964,8 @@
       "body": "…he dicho el nombre equivocado en un momento romántico.",
       "heat": "spicy",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-blushing"
     },
     {
       "id": "prev-189",
@@ -2854,7 +2976,8 @@
       "body": "Los que hayan tenido algo con alguien que sus amigos no aprobaban.",
       "heat": "spicy",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-shh"
     },
     {
       "id": "prev-190",
@@ -2865,7 +2988,8 @@
       "body": "Los que hayan tenido un romance de vacaciones que nadie conoce.",
       "heat": "spicy",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "heart-arrow"
     },
     {
       "id": "prev-191",
@@ -2876,7 +3000,8 @@
       "body": "Los que se hayan escapado de una fiesta con alguien.",
       "heat": "spicy",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "disco-ball"
     },
     {
       "id": "prev-192",

@@ -6,11 +6,13 @@ The playable build reads like a form: every card is text-only and nothing moves.
 
 ## What Changes
 
-- **Card illustration library (24 keys).** The legacy cast (mascot expressions and poses, neutral props, drink props, guest animals) is redrawn in the current brand as interim AI drafts: one new draft sheet in `docs/brand/references/`, cropped by `scripts/crop-brand-art.py` into transparent PNGs in `assets/images/brand/card-<key>.png`. Five keys reuse bundled mascot art and one comes from the existing expressions sheet. Legacy pieces that break brand or store rules are redesigned (diva, ringing phone) or dropped (police cap, Spain map pin, the mascot holding a drink).
+- **Card illustration library (60 keys).** A second and a third batch of 18 pieces each (2026-11-06, see below) follow the first 24. The legacy cast (mascot expressions and poses, neutral props, drink props, guest animals) is redrawn in the current brand as interim AI drafts: one new draft sheet in `docs/brand/references/`, cropped by `scripts/crop-brand-art.py` into transparent PNGs in `assets/images/brand/card-<key>.png`. Five keys reuse bundled mascot art and one comes from the existing expressions sheet. Legacy pieces that break brand or store rules are redesigned (diva, ringing phone) or dropped (police cap, Spain map pin, the mascot holding a drink).
 - **Illustration keys are a closed set.** `Card.illustration` narrows from free text to `IllustrationKey`; the content validator rejects an unknown key as an error, so shipped content can never point to missing art. **BREAKING** for any content file that sets a free-text `illustration` (none ship today).
 - **Illustrations on the turn card.** A card with a key shows its art centered below the text and notes, up to 120 pt tall, decorative (hidden from screen readers). Text always wins: when the art does not fit the visible card area, the card renders text-only and the turn buttons never move.
 - **Content tagging.** The launch catalog (`la-previa`, `entre-dos`) gets illustration keys by format and mood; every key is used, every level of each launch category has illustrated cards, recurring formats share one key. New cards are written with `write-cards` only where no existing card fits a key, and pass the HU-07 human review. The `write-cards` skill emits a valid key.
 - **Motion.** Clay buttons sink over 120 ms with a light haptic; each new card enters with a spring that settles within 450 ms; the level-up mascot tile grows with an overshoot in about 600 ms; the crowned winner mascot pops in once. Under Reduce Motion every entrance becomes a 200 ms fade and the press sinks instantly. **Modifies** the turn screen's "Level up … without motion" requirement.
+- **Second illustration batch (decision 2026-11-06).** The Expo Go check showed the same level face on most cards, because 180 of 285 cards had no key. Eighteen new pieces, chosen by the themes of those cards (romance, phone and social, acting, party), each cover several cards: `mascot-heart-eyes`, `mascot-shh`, `mascot-broken-heart`, `mascot-rose`, `mascot-hug`, `mascot-telenovela`, `mascot-fingers-crossed`, `mascot-thinking`, `mascot-megaphone`, `chat-bubbles`, `like-heart`, `heart-arrow`, `theater-masks`, `disco-ball`, `moon-stars`, `gift-box`, `ring-box`, `pizza-slice`. They come from a second Flow draft sheet with the same human gate, and the catalog is retagged so most cards carry their own key (the level face stays as the fallback).
+- **Variety (decision 2026-11-06).** Expo Go showed the same art on cards in a row (the points order groups similar cards). The game now prefers a next card whose illustration differs from the one on screen (`game-engine`), and a third batch of 18 more specific pieces splits the largest groups (chat 20 cards, arrow heart 20, like 19, hug 14): `voice-note`, `mascot-typing`, `emoji-faces`, `mascot-phone-shock`, `mascot-kissing`, `mascot-blushing`, `photo-camera`, `profile-card`, `photo-gallery`, `mascot-posing`, `mascot-spa`, `staring-eyes`, `stopwatch`, `rock-paper-scissors`, `dance-shoes`, `headphones-music`, `mascot-gossip`, `confetti`.
 - **Brand rule change.** The mascot may appear on the game card, but only in the illustration slot (amends `design-tokens.md` "never place the mascot on the game card").
 - **New dependency:** `expo-haptics` (Expo SDK 58 module).
 
@@ -24,19 +26,20 @@ Already done on `main` and kept as regression checks only: player avatars in set
 
 ### Modified Capabilities
 
-- `brand-art`: ADDED the card illustration library (24 keys, bundled art per key, decorative rendering, art rules).
+- `brand-art`: ADDED the card illustration library (60 keys, bundled art per key, decorative rendering, art rules).
 - `card-content`: ADDED illustration keys must come from the library (`unknownIllustration` error).
 - `launch-catalog`: ADDED illustration coverage of the shipped catalog (every key used, every level illustrated, recurring formats share a key).
 - `turn-screen`: ADDED card illustration slot with the "text wins" fallback, ADDED new-card entrance; MODIFIED Level up (the mascot tile grows instead of "without motion").
 - `final-ranking`: ADDED the winner mascot pop.
+- `game-engine`: ADDED consecutive cards show different illustrations.
 
 ## Impact
 
 - **Platforms:** iOS, Android, and web. Haptics fire on iOS and Android only.
 - **Native build:** `expo-haptics` is a native module. Expo Go already includes it, but store and development builds need a **new native build**; this change cannot ship by EAS Update alone. Android uses the haptics engine (`performAndroidHapticsAsync`), so the `VIBRATE` permission the module adds by default is blocked in `app.json` (see design).
 - **Code:** `src/features/content/` (card types, validator, catalog JSON), `src/components/ui/` (brand art, new illustration, press, entrance, and motion modules, `button.tsx`), `src/constants/theme.ts` (`Motion` tokens), new `src/hooks/use-reduce-motion.ts`, `src/features/play/` (card face, play screen, `ClayButton`, level-up overlay, new fit helper), `src/features/results/ranking-header.tsx`.
-- **Assets and tooling:** one new draft sheet, 19 new PNGs (budget under 1.5 MB), crop script tables. Pillow stays a throwaway dev tool.
+- **Assets and tooling:** three new draft sheets, 55 new PNGs (budget under 1.5 MB), crop script tables. Pillow stays a throwaway dev tool.
 - **Docs:** `docs/brand/README.md`, `docs/brand/design-tokens.md`, `docs/content/card-templates.md`, `docs/content/README.md`, `docs/data-model.md`, `ai-specs/skills/write-cards/SKILL.md`.
-- **Human gates:** the product owner generates and reviews the draft sheet before the 18 draft keys are coded; new cards pass the HU-07 content review.
+- **Human gates:** the product owner generates and reviews each draft sheet before its 18 draft keys are coded; new cards pass the HU-07 content review.
 - **Security and privacy:** no new data, storage, network calls, or runtime permission prompts. No auth, authz, or age-gate change, so no SECURITY REVIEW NEEDED. Compliance: drink props only on group toasts or shared-drink cards, the mascot never drinks or looks drunk (App Store 1.4.3, Google Play alcohol policy).
 - **Storage:** none. `Card.illustration` is bundled content only; `device.v1` and `GameSession` are unchanged.

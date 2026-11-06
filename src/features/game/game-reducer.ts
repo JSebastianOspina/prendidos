@@ -1,4 +1,5 @@
 import type { Card, Category } from '@/features/content/card-types';
+import { shownIllustrationFor } from '@/features/content/shown-illustration';
 
 import { drawCard, isGroupCard } from './card-selection';
 import { isGameOverAfterRound } from './end-condition';
@@ -39,6 +40,7 @@ type DrawOptions = {
 /** Draws the next card into the state; finishes the game when nothing can be drawn. */
 function withNextCard(session: GameSession, context: GameContext, options: DrawOptions): GameState {
   const { settings } = session;
+  const cardOnScreen = context.cards.find((card) => card.id === session.playedCardIds.at(-1));
   const drawn = drawCard({
     cards: context.cards,
     settings,
@@ -55,6 +57,7 @@ function withNextCard(session: GameSession, context: GameContext, options: DrawO
     previousCardWasGroup: options.previousCardWasGroup,
     excludeGroupCards: options.swapping !== undefined,
     excludedCardIds: options.swapping ? [options.swapping.id] : [],
+    avoidIllustration: cardOnScreen ? shownIllustrationFor(cardOnScreen) : undefined,
     random: context.environment.random,
   });
 

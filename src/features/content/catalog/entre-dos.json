@@ -40,7 +40,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-laugh"
     },
     {
       "id": "dos-003",
@@ -72,7 +73,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "theater-masks"
     },
     {
       "id": "dos-005",
@@ -148,18 +150,20 @@
       "body": "…he compartido una canción con alguien solo para que se acuerde de mí.",
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "headphones-music"
     },
     {
       "id": "dos-010",
       "categoryId": "entre-dos",
       "type": "everyoneWho",
       "difficulty": "easy",
+      "headline": "¡Todos!",
       "body": "Los que hayan dicho «te llamo» y no llamaron.",
       "heat": "standard",
       "requiresConsent": false,
       "reachesOutside": false,
-      "headline": "¡Todos!"
+      "illustration": "mascot-fingers-crossed"
     },
     {
       "id": "dos-011",
@@ -190,7 +194,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-heart-eyes"
     },
     {
       "id": "dos-013",
@@ -205,7 +210,8 @@
       },
       "heat": "standard",
       "requiresConsent": true,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-hug"
     },
     {
       "id": "dos-014",
@@ -221,7 +227,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "staring-eyes"
     },
     {
       "id": "dos-015",
@@ -252,7 +259,8 @@
       },
       "heat": "standard",
       "requiresConsent": true,
-      "reachesOutside": true
+      "reachesOutside": true,
+      "illustration": "photo-camera"
     },
     {
       "id": "dos-017",
@@ -268,7 +276,7 @@
       "heat": "standard",
       "requiresConsent": true,
       "reachesOutside": false,
-      "illustration": "mascot-dancing"
+      "illustration": "dance-shoes"
     },
     {
       "id": "dos-018",
@@ -284,7 +292,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-thinking"
     },
     {
       "id": "dos-019",
@@ -294,18 +303,20 @@
       "body": "…he escrito y borrado un mensaje de amor.",
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "chat-bubbles"
     },
     {
       "id": "dos-020",
       "categoryId": "entre-dos",
       "type": "everyoneWho",
       "difficulty": "medium",
+      "headline": "Todos los que…",
       "body": "Los que hayan olvidado una fecha importante con su pareja.",
       "heat": "standard",
       "requiresConsent": false,
       "reachesOutside": false,
-      "headline": "Todos los que…"
+      "illustration": "gift-box"
     },
     {
       "id": "dos-021",
@@ -336,7 +347,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-shh"
     },
     {
       "id": "dos-023",
@@ -352,7 +364,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-heart-eyes"
     },
     {
       "id": "dos-024",
@@ -367,7 +380,8 @@
       },
       "heat": "standard",
       "requiresConsent": true,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-kissing"
     },
     {
       "id": "dos-025",
@@ -383,7 +397,8 @@
       },
       "heat": "standard",
       "requiresConsent": true,
-      "reachesOutside": true
+      "reachesOutside": true,
+      "illustration": "like-heart"
     },
     {
       "id": "dos-026",
@@ -432,7 +447,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "stopwatch"
     },
     {
       "id": "dos-029",
@@ -442,18 +458,20 @@
       "body": "…he dicho «te quiero» primero.",
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-blushing"
     },
     {
       "id": "dos-030",
       "categoryId": "entre-dos",
       "type": "everyoneWho",
       "difficulty": "hard",
+      "headline": "¡Confiesen!",
       "body": "Los que alguna vez hayan fingido que no estaban celosos.",
       "heat": "standard",
       "requiresConsent": false,
       "reachesOutside": false,
-      "headline": "¡Confiesen!"
+      "illustration": "mascot-fingers-crossed"
     },
     {
       "id": "dos-031",
@@ -503,7 +521,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-megaphone"
     },
     {
       "id": "dos-034",
@@ -553,7 +572,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-megaphone"
     },
     {
       "id": "dos-037",
@@ -569,7 +589,7 @@
       "heat": "standard",
       "requiresConsent": false,
       "reachesOutside": false,
-      "illustration": "mascot-surprised"
+      "illustration": "photo-gallery"
     },
     {
       "id": "dos-038",
@@ -584,7 +604,8 @@
       },
       "heat": "standard",
       "requiresConsent": true,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-hug"
     },
     {
       "id": "dos-039",
@@ -600,7 +621,8 @@
       },
       "heat": "standard",
       "requiresConsent": true,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "rock-paper-scissors"
     },
     {
       "id": "dos-040",
@@ -616,7 +638,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-megaphone"
     },
     {
       "id": "dos-041",
@@ -632,7 +655,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": true
+      "reachesOutside": true,
+      "illustration": "mascot-typing"
     },
     {
       "id": "dos-042",
@@ -647,7 +671,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-thinking"
     },
     {
       "id": "dos-043",
@@ -678,7 +703,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "headphones-music"
     },
     {
       "id": "dos-045",
@@ -693,7 +719,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-thinking"
     },
     {
       "id": "dos-046",
@@ -719,7 +746,8 @@
       "body": "…he revisado las fotos viejas de mi pareja hasta llegar a la primera.",
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "photo-gallery"
     },
     {
       "id": "dos-048",
@@ -729,7 +757,8 @@
       "body": "…me he puesto ropa de mi pareja sin pedirla.",
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-tongue-out"
     },
     {
       "id": "dos-049",
@@ -740,7 +769,8 @@
       "body": "Los que tengan en el celular una foto de su pareja dormida.",
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "photo-gallery"
     },
     {
       "id": "dos-050",
@@ -751,7 +781,8 @@
       "body": "Los que hayan inventado una excusa para quedarse un rato más con alguien.",
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "heart-arrow"
     },
     {
       "id": "dos-051",
@@ -783,7 +814,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-thinking"
     },
     {
       "id": "dos-053",
@@ -799,7 +831,8 @@
       },
       "heat": "standard",
       "requiresConsent": true,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "dance-shoes"
     },
     {
       "id": "dos-054",
@@ -849,7 +882,7 @@
       "heat": "standard",
       "requiresConsent": false,
       "reachesOutside": false,
-      "illustration": "mascot-sunglasses"
+      "illustration": "photo-camera"
     },
     {
       "id": "dos-057",
@@ -882,7 +915,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "heart-arrow"
     },
     {
       "id": "dos-059",
@@ -897,7 +931,8 @@
       },
       "heat": "standard",
       "requiresConsent": true,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-hug"
     },
     {
       "id": "dos-060",
@@ -913,7 +948,8 @@
       },
       "heat": "standard",
       "requiresConsent": true,
-      "reachesOutside": true
+      "reachesOutside": true,
+      "illustration": "like-heart"
     },
     {
       "id": "dos-061",
@@ -978,7 +1014,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-blushing"
     },
     {
       "id": "dos-065",
@@ -993,7 +1030,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-heart-eyes"
     },
     {
       "id": "dos-066",
@@ -1019,7 +1057,8 @@
       "body": "…he ensayado frente al espejo lo que le iba a decir a alguien que me gustaba.",
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-blushing"
     },
     {
       "id": "dos-068",
@@ -1029,7 +1068,8 @@
       "body": "…he releído una conversación vieja solo para sonreír.",
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "chat-bubbles"
     },
     {
       "id": "dos-069",
@@ -1040,7 +1080,8 @@
       "body": "Los que hayan dicho «no pasa nada» cuando sí pasaba algo.",
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-fingers-crossed"
     },
     {
       "id": "dos-070",
@@ -1051,7 +1092,8 @@
       "body": "Los que hayan planeado una sorpresa que salió mal.",
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "gift-box"
     },
     {
       "id": "dos-071",
@@ -1084,7 +1126,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "ring-box"
     },
     {
       "id": "dos-073",
@@ -1101,7 +1144,7 @@
       "heat": "standard",
       "requiresConsent": true,
       "reachesOutside": false,
-      "illustration": "mascot-dancing"
+      "illustration": "dance-shoes"
     },
     {
       "id": "dos-074",
@@ -1117,7 +1160,8 @@
       },
       "heat": "standard",
       "requiresConsent": true,
-      "reachesOutside": true
+      "reachesOutside": true,
+      "illustration": "photo-camera"
     },
     {
       "id": "dos-075",
@@ -1133,7 +1177,8 @@
       },
       "heat": "standard",
       "requiresConsent": true,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "staring-eyes"
     },
     {
       "id": "dos-076",
@@ -1199,7 +1244,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-heart-eyes"
     },
     {
       "id": "dos-080",
@@ -1216,7 +1262,7 @@
       "heat": "standard",
       "requiresConsent": false,
       "reachesOutside": false,
-      "illustration": "mascot-laugh"
+      "illustration": "ring-box"
     },
     {
       "id": "dos-081",
@@ -1232,7 +1278,8 @@
       },
       "heat": "standard",
       "requiresConsent": true,
-      "reachesOutside": true
+      "reachesOutside": true,
+      "illustration": "profile-card"
     },
     {
       "id": "dos-082",
@@ -1248,7 +1295,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "theater-masks"
     },
     {
       "id": "dos-083",
@@ -1263,7 +1311,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-heart-eyes"
     },
     {
       "id": "dos-084",
@@ -1278,7 +1327,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "moon-stars"
     },
     {
       "id": "dos-085",
@@ -1293,7 +1343,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-broken-heart"
     },
     {
       "id": "dos-086",
@@ -1308,7 +1359,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-blushing"
     },
     {
       "id": "dos-087",
@@ -1318,7 +1370,8 @@
       "body": "…he planeado una cita entera en mi cabeza antes de atreverme a pedirla.",
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "moon-stars"
     },
     {
       "id": "dos-088",
@@ -1328,7 +1381,8 @@
       "body": "…he fingido que no me importaba un mensaje que me tenía feliz.",
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-fingers-crossed"
     },
     {
       "id": "dos-089",
@@ -1340,7 +1394,7 @@
       "heat": "standard",
       "requiresConsent": false,
       "reachesOutside": false,
-      "illustration": "mascot-surprised"
+      "illustration": "mascot-blushing"
     },
     {
       "id": "dos-090",
@@ -1351,7 +1405,8 @@
       "body": "Los que hayan guardado un recuerdo bobo de una cita: una boleta, un papelito o una servilleta.",
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "gift-box"
     },
     {
       "id": "dos-091",

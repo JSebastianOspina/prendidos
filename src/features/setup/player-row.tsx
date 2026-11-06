@@ -70,6 +70,7 @@ export function PlayerRow({
             </View>
           </Pressable>
           <TextInput
+            testID={`player-name-${position}`}
             accessibilityLabel={nameFieldLabel(position)}
             value={player.name}
             onChangeText={(name) => onChange({ ...player, name })}

@@ -110,11 +110,11 @@ export const cardIllustrationArt: Record<
   },
   'mascot-selfie': {
     source: require('../../../assets/images/brand/card-mascot-selfie.png'),
-    aspectRatio: 369 / 384,
+    aspectRatio: 375 / 384,
   },
   'mascot-diva': {
     source: require('../../../assets/images/brand/card-mascot-diva.png'),
-    aspectRatio: 380 / 384,
+    aspectRatio: 1,
   },
   'phone-ringing': {
     source: require('../../../assets/images/brand/card-phone-ringing.png'),
@@ -143,6 +143,150 @@ export const cardIllustrationArt: Record<
   'two-dogs': {
     source: require('../../../assets/images/brand/card-two-dogs.png'),
     aspectRatio: 410 / 384,
+  },
+  'mascot-heart-eyes': {
+    source: require('../../../assets/images/brand/card-mascot-heart-eyes.png'),
+    aspectRatio: 1,
+  },
+  'mascot-shh': {
+    source: require('../../../assets/images/brand/card-mascot-shh.png'),
+    aspectRatio: 310 / 384,
+  },
+  'mascot-broken-heart': {
+    source: require('../../../assets/images/brand/card-mascot-broken-heart.png'),
+    aspectRatio: 264 / 384,
+  },
+  'mascot-rose': {
+    source: require('../../../assets/images/brand/card-mascot-rose.png'),
+    aspectRatio: 367 / 384,
+  },
+  'mascot-hug': {
+    source: require('../../../assets/images/brand/card-mascot-hug.png'),
+    aspectRatio: 305 / 384,
+  },
+  'mascot-telenovela': {
+    source: require('../../../assets/images/brand/card-mascot-telenovela.png'),
+    aspectRatio: 350 / 384,
+  },
+  'mascot-fingers-crossed': {
+    source: require('../../../assets/images/brand/card-mascot-fingers-crossed.png'),
+    aspectRatio: 359 / 384,
+  },
+  'mascot-thinking': {
+    source: require('../../../assets/images/brand/card-mascot-thinking.png'),
+    aspectRatio: 304 / 384,
+  },
+  'mascot-megaphone': {
+    source: require('../../../assets/images/brand/card-mascot-megaphone.png'),
+    aspectRatio: 486 / 384,
+  },
+  'chat-bubbles': {
+    source: require('../../../assets/images/brand/card-chat-bubbles.png'),
+    aspectRatio: 242 / 384,
+  },
+  'like-heart': {
+    source: require('../../../assets/images/brand/card-like-heart.png'),
+    aspectRatio: 297 / 346,
+  },
+  'heart-arrow': {
+    source: require('../../../assets/images/brand/card-heart-arrow.png'),
+    aspectRatio: 416 / 351,
+  },
+  'theater-masks': {
+    source: require('../../../assets/images/brand/card-theater-masks.png'),
+    aspectRatio: 444 / 346,
+  },
+  'disco-ball': {
+    source: require('../../../assets/images/brand/card-disco-ball.png'),
+    aspectRatio: 366 / 384,
+  },
+  'moon-stars': {
+    source: require('../../../assets/images/brand/card-moon-stars.png'),
+    aspectRatio: 341 / 356,
+  },
+  'gift-box': {
+    source: require('../../../assets/images/brand/card-gift-box.png'),
+    aspectRatio: 338 / 366,
+  },
+  'ring-box': {
+    source: require('../../../assets/images/brand/card-ring-box.png'),
+    aspectRatio: 292 / 374,
+  },
+  'pizza-slice': {
+    source: require('../../../assets/images/brand/card-pizza-slice.png'),
+    aspectRatio: 384 / 345,
+  },
+  'voice-note': {
+    source: require('../../../assets/images/brand/card-voice-note.png'),
+    aspectRatio: 340 / 384,
+  },
+  'mascot-typing': {
+    source: require('../../../assets/images/brand/card-mascot-typing.png'),
+    aspectRatio: 347 / 384,
+  },
+  'emoji-faces': {
+    source: require('../../../assets/images/brand/card-emoji-faces.png'),
+    aspectRatio: 400 / 367,
+  },
+  'mascot-phone-shock': {
+    source: require('../../../assets/images/brand/card-mascot-phone-shock.png'),
+    aspectRatio: 271 / 384,
+  },
+  'mascot-kissing': {
+    source: require('../../../assets/images/brand/card-mascot-kissing.png'),
+    aspectRatio: 1,
+  },
+  'mascot-blushing': {
+    source: require('../../../assets/images/brand/card-mascot-blushing.png'),
+    aspectRatio: 283 / 384,
+  },
+  'photo-camera': {
+    source: require('../../../assets/images/brand/card-photo-camera.png'),
+    aspectRatio: 400 / 316,
+  },
+  'profile-card': {
+    source: require('../../../assets/images/brand/card-profile-card.png'),
+    aspectRatio: 407 / 259,
+  },
+  'photo-gallery': {
+    source: require('../../../assets/images/brand/card-photo-gallery.png'),
+    aspectRatio: 236 / 384,
+  },
+  'mascot-posing': {
+    source: require('../../../assets/images/brand/card-mascot-posing.png'),
+    aspectRatio: 333 / 384,
+  },
+  'mascot-spa': {
+    source: require('../../../assets/images/brand/card-mascot-spa.png'),
+    aspectRatio: 296 / 384,
+  },
+  'staring-eyes': {
+    source: require('../../../assets/images/brand/card-staring-eyes.png'),
+    aspectRatio: 334 / 246,
+  },
+  'stopwatch': {
+    source: require('../../../assets/images/brand/card-stopwatch.png'),
+    aspectRatio: 290 / 384,
+  },
+  'rock-paper-scissors': {
+    source: require('../../../assets/images/brand/card-rock-paper-scissors.png'),
+    aspectRatio: 414 / 306,
+  },
+  'dance-shoes': {
+    source: require('../../../assets/images/brand/card-dance-shoes.png'),
+    aspectRatio: 365 / 343,
+  },
+  'headphones-music': {
+    source: require('../../../assets/images/brand/card-headphones-music.png'),
+    aspectRatio: 347 / 328,
+  },
+  'mascot-gossip': {
+    source: require('../../../assets/images/brand/card-mascot-gossip.png'),
+    aspectRatio: 301 / 384,
+  },
+  'confetti': {
+    source: require('../../../assets/images/brand/card-confetti.png'),
+    aspectRatio: 356 / 379,
   },
 };
 

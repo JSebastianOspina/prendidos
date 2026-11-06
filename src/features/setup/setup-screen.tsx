@@ -150,7 +150,12 @@ export function SetupScreen({ random = Math.random }: SetupScreenProps) {
             {setupCopy.startFailed}
           </AppText>
         ) : null}
-        <Button size="turn" label={startButtonLabel(players.length)} onPress={start} />
+        <Button
+          size="turn"
+          label={startButtonLabel(players.length)}
+          onPress={start}
+          testID="start-game"
+        />
       </View>
     </ScreenContainer>
   );

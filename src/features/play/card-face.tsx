@@ -11,23 +11,33 @@ import { AppText } from '@/components/ui/app-text';
 import { CardIllustration } from '@/components/ui/card-illustration';
 import { levelLabels } from '@/components/ui/level-badge';
 import { PlayerAvatar } from '@/components/ui/player-avatar';
-import { BorderWidth, Colors, Fonts, LevelColors, Radius, Spacing } from '@/constants/theme';
+import {
+  BorderWidth,
+  CardTextSteps,
+  Colors,
+  Fonts,
+  LevelColors,
+  Radius,
+  Spacing,
+} from '@/constants/theme';
 import type {
   Card,
   GroupCard,
   IllustrationKey,
   IndividualCard,
 } from '@/features/content/card-types';
+import { shownIllustrationFor } from '@/features/content/shown-illustration';
 import type { Player, RenderedCard } from '@/features/game';
 
-import { penaltyLine, playCopy, pointsLabel } from './copy';
-import { cardIllustrationGap, cardIllustrationHeight, fitsIllustration } from './illustration-fit';
-import { PlayCard } from './play-pieces';
+import { initialCardFit, nextCardFit, type CardFitState } from './card-fit';
+import { playCopy, pointsLabel } from './copy';
+import { cardIllustrationGap, illustrationHeightFor } from './illustration-fit';
+import { PlayCard, playCardBodyGap } from './play-pieces';
 
 /** Small tilt from the proposal; individual cards lean left, group cards right. */
 const individualCardTilt = -1.5;
 const groupCardTilt = 1.5;
-const turnAvatarSize = 60;
+const turnAvatarSize = 48;
 
 type CardFaceProps = {
   card: Card;
@@ -42,10 +52,11 @@ export function CardFace({ card, copy, player }: CardFaceProps) {
   switch (card.type) {
     case 'challenge':
     case 'truth':
-      return <IndividualCardFace card={card} copy={copy} player={player} />;
+      // Keyed by card: every new card starts again at the largest body size, text-only.
+      return <IndividualCardFace key={card.id} card={card} copy={copy} player={player} />;
     case 'everyoneWho':
     case 'neverHaveIEver':
-      return <GroupCardFace card={card} copy={copy} />;
+      return <GroupCardFace key={card.id} card={card} copy={copy} />;
   }
 }
 
@@ -58,54 +69,67 @@ function CardNotes({ card, color }: { card: Card; color: string }) {
   );
 }
 
+type CardFit = {
+  /** Body size step that fits the visible card area (design tokens § Typography). */
+  bodyStyle: (typeof CardTextSteps)[number];
+  /** Illustration height for the space left under the text; `null` renders text-only. */
+  illustrationHeight: number | null;
+  onSlotLayout: (event: LayoutChangeEvent) => void;
+};
+
 /**
- * Free space below the card text, holding the card's illustration when it fits ("text wins").
- * The slot grows into the space left in the visible card area, and 0 when the text overflows.
- * The illustration is drawn out of the layout flow, so the slot always measures that free space
- * and the art can never push the text or the turn buttons. Every slot layout (a window-size or
- * font-scale change included) checks the fit again. Key it by card id: a new card starts
- * text-only until its slot is measured.
+ * Fits the card to the visible area from the illustration slot's height, the free space left
+ * under the text (0 when the card overflows): the body steps down 29 → 24 → 20 pt while the
+ * card overflows, and an illustrated card may take one more step when that gives its
+ * illustration at least 72 pt (`nextCardFit`, design D13). The caller keys the face by card id,
+ * so every new card starts again at the largest size.
+ */
+function useCardFit(illustration: IllustrationKey | undefined): CardFit {
+  const hasIllustration = illustration !== undefined;
+  const [fit, setFit] = useState<{ state: CardFitState; slotHeight?: number }>({
+    state: initialCardFit,
+  });
+
+  function onSlotLayout(event: LayoutChangeEvent) {
+    const slotHeight = event.nativeEvent.layout.height;
+    setFit((current) => ({
+      state: nextCardFit(current.state, slotHeight, hasIllustration),
+      slotHeight,
+    }));
+  }
+
+  return {
+    bodyStyle: CardTextSteps[fit.state.step],
+    illustrationHeight: fit.slotHeight === undefined ? null : illustrationHeightFor(fit.slotHeight),
+    onSlotLayout,
+  };
+}
+
+/**
+ * Free space below the card text, holding the card's illustration when there is room for it.
+ * The slot grows into the space left in the visible card area. The illustration is drawn out
+ * of the layout flow, so the slot always measures that free space and the art can never push
+ * the text or the turn buttons; every slot layout (a window-size or font-scale change
+ * included) checks the fit again.
  */
 function IllustrationSlot({
   illustration,
+  height,
+  onLayout,
   style,
 }: {
   illustration: IllustrationKey | undefined;
+  height: number | null;
+  onLayout: (event: LayoutChangeEvent) => void;
   style?: StyleProp<ViewStyle>;
 }) {
-  const [slotHeight, setSlotHeight] = useState<number>();
-  const isShown =
-    illustration !== undefined &&
-    slotHeight !== undefined &&
-    fitsIllustration({
-      slotHeight,
-      illustrationHeight: cardIllustrationHeight,
-      gap: cardIllustrationGap,
-    });
-
-  function handleLayout(event: LayoutChangeEvent) {
-    setSlotHeight(event.nativeEvent.layout.height);
-  }
-
   return (
-    <View testID="card-illustration-slot" style={[styles.illustrationSlot, style]} onLayout={handleLayout}>
-      {isShown ? (
+    <View testID="card-illustration-slot" style={[styles.illustrationSlot, style]} onLayout={onLayout}>
+      {illustration !== undefined && height !== null ? (
         <View testID="card-illustration-frame" style={styles.illustrationFrame} pointerEvents="none">
-          <CardIllustration illustration={illustration} height={cardIllustrationHeight} />
+          <CardIllustration illustration={illustration} height={height} />
         </View>
       ) : null}
-    </View>
-  );
-}
-
-function PenaltyFooter({ card, copy }: { card: IndividualCard; copy: RenderedCard }) {
-  // Until HU-11 adds alternative penalties, players who do not drink also see the drinks.
-  return (
-    <View style={styles.penaltyFooter}>
-      <AppText variant="label" color={Colors.textMuted}>
-        {playCopy.ifRefused}
-      </AppText>
-      <AppText style={styles.strong}>{penaltyLine(card.penalty.drinks, copy.penaltyQuip)}</AppText>
     </View>
   );
 }
@@ -121,13 +145,11 @@ export function IndividualCardFace({
 }) {
   const level = LevelColors[card.difficulty];
   const isChallenge = card.type === 'challenge';
+  const { bodyStyle, illustrationHeight, onSlotLayout } = useCardFit(card.illustration);
 
   return (
-    <PlayCard
-      fill={level.fill}
-      rotation={individualCardTilt}
-      footer={<PenaltyFooter card={card} copy={copy} />}
-    >
+    // No hint line (the type chip says it) and no penalty footer: the penalty is on the refuse action.
+    <PlayCard fill={level.fill} rotation={individualCardTilt}>
       <View style={styles.chipRow}>
         <View style={styles.chips}>
           <View style={[styles.chip, styles.typeChip]}>
@@ -155,7 +177,7 @@ export function IndividualCardFace({
             {playCopy.turnOf}
           </AppText>
           <AppText
-            variant="display"
+            variant="title"
             color={level.text}
             accessibilityRole="header"
             numberOfLines={1}
@@ -166,21 +188,19 @@ export function IndividualCardFace({
         </View>
       </View>
 
-      <AppText variant="label" color={level.text}>
-        {isChallenge ? playCopy.challengeHint : playCopy.truthHint}
-      </AppText>
       {copy.headline ? (
         <AppText variant="button" color={level.text}>
           {copy.headline}
         </AppText>
       ) : null}
-      <AppText variant="card" color={level.text}>
+      <AppText variant="card" color={level.text} style={bodyStyle}>
         {copy.body}
       </AppText>
       <CardNotes card={card} color={level.text} />
       <IllustrationSlot
-        key={card.id}
-        illustration={card.illustration}
+        illustration={shownIllustrationFor(card)}
+        height={illustrationHeight}
+        onLayout={onSlotLayout}
         style={styles.individualSlot}
       />
     </PlayCard>
@@ -188,6 +208,7 @@ export function IndividualCardFace({
 }
 
 export function GroupCardFace({ card, copy }: { card: GroupCard; copy: RenderedCard }) {
+  const { bodyStyle, illustrationHeight, onSlotLayout } = useCardFit(card.illustration);
   return (
     <PlayCard fill={Colors.flameYellow} rotation={groupCardTilt}>
       <View
@@ -200,9 +221,15 @@ export function GroupCardFace({ card, copy }: { card: GroupCard; copy: RenderedC
       <AppText variant="display" accessibilityRole="header">
         {copy.headline ?? playCopy.groupHeadlines[card.type]}
       </AppText>
-      <AppText variant="card">{copy.body}</AppText>
+      <AppText variant="card" style={bodyStyle}>
+        {copy.body}
+      </AppText>
       <CardNotes card={card} color={Colors.ink} />
-      <IllustrationSlot key={card.id} illustration={card.illustration} />
+      <IllustrationSlot
+        illustration={shownIllustrationFor(card)}
+        height={illustrationHeight}
+        onLayout={onSlotLayout}
+      />
       <View style={styles.ruleBox}>
         <AppText style={styles.strong}>{playCopy.groupRule}</AppText>
         <AppText color={Colors.textMuted}>{playCopy.groupRuleNote}</AppText>
@@ -243,8 +270,8 @@ const styles = StyleSheet.create({
   },
   pointsBadge: {
     flexShrink: 0,
-    minWidth: 56,
-    minHeight: 56,
+    minWidth: 48,
+    minHeight: 48,
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: Radius.pill,
@@ -264,21 +291,12 @@ const styles = StyleSheet.create({
   strong: {
     fontFamily: Fonts.nunitoExtraBold,
   },
-  penaltyFooter: {
-    backgroundColor: Colors.surface,
-    borderTopWidth: BorderWidth.regular,
-    borderTopColor: Colors.ink,
-    paddingHorizontal: Spacing.xl,
-    paddingTop: Spacing.lg,
-    paddingBottom: Spacing.gutter,
-    gap: Spacing.xs,
-  },
   illustrationSlot: {
     flexGrow: 1,
   },
   /** Cancels the card body gap, so an empty slot adds no height below overflowing text. */
   individualSlot: {
-    marginTop: -Spacing.md,
+    marginTop: -playCardBodyGap,
   },
   /** Out of the layout flow: centered in the slot, below a gap that keeps it off the text. */
   illustrationFrame: {

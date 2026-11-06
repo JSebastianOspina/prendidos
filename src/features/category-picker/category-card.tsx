@@ -31,6 +31,7 @@ export type CategoryCardProps = {
   onPress: () => void;
   /** Lock badge for paid content (HU-09); it takes the chip's corner when given. */
   lockBadge?: ReactNode;
+  testID?: string;
 };
 
 /** White clay card for one Amigos category: name, details, the three level bars. */
@@ -41,6 +42,7 @@ export function CategoryCard({
   isFree,
   onPress,
   lockBadge,
+  testID,
 }: CategoryCardProps) {
   const countSentence = `${categoryPickerCopy.cardCount(cardCount)}.`;
   const details = description ? `${description} ${countSentence}` : countSentence;
@@ -50,6 +52,7 @@ export function CategoryCard({
     <View style={surfaceCardStyles.wrapper}>
       <View style={surfaceCardStyles.shadow} />
       <Pressable
+        testID={testID}
         accessibilityRole="button"
         accessibilityLabel={accessibilityLabel}
         onPress={onPress}

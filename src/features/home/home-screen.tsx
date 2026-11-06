@@ -74,6 +74,7 @@ export function HomeScreen() {
         minHeight={friendsCardHeight}
         illustration={<FriendsIllustration style={styles.friendsArt} />}
         onPress={() => chooseMode('friends')}
+        testID="mode-friends"
       />
       <ModeCard
         title={homeCopy.modes.couple.title}
@@ -82,6 +83,7 @@ export function HomeScreen() {
         minHeight={coupleCardHeight}
         illustration={<CoupleIllustration style={styles.coupleArt} />}
         onPress={() => chooseMode('couple')}
+        testID="mode-couple"
       />
 
       <View style={styles.spacer} />

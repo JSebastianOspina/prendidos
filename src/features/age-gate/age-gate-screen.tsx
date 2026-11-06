@@ -50,7 +50,7 @@ export function AgeGateScreen() {
             </AppText>
           </View>
         ) : null}
-        <Button label={ageGateCopy.confirmAction} onPress={confirmAge} />
+        <Button label={ageGateCopy.confirmAction} onPress={confirmAge} testID="age-confirm" />
         <Pressable
           accessibilityRole="button"
           accessibilityLabel={ageGateCopy.declineAction}

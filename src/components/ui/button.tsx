@@ -29,6 +29,8 @@ export type ButtonProps = {
   disabled?: boolean;
   accessibilityLabel?: string;
   style?: StyleProp<ViewStyle>;
+  /** Stable selector for E2E flows (`.maestro/`). */
+  testID?: string;
 };
 
 const fillByVariant: Record<ButtonVariant, { background: string; text: string }> = {
@@ -50,6 +52,7 @@ export function Button({
   disabled = false,
   accessibilityLabel,
   style,
+  testID,
 }: ButtonProps) {
   const fill = fillByVariant[variant];
   const lastPressAt = useRef<number | undefined>(undefined);
@@ -75,6 +78,7 @@ export function Button({
     >
       <View style={[styles.shadow, { height, top: ShadowOffset.button }]} />
       <Pressable
+        testID={testID}
         accessibilityRole="button"
         accessibilityLabel={accessibilityLabel ?? label}
         accessibilityState={{ disabled }}

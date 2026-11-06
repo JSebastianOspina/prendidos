@@ -1,3 +1,7 @@
+/// <reference types="node" />
+import { existsSync, readFileSync } from 'node:fs';
+import { join } from 'node:path';
+
 import { render, screen } from '@testing-library/react-native';
 import { StyleSheet } from 'react-native';
 
@@ -58,7 +62,7 @@ describe('brand art', () => {
   });
 
   describe('card illustrations', () => {
-    it('holds exactly the 24 library keys of the brand-art spec, in library order', () => {
+    it('holds exactly the 60 library keys of the brand-art spec, in library order', () => {
       expect(illustrationKeys).toEqual([
         'mascot-wink',
         'mascot-relaxed',
@@ -84,12 +88,61 @@ describe('brand art', () => {
         'glasses-toasting',
         'rooster',
         'two-dogs',
+        'mascot-heart-eyes',
+        'mascot-shh',
+        'mascot-broken-heart',
+        'mascot-rose',
+        'mascot-hug',
+        'mascot-telenovela',
+        'mascot-fingers-crossed',
+        'mascot-thinking',
+        'mascot-megaphone',
+        'chat-bubbles',
+        'like-heart',
+        'heart-arrow',
+        'theater-masks',
+        'disco-ball',
+        'moon-stars',
+        'gift-box',
+        'ring-box',
+        'pizza-slice',
+        'voice-note',
+        'mascot-typing',
+        'emoji-faces',
+        'mascot-phone-shock',
+        'mascot-kissing',
+        'mascot-blushing',
+        'photo-camera',
+        'profile-card',
+        'photo-gallery',
+        'mascot-posing',
+        'mascot-spa',
+        'staring-eyes',
+        'stopwatch',
+        'rock-paper-scissors',
+        'dance-shoes',
+        'headphones-music',
+        'mascot-gossip',
+        'confetti',
       ]);
     });
 
     it.each(illustrationKeys)('has bundled art with a positive aspect ratio for %s', (key) => {
       expect(cardIllustrationArt[key].source).toBeDefined();
       expect(cardIllustrationArt[key].aspectRatio).toBeGreaterThan(0);
+    });
+
+    it('declares each card PNG with its real aspect ratio', () => {
+      const brandDir = join(__dirname, '../../../../assets/images/brand');
+      const mismatches = illustrationKeys
+        .filter((key) => existsSync(join(brandDir, `card-${key}.png`)))
+        .filter((key) => {
+          // PNG IHDR: width and height are big-endian 32-bit integers at bytes 16 and 20.
+          const header = readFileSync(join(brandDir, `card-${key}.png`));
+          const ratio = header.readUInt32BE(16) / header.readUInt32BE(20);
+          return Math.abs(cardIllustrationArt[key].aspectRatio - ratio) > 0.001;
+        });
+      expect(mismatches).toEqual([]);
     });
 
     it('reuses the mascot art for the mascot expressions', () => {
