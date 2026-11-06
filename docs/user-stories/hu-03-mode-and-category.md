@@ -4,7 +4,7 @@
 
 | Field      | Value                                                     |
 | ---------- | --------------------------------------------------------- |
-| Status     | Implemented (OpenSpec change archived, PR open)           |
+| Status     | Implemented (`openspec/changes/archive/2026-10-31-hu-03-mode-and-category`) |
 | Priority   | P0 — playable loop                                        |
 | Depends on | HU-00                                                     |
 | Blocks     | HU-09 (adds locks and paywall entry here)                 |

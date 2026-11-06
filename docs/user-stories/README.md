@@ -23,7 +23,7 @@ This README is the one technical document in the folder: it fixes **who owns whi
 | HU-12 | [Resume an interrupted game](./hu-12-resume-game.md)                         | C (later)    | HU-00, HU-02, HU-05          |
 | HU-13 | [Anonymous analytics](./hu-13-anonymous-analytics.md)                        | C (later)    | HU-00 … HU-06, HU-08         |
 | HU-14 | [Responsible-drinking messages](./hu-14-responsible-drinking-messages.md)    | C (later)    | HU-01, HU-06                 |
-| HU-15 | [Card illustrations and mascot](./hu-15-illustrations-and-mascot.md)         | C (later)    | HU-02, HU-05, HU-06, HU-07   |
+| HU-15 | [Card illustrations and mascot](./hu-15-illustrations-and-mascot.md) — Implemented, pending archive | C (later)    | HU-02, HU-05, HU-06, HU-07   |
 
 ## Execution plan (first playable build)
 

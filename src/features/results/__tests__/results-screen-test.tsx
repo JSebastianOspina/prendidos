@@ -1,6 +1,7 @@
-import { act, fireEvent, render, screen } from '@testing-library/react-native';
+import { act, fireEvent, render, screen, within } from '@testing-library/react-native';
 import Storage from 'expo-sqlite/kv-store';
 import { useEffect } from 'react';
+import { StyleSheet } from 'react-native';
 
 import { Colors } from '@/constants/theme';
 import type { Catalog } from '@/features/content/catalog';
@@ -18,6 +19,7 @@ import {
 } from '@/features/game';
 import { individualCard } from '@/features/game/__tests__/fixtures/game-fixtures';
 import { routes } from '@/features/navigation/routes';
+import { useReduceMotion } from '@/hooks/use-reduce-motion';
 
 import { ResultsScreen } from '../results-screen';
 
@@ -33,6 +35,10 @@ jest.mock('expo-router', () => ({
     return null;
   },
 }));
+
+jest.mock('@/hooks/use-reduce-motion', () => ({ useReduceMotion: jest.fn() }));
+
+const mockedUseReduceMotion = jest.mocked(useReduceMotion);
 
 const ana: Player = {
   id: 'p1',
@@ -135,6 +141,7 @@ async function finishGame(turns: TurnAction[], gameSettings: GameSettings = sett
 beforeEach(() => {
   Storage.clearSync();
   jest.clearAllMocks();
+  mockedUseReduceMotion.mockReturnValue(false);
 });
 
 describe('ResultsScreen', () => {
@@ -290,5 +297,28 @@ describe('ResultsScreen', () => {
     expect(mockDismissTo).toHaveBeenCalledTimes(1);
     expect(mockDismissTo).toHaveBeenCalledWith(routes.home);
     expect(mockRedirect).not.toHaveBeenCalled();
+  });
+
+  describe('winner mascot pop', () => {
+    it.each([false, true])('shows the same header with Reduce Motion %s', async (reduceMotion) => {
+      mockedUseReduceMotion.mockReturnValue(reduceMotion);
+      await renderResults();
+      await finishGame(['complete', 'refuse', 'refuse']);
+
+      expect(screen.getByRole('header', { name: '¡Ganó Ana!' })).toBeTruthy();
+      expect(screen.getByText('La Previa · Meta 100 pts')).toBeTruthy();
+      const crownedMascot = within(screen.getByTestId('winner-mascot-entrance'));
+      const mascot = crownedMascot.getByLabelText('Prendido, el gato, guiñando el ojo');
+      expect(StyleSheet.flatten(mascot.props.style)).toMatchObject({ width: 48, height: 48 });
+    });
+
+    it('animates only the crowned mascot in the header', async () => {
+      await renderResults();
+      await finishGame(['complete', 'refuse', 'refuse']);
+
+      const crownedMascot = within(screen.getByTestId('winner-mascot-entrance'));
+      expect(crownedMascot.queryByRole('header')).toBeNull();
+      expect(crownedMascot.queryByText('La Previa · Meta 100 pts')).toBeNull();
+    });
   });
 });

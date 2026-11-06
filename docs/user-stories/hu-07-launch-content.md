@@ -2,7 +2,7 @@
 
 | Field      | Value                                                         |
 | ---------- | ------------------------------------------------------------- |
-| Status     | Ready for enrichment                                          |
+| Status     | Implemented (`openspec/changes/archive/2026-10-31-hu-07-launch-content`) |
 | Priority   | P0 — playable loop (content, no screen)                       |
 | Depends on | HU-00 (catalog location and loader)                           |
 | Blocks     | —                                                             |

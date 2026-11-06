@@ -1,4 +1,5 @@
-import { render, screen } from '@testing-library/react-native';
+import { fireEvent, render, screen } from '@testing-library/react-native';
+import { StyleSheet } from 'react-native';
 
 import type { Card } from '@/features/content/card-types';
 import type { RenderedCard } from '@/features/game';
@@ -6,9 +7,27 @@ import { ana, groupCard, individualCard } from '@/features/game/__tests__/fixtur
 
 import { CardFace } from '../card-face';
 import { playCopy } from '../copy';
+import { cardIllustrationGap, cardIllustrationHeight } from '../illustration-fit';
 
 function copyFor(card: Card, overrides: Partial<RenderedCard> = {}): RenderedCard {
   return { card, headline: 'Hola campeona', body: 'Abrace a Beto.', ...overrides };
+}
+
+const roomForIllustration = cardIllustrationHeight + cardIllustrationGap;
+
+async function layOutSlot(height: number) {
+  await fireEvent(screen.getByTestId('card-illustration-slot'), 'layout', {
+    nativeEvent: { layout: { x: 0, y: 0, width: 300, height } },
+  });
+}
+
+function illustration() {
+  return screen.queryByTestId('card-illustration', { includeHiddenElements: true });
+}
+
+/** Position of a marker in the rendered tree, to check what sits above what. */
+function treeIndexOf(marker: string): number {
+  return JSON.stringify(screen.toJSON()).indexOf(marker);
 }
 
 describe('CardFace', () => {
@@ -106,5 +125,94 @@ describe('CardFace', () => {
     expect(screen.getByText('¡Bailen!')).toBeTruthy();
     expect(screen.queryByText(playCopy.groupHeadlines.everyoneWho)).toBeNull();
     expect(screen.getByText(playCopy.consentNote)).toBeTruthy();
+  });
+
+  describe('illustration slot', () => {
+    it('shows the illustration below the text and above the penalty footer once it fits', async () => {
+      const card = individualCard('i1', { illustration: 'mascot-laugh' });
+      await render(<CardFace card={card} copy={copyFor(card)} player={ana} />);
+      expect(illustration()).toBeNull();
+
+      await layOutSlot(roomForIllustration + 40);
+
+      expect(illustration()).not.toBeNull();
+      expect(treeIndexOf('Abrace a Beto.')).toBeLessThan(treeIndexOf('card-illustration"'));
+      expect(treeIndexOf('card-illustration"')).toBeLessThan(treeIndexOf(playCopy.ifRefused));
+    });
+
+    it('shows no illustration on a card without a key', async () => {
+      const card = individualCard('i2');
+      await render(<CardFace card={card} copy={copyFor(card)} player={ana} />);
+      await layOutSlot(400);
+      expect(illustration()).toBeNull();
+    });
+
+    it('renders text-only when the illustration does not fit', async () => {
+      const card = individualCard('i3', { illustration: 'mascot-laugh' });
+      await render(<CardFace card={card} copy={copyFor(card)} player={ana} />);
+      await layOutSlot(roomForIllustration - 1);
+      expect(illustration()).toBeNull();
+      expect(screen.getByText('Abrace a Beto.')).toBeTruthy();
+    });
+
+    it('keeps the illustration out of the accessibility tree', async () => {
+      const card = individualCard('i4', { illustration: 'mascot-surprised' });
+      await render(<CardFace card={card} copy={copyFor(card)} player={ana} />);
+      await layOutSlot(400);
+      expect(illustration()).not.toBeNull();
+      expect(screen.queryByTestId('card-illustration')).toBeNull();
+    });
+
+    it('applies the same rule to group cards, above the rule box', async () => {
+      const card = groupCard('g3', { illustration: 'mascot-wink' });
+      await render(<CardFace card={card} copy={{ card, headline: undefined, body: 'Todos.' }} player={ana} />);
+      expect(illustration()).toBeNull();
+
+      await layOutSlot(roomForIllustration - 1);
+      expect(illustration()).toBeNull();
+
+      await layOutSlot(roomForIllustration);
+      expect(illustration()).not.toBeNull();
+      expect(treeIndexOf('Todos.')).toBeLessThan(treeIndexOf('card-illustration"'));
+      expect(treeIndexOf('card-illustration"')).toBeLessThan(treeIndexOf(playCopy.groupRule));
+    });
+
+    it('hides the illustration again for a new card until its slot is measured', async () => {
+      const first = individualCard('i5', { illustration: 'mascot-laugh' });
+      const view = await render(<CardFace card={first} copy={copyFor(first)} player={ana} />);
+      await layOutSlot(400);
+      expect(illustration()).not.toBeNull();
+
+      const next = individualCard('i6', { illustration: 'mascot-smirk' });
+      await view.rerender(<CardFace card={next} copy={copyFor(next)} player={ana} />);
+      expect(illustration()).toBeNull();
+
+      await layOutSlot(400);
+      expect(illustration()).not.toBeNull();
+    });
+
+    it('checks the fit again on every slot layout, as when the window or font size changes', async () => {
+      const card = individualCard('i7', { illustration: 'mascot-laugh' });
+      await render(<CardFace card={card} copy={copyFor(card)} player={ana} />);
+      await layOutSlot(roomForIllustration);
+      expect(illustration()).not.toBeNull();
+
+      // Larger text or a shorter window leaves less room under the text.
+      await layOutSlot(roomForIllustration - 1);
+      expect(illustration()).toBeNull();
+
+      // Rotating or a smaller font gives the room back.
+      await layOutSlot(roomForIllustration + 80);
+      expect(illustration()).not.toBeNull();
+    });
+
+    it('draws the illustration out of the layout flow, so it never moves anything', async () => {
+      const card = individualCard('i8', { illustration: 'mascot-laugh' });
+      await render(<CardFace card={card} copy={copyFor(card)} player={ana} />);
+      await layOutSlot(400);
+
+      const frame = screen.getByTestId('card-illustration-frame', { includeHiddenElements: true });
+      expect(StyleSheet.flatten(frame.props.style)).toMatchObject({ position: 'absolute' });
+    });
   });
 });

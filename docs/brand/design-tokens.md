@@ -109,14 +109,29 @@ Android elevation cannot draw a hard offset shadow. Build it as an `ink` layer b
 
 ## Motion
 
-| Moment                | Spec                                                         |
-| --------------------- | ------------------------------------------------------------ |
-| Press                 | 120 ms move down + light haptic                              |
-| New card              | Spring with a small overshoot, 300–450 ms                    |
-| Level up              | Mascot flame grows, about 600 ms; the emotional peak of a game |
-| Reduced motion        | Fades only                                                    |
+| Moment          | Spec                                                                                         | Token (`Motion` in `src/constants/theme.ts`) |
+| --------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------- |
+| Press           | Clay face sinks by `PressedTravel` over 120 ms on press-in, comes back on release, one light haptic | `pressDurationMs: 120`                |
+| New card        | Spring with a small overshoot (rises 24 pt, fades in) that settles within 450 ms; swapped cards too | `cardEnterMaxMs: 450`, `cardSpring`   |
+| Level up        | Mascot tile grows from small to full size with an overshoot, about 600 ms; the emotional peak of a game. The interim art has no separate flame layer, so the whole face grows | `levelUpDurationMs: 600`, `celebrationSpring` |
+| Winner          | Crowned ranking mascot pops in once (spring, ≤ 450 ms), stays 48 pt                          | `cardSpring`                                 |
+| Reduced motion  | Every entrance becomes a 200 ms opacity fade with no movement or scaling; the press shows its sunk state instantly | `reducedFadeMs: 200`        |
 
-Animate at most one or two elements per screen.
+Springs use Reanimated's duration-based config, whose `duration` is perceptual: the spring settles in 1.5 × it. `cardSpring` is `{ duration: 300, dampingRatio: 0.75 }` (settles in 450 ms, small overshoot) and `celebrationSpring` is `{ duration: 400, dampingRatio: 0.55 }` (settles in 600 ms, bigger overshoot). A new card rises 24 pt; the level-up mascot tile grows from 0.4 and the winner mascot from 0.6 of its size.
+
+Animate at most one or two elements per screen. Animations run on the UI thread (Reanimated) and never delay a tap: controls outside an animating element stay usable while it moves.
+
+**Reduce Motion** follows the system setting (iOS "Reduce Motion", Android "Remove animations") live, through one hook (`useReduceMotion`). Screens show the same content with it on or off.
+
+**Haptics** (press only, never a motion substitute, so they still fire under Reduce Motion):
+
+| Platform | Call                                                        |
+| -------- | ----------------------------------------------------------- |
+| iOS      | `impactAsync(ImpactFeedbackStyle.Light)`                    |
+| Android  | `performAndroidHapticsAsync(AndroidHaptics.Virtual_Key)` (no `VIBRATE` permission; it is blocked in `app.json`) |
+| Web      | None                                                        |
+
+A haptic is fire-and-forget: if the device cannot play it (Low Power Mode, haptics off, an error), the press still runs.
 
 ## Mascot Usage in the UI
 
@@ -127,7 +142,7 @@ Character traits come from [`README.md`](./README.md). UI-specific rules:
 - **Brand red:** the cat sits on `brandRed` in the app icon, the splash, the home logo tile, and the level-up screen. The home header itself stays on `background`: a full-width red band was tried and rejected as too heavy.
 - **Attitude:** never use the drowsy or drunk-looking expressions (`4` and both `7` in `references/mascot-expressions-ai-draft.jpg`).
 - **Small sizes:** at 48 px the silhouette (ears, flame, white head) still reads, but the wink and whiskers do not. Request a simplified icon for 48 px and below.
-- **Interim art:** the AI drafts ship in the app as interim art until the vector redraw (`README.md`, decision of 2026-10-31). Show them through `Mascot` (art `wink`, `laugh`, `relaxed`, `smirk`, `pointing`, `icon`), never as raw image files. The "PLACEHOLDER IA" tags in the proposal are annotations, not UI.
+- **Interim art:** the AI drafts ship in the app as interim art until the vector redraw (`README.md`, decision of 2026-10-31). Show them through `Mascot` (art `wink`, `laugh`, `relaxed`, `smirk`, `pointing`, `icon`) and card illustrations through `CardIllustration` (the 24 library keys), never as raw image files. The "PLACEHOLDER IA" tags in the proposal are annotations, not UI.
 
 ### Flame by level (level-up screen)
 
@@ -147,8 +162,9 @@ Character traits come from [`README.md`](./README.md). UI-specific rules:
 | Level up                 | Cat whose flame grows with the level        | New flame sizes needed         |
 | Final ranking            | Small winking cat with a crown (48 px); never larger than the podium avatars | Crown art needed |
 | `Pareja` paywall         | Smirking face                               | Reference exists               |
+| Game card                | Card illustration library piece, in the illustration slot only | Interim art (HU-15)  |
 
-Never place the mascot on the game card: the card text and the player's name come first.
+On the game card the mascot appears **only in the illustration slot**: centered below the card text and notes, at most 120 pt tall, decorative, and only when it fits the visible card area. When it does not fit, the card renders text-only: the card text and the player's name always come first (HU-15, decision of 2026-11-05; library in [`README.md`](./README.md#card-illustration-library)).
 
 ## Player Avatars in the UI
 

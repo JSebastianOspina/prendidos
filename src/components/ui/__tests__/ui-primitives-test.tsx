@@ -1,4 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/react-native';
+import * as Haptics from 'expo-haptics';
+import { Platform, StyleSheet } from 'react-native';
 
 import { Button, repeatedPressWindowMs } from '../button';
 import { CardFrame } from '../card-frame';
@@ -6,7 +8,25 @@ import { LevelBadge } from '../level-badge';
 import { PlaceholderScreen } from '../placeholder-screen';
 import { AppText } from '../app-text';
 
+jest.mock('expo-haptics', () => ({
+  impactAsync: jest.fn(() => Promise.resolve()),
+  performAndroidHapticsAsync: jest.fn(() => Promise.resolve()),
+  ImpactFeedbackStyle: { Light: 'light' },
+  AndroidHaptics: { Virtual_Key: 'virtual-key' },
+}));
+
 describe('UI primitives', () => {
+  it('plays one light haptic when a clay button is pressed on a phone, keeping the hit area still', async () => {
+    jest.replaceProperty(Platform, 'OS', 'ios');
+    await render(<Button label="¡Cumplió!" onPress={jest.fn()} />);
+    const button = screen.getByRole('button', { name: '¡Cumplió!' });
+
+    await fireEvent(button, 'pressIn');
+    expect(Haptics.impactAsync).toHaveBeenCalledTimes(1);
+    expect(StyleSheet.flatten(button.props.style)?.transform).toBeUndefined();
+    jest.restoreAllMocks();
+  });
+
   it('presses a button by its label', async () => {
     const onPress = jest.fn();
     await render(<Button label="¡Cumplió!" onPress={onPress} />);

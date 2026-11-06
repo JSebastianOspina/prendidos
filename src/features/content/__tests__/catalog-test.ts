@@ -1,3 +1,4 @@
+import { allDifficulties, illustrationKeys, type IllustrationKey } from '../card-types';
 import { hasErrors, validateCards } from '../validate-cards';
 import {
   buildCatalog,
@@ -80,6 +81,62 @@ describe('shipped catalog', () => {
 
   it('lists warnings for the content reviewer', () => {
     expect(Array.isArray(contentWarnings())).toBe(true);
+  });
+});
+
+/** Recurring formats share one illustration (launch-catalog spec), matched by headline start. */
+const formatIllustrations: readonly { headline: RegExp; illustration: string }[] = [
+  { headline: /^cultura time/i, illustration: 'mascot-monocle' },
+  { headline: /^historytime/i, illustration: 'mascot-reading-book' },
+  { headline: /^momento sad/i, illustration: 'mascot-sad-map-pin' },
+];
+
+function isLibraryKey(key: string): key is IllustrationKey {
+  return (illustrationKeys as readonly string[]).includes(key);
+}
+
+describe('shipped catalog illustrations', () => {
+  it('uses every illustration library key at least once', () => {
+    const used = new Set(loadCatalog().cards.map((card) => card.illustration));
+    const unused = illustrationKeys.filter((key) => !used.has(key));
+    expect(unused).toEqual([]);
+  });
+
+  it.each(['la-previa', 'entre-dos'])('has illustrated cards in every level of %s', (categoryId) => {
+    const { cards } = loadCatalog();
+    for (const difficulty of allDifficulties) {
+      const illustrated = cards.filter(
+        (card) =>
+          card.categoryId === categoryId &&
+          card.difficulty === difficulty &&
+          card.illustration !== undefined,
+      ).length;
+      expect({ difficulty, hasIllustrated: illustrated > 0 }).toEqual({
+        difficulty,
+        hasIllustrated: true,
+      });
+    }
+  });
+
+  it('puts drink props only on group cards, where the group rule is the shared drink', () => {
+    const drinkProps: readonly string[] = ['shot-glass-on-fire', 'glasses-toasting'];
+    const misplaced = loadCatalog()
+      .cards.filter((card) => card.illustration !== undefined && drinkProps.includes(card.illustration))
+      .filter((card) => card.type !== 'everyoneWho' && card.type !== 'neverHaveIEver')
+      .map((card) => card.id);
+    expect(misplaced).toEqual([]);
+  });
+
+  it('gives every card of a recurring format its format key, once that key exists', () => {
+    const { cards } = loadCatalog();
+    const formatsWithArt = formatIllustrations.filter(({ illustration }) => isLibraryKey(illustration));
+    for (const { headline, illustration } of formatsWithArt) {
+      const formatCards = cards.filter((card) => card.headline !== undefined && headline.test(card.headline));
+      expect(formatCards.length).toBeGreaterThan(0);
+      for (const card of formatCards) {
+        expect({ id: card.id, illustration: card.illustration }).toEqual({ id: card.id, illustration });
+      }
+    }
   });
 });
 

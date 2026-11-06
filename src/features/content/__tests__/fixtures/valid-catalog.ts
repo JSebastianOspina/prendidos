@@ -56,7 +56,7 @@ export const validTruth: Card = {
   heat: 'standard',
   requiresConsent: false,
   reachesOutside: false,
-  illustration: 'mascot-glasses-reading',
+  illustration: 'mascot-relaxed',
 };
 
 export const validGroupCard: Card = {

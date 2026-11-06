@@ -1,9 +1,11 @@
 import { render, screen } from '@testing-library/react-native';
 import { StyleSheet } from 'react-native';
 
+import { illustrationKeys } from '@/features/content/card-types';
 import { avatarIds } from '@/features/game/avatars';
 
-import { avatarArt, mascotArt, mascotForLevel } from '../brand-art';
+import { avatarArt, cardIllustrationArt, mascotArt, mascotForLevel } from '../brand-art';
+import { CardIllustration } from '../card-illustration';
 import { Mascot } from '../mascot';
 import { PlayerAvatar } from '../player-avatar';
 
@@ -53,5 +55,80 @@ describe('brand art', () => {
   it('hides an unnamed avatar from screen readers', async () => {
     await render(<PlayerAvatar avatarId="avatar-01" size={32} />);
     expect(screen.queryByLabelText(/Avatar/)).toBeNull();
+  });
+
+  describe('card illustrations', () => {
+    it('holds exactly the 24 library keys of the brand-art spec, in library order', () => {
+      expect(illustrationKeys).toEqual([
+        'mascot-wink',
+        'mascot-relaxed',
+        'mascot-smirk',
+        'mascot-laugh',
+        'mascot-pointing',
+        'mascot-surprised',
+        'mascot-monocle',
+        'mascot-reading-book',
+        'mascot-crying',
+        'mascot-sad-map-pin',
+        'mascot-blowing-kiss',
+        'mascot-sunglasses',
+        'mascot-dancing',
+        'mascot-tongue-out',
+        'mascot-annoyed',
+        'mascot-selfie',
+        'mascot-diva',
+        'phone-ringing',
+        'microphone',
+        'animal-wheel',
+        'shot-glass-on-fire',
+        'glasses-toasting',
+        'rooster',
+        'two-dogs',
+      ]);
+    });
+
+    it.each(illustrationKeys)('has bundled art with a positive aspect ratio for %s', (key) => {
+      expect(cardIllustrationArt[key].source).toBeDefined();
+      expect(cardIllustrationArt[key].aspectRatio).toBeGreaterThan(0);
+    });
+
+    it('reuses the mascot art for the mascot expressions', () => {
+      expect(cardIllustrationArt['mascot-wink'].source).toBe(mascotArt.wink.source);
+      expect(cardIllustrationArt['mascot-pointing']).toMatchObject({
+        source: mascotArt.pointing.source,
+        aspectRatio: mascotArt.pointing.aspectRatio,
+      });
+    });
+
+    it('shows the non-square dancing piece 120 pt tall at its own proportions', async () => {
+      await render(<CardIllustration illustration="mascot-dancing" height={120} />);
+      const image = screen.getByTestId('card-illustration', { includeHiddenElements: true });
+      expect(StyleSheet.flatten(image.props.style)).toEqual({
+        height: 120,
+        width: Math.round(120 * cardIllustrationArt['mascot-dancing'].aspectRatio),
+      });
+      expect(cardIllustrationArt['mascot-dancing'].aspectRatio).not.toBe(1);
+    });
+
+    it('sizes the width from the height and the aspect ratio', async () => {
+      await render(<CardIllustration illustration="mascot-pointing" height={120} />);
+      const image = screen.getByTestId('card-illustration', { includeHiddenElements: true });
+      expect(StyleSheet.flatten(image.props.style)).toMatchObject({
+        height: 120,
+        width: Math.round(120 * mascotArt.pointing.aspectRatio),
+      });
+      expect(image.props.contentFit).toBe('contain');
+    });
+
+    it('is hidden from screen readers', async () => {
+      await render(<CardIllustration illustration="mascot-surprised" height={120} />);
+      expect(screen.queryByTestId('card-illustration')).toBeNull();
+      const image = screen.getByTestId('card-illustration', { includeHiddenElements: true });
+      expect(image.props).toMatchObject({
+        accessible: false,
+        accessibilityElementsHidden: true,
+        importantForAccessibility: 'no-hide-descendants',
+      });
+    });
   });
 });

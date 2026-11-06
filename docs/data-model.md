@@ -87,7 +87,7 @@ Sin Filtro is not a category: it is the `spicy` heat layer inside `friends` cate
 | `heat`            | Heat             | Yes                  | `standard` \| `spicy`; `spicy` only in `friends` categories                                   |
 | `requiresConsent` | boolean          | Yes                  | The card involves touch; the app shows "Solo si la otra persona acepta"                      |
 | `reachesOutside`  | boolean          | Yes                  | Calls, messages, or posts; the app shows the outside-contact rules                           |
-| `illustration`    | string           | No                   | Key into the bundled illustration library                                                     |
+| `illustration`    | IllustrationKey  | No                   | Key into the bundled card illustration library (`illustrationKeys` in `card-types.ts`); any other value is an `unknownIllustration` validation error |
 | `targetGender`    | `male` \| `female` | No                 | When set, the card targets (or mentions) a player of that gender; skipped if none is eligible |
 | `sourceLegacyId`  | string           | No                   | Legacy card this one rewrites (`docs/content/legacy/legacy-challenges.json`)                 |
 

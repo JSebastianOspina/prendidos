@@ -35,7 +35,7 @@ describe('standardCardCounts', () => {
   });
 
   it('reads the shipped catalog by default', () => {
-    expect(standardCardCounts('entre-dos')).toEqual({ easy: 30, medium: 30, hard: 30 });
+    expect(standardCardCounts('entre-dos')).toEqual({ easy: 30, medium: 31, hard: 30 });
   });
 
   it('adds the levels up', () => {

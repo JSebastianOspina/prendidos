@@ -2,7 +2,7 @@
 
 | Field      | Value                                   |
 | ---------- | --------------------------------------- |
-| Status     | Implemented (PR open)                   |
+| Status     | Implemented (`openspec/changes/archive/2026-10-31-hu-06-final-ranking`) |
 | Priority   | P0 — playable loop                      |
 | Depends on | HU-00                                   |
 | Blocks     | HU-09 (adds the upsell here), HU-14     |

@@ -5,6 +5,7 @@ Sources: `docs/prd.md` §5.8, §6.3, §8; App Store Review Guidelines 1.1.4 (no 
 **Mechanical rules are enforced in code.** `validateCards` (`src/features/content/validate-cards.ts`, spec `card-content`) reports **errors**, which must be fixed:
 
 - IDs (unique slugs), known fields only (authoring notes `rationale`, `selfCheck`, `illustrationIdea` are allowed), `null` treated as unset
+- `illustration`, when set, is a card illustration library key (`illustrationKeys`); any other value is an `unknownIllustration` error, a blank one a `missingField` error
 - Required fields per card type, non-blank text, points within the level range, `penalty.drinks` 1–3 with only `drinks` and a non-blank `quip`, no points or penalty on group cards
 - Copy length in the longest variant: headline ≤ 45, body ≤ 240, quip ≤ 30 characters
 - `spicy` only in `friends` categories; placeholder and `{m|f|n}` variant syntax; no placeholders in group cards (their variants render neutral); `targetGender` male or female

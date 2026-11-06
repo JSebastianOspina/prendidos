@@ -1,5 +1,5 @@
 import legacyCorpus from '../../../../docs/content/legacy/legacy-challenges.json';
-import { copyLengthLimits } from '../card-types';
+import { copyLengthLimits, illustrationKeys } from '../card-types';
 import { hasErrors, validateCards, type CardInput } from '../validate-cards';
 import {
   validCards,
@@ -333,6 +333,32 @@ describe('validateCards', () => {
 
     it('flags points that are not a number as an invalid field', () => {
       expect(rulesOf({ ...validChallenge, points: '10' })).toEqual(['invalidField']);
+    });
+  });
+
+  describe('illustration', () => {
+    it('flags an unknown illustration key as an error naming it', () => {
+      const violations = validateOne({ ...validChallenge, illustration: 'police-cap' });
+      expect(violations).toEqual([
+        expect.objectContaining({ subjectId: 'prev-001', rule: 'unknownIllustration', severity: 'error' }),
+      ]);
+      expect(violations[0].message).toContain('police-cap');
+    });
+
+    it.each(illustrationKeys)('accepts the library key %s', (illustration) => {
+      expect(rulesOf({ ...validChallenge, illustration })).toEqual([]);
+    });
+
+    it('accepts a library key on a group card', () => {
+      expect(rulesOf({ ...validGroupCard, illustration: illustrationKeys[0] })).toEqual([]);
+    });
+
+    it('flags a blank illustration as a missing field', () => {
+      expect(rulesOf({ ...validChallenge, illustration: '  ' })).toEqual(['missingField']);
+    });
+
+    it.each([null, undefined])('accepts an illustration set to %s', (illustration) => {
+      expect(rulesOf({ ...validChallenge, illustration })).toEqual([]);
     });
   });
 

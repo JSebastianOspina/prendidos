@@ -2,7 +2,7 @@
 
 | Field      | Value                                                            |
 | ---------- | ---------------------------------------------------------------- |
-| Status     | Ready for enrichment                                             |
+| Status     | Implemented (`openspec/changes/archive/2026-10-31-hu-00-game-foundation`) |
 | Priority   | P0 — blocks every other story                                    |
 | Depends on | `card-content-model` (archived, merged into `main` in PR #6)     |
 | Blocks     | HU-01 … HU-15                                                    |

@@ -4,9 +4,10 @@ import { ScrollView, StyleSheet, View } from 'react-native';
 
 import { AppText } from '@/components/ui/app-text';
 import { Button } from '@/components/ui/button';
+import { Entrance } from '@/components/ui/entrance';
 import { PlayerAvatar } from '@/components/ui/player-avatar';
 import { ScreenContainer } from '@/components/ui/screen-container';
-import { Colors, Fonts, Spacing, TouchTarget } from '@/constants/theme';
+import { Colors, Fonts, Motion, Spacing, TouchTarget } from '@/constants/theme';
 import type { Difficulty } from '@/features/content/card-types';
 import { allDifficulties, refusalPenaltyPoints, useGame, type Player } from '@/features/game';
 import { routes } from '@/features/navigation/routes';
@@ -165,7 +166,16 @@ export function PlayScreen() {
 
           <ScrollView style={styles.cardArea} contentContainerStyle={styles.cardContent}>
             {currentCard && currentCardCopy && currentPlayer ? (
-              <CardFace card={currentCard} copy={currentCardCopy} player={currentPlayer} />
+              // Keyed by card: every new, group, or swapped card plays its own entrance.
+              <Entrance
+                key={currentCard.id}
+                from="below"
+                spring={Motion.cardSpring}
+                style={styles.cardEntrance}
+                testID="card-entrance"
+              >
+                <CardFace card={currentCard} copy={currentCardCopy} player={currentPlayer} />
+              </Entrance>
             ) : null}
           </ScrollView>
 
@@ -262,6 +272,10 @@ const styles = StyleSheet.create({
     // Room for the tilted card's corners and its hard shadow inside the scroll bounds.
     paddingHorizontal: Spacing.sm,
     paddingVertical: Spacing.sm,
+  },
+  /** Keeps the card growing to fill the visible card area, as without the entrance. */
+  cardEntrance: {
+    flexGrow: 1,
   },
   actions: {
     flexDirection: 'row',

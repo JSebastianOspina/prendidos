@@ -1,5 +1,6 @@
 import { useRef } from 'react';
 import { Pressable, StyleSheet, View, type StyleProp, type ViewStyle } from 'react-native';
+import Animated from 'react-native-reanimated';
 
 import {
   BorderWidth,
@@ -12,6 +13,7 @@ import {
 } from '@/constants/theme';
 
 import { AppText } from './app-text';
+import { usePressFeedback } from './use-press-feedback';
 
 /** Presses closer than this to the previous one are ignored (no double navigation or double turn). */
 export const repeatedPressWindowMs = 600;
@@ -36,7 +38,10 @@ const fillByVariant: Record<ButtonVariant, { background: string; text: string }>
   onBrand: { background: Colors.white, text: Colors.ink },
 };
 
-/** Chunky clay button: ink outline and a hard shadow layer; the piece sinks when pressed. */
+/**
+ * Chunky clay button: ink outline and a hard shadow layer. The `Pressable` is the static hit
+ * area; only the face inside it sinks when pressed (`usePressFeedback`).
+ */
 export function Button({
   label,
   onPress,
@@ -48,6 +53,7 @@ export function Button({
 }: ButtonProps) {
   const fill = fillByVariant[variant];
   const lastPressAt = useRef<number | undefined>(undefined);
+  const { onPressIn, onPressOut, animatedFaceStyle } = usePressFeedback({ travel: PressedTravel });
 
   const handlePress = () => {
     const now = Date.now();
@@ -74,15 +80,17 @@ export function Button({
         accessibilityState={{ disabled }}
         disabled={disabled}
         onPress={handlePress}
-        style={({ pressed }) => [
-          styles.face,
-          { height, backgroundColor: fill.background },
-          pressed && { transform: [{ translateY: PressedTravel }] },
-        ]}
+        onPressIn={onPressIn}
+        onPressOut={onPressOut}
+        style={{ height }}
       >
-        <AppText variant="button" color={fill.text}>
-          {label}
-        </AppText>
+        <Animated.View
+          style={[styles.face, { backgroundColor: fill.background }, animatedFaceStyle]}
+        >
+          <AppText variant="button" color={fill.text}>
+            {label}
+          </AppText>
+        </Animated.View>
       </Pressable>
     </View>
   );
@@ -100,6 +108,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.ink,
   },
   face: {
+    flex: 1,
     borderRadius: Radius.lg,
     borderWidth: BorderWidth.regular,
     borderColor: Colors.ink,

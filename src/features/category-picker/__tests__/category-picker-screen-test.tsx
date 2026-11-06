@@ -111,7 +111,7 @@ describe('CategoryPickerScreen in Pareja', () => {
     await renderCategoryScreen('couple');
     expect(screen.getByText('Entre Dos')).toBeTruthy();
     expect(screen.getByLabelText('Suave. Gratis · 30 cartas')).toBeTruthy();
-    expect(screen.getByLabelText('Picante. 30 cartas')).toBeTruthy();
+    expect(screen.getByLabelText('Picante. 31 cartas')).toBeTruthy();
     expect(screen.getByLabelText('Prendido. 30 cartas')).toBeTruthy();
   });
 

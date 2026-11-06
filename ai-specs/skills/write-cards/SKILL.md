@@ -61,11 +61,13 @@ Return a JSON array. One object per card:
   "requiresConsent": false,
   "reachesOutside": false,
   "targetGender": null,
-  "illustrationIdea": "mascot with diva lips and sunglasses",
+  "illustration": "mascot-smirk",
   "rationale": "Kernel: total surrender to the group. Removed slur 'la más perra' and the insult quip; kept the persistent-rule mechanic.",
   "selfCheck": { "policy": "pass", "doableSober": true, "genderSafe": true, "levelHeld": true, "fun": 4 }
 }
 ```
+
+Set `illustration` to one key from `illustrationKeys` (`src/features/content/card-types.ts`; art and typical cards in `docs/brand/README.md` § Card Illustration Library), or leave it `null`. Match the mood and level: recurring formats always take their format key ("Cultura time" → `mascot-monocle`, "Historytime" → `mascot-reading-book`, "Momento sad" → `mascot-sad-map-pin`), and the drink props (`shot-glass-on-fire`, `glasses-toasting`) go only on group toasts or cards whose instruction is a shared drink, never on drinking fast or a lot. Any other key is a validation error. Use `illustrationIdea` only to request art the library does not have yet (with `illustration: null`); it is a note for the art review, not a rendered field.
 
 Give each card a draft ID, `draft-<categoryId>-<nnn>` numbered within the batch; the final ID is assigned when a human approves the card. New cards use `"sourceLegacyId": null`. Emoji are fine in `body` only when they are part of the dare ("mándele solo 🔥").
 

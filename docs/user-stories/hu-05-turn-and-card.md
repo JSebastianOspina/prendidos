@@ -2,7 +2,7 @@
 
 | Field      | Value                                                        |
 | ---------- | ------------------------------------------------------------ |
-| Status     | Ready for enrichment                                         |
+| Status     | Implemented (`openspec/changes/archive/2026-10-31-hu-05-turn-and-card`) |
 | Priority   | P0 — playable loop                                           |
 | Depends on | HU-00                                                        |
 | Blocks     | HU-09 (couple soft paywall), HU-11 (alternative penalties)   |

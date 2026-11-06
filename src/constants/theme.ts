@@ -96,6 +96,35 @@ export const ShadowOffset = {
 /** The piece moves down this much while pressed. */
 export const PressedTravel = 4;
 
+/**
+ * Reanimated 4 duration-based springs take a perceptual `duration`; the spring
+ * actually settles in 1.5 × that value (react-native-reanimated SpringConfig docs).
+ */
+export const SpringSettleFactor = 1.5;
+
+/** A Reanimated duration-based spring: `dampingRatio` < 1 overshoots a little. */
+export type SpringToken = { duration: number; dampingRatio: number };
+
+const cardEnterMaxMs = 450;
+const levelUpDurationMs = 600;
+
+/** Motion tokens (design tokens § Motion). Durations in milliseconds. */
+export const Motion = {
+  /** Clay press: the face sinks by `PressedTravel` over this time. */
+  pressDurationMs: 120,
+  /** A new turn card (and the winner mascot) settles within this time. */
+  cardEnterMaxMs,
+  /** The level-up mascot tile grows in about this time. */
+  levelUpDurationMs,
+  /** Every entrance becomes an opacity fade of this length under Reduce Motion. */
+  reducedFadeMs: 200,
+  cardSpring: { duration: cardEnterMaxMs / SpringSettleFactor, dampingRatio: 0.75 } satisfies SpringToken,
+  celebrationSpring: {
+    duration: levelUpDurationMs / SpringSettleFactor,
+    dampingRatio: 0.55,
+  } satisfies SpringToken,
+} as const;
+
 export const TouchTarget = {
   minimum: 48,
   turnAction: 72,

@@ -4,7 +4,7 @@
 
 | Field      | Value                                              |
 | ---------- | -------------------------------------------------- |
-| Status     | Enriched                                           |
+| Status     | Implemented (`openspec/changes/archive/2026-10-31-hu-04-game-setup`) |
 | Priority   | P0 — playable loop                                 |
 | Depends on | HU-00                                              |
 | Blocks     | HU-10 (adds the Sin Filtro switch here)            |

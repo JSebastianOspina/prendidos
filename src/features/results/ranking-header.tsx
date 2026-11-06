@@ -1,8 +1,9 @@
 import { StyleSheet, View } from 'react-native';
 
 import { AppText } from '@/components/ui/app-text';
+import { Entrance } from '@/components/ui/entrance';
 import { Mascot } from '@/components/ui/mascot';
-import { Colors, Spacing } from '@/constants/theme';
+import { Colors, Motion, Spacing } from '@/constants/theme';
 
 import { Crown } from './crown';
 import { sharedFirstPlaceLine, winnerTitle } from './results-copy';
@@ -11,22 +12,33 @@ const mascotSize = 48;
 const crownWidth = 30;
 /** The crown sits on the mascot's head, overlapping its top. */
 const crownOverlap = 12;
+/** The crowned mascot pops in from this scale; it never grows past its 48 pt. */
+const popStartScale = 0.6;
 
 type RankingHeaderProps = {
   eyebrow: string;
   winnerNames: string[];
 };
 
-/** Crowned winking mascot, game summary, and "¡Ganó Vale!" / "¡Empate arriba!". */
+/**
+ * Crowned winking mascot (pops in once), game summary, and "¡Ganó Vale!" / "¡Empate arriba!".
+ */
 export function RankingHeader({ eyebrow, winnerNames }: RankingHeaderProps) {
   const isTie = winnerNames.length > 1;
   return (
     <View style={styles.header}>
       <View style={styles.titleRow}>
-        <View style={styles.crownedMascot}>
+        {/* Plays once when the ranking opens; re-renders keep the same instance. */}
+        <Entrance
+          from="small"
+          spring={Motion.cardSpring}
+          startScale={popStartScale}
+          style={styles.crownedMascot}
+          testID="winner-mascot-entrance"
+        >
           <Mascot art="wink" size={mascotSize} style={styles.mascot} />
           <Crown width={crownWidth} style={styles.crown} />
-        </View>
+        </Entrance>
         <View style={styles.titles}>
           <AppText variant="label" color={Colors.textSecondary}>
             {eyebrow}

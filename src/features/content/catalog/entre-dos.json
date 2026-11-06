@@ -24,7 +24,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-reading-book"
     },
     {
       "id": "dos-002",
@@ -55,7 +56,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-wink"
     },
     {
       "id": "dos-004",
@@ -85,7 +87,8 @@
       },
       "heat": "standard",
       "requiresConsent": true,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-relaxed"
     },
     {
       "id": "dos-006",
@@ -101,7 +104,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-selfie"
     },
     {
       "id": "dos-007",
@@ -117,7 +121,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-monocle"
     },
     {
       "id": "dos-008",
@@ -132,7 +137,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-relaxed"
     },
     {
       "id": "dos-009",
@@ -168,7 +174,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-sad-map-pin"
     },
     {
       "id": "dos-012",
@@ -229,7 +236,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-blowing-kiss"
     },
     {
       "id": "dos-016",
@@ -259,7 +267,8 @@
       },
       "heat": "standard",
       "requiresConsent": true,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-dancing"
     },
     {
       "id": "dos-018",
@@ -311,7 +320,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-reading-book"
     },
     {
       "id": "dos-022",
@@ -389,7 +399,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "microphone"
     },
     {
       "id": "dos-027",
@@ -404,7 +415,8 @@
       },
       "heat": "standard",
       "requiresConsent": true,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-laugh"
     },
     {
       "id": "dos-028",
@@ -457,7 +469,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-pointing"
     },
     {
       "id": "dos-032",
@@ -473,7 +486,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-wink"
     },
     {
       "id": "dos-033",
@@ -505,7 +519,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-monocle"
     },
     {
       "id": "dos-035",
@@ -521,7 +536,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "microphone"
     },
     {
       "id": "dos-036",
@@ -552,7 +568,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-surprised"
     },
     {
       "id": "dos-038",
@@ -645,7 +662,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-reading-book"
     },
     {
       "id": "dos-044",
@@ -690,7 +708,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-relaxed"
     },
     {
       "id": "dos-047",
@@ -748,7 +767,8 @@
       },
       "heat": "standard",
       "requiresConsent": true,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-smirk"
     },
     {
       "id": "dos-052",
@@ -795,7 +815,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-smirk"
     },
     {
       "id": "dos-055",
@@ -811,7 +832,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": true
+      "reachesOutside": true,
+      "illustration": "phone-ringing"
     },
     {
       "id": "dos-056",
@@ -826,7 +848,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-sunglasses"
     },
     {
       "id": "dos-057",
@@ -842,7 +865,8 @@
       },
       "heat": "standard",
       "requiresConsent": true,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-blowing-kiss"
     },
     {
       "id": "dos-058",
@@ -905,7 +929,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "microphone"
     },
     {
       "id": "dos-062",
@@ -921,7 +946,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-pointing"
     },
     {
       "id": "dos-063",
@@ -936,7 +962,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-annoyed"
     },
     {
       "id": "dos-064",
@@ -981,7 +1008,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-surprised"
     },
     {
       "id": "dos-067",
@@ -1039,7 +1067,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": true
+      "reachesOutside": true,
+      "illustration": "phone-ringing"
     },
     {
       "id": "dos-072",
@@ -1071,7 +1100,8 @@
       },
       "heat": "standard",
       "requiresConsent": true,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-dancing"
     },
     {
       "id": "dos-074",
@@ -1118,7 +1148,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-surprised"
     },
     {
       "id": "dos-077",
@@ -1134,7 +1165,8 @@
       },
       "heat": "standard",
       "requiresConsent": true,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-wink"
     },
     {
       "id": "dos-078",
@@ -1150,7 +1182,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": true
+      "reachesOutside": true,
+      "illustration": "phone-ringing"
     },
     {
       "id": "dos-079",
@@ -1182,7 +1215,8 @@
       },
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-laugh"
     },
     {
       "id": "dos-081",
@@ -1305,7 +1339,8 @@
       "body": "Los que se hayan enamorado más rápido de lo que admitieron.",
       "heat": "standard",
       "requiresConsent": false,
-      "reachesOutside": false
+      "reachesOutside": false,
+      "illustration": "mascot-surprised"
     },
     {
       "id": "dos-090",
@@ -1317,6 +1352,23 @@
       "heat": "standard",
       "requiresConsent": false,
       "reachesOutside": false
+    },
+    {
+      "id": "dos-091",
+      "categoryId": "entre-dos",
+      "type": "challenge",
+      "difficulty": "medium",
+      "headline": "Kikirikí de amor",
+      "body": "Despierte a {partner} como gallo de finca: tres kikirikís con aleteo y pose, y cierre con un piropo cantado. {partner} dice si se levantaría de buen genio; si no, no cumplió.",
+      "points": 13,
+      "penalty": {
+        "drinks": 1,
+        "quip": "por gallina"
+      },
+      "heat": "standard",
+      "requiresConsent": false,
+      "reachesOutside": false,
+      "illustration": "rooster"
     }
   ]
 }

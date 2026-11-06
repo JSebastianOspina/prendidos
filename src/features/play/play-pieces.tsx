@@ -4,8 +4,10 @@
  */
 import { useRef, type ReactNode } from 'react';
 import { Pressable, StyleSheet, View, type StyleProp, type ViewStyle } from 'react-native';
+import Animated from 'react-native-reanimated';
 
 import { repeatedPressWindowMs } from '@/components/ui/button';
+import { usePressFeedback } from '@/components/ui/use-press-feedback';
 import {
   BorderWidth,
   Colors,
@@ -27,7 +29,10 @@ export type ClayButtonProps = {
   faceStyle?: StyleProp<ViewStyle>;
 };
 
-/** A pressable clay piece; presses closer than `repeatedPressWindowMs` are ignored, like `Button`. */
+/**
+ * A pressable clay piece; presses closer than `repeatedPressWindowMs` are ignored, like `Button`.
+ * The `Pressable` is the static hit area; only the face inside it sinks (`usePressFeedback`).
+ */
 export function ClayButton({
   accessibilityLabel,
   onPress,
@@ -40,6 +45,9 @@ export function ClayButton({
   faceStyle,
 }: ClayButtonProps) {
   const lastPressAt = useRef<number | undefined>(undefined);
+  const { onPressIn, onPressOut, animatedFaceStyle } = usePressFeedback({
+    travel: Math.min(PressedTravel, shadow),
+  });
 
   const handlePress = () => {
     const now = Date.now();
@@ -58,14 +66,15 @@ export function ClayButton({
         accessibilityState={{ disabled }}
         disabled={disabled}
         onPress={handlePress}
-        style={({ pressed }) => [
-          styles.buttonFace,
-          { height, backgroundColor: fill },
-          faceStyle,
-          pressed && { transform: [{ translateY: Math.min(PressedTravel, shadow) }] },
-        ]}
+        onPressIn={onPressIn}
+        onPressOut={onPressOut}
+        style={{ height }}
       >
-        {children}
+        <Animated.View
+          style={[styles.buttonFace, { backgroundColor: fill }, faceStyle, animatedFaceStyle]}
+        >
+          {children}
+        </Animated.View>
       </Pressable>
     </View>
   );
@@ -103,6 +112,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.ink,
   },
   buttonFace: {
+    flex: 1,
     borderRadius: Radius.lg,
     borderWidth: BorderWidth.regular,
     borderColor: Colors.ink,

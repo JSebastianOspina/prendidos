@@ -2,6 +2,7 @@ import { findBannedPhrases, normalizeForMatching } from './banned-phrases';
 import {
   copyLengthLimits,
   groupCardTypes,
+  illustrationKeys,
   individualCardTypes,
   pointsRangeByDifficulty,
   type Card,
@@ -34,7 +35,8 @@ export type ContentRule =
   | 'malformedVariant'
   | 'malformedText'
   | 'unknownPlaceholder'
-  | 'targetGender';
+  | 'targetGender'
+  | 'unknownIllustration';
 
 /** `error` blocks shipping; `warning` flags copy for the mandatory human review (PRD §6.2). */
 export type ViolationSeverity = 'error' | 'warning';
@@ -184,6 +186,13 @@ function checkOptionalNonBlankText(report: Report, field: string, value: unknown
     return undefined;
   }
   return checkOptionalText(report, field, value);
+}
+
+function checkIllustration(report: Report, value: unknown): void {
+  const illustration = checkOptionalNonBlankText(report, 'illustration', value);
+  if (illustration !== undefined && !isOneOf(illustrationKeys, illustration)) {
+    report('unknownIllustration', `illustration "${illustration}" is not a card illustration library key.`);
+  }
 }
 
 function checkRequiredText(report: Report, field: string, value: unknown): string | undefined {
@@ -351,7 +360,7 @@ function checkCard(card: PlainObject, report: Report, categoryModes: CategoryMod
 
   checkBoolean(report, 'requiresConsent', readField(card, 'requiresConsent'));
   checkBoolean(report, 'reachesOutside', readField(card, 'reachesOutside'));
-  checkOptionalText(report, 'illustration', readField(card, 'illustration'));
+  checkIllustration(report, readField(card, 'illustration'));
   checkOptionalText(report, 'sourceLegacyId', readField(card, 'sourceLegacyId'));
 
   const isIndividual = type !== undefined && isOneOf(individualCardTypes, type);

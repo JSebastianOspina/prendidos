@@ -3,6 +3,7 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
+import { illustrationKeys } from '../card-types';
 import { validateCards } from '../validate-cards';
 import { validCategories } from './fixtures/valid-catalog';
 
@@ -21,5 +22,16 @@ describe('write-cards skill output', () => {
   it('passes validation as documented, authoring notes included', () => {
     const example = readSkillOutputExample();
     expect(validateCards({ categories: validCategories, cards: [example] })).toEqual([]);
+  });
+
+  it('picks the illustration from the library keys', () => {
+    const example = readSkillOutputExample() as { illustration?: unknown };
+    expect(illustrationKeys).toContain(example.illustration);
+  });
+
+  it('documents illustrationIdea only as a request for art the library lacks', () => {
+    const skill = readFileSync(skillPath, 'utf8');
+    expect(skill).toMatch(/illustrationKeys/);
+    expect(skill).toMatch(/`illustrationIdea`[^\n]*only/);
   });
 });

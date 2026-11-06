@@ -5,7 +5,7 @@ alwaysApply: false
 
 # Card Templates
 
-**Status: data model adopted.** The `Card` shape below is now in [`../data-model.md`](../data-model.md) and implemented in `src/features/content/` (types and `validateCards`) through the OpenSpec change `card-content-model`. The rendering rules and open decisions about the card face are still pending its own change.
+**Status: data model adopted.** The `Card` shape below is now in [`../data-model.md`](../data-model.md) and implemented in `src/features/content/` (types and `validateCards`) through the OpenSpec change `card-content-model`. The rendering rules below are implemented for illustrations by HU-15 (`hu-15-illustrations-and-motion`): a closed 24-key library ([`../brand/README.md` § Card Illustration Library](../brand/README.md#card-illustration-library)), the illustration slot below the text, and the "text wins" fallback.
 
 ## What the Legacy Cards Show
 
@@ -78,7 +78,7 @@ type DrinkPenalty = {
   quip?: GenderedText;             // optional teasing tag: "por aguafiestas" or "por {tibio|tibia|aguado}"
 };
 
-type IllustrationKey = 'mascot-monocle' | 'mascot-crying' | 'shot-glass-on-fire' /* … */;
+type IllustrationKey = (typeof illustrationKeys)[number]; // 'mascot-monocle' | 'mascot-crying' | 'shot-glass-on-fire' | …
 ```
 
 | Change                        | Why                                                                                          |
@@ -97,7 +97,7 @@ Group cards (`everyoneWho`, `neverHaveIEver`) keep a fixed headline from their t
 
 | Decision                                   | Recommendation                                                                                       |
 | ------------------------------------------ | ---------------------------------------------------------------------------------------------------- |
-| Mascot on the game card                    | `design-tokens.md` says never; the legacy cards rely on it. Allow it only in the illustration slot, below the text, hidden on overflow (rule 4) |
+| Mascot on the game card                    | **Closed (HU-15, 2026-11-05):** allowed only in the illustration slot, below the text, hidden when it does not fit (rule 4). `design-tokens.md` § Where the mascot appears was amended |
 | Recurring formats as data                  | Add later: a `format` key that brings a default headline and illustration ("Cultura time"). Start with plain `headline` + `illustration` |
 | Speech bubbles                             | Out of the MVP: they are more baked-in copy. Keep them in the illustration art only if they carry no game text |
-| Illustration library size for launch       | ~12 keys (5 mascot expressions per level mood + 7 props), drawn after the copy for the first category settles |
+| Illustration library size for launch       | **Closed (HU-15, 2026-11-05):** 24 keys carried over from the legacy cast (17 mascot pieces, 5 props, 2 guest animals); see the brand README library table |

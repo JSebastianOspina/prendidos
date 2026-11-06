@@ -1,13 +1,27 @@
-import { StyleSheet, View } from 'react-native';
+import { useState } from 'react';
+import {
+  StyleSheet,
+  View,
+  type LayoutChangeEvent,
+  type StyleProp,
+  type ViewStyle,
+} from 'react-native';
 
 import { AppText } from '@/components/ui/app-text';
+import { CardIllustration } from '@/components/ui/card-illustration';
 import { levelLabels } from '@/components/ui/level-badge';
 import { PlayerAvatar } from '@/components/ui/player-avatar';
 import { BorderWidth, Colors, Fonts, LevelColors, Radius, Spacing } from '@/constants/theme';
-import type { Card, GroupCard, IndividualCard } from '@/features/content/card-types';
+import type {
+  Card,
+  GroupCard,
+  IllustrationKey,
+  IndividualCard,
+} from '@/features/content/card-types';
 import type { Player, RenderedCard } from '@/features/game';
 
 import { penaltyLine, playCopy, pointsLabel } from './copy';
+import { cardIllustrationGap, cardIllustrationHeight, fitsIllustration } from './illustration-fit';
 import { PlayCard } from './play-pieces';
 
 /** Small tilt from the proposal; individual cards lean left, group cards right. */
@@ -41,6 +55,46 @@ function CardNotes({ card, color }: { card: Card; color: string }) {
       {card.requiresConsent ? <AppText color={color}>{playCopy.consentNote}</AppText> : null}
       {card.reachesOutside ? <AppText color={color}>{playCopy.outsideNote}</AppText> : null}
     </>
+  );
+}
+
+/**
+ * Free space below the card text, holding the card's illustration when it fits ("text wins").
+ * The slot grows into the space left in the visible card area, and 0 when the text overflows.
+ * The illustration is drawn out of the layout flow, so the slot always measures that free space
+ * and the art can never push the text or the turn buttons. Every slot layout (a window-size or
+ * font-scale change included) checks the fit again. Key it by card id: a new card starts
+ * text-only until its slot is measured.
+ */
+function IllustrationSlot({
+  illustration,
+  style,
+}: {
+  illustration: IllustrationKey | undefined;
+  style?: StyleProp<ViewStyle>;
+}) {
+  const [slotHeight, setSlotHeight] = useState<number>();
+  const isShown =
+    illustration !== undefined &&
+    slotHeight !== undefined &&
+    fitsIllustration({
+      slotHeight,
+      illustrationHeight: cardIllustrationHeight,
+      gap: cardIllustrationGap,
+    });
+
+  function handleLayout(event: LayoutChangeEvent) {
+    setSlotHeight(event.nativeEvent.layout.height);
+  }
+
+  return (
+    <View testID="card-illustration-slot" style={[styles.illustrationSlot, style]} onLayout={handleLayout}>
+      {isShown ? (
+        <View testID="card-illustration-frame" style={styles.illustrationFrame} pointerEvents="none">
+          <CardIllustration illustration={illustration} height={cardIllustrationHeight} />
+        </View>
+      ) : null}
+    </View>
   );
 }
 
@@ -124,6 +178,11 @@ export function IndividualCardFace({
         {copy.body}
       </AppText>
       <CardNotes card={card} color={level.text} />
+      <IllustrationSlot
+        key={card.id}
+        illustration={card.illustration}
+        style={styles.individualSlot}
+      />
     </PlayCard>
   );
 }
@@ -143,7 +202,7 @@ export function GroupCardFace({ card, copy }: { card: GroupCard; copy: RenderedC
       </AppText>
       <AppText variant="card">{copy.body}</AppText>
       <CardNotes card={card} color={Colors.ink} />
-      <View style={styles.spacer} />
+      <IllustrationSlot key={card.id} illustration={card.illustration} />
       <View style={styles.ruleBox}>
         <AppText style={styles.strong}>{playCopy.groupRule}</AppText>
         <AppText color={Colors.textMuted}>{playCopy.groupRuleNote}</AppText>
@@ -214,8 +273,19 @@ const styles = StyleSheet.create({
     paddingBottom: Spacing.gutter,
     gap: Spacing.xs,
   },
-  spacer: {
+  illustrationSlot: {
     flexGrow: 1,
+  },
+  /** Cancels the card body gap, so an empty slot adds no height below overflowing text. */
+  individualSlot: {
+    marginTop: -Spacing.md,
+  },
+  /** Out of the layout flow: centered in the slot, below a gap that keeps it off the text. */
+  illustrationFrame: {
+    ...StyleSheet.absoluteFill,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingTop: cardIllustrationGap,
   },
   ruleBox: {
     backgroundColor: Colors.surface,

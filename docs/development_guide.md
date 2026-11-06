@@ -82,6 +82,8 @@ npx expo run:android      # local development build (Android emulator)
 npx eas-cli@latest build --profile development --platform ios   # cloud development build
 ```
 
+`expo-haptics` (clay button press, HU-15) is a native module: Expo Go includes it, but development and store builds made before HU-15 do not, so rebuild them (`npx expo run:ios|android` or EAS Build) before testing haptics. Haptics only play on a physical device; simulators and the web build stay silent. Never ship HU-15 to an older native build through EAS Update. Android uses the haptics engine, so `android.permission.VIBRATE` is blocked in `app.json`.
+
 ### Backend / serverless
 
 Not applicable — Prendidos has no backend today.
@@ -103,6 +105,8 @@ Jest is installed and configured following https://docs.expo.dev/develop/unit-te
 ```bash
 npx expo install jest-expo jest @types/jest @types/node --dev
 ```
+
+Reanimated 4 needs its Jest setup (added with HU-15): the `package.json` `jest` block sets `"resolver": "react-native-reanimated/jest/resolver"` and `"setupFilesAfterEnv": ["<rootDir>/jest-setup.ts"]`, where `jest-setup.ts` calls `setUpTests()` and loads the typing of the `toHaveAnimatedStyle` matcher. Animation tests advance `jest.useFakeTimers()`; motion components read Reduce Motion only through `useReduceMotion` (`src/hooks/use-reduce-motion.ts`), so tests mock that one module.
 
 React Native Testing Library is added with the first component test: `npx expo install @testing-library/react-native --dev` (v14 or later for Expo Router).
 

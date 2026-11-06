@@ -1,8 +1,9 @@
-import { fireEvent, render, screen } from '@testing-library/react-native';
+import { fireEvent, render, screen, within } from '@testing-library/react-native';
+import * as Haptics from 'expo-haptics';
 import Storage from 'expo-sqlite/kv-store';
 import { router } from 'expo-router';
 import { useEffect, type ReactNode } from 'react';
-import { Text } from 'react-native';
+import { Platform, Text } from 'react-native';
 
 import { repeatedPressWindowMs } from '@/components/ui/button';
 import type { Card } from '@/features/content/card-types';
@@ -18,6 +19,7 @@ import {
   testCategories,
 } from '@/features/game/__tests__/fixtures/game-fixtures';
 import { routes } from '@/features/navigation/routes';
+import { useReduceMotion } from '@/hooks/use-reduce-motion';
 
 import { continueWithLabel, levelUpLine, playCopy } from '../copy';
 import { PlayScreen } from '../play-screen';
@@ -26,7 +28,16 @@ jest.mock('expo-router', () => ({
   router: { replace: jest.fn(), push: jest.fn() },
 }));
 
+jest.mock('@/hooks/use-reduce-motion', () => ({ useReduceMotion: jest.fn() }));
+jest.mock('expo-haptics', () => ({
+  impactAsync: jest.fn(() => Promise.resolve()),
+  performAndroidHapticsAsync: jest.fn(() => Promise.resolve()),
+  ImpactFeedbackStyle: { Light: 'light' },
+  AndroidHaptics: { Virtual_Key: 'virtual-key' },
+}));
+
 const replace = router.replace as jest.Mock;
+const mockedUseReduceMotion = jest.mocked(useReduceMotion);
 
 const individualCards: Card[] = [
   individualCard('e1', { points: 5, body: 'Abrace a {player}.' }),
@@ -101,6 +112,7 @@ async function press(label: string) {
 }
 
 beforeEach(() => {
+  mockedUseReduceMotion.mockReturnValue(false);
   Storage.clearSync();
   replace.mockClear();
   clockMs = 0;
@@ -336,6 +348,83 @@ describe('PlayScreen', () => {
 
       await press(playCopy.next);
       expect(screen.getByText(levelUpLine('medium'))).toBeTruthy();
+    });
+  });
+
+  describe('card entrance', () => {
+    function cardEntrance() {
+      return screen.getByTestId('card-entrance');
+    }
+
+    it.each([false, true])('shows the same card with Reduce Motion %s', async (reduceMotion) => {
+      mockedUseReduceMotion.mockReturnValue(reduceMotion);
+      await renderPlay();
+
+      const card = within(cardEntrance());
+      expect(card.getByText('Ana')).toBeTruthy();
+      expect(card.getByText('Abrace a Beto.')).toBeTruthy();
+      expect(card.getByText('Toma 1 trago — por floja')).toBeTruthy();
+      expect(screen.getByRole('button', { name: completeFive })).toBeTruthy();
+      expect(screen.getByRole('button', { name: refuseFive })).toBeTruthy();
+    });
+
+    it('keeps the turn buttons outside the animated card', async () => {
+      await renderPlay();
+      expect(within(cardEntrance()).queryByRole('button', { name: anyComplete })).toBeNull();
+      expect(within(cardEntrance()).queryByRole('button', { name: refuseFive })).toBeNull();
+    });
+
+    it('plays a new entrance for the next card', async () => {
+      await renderPlay();
+      const firstEntrance = cardEntrance();
+
+      await press(completeFive);
+      expect(within(cardEntrance()).getByText('Cante una canción.')).toBeTruthy();
+      expect(cardEntrance()).not.toBe(firstEntrance);
+    });
+
+    it('plays a new entrance for a swapped card', async () => {
+      await renderPlay();
+      const firstEntrance = cardEntrance();
+
+      await press(playCopy.swap);
+      expect(within(cardEntrance()).getByText('Cante una canción.')).toBeTruthy();
+      expect(cardEntrance()).not.toBe(firstEntrance);
+    });
+
+    it('takes No cumplió while the new card is still entering', async () => {
+      jest.useFakeTimers({ doNotFake: ['Date'] });
+      try {
+        await renderPlay();
+        await press(completeFive);
+        expect(within(cardEntrance()).getByText('Cante una canción.')).toBeTruthy();
+
+        // No timers advanced: the entrance has not finished.
+        await pressMatching(/^No cumplió/);
+        expect(screen.getByText(playCopy.refusedBy('Beto'))).toBeTruthy();
+      } finally {
+        jest.useRealTimers();
+      }
+    });
+  });
+
+  describe('motion budget and press feedback', () => {
+    it('animates at most two elements when a level up opens over a new card', async () => {
+      await renderPlay({ cards: escalatingCards });
+      await completeTurns(4);
+      expect(screen.getByText(playCopy.levelUpTitles.medium)).toBeTruthy();
+
+      const animated = ['card-entrance', 'level-up-mascot-entrance'].flatMap((testID) =>
+        screen.queryAllByTestId(testID, { includeHiddenElements: true }),
+      );
+      expect(animated.length).toBeLessThanOrEqual(2);
+    });
+
+    it('plays one haptic when a turn action is pressed on a phone', async () => {
+      jest.replaceProperty(Platform, 'OS', 'android');
+      await renderPlay();
+      await fireEvent(screen.getByRole('button', { name: completeFive }), 'pressIn');
+      expect(Haptics.performAndroidHapticsAsync).toHaveBeenCalledTimes(1);
     });
   });
 });

@@ -42,6 +42,40 @@ export type Category = {
   freeDifficulties: Difficulty[];
 };
 
+/**
+ * Card illustration library keys, in library order (docs/brand/README.md
+ * § Card Illustration Library). A key enters this list only together with its
+ * bundled art, so content can never point to missing art.
+ */
+export const illustrationKeys = [
+  'mascot-wink',
+  'mascot-relaxed',
+  'mascot-smirk',
+  'mascot-laugh',
+  'mascot-pointing',
+  'mascot-surprised',
+  'mascot-monocle',
+  'mascot-reading-book',
+  'mascot-crying',
+  'mascot-sad-map-pin',
+  'mascot-blowing-kiss',
+  'mascot-sunglasses',
+  'mascot-dancing',
+  'mascot-tongue-out',
+  'mascot-annoyed',
+  'mascot-selfie',
+  'mascot-diva',
+  'phone-ringing',
+  'microphone',
+  'animal-wheel',
+  'shot-glass-on-fire',
+  'glasses-toasting',
+  'rooster',
+  'two-dogs',
+] as const;
+
+export type IllustrationKey = (typeof illustrationKeys)[number];
+
 type CardBase = {
   id: string;
   categoryId: string;
@@ -52,7 +86,8 @@ type CardBase = {
   requiresConsent: boolean;
   /** Calls, messages, or posts; the app shows the outside-contact rules. */
   reachesOutside: boolean;
-  illustration?: string;
+  /** Decorative art shown below the card text when it fits. */
+  illustration?: IllustrationKey;
   targetGender?: TargetGender;
   sourceLegacyId?: string;
 };

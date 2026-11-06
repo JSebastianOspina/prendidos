@@ -44,6 +44,36 @@ The challenges from the previous Flutter app, kept as the **style reference** fo
 
 Other notes: the sheet's summary counts (64 / 31 / 18) are stale — the real split is 49 `easy`, 37 `medium`, 22 `hard`. `150F2E47` is labeled Hardcore but its PNG uses the Medio color. `86ECADCC` has duplicated text at the end. `B98FB490.png` and `Start(1).png` in the source folder were byte-identical copies of `start.png` and `150F2E47.png` and were not imported.
 
+### Legacy illustrations → library keys
+
+The `face.illustration` pieces of the designed cards map to the card illustration library ([`../brand/README.md` § Card Illustration Library](../brand/README.md#card-illustration-library)). A rewrite of one of these cards uses the key below (or none); it never asks for the legacy art.
+
+| Legacy card(s)           | Legacy piece                       | Library key                     |
+| ------------------------ | ---------------------------------- | ------------------------------- |
+| `150F2E47`               | Full-body wink holding a shot      | `mascot-pointing` (no drink)    |
+| `27FBE2FA`               | Surprised face                     | `mascot-surprised`              |
+| `87AFEB01`, `0952151E`   | Monocle                            | `mascot-monocle`                |
+| `BE10B9F4`               | Reading glasses and a book         | `mascot-reading-book`           |
+| `0128B710`               | Crying                             | `mascot-crying`                 |
+| `AB0271E1`               | Sad face with a map pin            | `mascot-sad-map-pin`            |
+| `07E1B1B1`, `67FAA195`   | Blowing a kiss                     | `mascot-blowing-kiss`           |
+| `0E00B38B`               | Triangular sunglasses              | `mascot-sunglasses`             |
+| `D62E0E5C`               | Star glasses, dancing arms         | `mascot-dancing`                |
+| `D6F0E557`               | Tongue out                         | `mascot-tongue-out`             |
+| `B8530F01`               | Annoyed side-eye                   | `mascot-annoyed`                |
+| `FED27DA1`               | Dollar eyes, selfie                | `mascot-selfie`                 |
+| `B3352FE5`, `93E76F0C`   | Diva lips                          | `mascot-diva` (redesigned, gender-neutral) |
+| `A79D1EE1`               | Phone with "XXX"                   | `phone-ringing` (redesigned, blank screen) |
+| `5900AD23`               | Animal wheel                       | `animal-wheel`                  |
+| `start`                  | Shot glass on fire                 | `shot-glass-on-fire`            |
+| `04E05904`               | Two glasses toasting               | `glasses-toasting`              |
+| `2B0A3F96`               | Rooster                            | `rooster`                       |
+| `B1757B35`               | Two dogs                           | `two-dogs`                      |
+| `7E274954`               | Police cap ("tombo")               | Dropped (stereotype)            |
+| `78F3F0D7`               | Spain map pin with speech bubbles  | Dropped (baked-in text, insult) |
+
+`microphone` is new (the legacy singing card `3333651F` was text-only). Four keys had no fitting card in the launch catalog, so HU-15 added one new card each (`prev-192` `shot-glass-on-fire`, `prev-193` `glasses-toasting`, `prev-194` `two-dogs`, `dos-091` `rooster`), pending human review in [`illustration-batch-review.md`](./illustration-batch-review.md). The four mascot faces `mascot-wink`, `mascot-relaxed`, `mascot-smirk`, and `mascot-laugh` come from the brand art, not from a legacy card.
+
 The spreadsheet's third sheet (`Lista de preguntas & Stuff`) also has truth questions (normal and spicy), "¿Presionarías el botón?" dilemmas, riddles, and trivia. They are **not imported yet**.
 
 ## Voice

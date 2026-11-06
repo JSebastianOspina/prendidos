@@ -4,6 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { AppText } from '@/components/ui/app-text';
 import { mascotForLevel } from '@/components/ui/brand-art';
 import { Button } from '@/components/ui/button';
+import { Entrance } from '@/components/ui/entrance';
 import { levelLabels } from '@/components/ui/level-badge';
 import { Mascot } from '@/components/ui/mascot';
 import {
@@ -12,6 +13,7 @@ import {
   Fonts,
   LevelColors,
   MaxContentWidth,
+  Motion,
   Radius,
   ShadowOffset,
   Spacing,
@@ -30,8 +32,8 @@ type LevelUpOverlayProps = {
 };
 
 /**
- * Full-screen celebration when the game reaches a higher level. It has no motion, so it
- * already honors the system "Reduce Motion" setting.
+ * Full-screen celebration when the game reaches a higher level. Only the mascot tile moves:
+ * it grows from small to full size with an overshoot, or fades in under Reduce Motion.
  */
 export function LevelUpOverlay({ level, roundText, onContinue }: LevelUpOverlayProps) {
   return (
@@ -42,12 +44,17 @@ export function LevelUpOverlay({ level, roundText, onContinue }: LevelUpOverlayP
             <AppText variant="label">{roundText}</AppText>
           </View>
 
-          <View style={styles.mascotTile}>
+          <Entrance
+            from="small"
+            spring={Motion.celebrationSpring}
+            style={styles.mascotTile}
+            testID="level-up-mascot-entrance"
+          >
             <View style={styles.mascotShadow} />
             <View style={styles.mascotFace}>
               <Mascot art={mascotForLevel[level]} size={mascotSize} />
             </View>
-          </View>
+          </Entrance>
 
           <AppText
             variant="display"

@@ -4,7 +4,7 @@
 
 | Field      | Value                                            |
 | ---------- | ------------------------------------------------ |
-| Status     | Implemented (OpenSpec `hu-01-age-gate`)          |
+| Status     | Implemented (`openspec/changes/archive/2026-10-31-hu-01-age-gate`) |
 | Priority   | P0 — playable loop                               |
 | Depends on | HU-00                                            |
 | Blocks     | —                                                |
